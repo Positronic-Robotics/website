@@ -1,0 +1,33 @@
+[project]
+name = "positronic-website"
+version = "0.1.0"
+description = "Pelican build for the Positronic website."
+requires-python = ">=3.10"
+dependencies = [
+  "pelican>=4.11",
+  "markdown>=3.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = []
+only-include = [
+  "content",
+  "theme",
+  "pelicanconf.py",
+  "publishconf.py",
+  "pyproject.toml",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "content",
+  "theme",
+  "pelicanconf.py",
+  "publishconf.py",
+  "pyproject.toml",
+]
+
