@@ -108,3 +108,15 @@ a:hover {
   color: var(--accent);
 }
 
+.page-content ul li strong {
+  color: #f0f0f0;
+}
+
+.page-content ul li strong a {
+  color: #b0b0b0;
+}
+
+.page-content ul li strong a:hover {
+  color: #f0f0f0;
+}
+
