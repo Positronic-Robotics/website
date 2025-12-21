@@ -1,8 +1,8 @@
 :root {
   --bg: #111111;
   --text: #f0f0f0;
-  --accent: #FF9F1C;
-  --accent-soft: rgba(255, 159, 28, 0.15);
+  --accent: #b1e74f;
+  --accent-soft: rgba(177, 231, 79, 0.18);
 
   --muted: #e0e0e0;
   --text-secondary: #cbd5f5;
