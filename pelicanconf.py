@@ -15,7 +15,7 @@ PATH = "content"
 PAGE_PATHS = ["pages"]
 PAGE_EXCLUDES: list[str] = []
 ARTICLE_PATHS: list[str] = ["blog"]
-STATIC_PATHS: list[str] = []
+STATIC_PATHS: list[str] = ["neapolis_deck"]
 
 # Theme
 THEME = "theme/positronic"
