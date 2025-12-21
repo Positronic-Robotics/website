@@ -56,9 +56,30 @@ main {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  margin-bottom: 0.65rem;
+  margin-bottom: 1.0rem;
   display: flex;
+  align-items: center;
   gap: 1rem;
+}
+
+.back-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 99px;
+  transition: all 0.2s ease;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  height: fit-content;
+}
+
+.back-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  transform: translateY(-1px);
 }
 
 .article-image img {
@@ -66,7 +87,7 @@ main {
   max-height: 400px;
   object-fit: contain;
   border-radius: var(--radius-lg);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background: var(--card-bg);
 }
 
@@ -74,16 +95,16 @@ main {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .article-body p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   line-height: 1.7;
 }
 
 h1 {
-  margin: 0 0 30px;
+  margin: 0 0 0.5rem;
   font-size: 40px;
   line-height: 1;
   font-weight: 700;
@@ -100,7 +121,7 @@ h1 {
 }
 
 h3 {
-  margin: 12px 0 0;
+  margin: 1.5rem 0 0.5rem;
   font-size: 20px;
   line-height: 1.3;
   font-weight: 600;

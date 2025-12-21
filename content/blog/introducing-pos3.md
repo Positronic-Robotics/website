@@ -11,6 +11,12 @@ We're not announcing this with as much fanfare as our main product, but we hope 
 
 **The Killer Feature:** It allows you to feed data from S3 into **any third-party code** (like Pandas, OpenCV, PyTorch) or legacy scripts that only understand local files. You don't need to rewrite all your I/O code to support `boto3` or `s3fs`!
 
+### Why We Built It
+
+We built `pos3` because we hit a wall while automating training and inference pipelines for our robotics models. We had dozens of scripts and standard tools that expected local files, and rewriting them all to use S3 APIs was a non-starter.
+
+Now, `pos3` is a staple in our stack. You can find it used [throughout the Positronic codebase](https://github.com/Positronic-Robotics/positronic/search?q=pos3) to seamlessly bridge cloud storage with our runtime.
+
 ### The Problem
 
 In ML workflows, we often have tools that expect local paths:
