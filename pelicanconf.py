@@ -52,7 +52,7 @@ FEED_MAX_ITEMS = 0
 
 # Markdown settings
 MARKDOWN = {
-    "extensions": ["markdown.extensions.extra"],
+    "extensions": ["markdown.extensions.extra", "markdown.extensions.codehilite"],
 }
 
 # Convenience helpers

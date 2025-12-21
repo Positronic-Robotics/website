@@ -138,7 +138,7 @@ li {
 }
 
 strong {
-  /* color: var(--text); */
+  color: #e8f0d5; /* Gentle lime-grey accent */
   font-weight: 600;
 }
 
@@ -148,6 +148,22 @@ code {
   border-radius: 6px;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 85%;
+}
+
+pre {
+  background-color: rgba(110, 118, 129, 0.4);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.9em;
+  color: inherit;
 }
 
 a {
@@ -296,4 +312,6 @@ a:hover {
   color: var(--text-secondary);
   font-size: 0.95rem;
 }
+
+
 
