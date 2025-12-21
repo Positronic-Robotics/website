@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% if page %}{{ page.title }}{% else %}{{ SITENAME }}{% endif %}</title>
-  <meta name="description" content="{{ SITEDESCRIPTION | default('') }}" />
+  <title>{% if article %}{{ article.title }} — {{ SITENAME }}{% elif page %}{{ page.title }}{% else %}{{ SITENAME }}{% endif %}</title>
+  <meta name="description" content="{% if article %}{{ article.summary|striptags|escape }}{% else %}{{ SITEDESCRIPTION|default('')|escape }}{% endif %}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="theme/positronic/static/css/style.css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/positronic/static/css/pygments.css" />
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/positronic/static/css/style.css" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LV5R7LHQ3"></script>
   <script>
@@ -20,6 +21,18 @@
   </script>
 </head>
 <body>
+  <header class="navbar">
+    <div class="navbar-inner page-shell">
+      <a href="{{ SITEURL }}/" class="navbar-brand">
+        <img src="{{ SITEURL }}/theme/positronic/static/img/logo.png" alt="Positronic Logo" />
+        <span class="brand-text">Positronic <span class="brand-suffix">Robotics</span></span>
+      </a>
+      <nav>
+        <a href="{{ SITEURL }}/">Home</a>
+        <a href="{{ SITEURL }}/blog.html">Blog</a>
+      </nav>
+    </div>
+  </header>
   <main>
     {% block content %}{% endblock %}
   </main>
