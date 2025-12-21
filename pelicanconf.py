@@ -14,7 +14,7 @@ SITEDESCRIPTION = "Machine learning in robotics is still mostly broken. We're fi
 PATH = "content"
 PAGE_PATHS = ["pages"]
 PAGE_EXCLUDES: list[str] = []
-ARTICLE_PATHS: list[str] = []
+ARTICLE_PATHS: list[str] = ["blog"]
 STATIC_PATHS: list[str] = []
 
 # Theme
@@ -27,15 +27,15 @@ DELETE_OUTPUT_DIRECTORY = False
 # URLs
 PAGE_URL = "{slug}.html"
 PAGE_SAVE_AS = "{slug}.html"
-INDEX_SAVE_AS = "index.html"
+INDEX_SAVE_AS = "blog.html"
 
 TIMEZONE = "Europe/Nicosia"
 DEFAULT_LANG = "en"
 DEFAULT_PAGINATION = False
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 
 # Clean unused Pelican pages we don't need for a single-page site
-DIRECT_TEMPLATES: list[str] = []
+DIRECT_TEMPLATES: list[str] = ["index"]
 TAGS_SAVE_AS = ""
 CATEGORY_SAVE_AS = ""
 AUTHORS_SAVE_AS = ""
@@ -60,4 +60,3 @@ BASE_DIR = Path(__file__).parent.resolve()
 THEME_STATIC_DIR = Path(THEME) / "static"
 if not THEME_STATIC_DIR.exists():
     THEME_STATIC_DIR.mkdir(parents=True, exist_ok=True)
-
