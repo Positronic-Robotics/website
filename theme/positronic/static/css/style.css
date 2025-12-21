@@ -224,14 +224,14 @@ a:hover {
   align-items: center;
   padding: 0 2rem;
   margin: 0 auto;
-  gap: 3rem;
+  gap: 6rem;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--text);
@@ -256,7 +256,10 @@ a:hover {
 .navbar nav a {
   text-decoration: none;
   color: var(--text);
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.0rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   transition: color 0.15s;
 }
 
