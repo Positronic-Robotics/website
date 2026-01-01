@@ -16,17 +16,25 @@
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
                 processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'no-mathjax'
             }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LV5R7LHQ3"></script>
+    <!-- Google tag (gtag.js) - only load on production -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0LV5R7LHQ3');
+        if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0LV5R7LHQ3';
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0LV5R7LHQ3');
+        }
     </script>
 </head>
 <body>
@@ -516,10 +524,10 @@
                 <div class="split-layout" style="align-items: center; gap: 4rem;">
                     <!-- Left: Actionable Steps -->
                     <div class="text-col">
-                        <div class="card" style="margin-bottom: 2rem;">
+                        <div class="card no-mathjax" style="margin-bottom: 2rem;">
                             <h3>1. The Barrier is Gone</h3>
                             <ul class="styled-list" style="list-style: none; padding-left: 0; margin-top: 1rem;">
-                                <li style="margin-bottom: 0.75rem;"><strong style="color: var(--text-primary);">Hardware:</strong> Build an arm for <$200, or dual-arm for <$5,000.</li>
+                                <li style="margin-bottom: 0.75rem;"><strong style="color: var(--text-primary);">Hardware:</strong> Build an arm for &lt;$200, or dual-arm for &lt;$5,000.</li>
                                 <li style="margin-bottom: 0.75rem;"><strong style="color: var(--text-primary);">Software:</strong> Positronic is Open Source & Python-native.</li>
                                 <li><strong style="color: var(--text-primary);">Data:</strong> Collect it with the phone in your pocket.</li>
                             </ul>
