@@ -557,10 +557,249 @@ header { margin-bottom: 2rem; }
 
   .navigation-dots { display: none; }
 
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
 
-  .slide { padding: 3rem 1.5rem; }
+  .slide {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  /* Bio slide */
+  .bio-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bio-left {
+    text-align: center;
+    align-items: center;
+    order: 2;
+  }
+
+  .bio-left header {
+    text-align: center;
+  }
+
+  .bio-right {
+    order: 1;
+    text-align: center;
+  }
+
+  .bio-photo-large {
+    width: 180px;
+    height: 180px;
+  }
+
+  .company-item {
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+
+  .company-item:hover {
+    transform: none;
+  }
+
+  .company-logo-small {
+    width: 36px;
+    height: 36px;
+  }
+
+  .company-text h3 {
+    font-size: 0.95rem;
+  }
+
+  .company-text p {
+    font-size: 0.75rem;
+  }
+
+  /* Paper slides */
+  .paper-content {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .paper-image {
+    max-height: 40vh;
+  }
+
+  .key-idea-box {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* Pyramid */
+  .triangle-stack {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .tip-section {
+    width: 150px;
+    height: 100px;
+    padding-bottom: 0.5rem;
+  }
+
+  .base-section {
+    width: 100%;
+    max-width: 320px;
+    height: 140px;
+  }
+
+  .tip-label h3 {
+    font-size: 1rem;
+  }
+
+  .tip-label p {
+    font-size: 0.75rem;
+  }
+
+  .base-label h3 {
+    font-size: 1.1rem;
+  }
+
+  .base-label p {
+    font-size: 0.85rem;
+  }
+
+  .pyramid-quote {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  /* Paradigm comparison */
+  .paradigm-comparison {
+    gap: 1rem;
+  }
+
+  .paradigm-side {
+    padding: 1rem;
+  }
+
+  .comparison-arrow {
+    font-size: 2rem;
+  }
+
+  .math-block {
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+  .code-block {
+    font-size: 0.9rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  /* Cards */
+  .card {
+    padding: 1.25rem;
+  }
+
+  /* Process flow / workflow */
+  .process-flow {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .step {
+    width: 100%;
+    max-width: 280px;
+    padding: 1.25rem;
+  }
+
+  .step.workflow-step {
+    padding: 0.75rem 1.25rem;
+    min-width: auto;
+  }
+
+  .arrow-container {
+    transform: rotate(90deg);
+    margin: 0.5rem 0;
+  }
+
+  .arrow {
+    font-size: 1.5rem;
+  }
+
+  .arrow-label {
+    font-size: 0.7rem;
+  }
+
+  /* Comparison boxes */
+  .comparison-box {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .historical-arrow {
+    font-size: 1.5rem;
+    transform: rotate(90deg);
+  }
+
+  /* Title slide */
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .speaker-info {
+    margin-top: 1.5rem;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+  }
+
+  /* QR container */
+  .qr-container img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  /* Closing slide */
+  .final-slide .split-layout {
+    gap: 2rem;
+  }
+
+  /* Styled lists */
+  .styled-list li {
+    font-size: 1rem;
+  }
+
+  /* Video grid */
+  .video-grid {
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .play-overlay {
+    width: 56px;
+    height: 56px;
+  }
+
+  .play-icon {
+    border-width: 10px 0 10px 16px;
+    margin-left: 4px;
+  }
+
+  /* Prevent horizontal overflow */
+  .content {
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* Bio Column (Slide 2) - UPDATED */
