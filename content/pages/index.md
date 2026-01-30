@@ -1,33 +1,49 @@
-Title: Positronic — Infrastructure for ML Robotics
+Title: Positronic - Infrastructure for ML Robotics
 Slug: index
 Save_as: index.html
 URL: index.html
 
-### Machine learning in robotics is still mostly broken.
+### ML promises to transform robotics: teach robots through demonstrations instead of code.
 
-Collecting data is expensive, curation is messy, and wiring up sensors, robots, and inference is harder than it should be.
+The field is early. The ecosystem lacks dedicated tools to make development simple, repeatable, and accessible:
 
-### **We’re fixing this by building two core pieces:**
+- **Data collection is expensive**: hardware integration, teleoperation setup, dataset curation all require specialized expertise
+- **Data is messy**: multi-rate sensors, format fragmentation, re-recording for each framework
+- **Deployment is complex**: vendor-specific APIs, hardware compatibility issues, monitoring infrastructure from scratch
 
-- **⚡ Positronic Runtime** — immediate-mode, Python-native middleware to wire cameras, arms, sensors, and inference. Simple to read, extend, and ship.
-- **📂 Data OS for Robotics** — a dataset format that handles multi-rate sensor data natively, plus a web UI to browse, label, filter, and curate episodes.
+Teams spend more time fighting infrastructure than building capabilities.
 
-### **Who it’s for**
+### **Positronic is an end-to-end toolkit for ML-driven robotics.**
 
-Teams building manipulation systems that need reliable data pipelines and quick bring-up on real hardware.
+It covers the full lifecycle: bring hardware online, capture and curate datasets, train and evaluate policies, deploy inference, and iterate.
 
-**Our repositories:**
+**Connect any hardware to any AI model.** Store your data once, train on any framework. Deploy with a unified inference API. All in plain Python, no ROS required.
 
-- **[Positronic Runtime & Data OS](https://github.com/Positronic-Robotics/positronic)** — Python-native stack for real-life ML robotics.
-- **[Configuronic](https://github.com/Positronic-Robotics/configuronic)** — a typed CLI for experiments and training scripts.
+### **How Positronic differs from LeRobot**
+
+LeRobot focuses on training: fast experiments on reference hardware and public datasets. Positronic adds the operational infrastructure: hardware drivers, data collection tools, unified inference API, and iteration workflows. We use LeRobot for training. Positronic adds the lifecycle management around it.
+
+<div style="text-align: center; margin: 3em 0;">
+  <a href="https://github.com/Positronic-Robotics/positronic"
+     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem;
+            padding: 1em 2.5em; background: rgb(177, 231, 79); color: #020617;
+            text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
+            box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
+            transition: all 0.2s ease;">
+    <span style="font-size: 1em;">🚀 Try it now on GitHub →</span>
+    <span style="font-size: 0.82em; opacity: 0.85;">30-second quick start with phone teleoperation</span>
+  </a>
+</div>
+
+<style>
+a[href*="github.com/Positronic-Robotics/positronic"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 34px rgba(177, 231, 79, 0.5) !important;
+}
+</style>
 
 ### Get involved
 
 - **💬 [Join Discord](https://discord.gg/PXvBy4NBgv)** to ask questions, share setups, and request features.
-- **⭐ [Star / follow](https://github.com/Positronic-Robotics/positronic)** on GitHub and open issues/PRs.
+- **⭐ [Star on GitHub](https://github.com/Positronic-Robotics/positronic)** to follow our progress.
 - ✉️ Email: **[hi@positronic.ro](mailto:hi@positronic.ro)**
-
-### **Open-source first**
-
-Core components are being released progressively; commercial tooling will stay compatible.
-
