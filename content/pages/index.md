@@ -1,4 +1,4 @@
-Title: Positronic — Infrastructure for ML Robotics
+Title: Positronic - Infrastructure for ML Robotics
 Slug: index
 Save_as: index.html
 URL: index.html
@@ -7,9 +7,9 @@ URL: index.html
 
 The field is early. The ecosystem lacks dedicated tools to make development simple, repeatable, and accessible:
 
-- **Data collection is expensive** — hardware integration, teleoperation setup, dataset curation all require specialized expertise
-- **Data is messy** — multi-rate sensors, format fragmentation, re-recording for each framework
-- **Deployment is complex** — vendor-specific APIs, hardware compatibility issues, monitoring infrastructure from scratch
+- **Data collection is expensive**: hardware integration, teleoperation setup, dataset curation all require specialized expertise
+- **Data is messy**: multi-rate sensors, format fragmentation, re-recording for each framework
+- **Deployment is complex**: vendor-specific APIs, hardware compatibility issues, monitoring infrastructure from scratch
 
 Teams spend more time fighting infrastructure than building capabilities.
 
@@ -17,13 +17,13 @@ Teams spend more time fighting infrastructure than building capabilities.
 
 It covers the full lifecycle: bring hardware online, capture and curate datasets, train and evaluate policies, deploy inference, and iterate.
 
-**Connect any hardware to any AI model.** Store your data once, train on any framework. Deploy with a unified inference API. All in plain Python—no ROS required.
+**Connect any hardware to any AI model.** Store your data once, train on any framework. Deploy with a unified inference API. All in plain Python, no ROS required.
 
 ### **How Positronic differs from LeRobot**
 
-LeRobot focuses on training—fast experiments on reference hardware and public datasets. Positronic adds the operational infrastructure: hardware drivers, data collection tools, unified inference API, and iteration workflows. We use LeRobot for training. Positronic adds the lifecycle management around it.
+LeRobot focuses on training: fast experiments on reference hardware and public datasets. Positronic adds the operational infrastructure: hardware drivers, data collection tools, unified inference API, and iteration workflows. We use LeRobot for training. Positronic adds the lifecycle management around it.
 
-**→ [Get started on GitHub](https://github.com/Positronic-Robotics/positronic) — 30 seconds to data collection**
+**→ [Get started on GitHub](https://github.com/Positronic-Robotics/positronic) - 30 seconds to data collection with your phone**
 
 ### Get involved
 
