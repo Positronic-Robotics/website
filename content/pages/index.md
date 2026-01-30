@@ -23,7 +23,24 @@ It covers the full lifecycle: bring hardware online, capture and curate datasets
 
 LeRobot focuses on training: fast experiments on reference hardware and public datasets. Positronic adds the operational infrastructure: hardware drivers, data collection tools, unified inference API, and iteration workflows. We use LeRobot for training. Positronic adds the lifecycle management around it.
 
-**→ [Get started on GitHub](https://github.com/Positronic-Robotics/positronic) - 30 seconds to data collection with your phone**
+<div style="text-align: center; margin: 3em 0;">
+  <a href="https://github.com/Positronic-Robotics/positronic"
+     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem;
+            padding: 1em 2.5em; background: rgb(177, 231, 79); color: #020617;
+            text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
+            box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
+            transition: all 0.2s ease;">
+    <span style="font-size: 1em;">🚀 Try it now on GitHub →</span>
+    <span style="font-size: 0.82em; opacity: 0.85;">30-second quick start with phone teleoperation</span>
+  </a>
+</div>
+
+<style>
+a[href*="github.com/Positronic-Robotics/positronic"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 34px rgba(177, 231, 79, 0.5) !important;
+}
+</style>
 
 ### Get involved
 
