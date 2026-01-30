@@ -3,31 +3,30 @@ Slug: index
 Save_as: index.html
 URL: index.html
 
-### Machine learning in robotics is still mostly broken.
+### ML promises to transform robotics: teach robots through demonstrations instead of code.
 
-Collecting data is expensive, curation is messy, and wiring up sensors, robots, and inference is harder than it should be.
+The field is early. The ecosystem lacks dedicated tools to make development simple, repeatable, and accessible:
 
-### **We’re fixing this by building two core pieces:**
+- **Data collection is expensive** — hardware integration, teleoperation setup, dataset curation all require specialized expertise
+- **Data is messy** — multi-rate sensors, format fragmentation, re-recording for each framework
+- **Deployment is complex** — vendor-specific APIs, hardware compatibility issues, monitoring infrastructure from scratch
 
-- **⚡ Positronic Runtime** — immediate-mode, Python-native middleware to wire cameras, arms, sensors, and inference. Simple to read, extend, and ship.
-- **📂 Data OS for Robotics** — a dataset format that handles multi-rate sensor data natively, plus a web UI to browse, label, filter, and curate episodes.
+Teams spend more time fighting infrastructure than building capabilities.
 
-### **Who it’s for**
+### **Positronic is an end-to-end toolkit for ML-driven robotics.**
 
-Teams building manipulation systems that need reliable data pipelines and quick bring-up on real hardware.
+It covers the full lifecycle: bring hardware online, capture and curate datasets, train and evaluate policies, deploy inference, and iterate.
 
-**Our repositories:**
+**Connect any hardware to any AI model.** Store your data once, train on any framework. Deploy with a unified inference API. All in plain Python—no ROS required.
 
-- **[Positronic Runtime & Data OS](https://github.com/Positronic-Robotics/positronic)** — Python-native stack for real-life ML robotics.
-- **[Configuronic](https://github.com/Positronic-Robotics/configuronic)** — a typed CLI for experiments and training scripts.
+### **How Positronic differs from LeRobot**
+
+LeRobot focuses on training—fast experiments on reference hardware and public datasets. Positronic adds the operational infrastructure: hardware drivers, data collection tools, unified inference API, and iteration workflows. We use LeRobot for training. Positronic adds the lifecycle management around it.
+
+**→ [Get started on GitHub](https://github.com/Positronic-Robotics/positronic) — 30 seconds to data collection**
 
 ### Get involved
 
 - **💬 [Join Discord](https://discord.gg/PXvBy4NBgv)** to ask questions, share setups, and request features.
-- **⭐ [Star / follow](https://github.com/Positronic-Robotics/positronic)** on GitHub and open issues/PRs.
+- **⭐ [Star on GitHub](https://github.com/Positronic-Robotics/positronic)** to follow our progress.
 - ✉️ Email: **[hi@positronic.ro](mailto:hi@positronic.ro)**
-
-### **Open-source first**
-
-Core components are being released progressively; commercial tooling will stay compatible.
-
