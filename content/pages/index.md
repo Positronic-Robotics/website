@@ -1,27 +1,28 @@
-Title: Positronic - Infrastructure for ML Robotics
+Title: Positronic – Automate Robotics Tasks with the Best AI
 Slug: index
 Save_as: index.html
 URL: index.html
 
-### ML promises to transform robotics: teach robots through demonstrations instead of code.
+### AI is changing robotics. Teach robots through demonstrations, not code.
 
-The field is early. The ecosystem lacks dedicated tools to make development simple, repeatable, and accessible:
+Foundation models can learn manipulation tasks from human demonstrations. New models ship every month, each better than the last. But trying them on real hardware means wrestling with vendor-specific APIs, incompatible data formats, and integration work that starts from scratch every time.
 
-- **Data collection is expensive**: hardware integration, teleoperation setup, dataset curation all require specialized expertise
-- **Data is messy**: multi-rate sensors, format fragmentation, re-recording for each framework
-- **Deployment is complex**: vendor-specific APIs, hardware compatibility issues, monitoring infrastructure from scratch
+**Positronic lets you use the best AI models available – on your hardware, for your tasks.** One open-source Python library. Switch models without switching stacks.
 
-Teams spend more time fighting infrastructure than building capabilities.
+### How it works
 
-### **Positronic is an end-to-end toolkit for ML-driven robotics.**
+1. **Collect** – teleoperate in simulation or on hardware (phone, VR, leader arm)
+2. **Train** – fine-tune on your data. Switch models without re-recording.
+3. **Run** – unified inference across vendors. Same code, any model, any robot.
+4. **Iterate** – monitor, collect edge cases, retrain.
 
-It covers the full lifecycle: bring hardware online, capture and curate datasets, train and evaluate policies, deploy inference, and iterate.
+Store your data once, train on any framework. All in plain Python, no ROS required.
 
-**Connect any hardware to any AI model.** Store your data once, train on any framework. Deploy with a unified inference API. All in plain Python, no ROS required.
+### How Positronic relates to LeRobot
 
-### **How Positronic differs from LeRobot**
+LeRobot is excellent for learning ML robotics, prototyping policies, and running quick experiments on reference hardware.
 
-LeRobot focuses on training: fast experiments on reference hardware and public datasets. Positronic adds the operational infrastructure: hardware drivers, data collection tools, unified inference API, and iteration workflows. We use LeRobot for training. Positronic adds the lifecycle management around it.
+Positronic builds on LeRobot's training infrastructure and adds what working systems need: hardware drivers for real robots, data ops that survive representation changes, a unified inference API across vendors, and iteration workflows. LeRobot gets you to a trained model. Positronic gets you to a robot that works.
 
 <div style="text-align: center; margin: 3em 0;">
   <a href="https://github.com/Positronic-Robotics/positronic"
@@ -31,7 +32,7 @@ LeRobot focuses on training: fast experiments on reference hardware and public d
             box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
             transition: all 0.2s ease;">
     <span style="font-size: 1em;">🚀 Try it now on GitHub →</span>
-    <span style="font-size: 0.82em; opacity: 0.85;">30-second quick start with phone teleoperation</span>
+    <span style="font-size: 0.82em; opacity: 0.85;">Pick a model. Pick a robot. Run.</span>
   </a>
 </div>
 
