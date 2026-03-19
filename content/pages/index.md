@@ -20,7 +20,7 @@ Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and 
             text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
             box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
             transition: all 0.2s ease; cursor: default;">
-    <span style="font-size: 1em;">Leaderboard Launches March 24</span>
+    <span style="font-size: 1em;">Leaderboard Launches March 31</span>
     <span style="font-size: 0.82em; opacity: 0.85;">Real models. Real robots. Real metrics.</span>
   </span>
   <a href="https://github.com/Positronic-Robotics/positronic" class="btn-github"
@@ -75,7 +75,7 @@ The teams that deploy physical AI at scale will need more than a trained model. 
 
 ### Get involved
 
-- **PhAIL launches March 24** – the full leaderboard, methodology, and evaluation data.
+- **PhAIL launches March 31** – the full leaderboard, methodology, and evaluation data.
 - **[Star on GitHub](https://github.com/Positronic-Robotics/positronic)** – the open-source infrastructure behind PhAIL.
 - **[Join Discord](https://discord.gg/PXvBy4NBgv)** – questions, discussion, feature requests.
 - Email: **[hi@positronic.ro](mailto:hi@positronic.ro)**
