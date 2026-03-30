@@ -91,8 +91,8 @@ The leaderboard is open. If your model can do better – with your own architect
 
 PhAIL launches with one task and four models. More tasks, more hardware, and more models are coming. We're also planning to test generalization to unseen objects – currently all items appear in the training dataset, but real deployments face new objects constantly. The consortium – including Nebius as founding compute partner and Toloka as data partner – is actively welcoming new members.
 
-Full methodology: [white paper](https://phail.ai/whitepaper.pdf)
-Live results: [phail.ai](https://phail.ai)
-Fine-tuning dataset (352 episodes, 12GB): `pip install positronic && positronic-server --dataset=@positronic.cfg.ds.phail.phail` ([details](https://phail.ai/about))
-Positronic – the platform powering PhAIL: [GitHub](https://github.com/Positronic-Robotics/positronic)
-Submit your model: [phail.ai/submit](https://phail.ai/submit)
+- Full methodology: [white paper](https://phail.ai/whitepaper.pdf)
+- Live results: [phail.ai](https://phail.ai)
+- Fine-tuning dataset (352 episodes, 12GB): `pip install positronic && positronic-server --dataset=@positronic.cfg.ds.phail.phail` ([details](https://phail.ai/about))
+- Positronic – the platform powering PhAIL: [GitHub](https://github.com/Positronic-Robotics/positronic)
+- Submit your model: [phail.ai/submit](https://phail.ai/submit)
