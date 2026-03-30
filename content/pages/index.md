@@ -14,15 +14,15 @@ Not success rates in simulation. Real results on real hardware.
 Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and DreamZero (NVIDIA), and SmolVLA (HuggingFace) – tested alongside human and teleoperated baselines.
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin: 3em 0;">
-  <span class="btn-primary"
+  <a href="https://phail.ai" class="btn-primary"
      style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem;
             padding: 1em 2.5em; background: rgb(177, 231, 79); color: #020617;
             text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
             box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
-            transition: all 0.2s ease; cursor: default;">
-    <span style="font-size: 1em;">Leaderboard Launches March 31</span>
+            transition: all 0.2s ease;">
+    <span style="font-size: 1em;">View the Leaderboard</span>
     <span style="font-size: 0.82em; opacity: 0.85;">Real models. Real robots. Real metrics.</span>
-  </span>
+  </a>
   <a href="https://github.com/Positronic-Robotics/positronic" class="btn-github"
      style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem;
             padding: 1em 2.5em; background: #ffffff; color: #24292f;
@@ -39,6 +39,10 @@ Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and 
 </div>
 
 <style>
+.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 14px 32px rgba(177, 231, 79, 0.45) !important;
+}
 .btn-github:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 12px 28px rgba(0, 0, 0, 0.12) !important;
@@ -75,7 +79,7 @@ The teams that deploy physical AI at scale will need more than a trained model. 
 
 ### Get involved
 
-- **PhAIL launches March 31** – the full leaderboard, methodology, and evaluation data.
+- **[PhAIL is live](https://phail.ai)** – the full leaderboard, methodology, and evaluation data.
 - **[Star on GitHub](https://github.com/Positronic-Robotics/positronic)** – the open-source infrastructure behind PhAIL.
 - **[Join Discord](https://discord.gg/PXvBy4NBgv)** – questions, discussion, feature requests.
 - Email: **[hi@positronic.ro](mailto:hi@positronic.ro)**
