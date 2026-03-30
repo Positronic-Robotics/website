@@ -12,7 +12,7 @@ But there's a gap nobody talks about. Existing benchmarks – both real-hardware
 
 We built PhAIL – the Physical AI Leaderboard – to find out. The results are live at [phail.ai](https://phail.ai).
 
-## The numbers
+### The numbers
 
 We evaluated four vision-language-action (VLA) models on bin-to-bin order picking: an operator places items in one tote, the robot arm equipped with a gripper picks them one by one and places them into another. Same hardware (Franka FR3 arm with Robotiq 2F-85 gripper), same objects, same conditions. Hundreds of runs per model. Blind evaluation – the operator doesn't know which model is running.
 
@@ -31,13 +31,13 @@ The best AI model runs at **5% of human throughput**. In a typical episode with 
 
 Three of the four models – OpenPI, GR00T, and SmolVLA – are fine-tuned versions of large pre-trained VLA models. ACT is trained from scratch on our dataset. None of them are close to production-ready on this task.
 
-## Why this matters
+### Why this matters
 
 These aren't bad models. OpenPI and GR00T are publicly available VLA models from Physical Intelligence and NVIDIA. They were fine-tuned on our task-specific dataset using published training recipes. The gap isn't a failure of any single team – it's where the entire field stands today when you measure with production metrics.
 
 There are datasets and simulated benchmarks in robotics. What's been missing is rigorous, independent measurement on real hardware with the metrics that matter for deployment.
 
-## How PhAIL works
+### How PhAIL works
 
 PhAIL is designed to be obvious. There's no trick.
 
@@ -47,7 +47,7 @@ Evaluation is blind: model checkpoints are rotated randomly, and the operator do
 
 We publish the fine-tuning dataset, training scripts, and full methodology in our [white paper](https://phail.ai/whitepaper.pdf). The hardware – Franka FR3 arm with Robotiq 2F-85 gripper in the DROID configuration – is widely available and reproducible.
 
-## Why bin-to-bin picking?
+### Why bin-to-bin picking?
 
 When we set out to build a benchmark for physical AI, we wanted to measure what matters for industrial deployment. Not a research task designed to stress-test a model's generalization – a real operation that companies actually need automated.
 
@@ -55,11 +55,11 @@ Bin-to-bin order picking is one of the most common tasks in warehousing, fulfilm
 
 This is the first task. PhAIL is designed to grow: more tasks, more hardware configurations, more object categories. Bin-to-bin picking is where we start because it's commercially important, physically straightforward, and exposes exactly the reliability and throughput gaps that matter.
 
-## What we observed
+### What we observed
 
 Beyond the headline numbers, three patterns stood out.
 
-### More data helps – and it's not enough
+#### More data helps – and it's not enough
 
 We evaluate on four object types: wooden spoons, towels, scissors, and batteries. Performance varies dramatically across them – and it tracks almost perfectly with how much training data we collected for each.
 
@@ -74,7 +74,7 @@ The correlation between training data volume and model performance is strong (r 
 
 But even the best-performing task tops out at 50% completion. These models are both data-hungry and data-starved – and simply collecting more demonstrations may not be enough to close the gap.
 
-### Small changes in setup cause large drops in performance
+#### Small changes in setup cause large drops in performance
 
 Between evaluation runs, we vary two things: which side of the workspace the outbound tote is placed on, and which side the external camera is mounted on. Same robot, same task, same objects – just a different spatial arrangement.
 
@@ -85,7 +85,7 @@ When the external camera is on the same side as the outbound tote, it has a clea
 A human operator wouldn't notice these changes. For current VLA models, they're the difference between half-working and barely working.
 
 
-## What's next
+### What's next
 
 The leaderboard is open. If your model can do better – with your own architecture, your own fine-tuning, or your own data – [submit a checkpoint](https://phail.ai/submit) and prove it on the same hardware.
 
