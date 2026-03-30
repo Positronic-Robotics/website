@@ -1,6 +1,6 @@
 :root {
   --bg: #111111;
-  --text: #f0f0f0;
+  --text: #d4d4d4;
   --accent: #b1e74f;
   --accent-soft: rgba(177, 231, 79, 0.18);
 
@@ -141,6 +141,14 @@ h1 {
   width: 100%;
 }
 
+h2 {
+  margin: 2rem 0 0.5rem;
+  font-size: 26px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--accent);
+}
+
 h3 {
   margin: 1.5rem 0 0.5rem;
   font-size: 20px;
@@ -249,7 +257,7 @@ a:hover {
 }
 
 .page-content ul li strong {
-  color: #f0f0f0;
+  color: var(--text);
 }
 
 .page-content ul li strong a {
@@ -257,7 +265,7 @@ a:hover {
 }
 
 .page-content ul li strong a:hover {
-  color: #f0f0f0;
+  color: var(--text);
 }
 
 /* Navbar */
@@ -374,7 +382,7 @@ a:hover {
 .card-image img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   border-radius: 12px;
 }
