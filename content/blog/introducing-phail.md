@@ -93,6 +93,6 @@ PhAIL launches with one task and four models. More tasks, more hardware, and mor
 
 - Full methodology: [white paper](https://phail.ai/whitepaper.pdf)
 - Live results: [phail.ai](https://phail.ai)
-- Fine-tuning dataset (352 episodes, 12GB): `pip install positronic && positronic-server --dataset=@positronic.cfg.ds.phail.phail` ([details](https://phail.ai/about))
+- [Fine-tuning dataset](https://phail.ai/about) (352 episodes, 12GB)
 - Positronic – the platform powering PhAIL: [GitHub](https://github.com/Positronic-Robotics/positronic)
 - Submit your model: [phail.ai/submit](https://phail.ai/submit)
