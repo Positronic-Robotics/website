@@ -6,7 +6,7 @@ URL: press/phail-launch.html
 Save_as: press/phail-launch.html
 Author: Positronic Team
 Summary: Positronic Robotics launches PhAIL (Physical AI Leaderboard) – an ongoing, real-world benchmark evaluating robotics foundation models on commercial tasks using throughput and reliability metrics.
-Image: theme/positronic/static/img/logo.png
+Image: theme/positronic/static/img/phail-icon.png
 
 *San Francisco, CA - March 31, 2026* - Positronic Robotics, a company helping developers make robots work with AI, launches PhAIL (Physical AI Leaderboard) - an ongoing, real-world benchmark evaluating robotics foundation models on commercial tasks using throughput and reliability metrics.
 

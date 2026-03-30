@@ -4,7 +4,7 @@ Category: Blog
 Slug: introducing-phail
 Author: Positronic Team
 Summary: We built PhAIL – the Physical AI Leaderboard – to measure how foundation models actually perform on real commercial robotics tasks. The best model runs at 5% of human throughput.
-Image: theme/positronic/static/img/logo.png
+Image: theme/positronic/static/img/phail-leaderboard.png
 
 The best robot AI models can fold laundry, sort objects, and assemble parts – in carefully tuned setups, fine-tuned for each specific task. The results are real and the progress is impressive.
 
