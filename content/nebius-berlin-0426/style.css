@@ -607,7 +607,7 @@ h1, h2, h3, h4 {
   .stat { min-height: 0; padding: 1.5rem; }
   .stat .num { font-size: 2.5rem; }
 
-  .demo-chips { grid-template-columns: 1fr 1fr; }
+  .demo-chips, .demo-chips.three { grid-template-columns: 1fr 1fr; }
 
   .next-item { grid-template-columns: 1fr; gap: 0.25rem; padding: 1.25rem; }
 
@@ -616,10 +616,121 @@ h1, h2, h3, h4 {
   .navigation-dots { display: none; }
 }
 
-@media (max-width: 640px) {
+/* ==================== MOBILE ==================== */
+@media (max-width: 768px) {
+  :root {
+    --slide-pad: 2.5rem 1.25rem;
+    --gap-md: 1.25rem;
+    --gap-lg: 2rem;
+  }
+
   body { font-size: 16px; }
-  .title-stage h1 { font-size: 2.75rem; }
-  .big-question h1 { font-size: 2.5rem; }
-  .problem-stage h2, .principles-stage h2, .results-stage h2, .next-stage h2 { font-size: 2rem; }
-  .demo-chips { grid-template-columns: 1fr; }
+
+  /* Let slides grow with content; they'd otherwise clip on phones */
+  .slide {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding-bottom: 4.5rem;
+  }
+  .stage { gap: var(--gap-sm); }
+
+  .slide::after,
+  .slide::before {
+    bottom: 1.25rem;
+    font-size: 0.7rem;
+  }
+  .slide::after { left: 1.25rem; }
+  .slide::before { right: 1.25rem; }
+
+  .kicker { font-size: 0.78rem; letter-spacing: 0.14em; gap: 0.55rem; }
+  .kicker::before { width: 20px; }
+
+  /* Title */
+  .title-stage { gap: 1.25rem; padding: 1.5rem 0 0; }
+  .title-stage h1 { font-size: clamp(2.25rem, 9.5vw, 3.5rem); max-width: 16ch; }
+  .title-stage .deck { font-size: 1.05rem; line-height: 1.4; }
+  .title-stage .byline .name { font-size: 1.05rem; }
+  .title-stage .byline .role { font-size: 0.85rem; }
+  .title-stage .url { font-size: 1rem; }
+
+  /* Big question */
+  .big-question h1 { font-size: clamp(1.85rem, 8vw, 2.75rem); }
+  .big-question .subline {
+    font-size: clamp(1.5rem, 6.5vw, 2.25rem);
+    margin-top: var(--gap-md);
+  }
+
+  /* Section headlines */
+  .problem-stage h2,
+  .principles-stage h2,
+  .results-stage h2,
+  .next-stage h2,
+  .demo-stage h2,
+  .bridge-stage h2 {
+    font-size: clamp(1.5rem, 6.5vw, 2.15rem);
+    line-height: 1.1;
+  }
+  .problem-stage .sub,
+  .principles-stage .sub,
+  .results-stage .sub,
+  .next-stage .sub,
+  .demo-stage .sub,
+  .bridge-stage .sub {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  /* Problem cards */
+  .problem-grid { gap: 0.6rem; margin-top: 0.5rem; }
+  .problem-item { padding: 0.95rem 1.1rem; gap: 0.85rem; }
+  .problem-item .idx { font-size: 0.7rem; }
+  .problem-item .text { font-size: 1rem; line-height: 1.3; }
+
+  /* Principles */
+  .principles { gap: 0.5rem; margin-top: 0.5rem; }
+  .principle { padding: 0.85rem 1rem; }
+  .principle .mech { font-size: 1.05rem; }
+  .principle .arrow { font-size: 1rem; }
+  .principle .conseq { font-size: 0.95rem; }
+
+  /* Bridge screenshot */
+  .bridge-stage { gap: 1rem; }
+  .screenshot-frame { max-height: 55vh; }
+  .screenshot-frame img { max-height: 55vh; }
+
+  /* Demo */
+  .demo-stage { gap: var(--gap-md); }
+  .demo-card {
+    padding: 1.75rem 2.25rem;
+    gap: 0.75rem;
+  }
+  .demo-card .url { font-size: 1.6rem; }
+  .demo-chips, .demo-chips.three {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .demo-chip { padding: 0.75rem 0.95rem; }
+  .demo-chip .v { font-size: 0.95rem; }
+
+  /* Stats */
+  .stats { margin-top: 0.5rem; gap: 0.6rem; }
+  .stat { padding: 1.1rem 1.2rem; gap: 0.45rem; }
+  .stat .num { font-size: 2rem; }
+  .stat .label { font-size: 0.95rem; }
+  .stat .note { font-size: 0.78rem; }
+
+  /* Next */
+  .next-list { gap: 0.6rem; margin-top: 0.5rem; }
+  .next-item { padding: 0.95rem 1.1rem; }
+  .next-item .label { font-size: 1.15rem; }
+  .next-item .detail { font-size: 0.95rem; }
+  .next-item.cta .label { font-size: 1.3rem; }
+  .next-item.cta .detail { font-size: 1rem; }
+
+  /* Closing */
+  .closing-stage h1 { font-size: clamp(2rem, 9vw, 3rem); }
+  .closing-stage .answer { font-size: 1.25rem; }
+  .closing-stage .url { font-size: 0.95rem; padding: 0.7rem 1.25rem; }
+  .closing-stage .contact { font-size: 0.85rem; }
 }
