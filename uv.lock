@@ -2,6 +2,16 @@ version = 1
 revision = 3
 requires-python = ">=3.10"
 
+[options]
+exclude-newer = "2026-04-17T14:09:24.06859Z"
+exclude-newer-span = "P7D"
+
+[options.exclude-newer-package]
+configuronic = false
+pos3 = false
+positronic = false
+positronic-franka = false
+
 [[package]]
 name = "anyio"
 version = "4.12.0"

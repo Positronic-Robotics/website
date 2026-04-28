@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The VLA Reality Check — Nebius Build Berlin 2026</title>
+    <meta name="description" content="PhAIL — the Physical AI Leaderboard. Real hardware. Real metrics. Talk by Sergey Arkhangelsky, Positronic Robotics, at Nebius Build Berlin, April 28 2026.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0LV5R7LHQ3';
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0LV5R7LHQ3');
+        }
+    </script>
+</head>
+<body>
+    <nav class="navigation-dots">
+        <a href="#title" class="dot active" aria-label="Title"></a>
+        <a href="#question" class="dot" aria-label="Opening question"></a>
+        <a href="#problem" class="dot" aria-label="The problem"></a>
+        <a href="#principles" class="dot" aria-label="Principles"></a>
+        <a href="#phail" class="dot" aria-label="PhAIL live"></a>
+        <a href="#results" class="dot" aria-label="Headline results"></a>
+        <a href="#next" class="dot" aria-label="What's next"></a>
+        <a href="#closing" class="dot" aria-label="Closing"></a>
+    </nav>
+
+    <main>
+        <!-- 1 — Title -->
+        <section id="title" class="slide title-slide" data-slide="01 / 08">
+            <div class="title-stage">
+                <div class="kicker">Nebius Build Berlin &nbsp;&middot;&nbsp; April 28, 2026</div>
+                <h1>The VLA Reality&nbsp;Check</h1>
+                <p class="deck">PhAIL &mdash; the Physical AI Leaderboard. Real hardware. Real metrics.</p>
+                <div></div>
+                <div class="footer">
+                    <div class="byline">
+                        <span class="name">Sergey Arkhangelsky</span>
+                        <span class="role">Founder, Positronic Robotics &middot; Joint with Nebius</span>
+                    </div>
+                    <a href="https://phail.ai" target="_blank" rel="noopener" class="url">phail.ai &#8599;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2 — Opening question -->
+        <section id="question" class="slide" data-slide="02 / 08">
+            <div class="stage center big-question">
+                <h1>Is today's model better than yesterday's?</h1>
+                <p class="subline">Are we actually making progress?</p>
+            </div>
+        </section>
+
+        <!-- 3 — The problem -->
+        <section id="problem" class="slide" data-slide="03 / 08">
+            <div class="stage problem-stage">
+                <div class="kicker">The problem</div>
+                <h2>Answering honestly is harder than it sounds.</h2>
+                <p class="sub">Four methodological traps make most VLA comparisons misleading.</p>
+                <div class="problem-grid">
+                    <div class="problem-item">
+                        <span class="idx">01</span>
+                        <span class="text">Operator and environment shift outcomes</span>
+                    </div>
+                    <div class="problem-item">
+                        <span class="idx">02</span>
+                        <span class="text">Different models speak different languages</span>
+                    </div>
+                    <div class="problem-item">
+                        <span class="idx">03</span>
+                        <span class="text">One metric isn't enough &mdash; speed, reliability, failure modes</span>
+                    </div>
+                    <div class="problem-item">
+                        <span class="idx">04</span>
+                        <span class="text">10 runs don't prove anything</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 — Principles -->
+        <section id="principles" class="slide" data-slide="04 / 08">
+            <div class="stage principles-stage">
+                <div class="kicker">The response</div>
+                <h2>What honest eval looks like.</h2>
+                <p class="sub">Four principles. Each one a direct answer to a trap above.</p>
+                <div class="principles">
+                    <div class="principle">
+                        <div class="mech">Same-session, blinded A/B</div>
+                        <div class="arrow">&rarr;</div>
+                        <div class="conseq">No drift, no bias</div>
+                    </div>
+                    <div class="principle">
+                        <div class="mech">One inference API</div>
+                        <div class="arrow">&rarr;</div>
+                        <div class="conseq">Apples-to-apples</div>
+                    </div>
+                    <div class="principle">
+                        <div class="mech">Full data</div>
+                        <div class="arrow">&rarr;</div>
+                        <div class="conseq">Any metric you want</div>
+                    </div>
+                    <div class="principle">
+                        <div class="mech">Enough rollouts</div>
+                        <div class="arrow">&rarr;</div>
+                        <div class="conseq">Signal, not noise</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 — PhAIL: live -->
+        <section id="phail" class="slide" data-slide="05 / 08">
+            <div class="stage bridge-stage">
+                <div class="kicker">Live</div>
+                <h2>PhAIL &mdash; Physical AI Leaderboard</h2>
+                <p class="sub">joint with Nebius</p>
+                <a href="https://phail.ai" target="_blank" rel="noopener" class="screenshot-frame interactive">
+                    <img src="assets/phail-episode-0.png" alt="PhAIL run explorer: episode viewer with camera feeds, 3D trajectory, and telemetry.">
+                    <span class="open-hint">phail.ai &#8599;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 7 — Results -->
+        <section id="results" class="slide" data-slide="06 / 08">
+            <div class="stage results-stage">
+                <div class="kicker">Headline results</div>
+                <h2>Where VLAs are in April 2026.</h2>
+                <p class="sub">Three numbers from running four open-source VLAs on the same rig.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="num">5%</div>
+                        <div class="label">of human throughput</div>
+                        <div class="note">best model, pick-and-place</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">~4 min</div>
+                        <div class="label">between human assists</div>
+                        <div class="note">mean time between assists</div>
+                    </div>
+                    <div class="stat punch">
+                        <div class="num">&minus;22 pp</div>
+                        <div class="label">GR00T loses when the camera is <em>occluded</em>. OpenPI loses just 6.</div>
+                        <div class="note">robustness is not equal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8 — What's next -->
+        <section id="next" class="slide" data-slide="07 / 08">
+            <div class="stage next-stage">
+                <div class="kicker">What's next</div>
+                <h2>PhAIL in the coming months.</h2>
+                <div class="next-list">
+                    <div class="next-item">
+                        <div class="label">Trossen bimanual</div>
+                        <div class="detail">New embodiment landing on the rig.</div>
+                    </div>
+                    <div class="next-item">
+                        <div class="label">More tasks</div>
+                        <div class="detail">Custom evaluation tasks on request.</div>
+                    </div>
+                    <div class="next-item cta">
+                        <div class="label">Get your model on the board</div>
+                        <div class="detail">Free Nebius credits to fine-tune &amp; submit. <strong>Talk to us after the talk.</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9 — Closing -->
+        <section id="closing" class="slide closing-slide" data-slide="08 / 08">
+            <div class="stage closing-stage">
+                <div class="kicker">So, are we making progress?</div>
+                <h1>Now we can answer.</h1>
+                <p class="answer">&mdash; and you can, too.</p>
+                <a href="https://phail.ai" target="_blank" rel="noopener" class="url">phail.ai &#8599;</a>
+                <p class="contact">Sergey Arkhangelsky &middot; Positronic Robotics &middot; Nebius Build Berlin 2026</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const dots = document.querySelectorAll('.dot');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    dots.forEach(dot => {
+                        dot.classList.toggle('active', dot.getAttribute('href') === `#${id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => observer.observe(section));
+
+        document.addEventListener('keydown', (e) => {
+            const currentSection = [...sections].find(section => {
+                const rect = section.getBoundingClientRect();
+                return rect.top >= -window.innerHeight / 2 && rect.top <= window.innerHeight / 2;
+            });
+            if (!currentSection) return;
+
+            const currentIndex = [...sections].indexOf(currentSection);
+            let nextSection;
+            if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) {
+                e.preventDefault();
+                nextSection = sections[currentIndex + 1];
+            } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) {
+                e.preventDefault();
+                nextSection = sections[currentIndex - 1];
+            }
+            if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
