@@ -297,7 +297,8 @@ h1, h2, h3, h4 {
   flex-direction: column;
   gap: 0.85rem;
   width: 100%;
-  margin-top: var(--gap-md);
+  max-width: 860px;
+  margin: var(--gap-md) auto 0;
 }
 
 .principle {
@@ -362,6 +363,36 @@ h1, h2, h3, h4 {
   max-height: 62vh;
   width: auto;
   height: auto;
+}
+.screenshot-frame.interactive {
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.screenshot-frame.interactive:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow:
+    0 50px 100px rgba(0, 0, 0, 0.7),
+    0 0 100px var(--accent-soft);
+}
+.screenshot-frame.interactive:hover .open-hint {
+  background: rgba(177, 231, 79, 0.18);
+}
+.screenshot-frame .open-hint {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(10, 15, 30, 0.85);
+  border: 1px solid var(--accent);
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
 }
 
 /* ==================== SLIDE 6: LIVE DEMO ==================== */
