@@ -23,6 +23,18 @@
       gtag('config', 'G-0LV5R7LHQ3');
     }
   </script>
+  <!-- Privacy-friendly analytics by Plausible - only load on production -->
+  <script>
+    if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
+      var plausibleScript = document.createElement('script');
+      plausibleScript.async = true;
+      plausibleScript.src = 'https://plausible.io/js/pa-3ybk6-UEuElvPbtIP8fa1.js';
+      document.head.appendChild(plausibleScript);
+      window.plausible = window.plausible || function(){(plausible.q = plausible.q || []).push(arguments)};
+      plausible.init = plausible.init || function(i){plausible.o = i || {}};
+      plausible.init();
+    }
+  </script>
 </head>
 <body>
   <header class="navbar">
