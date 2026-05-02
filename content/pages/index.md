@@ -15,8 +15,8 @@ Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and 
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin: 3em 0;">
   <a href="https://phail.ai" class="btn-primary"
-     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem;
-            padding: 1em 2.5em; background: rgb(177, 231, 79); color: #020617;
+     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.15rem;
+            padding: 0.55em 2.5em; background: rgb(177, 231, 79); color: #020617;
             text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
             box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
             transition: all 0.2s ease;">
@@ -24,8 +24,8 @@ Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and 
     <span style="font-size: 0.82em; opacity: 0.85;">Real models. Real robots. Real metrics.</span>
   </a>
   <a href="https://github.com/Positronic-Robotics/positronic" class="btn-github"
-     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.3rem;
-            padding: 1em 2.5em; background: #ffffff; color: #24292f;
+     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.15rem;
+            padding: 0.55em 2.5em; background: #ffffff; color: #24292f;
             text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
             border: 1px solid rgba(27, 31, 36, 0.15);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.08);
