@@ -1,5 +1,5 @@
 Title: How Do You Know If a Robot Is Getting Better?
-Date: 2026-05-31
+Date: 2026-06-05
 Category: Blog
 Slug: measuring-robot-progress
 Author: Positronic Team
