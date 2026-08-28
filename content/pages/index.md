@@ -1,85 +1,19 @@
-Title: Positronic – The Infrastructure Layer for Physical AI
+Title: Positronic Robotics — the trust layer for physical AI
 Slug: index
 Save_as: index.html
 URL: index.html
+Template: home
 
-### We measure how physical AI actually performs.
+<section class="hero"><p class="eyebrow">Independent evaluation on real hardware</p><h1>The trust layer for <em>physical AI</em></h1><p class="hero-lede">Every lab says its model works. We measure it — your policy on our robots, against fixed tasks and fixed scoring, with run-level data back the same day.</p><div class="actions"><a class="act act-primary" href="https://calendar.notion.so/meet/sergeyarkhangelskiy/30">Book a call<span class="sub">30 min</span></a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div><div class="scale" aria-hidden="true"></div><p class="scale-caption">Fixed tasks · fixed scenes · scoring fixed before anyone sees a result</p></section>
 
-Every lab claims their model works. Conference demos look great. But can these models handle real commercial tasks – reliably, repeatedly, at production speed?
+<section class="standing"><div class="standing-inner"><div class="standing-cell"><span class="standing-role">Design partner</span><span class="standing-who">Runway</span></div><div class="standing-cell"><span class="standing-role">Founding partner</span><span class="standing-who">Nebius</span></div><div class="standing-cell"><span class="standing-role">Built and run by us</span><span class="standing-who"><a href="https://phail.ai">PhAIL — the Physical AI Leaderboard</a></span></div></div></section>
 
-We built PhAIL (Physical AI Leaderboard) to answer that question. PhAIL is the first real-hardware benchmark for foundation models in robotics. We test leading VLA models on physical robots doing commercial tasks, and measure what businesses actually care about: throughput, reliability, and failure modes.
+<section class="band"><div class="rail"><span class="label">Problem</span></div><div class="col"><h2>Every training run ends with the same question</h2><p>Is this checkpoint better than the last one? On real robots that question has no cheap answer.</p><p class="point"><b>Someone has to put the world back after every try.</b> Operators on shift, robots to keep alive. It still buys tens of rollouts a day, not thousands.</p><p class="point"><b>Binary success rate throws away most of what the rollout showed.</b> The difference you care about ends up smaller than the noise.</p><p class="point"><b>Nothing stays still.</b> Lighting, placement, wear, the operator. Two checkpoints run a week apart were never compared under the same conditions.</p><p class="point"><b>There is no single "better".</b> Change the robot, the simulator or the metric and the winner changes. One rig and one number cannot settle it.</p></div></section>
 
-Not success rates in simulation. Real results on real hardware.
+<section class="band"><div class="rail"><span class="label">Method</span></div><div class="col"><h2>How teams solve it with us</h2><p class="point"><b>Checkpoint in, rollouts out.</b> The lab, the operators and the resets are ours. An infrastructure problem becomes an API call.</p><p class="point"><b>Many embodiments and simulators, same tasks, scoring fixed before anyone sees a result.</b> Both checkpoints meet the same conditions, and nobody picks the metric that wins.</p><p class="point"><b>More signal from each rollout.</b> Time-to-milestone scoring, so a call that needed hundreds of runs takes tens — the ~30x trial reduction in the <a href="https://arxiv.org/abs/2605.29710">PhAIL paper</a>.</p></div></section>
 
-Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and DreamZero (NVIDIA), and SmolVLA (HuggingFace) – tested alongside human and teleoperated baselines.
+<section class="band"><div class="rail"><span class="label">Protocol</span></div><div class="col"><h2>What you send, what comes back</h2><div class="steps"><div class="step"><span class="step-verb">You send</span><p>A served endpoint, or the weights. Keep them on your own servers if you prefer — plenty of teams do.</p></div><div class="step"><span class="step-verb">We run</span><p>Your policy, blind, against a maintained baseline or your own previous checkpoint. Same tasks, same scenes, scoring fixed up front.</p></div><div class="step"><span class="step-verb">You get</span><p>Run-level data the same day: per-episode video, time-to-milestone, and the comparison itself.</p></div></div><figure class="quote quote-empty"><blockquote>A customer line about what the numbers changed for them sits here.</blockquote><figcaption>Slot — needs an approved quote before this ships</figcaption></figure></div></section>
 
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin: 3em 0;">
-  <a href="https://phail.ai" class="btn-primary"
-     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.15rem;
-            padding: 0.55em 2.5em; background: rgb(177, 231, 79); color: #020617;
-            text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
-            box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 10px 24px rgba(177, 231, 79, 0.35);
-            transition: all 0.2s ease;">
-    <span style="font-size: 1em;">View the Leaderboard</span>
-    <span style="font-size: 0.82em; opacity: 0.85;">Real models. Real robots. Real metrics.</span>
-  </a>
-  <a href="https://github.com/Positronic-Robotics/positronic" class="btn-github"
-     style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.15rem;
-            padding: 0.55em 2.5em; background: #ffffff; color: #24292f;
-            text-decoration: none; border-radius: 999px; font-weight: 600; font-size: 1.1em;
-            border: 1px solid rgba(27, 31, 36, 0.15);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.2s ease;">
-    <span style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1em;">
-      <svg height="20" width="20" viewBox="0 0 16 16" fill="#24292f"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-      Open Source on GitHub
-    </span>
-    <span style="font-size: 0.82em; opacity: 0.65;">The engine behind PhAIL.</span>
-  </a>
-</div>
+<section class="band"><div class="rail"><span class="label">Outlook</span></div><div class="col"><h2>The long view</h2><p>Despite the hype this field is earlier than most think. We are where self-driving was in 2015 — real potential, and years of groundwork ahead.</p><p>The teams that get there will be the ones who could tell, every week, whether they were making progress.</p></div></section>
 
-<style>
-.btn-primary:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.9), 0 14px 32px rgba(177, 231, 79, 0.45) !important;
-}
-.btn-github:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 12px 28px rgba(0, 0, 0, 0.12) !important;
-  background: #f6f8fa !important;
-}
-</style>
-
-### The infrastructure problem
-
-New foundation models ship every month. Each requires its own inference setup, its own data format, its own training recipe. Teams spend weeks on integration work that becomes obsolete when the next model drops.
-
-Running OpenPI 0.5 needs 78 GB of VRAM. GR00T needs CUDA on Linux. SmolVLA runs on a consumer GPU. Getting all of them to talk to the same robot arm is its own engineering project – every single time.
-
-**This is the problem we solve.**
-
-### What Positronic does
-
-Positronic is an open-source Python toolkit that handles the full lifecycle of deploying AI on real robots – from data collection through fine-tuning to production inference. One codebase, any model vendor, any hardware.
-
-1. **Collect** – teleoperate in simulation or on hardware (phone, VR, leader arm)
-2. **Train** – fine-tune on your data. Switch models without re-recording.
-3. **Run** – unified inference across vendors. Same protocol, any model, any robot.
-4. **Iterate** – measure what works, collect edge cases, retrain.
-
-We built this to run PhAIL. Every model on the leaderboard goes through the same infrastructure: same data pipeline, same hardware drivers, same evaluation protocol. The codec layer translates between one canonical task representation and each model's expected format – so every model gets a fair test under identical conditions.
-
-The same infrastructure is available for your deployment.
-
-### The long view
-
-Despite the hype, this field is much earlier than most think. We are where self-driving was in 2015 – real potential, but years of groundwork ahead.
-
-The teams that deploy physical AI at scale will need more than a trained model. They will need infrastructure that doesn't break every time a better model ships: reliable evaluation, unified inference, production data pipelines. That is what we are building. PhAIL is where we prove it works.
-
-### Get involved
-
-- **[PhAIL is live](https://phail.ai)** – the full leaderboard, methodology, and evaluation data.
-- **[Star on GitHub](https://github.com/Positronic-Robotics/positronic)** – the open-source infrastructure behind PhAIL.
-- **[Join Discord](https://discord.gg/PXvBy4NBgv)** – questions, discussion, feature requests.
-- Email: **[hi@positronic.ro](mailto:hi@positronic.ro)**
+<section class="band close"><div class="rail"><span class="label">Talk to us</span></div><div class="col"><h2>Bring us the checkpoint you cannot call</h2><p>Half an hour is enough to work out what is worth measuring on your setup, and what a first round would tell you.</p><div class="actions"><a class="act act-primary" href="https://calendar.notion.so/meet/sergeyarkhangelskiy/30">Book a call<span class="sub">30 min</span></a></div><p class="footer-links"><a href="https://phail.ai">PhAIL leaderboard</a><a href="https://github.com/Positronic-Robotics/positronic">Toolkit on GitHub</a><a href="https://discord.gg/PXvBy4NBgv">Discord</a><a href="mailto:hi@positronic.ro">hi@positronic.ro</a></p></div></section>

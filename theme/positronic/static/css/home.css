@@ -1,0 +1,334 @@
+/* Homepage. Extends style.css: same ground and accent, a wider grid, a display
+   face for headings and a mono face for the labels that name each band. */
+
+.home {
+  --hair: rgba(148, 163, 184, 0.16);
+  --rule: rgba(177, 231, 79, 0.22);
+  --dim: #7d846f;
+  --panel: #161814;
+
+  --display: "Archivo", "Inter", -apple-system, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --rail: 160px;
+  --gutter: 48px;
+  --col: 660px;
+
+  width: 100%;
+  padding: 0 0 140px;
+}
+
+/* One grid for the whole page: a label rail, then the reading column.
+   Every band opts into it, so the labels line up down the page. */
+.home .band {
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, var(--col));
+  gap: var(--gutter);
+  justify-content: center;
+  padding: 0 32px;
+}
+
+.home .band + .band,
+.home .standing + .band { margin-top: 92px; }
+
+.home .label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--rule);
+  display: block;
+}
+
+.home .col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+
+.home h2 {
+  font-family: var(--display);
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--bright, #e8f0d5);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.home p { margin: 0; line-height: 1.65; }
+.home .point b { color: #e8f0d5; font-weight: 600; }
+
+/* ---- Hero ---------------------------------------------------------------- */
+
+/* The hero and the standing band share the reading grid's outer edge, so the
+   page has one left margin from the logo down. */
+.home .hero,
+.home .standing {
+  max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.home .hero { padding-top: 96px; }
+
+.home .eyebrow {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent, #b1e74f);
+  margin-bottom: 26px;
+}
+
+.home h1 {
+  font-family: var(--display);
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #f2f5ea;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.home h1 em {
+  font-style: normal;
+  color: var(--accent, #b1e74f);
+}
+
+.home .hero-lede {
+  font-size: 1.22rem;
+  line-height: 1.55;
+  color: #cdd2c4;
+  max-width: 34em;
+  margin-top: 26px;
+}
+
+/* The scale. An instrument rule, not a chart — it carries no data and says so
+   by having no numbers on it. */
+.home .scale {
+  position: relative;
+  height: 36px;
+  margin: 46px 0 10px;
+  border-bottom: 1px solid var(--rule);
+  transform-origin: left center;
+  animation: scale-draw 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.home .scale::before,
+.home .scale::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.home .scale::before {
+  height: 11px;
+  background: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 13px);
+}
+
+.home .scale::after {
+  height: 30px;
+  background: repeating-linear-gradient(to right, rgba(177, 231, 79, 0.62) 0 1px, transparent 1px 65px);
+}
+
+@keyframes scale-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.home .scale-caption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+/* ---- Actions ------------------------------------------------------------- */
+
+.home .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+.home .act {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  padding: 14px 22px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.home .act .sub {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  opacity: 0.72;
+}
+
+.home .act-primary {
+  background: var(--accent, #b1e74f);
+  color: #0d1005;
+  border: 1px solid var(--accent, #b1e74f);
+}
+.home .act-primary:hover { background: #c3f065; border-color: #c3f065; color: #0d1005; }
+
+.home .act-ghost {
+  background: transparent;
+  color: #cdd2c4;
+  border: 1px solid var(--hair);
+}
+.home .act-ghost:hover { border-color: var(--accent, #b1e74f); color: var(--accent, #b1e74f); }
+
+.home a:focus-visible { outline: 2px solid var(--accent, #b1e74f); outline-offset: 3px; }
+
+/* ---- Standing band: who vouches for us ----------------------------------- */
+
+.home .standing { margin-top: 74px; }
+
+.home .standing-inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  background: var(--panel);
+}
+
+.home .standing-cell { padding: 20px 22px; border-left: 1px solid var(--hair); }
+.home .standing-cell:first-child { border-left: 0; }
+
+.home .standing-role {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+
+.home .standing-who {
+  font-family: var(--display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #e8f0d5;
+  line-height: 1.25;
+}
+
+.home .standing-who a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+.home .standing-who a:hover { color: var(--accent, #b1e74f); }
+
+/* ---- Protocol: the three steps ------------------------------------------- */
+
+/* The three steps break left across the label rail: this is the one place the
+   reader is being walked through a sequence, and it gets the full width. */
+.home .steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  margin: 6px 0 0 calc(-1 * (var(--rail) + var(--gutter)));
+}
+
+.home .step { padding: 20px 22px 4px 0; border-right: 1px solid var(--hair); }
+.home .step:last-child { border-right: 0; padding-right: 0; }
+.home .step:not(:first-child) { padding-left: 22px; }
+
+.home .step-verb {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent, #b1e74f);
+  margin-bottom: 10px;
+}
+
+.home .step p { font-size: 0.97rem; }
+
+/* ---- Customer quote ------------------------------------------------------ */
+
+.home .quote {
+  margin: 26px 0 0;
+  padding: 24px 26px;
+  border-left: 2px solid var(--accent, #b1e74f);
+  background: var(--panel);
+  border-radius: 0 4px 4px 0;
+}
+
+.home .quote blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 1.28rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #e8f0d5;
+  text-wrap: pretty;
+}
+
+.home .quote figcaption {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* A slot with no approved line in it yet. Visibly unfinished on purpose. */
+.home .quote-empty {
+  border-left: 2px dashed var(--dim);
+  background: transparent;
+}
+.home .quote-empty blockquote { color: var(--dim); font-weight: 400; font-size: 1.05rem; }
+
+/* ---- Close --------------------------------------------------------------- */
+
+.home .close { margin-top: 96px; }
+
+.home .close .actions { margin-top: 26px; }
+
+.home .footer-links {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+.home .footer-links a { color: var(--dim); font-weight: 400; text-decoration: none; border-bottom: 1px solid var(--hair); }
+.home .footer-links a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+
+/* ---- Narrow -------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .home .band { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .home .standing-inner { grid-template-columns: minmax(0, 1fr); }
+  .home .standing-cell { border-left: 0; border-top: 1px solid var(--hair); }
+  .home .standing-cell:first-child { border-top: 0; }
+  .home .steps { grid-template-columns: minmax(0, 1fr); margin-left: 0; }
+  .home .step { border-right: 0; border-bottom: 1px solid var(--hair); padding: 18px 0; }
+  .home .step:not(:first-child) { padding-left: 0; }
+  .home .step:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 640px) {
+  .home .hero { padding-top: 64px; }
+  .home .band + .band { margin-top: 64px; }
+  .home .act { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home .scale { animation: none; }
+  .home * { transition: none !important; }
+}
