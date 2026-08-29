@@ -73,16 +73,6 @@
 
 .home .hero { padding-top: 96px; }
 
-.home .eyebrow {
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent, #b1e74f);
-  margin-bottom: 26px;
-}
-
 .home h1 {
   font-family: var(--display);
   font-size: clamp(40px, 6vw, 84px);
