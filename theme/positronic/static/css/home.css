@@ -71,12 +71,12 @@
   padding-right: 32px;
 }
 
-.home .hero { padding-top: 96px; }
+.home .hero { padding-top: 80px; }
 
 .home h1 {
   font-family: var(--display);
-  font-size: clamp(40px, 6vw, 84px);
-  line-height: 1.02;
+  font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1.06;
   font-weight: 700;
   letter-spacing: -0.035em;
   color: #f2f5ea;
@@ -93,16 +93,15 @@
   font-size: 1.22rem;
   line-height: 1.55;
   color: #cdd2c4;
-  max-width: 34em;
   margin-top: 26px;
 }
 
-/* The scale. An instrument rule, not a chart — it carries no data and says so
-   by having no numbers on it. */
+/* The scale. It separates the navbar from the page, and it is an instrument
+   rule rather than a chart: it carries no data and says so by having no
+   numbers on it. Full-bleed, because a separator runs edge to edge. */
 .home .scale {
   position: relative;
-  height: 36px;
-  margin: 46px 0 10px;
+  height: 34px;
   border-bottom: 1px solid var(--rule);
   transform-origin: left center;
   animation: scale-draw 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
@@ -128,13 +127,6 @@
 }
 
 @keyframes scale-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-
-.home .scale-caption {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--dim);
-}
 
 /* ---- Actions ------------------------------------------------------------- */
 
