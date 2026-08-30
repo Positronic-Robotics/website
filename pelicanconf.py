@@ -8,7 +8,7 @@ AUTHOR = "Positronic Robotics"
 SITENAME = "Positronic Robotics — Infrastructure for ML Robotics"
 SITESUBTITLE = "Infrastructure for ML Robotics"
 SITEURL = os.getenv("SITEURL", "https://positronic.ro").rstrip("/")
-SITEDESCRIPTION = "Positronic Robotics builds the trust layer for physical AI: independent evaluation of robot AI models on real hardware. Teams send a checkpoint and get back numbers that say whether it beats the last one — an infrastructure problem becomes an API call. The company built and runs PhAIL, the public Physical AI Leaderboard, on that same stack, with Nebius as founding partner."
+SITEDESCRIPTION = "Positronic Robotics builds the trust layer for physical AI: independent evaluation of robot AI models on real hardware. Teams send a checkpoint and get back numbers that say whether it beats the last one. An infrastructure problem becomes an API call. The company built and runs PhAIL, the public Physical AI Leaderboard, on that same stack, with Nebius as founding partner."
 
 # Content paths
 PATH = "content"
