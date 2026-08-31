@@ -469,9 +469,13 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 
 .home .founder-line { margin: 12px 0 0; }
 
-.home .founder-links { margin: 12px 0 0; font-family: var(--mono); font-size: 0.8rem; }
-.home .founder-links a { color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--hair); }
-.home .founder-links a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+/* The marks sit grey until a reader points at one, and then each takes its
+   own colour rather than the page accent. */
+.home .founder-links { display: flex; gap: 12px; margin: 14px 0 0; }
+.home .founder-links a { display: inline-flex; color: var(--dim); transition: color 0.15s ease; }
+.home .founder-links svg { display: block; width: 19px; height: 19px; }
+.home .founder-links .icon-linkedin:hover { color: #0a66c2; }
+.home .founder-links .icon-x:hover { color: #f2f5ea; }
 
 /* ---- Narrow -------------------------------------------------------------- */
 
