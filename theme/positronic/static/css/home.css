@@ -116,14 +116,21 @@
   bottom: 0;
 }
 
+/* Three tick sizes, as on a real rule: one every millimetre, a taller one at the
+   half centimetre, the tallest at each centimetre. 7px to the millimetre. */
 .home .scale::before {
-  height: 11px;
-  background: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 13px);
+  height: 8px;
+  background: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 7px);
 }
 
 .home .scale::after {
-  height: 30px;
-  background: repeating-linear-gradient(to right, rgba(177, 231, 79, 0.62) 0 1px, transparent 1px 65px);
+  height: 26px;
+  background-image:
+    repeating-linear-gradient(to right, rgba(177, 231, 79, 0.62) 0 1px, transparent 1px 70px),
+    repeating-linear-gradient(to right, transparent 0 35px, rgba(177, 231, 79, 0.45) 35px 36px, transparent 36px 70px);
+  background-size: 100% 26px, 100% 15px;
+  background-position: left bottom, left bottom;
+  background-repeat: repeat-x;
 }
 
 @keyframes scale-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }

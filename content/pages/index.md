@@ -4,7 +4,7 @@ Save_as: index.html
 URL: index.html
 Template: home
 
-<section class="hero"><h1>The trust layer for <em>physical AI</em></h1><p class="hero-lede">Every lab says its model works. We measure it: your policy on our robots, against fixed tasks and fixed scoring. Video and a score for every run, back the same day.</p><div class="actions"><a class="act act-primary" href="https://calendar.notion.so/meet/sergeyarkhangelskiy/30">Book a call<span class="sub">30 min</span></a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div></section>
+<section class="hero"><h1>The trust layer for <em>physical AI</em></h1><p class="hero-lede">We measure whether your model is getting better: your policy on our robots. Video and a score for every run, back the same day.</p><div class="actions"><a class="act act-primary" href="https://calendar.notion.so/meet/sergeyarkhangelskiy/30">Book a call<span class="sub">30 min</span></a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div></section>
 
 <section class="standing"><div class="standing-inner"><div class="standing-cell"><span class="standing-role">Design partner</span><span class="standing-who">Runway</span></div><div class="standing-cell"><span class="standing-role">Founding partner</span><span class="standing-who">Nebius</span></div><div class="standing-cell"><span class="standing-role">Built and run by us</span><span class="standing-who"><a href="https://phail.ai">PhAIL, the Physical AI Leaderboard</a></span></div></div></section>
 
