@@ -341,6 +341,56 @@
 
 .home .close .actions { margin-top: 26px; }
 
+/* The two fields and the button read as one control: they share a row, a
+   height and a corner, and the note field takes whatever width is left. */
+.home .contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px;
+  margin-top: 26px;
+  max-width: 620px;
+}
+
+.home .contact input {
+  font-family: var(--display);
+  font-size: 0.98rem;
+  color: #e8f0d5;
+  background: #1a1d17;
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  padding: 13px 15px;
+  min-width: 0;
+}
+
+.home .contact input::placeholder { color: var(--dim); }
+.home .contact input:focus { outline: none; border-color: var(--accent, #b1e74f); }
+.home .contact input[name="email"] { flex: 1 1 220px; }
+.home .contact input[name="note"] { flex: 2 1 260px; }
+.home .contact button { border: 0; cursor: pointer; }
+.home .contact button:disabled { opacity: 0.6; cursor: default; }
+
+/* Off-screen rather than hidden, so a screen reader still reads the labels. */
+.home .contact-hidden,
+.home .contact-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.home .contact-status {
+  flex-basis: 100%;
+  margin: 0;
+  min-height: 1.3em;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+.home .contact-status.is-error { color: #e8a0a0; }
+
 .home .footer-links {
   font-family: var(--mono);
   font-size: 0.8rem;
