@@ -31,16 +31,30 @@
 .home .band + .band,
 .home .standing + .band { margin-top: 92px; }
 
+/* A band's name is a reading on the page's scale, not a stamp over the text: it
+   keeps its own case, and a graduation hangs off the line above it in the same
+   direction as the ticks on the rule. */
 .home .label {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--dim);
-  padding-top: 0.55rem;
+  letter-spacing: 0.005em;
+  color: #99a189;
+  padding-top: 0.62rem;
   border-top: 1px solid var(--rule);
   display: block;
+  position: relative;
+}
+
+.home .label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 8px;
+  background: var(--accent, #b1e74f);
+  opacity: 0.55;
 }
 
 .home .col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
@@ -187,42 +201,69 @@
 
 .home a:focus-visible { outline: 2px solid var(--accent, #b1e74f); outline-offset: 3px; }
 
-/* ---- Standing band: who vouches for us ----------------------------------- */
+/* ---- Standing band: who vouches for us -----------------------------------
+   Three readings off one line. A graduation marks where each entry starts, the
+   mark sits on the ground, and its role is annotated under it. No cells and no
+   panel: the alignment does the work the borders were doing. */
 
 .home .standing { margin-top: 74px; }
 
 .home .standing-inner {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border: 1px solid var(--hair);
-  border-radius: 4px;
-  background: var(--panel);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 40px;
+  border-top: 1px solid var(--rule);
+  padding-top: 26px;
 }
 
-.home .standing-cell { padding: 20px 22px; border-left: 1px solid var(--hair); }
-.home .standing-cell:first-child { border-left: 0; }
+.home .standing-cell { position: relative; }
 
+.home .standing-cell::before {
+  content: "";
+  position: absolute;
+  top: -27px;
+  left: 0;
+  width: 1px;
+  height: 9px;
+  background: var(--accent, #b1e74f);
+  opacity: 0.55;
+}
+
+/* The marks are set to a shared baseline rather than a shared box, so the
+   Runway descender hangs below the row instead of lifting the wordmark. */
+.home .standing-mark {
+  display: flex;
+  align-items: flex-end;
+  height: 22px;
+  color: #dfe6d2;
+}
+
+.home .standing-mark svg { display: block; height: auto; }
+.home .standing-runway svg { width: 98px; margin-bottom: -6px; }
+.home .standing-nebius svg { width: 114px; }
+
+.home .standing-phail {
+  font-family: var(--display);
+  font-size: 1.34rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1;
+}
+
+.home .standing-phail a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+.home .standing-phail a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+
+/* A measure short enough that the one role needing two lines breaks after its
+   comma, rather than wherever the column happens to end. */
 .home .standing-role {
   display: block;
+  margin-top: 14px;
+  max-width: 26ch;
   font-family: var(--mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
   color: var(--dim);
-  margin-bottom: 8px;
+  line-height: 1.45;
 }
-
-.home .standing-who {
-  font-family: var(--display);
-  font-size: 1.18rem;
-  font-weight: 600;
-  color: #e8f0d5;
-  line-height: 1.25;
-}
-
-.home .standing-who a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
-.home .standing-who a:hover { color: var(--accent, #b1e74f); }
 
 /* ---- Protocol: the three steps ------------------------------------------- */
 
@@ -243,10 +284,9 @@
 .home .step-verb {
   display: block;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.84rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.005em;
   color: var(--accent, #b1e74f);
   margin-bottom: 10px;
 }
@@ -276,9 +316,8 @@
 .home .quote figcaption {
   margin-top: 14px;
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.005em;
   color: var(--dim);
 }
 
@@ -312,9 +351,9 @@
 
 @media (max-width: 900px) {
   .home .band { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .home .standing-inner { grid-template-columns: minmax(0, 1fr); }
-  .home .standing-cell { border-left: 0; border-top: 1px solid var(--hair); }
-  .home .standing-cell:first-child { border-top: 0; }
+  .home .standing-inner { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  /* Stacked, only the first entry still sits under the line. */
+  .home .standing-cell:not(:first-child)::before { display: none; }
   .home .steps { grid-template-columns: minmax(0, 1fr); margin-left: 0; }
   .home .step { border-right: 0; border-bottom: 1px solid var(--hair); padding: 18px 0; }
   .home .step:not(:first-child) { padding-left: 0; }

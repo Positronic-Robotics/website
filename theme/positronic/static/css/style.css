@@ -321,10 +321,9 @@ a:hover {
 .navbar nav a {
   text-decoration: none;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.0rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.005em;
   transition: color 0.15s;
 }
 
