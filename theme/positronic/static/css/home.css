@@ -238,13 +238,16 @@
   color: #dfe6d2;
 }
 
+a.standing-mark { text-decoration: none; }
+a.standing-mark:hover { color: var(--accent, #b1e74f); }
+
 .home .standing-mark svg { display: block; height: auto; }
 .home .standing-runway svg { width: 98px; margin-bottom: -6px; }
 .home .standing-nebius svg { width: 114px; }
 
 /* PhAIL is a mark plus a wordmark, so the lockup sits on the same baseline as
    the two wordmarks and the icon overhangs the row upwards. */
-.home .standing-phail { gap: 9px; color: inherit; text-decoration: none; }
+.home .standing-phail { gap: 9px; }
 .home .standing-phail-icon {
   display: block;
   width: 28px;
