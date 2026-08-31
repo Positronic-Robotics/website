@@ -75,10 +75,13 @@
 
 .home h1 {
   font-family: var(--display);
-  font-size: clamp(34px, 4.2vw, 58px);
-  line-height: 1.06;
+  font-size: clamp(32px, 3.9vw, 54px);
+  line-height: 1.08;
   font-weight: 700;
-  letter-spacing: -0.035em;
+  /* Tight tracking closes the word gaps as well as the letter gaps, so the
+     word space is put back by hand. */
+  letter-spacing: -0.018em;
+  word-spacing: 0.1em;
   color: #f2f5ea;
   margin: 0;
   text-wrap: balance;
@@ -98,11 +101,12 @@
 
 /* The scale. It separates the navbar from the page, and it is an instrument
    rule rather than a chart: it carries no data and says so by having no
-   numbers on it. Full-bleed, because a separator runs edge to edge. */
+   numbers on it. Full-bleed, because a separator runs edge to edge. The rule
+   line sits on top and the ticks hang below it. */
 .home .scale {
   position: relative;
   height: 34px;
-  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
   transform-origin: left center;
   animation: scale-draw 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
@@ -113,7 +117,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
 }
 
 /* Three tick sizes, as on a real rule: one every millimetre, a taller one at the
@@ -129,7 +133,7 @@
     repeating-linear-gradient(to right, rgba(177, 231, 79, 0.62) 0 1px, transparent 1px 70px),
     repeating-linear-gradient(to right, transparent 0 35px, rgba(177, 231, 79, 0.45) 35px 36px, transparent 36px 70px);
   background-size: 100% 26px, 100% 15px;
-  background-position: left bottom, left bottom;
+  background-position: left top, left top;
   background-repeat: repeat-x;
 }
 
@@ -137,7 +141,7 @@
 
 /* ---- Actions ------------------------------------------------------------- */
 
-.home .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.home .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 34px; }
 
 .home .act {
   font-family: var(--display);
@@ -168,12 +172,18 @@
 }
 .home .act-primary:hover { background: #c3f065; border-color: #c3f065; color: #0d1005; }
 
+/* The second action still has to read as a control, so it keeps a face of its
+   own: a raised panel and a border strong enough to see against the ground. */
 .home .act-ghost {
-  background: transparent;
-  color: #cdd2c4;
-  border: 1px solid var(--hair);
+  background: #1e211b;
+  color: #e8f0d5;
+  border: 1px solid rgba(177, 231, 79, 0.42);
 }
-.home .act-ghost:hover { border-color: var(--accent, #b1e74f); color: var(--accent, #b1e74f); }
+.home .act-ghost:hover {
+  background: #262a21;
+  border-color: var(--accent, #b1e74f);
+  color: var(--accent, #b1e74f);
+}
 
 .home a:focus-visible { outline: 2px solid var(--accent, #b1e74f); outline-offset: 3px; }
 
