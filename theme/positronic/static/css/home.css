@@ -29,6 +29,7 @@
 }
 
 .home .band + .band,
+.home .page-head + .band,
 .home .standing + .band { margin-top: 92px; }
 
 /* A band's name is a reading on the page's scale, not a stamp over the text: it
@@ -78,6 +79,7 @@
 /* The hero and the standing band share the reading grid's outer edge, so the
    page has one left margin from the logo down. */
 .home .hero,
+.home .page-head,
 .home .standing {
   max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
   margin: 0 auto;
@@ -424,6 +426,54 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .footer-links a { color: var(--dim); font-weight: 400; text-decoration: none; border-bottom: 1px solid var(--hair); }
 .home .footer-links a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
 
+/* ---- A page that opens on a statement rather than the hero ---------------- */
+
+.home .page-head { padding-top: 74px; padding-bottom: 4px; }
+
+.home .page-head h1 {
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  margin: 0 0 18px;
+}
+
+.home .page-head .hero-lede { margin: 0; max-width: 46ch; text-align: left; }
+
+/* ---- Founders ------------------------------------------------------------ */
+
+.home .founders {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  margin-top: 28px;
+}
+
+.home .founder-face {
+  display: block;
+  width: 156px;
+  height: 156px;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: grayscale(1) contrast(1.04);
+}
+
+.home .founder-name { margin: 16px 0 0; font-family: var(--display); font-weight: 700; font-size: 1.1rem; }
+
+.home .founder-role {
+  margin: 4px 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent, #b1e74f);
+}
+
+.home .founder-line { margin: 12px 0 0; }
+
+.home .founder-links { margin: 12px 0 0; font-family: var(--mono); font-size: 0.8rem; }
+.home .founder-links a { color: var(--dim); text-decoration: none; border-bottom: 1px solid var(--hair); }
+.home .founder-links a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+
 /* ---- Narrow -------------------------------------------------------------- */
 
 @media (max-width: 900px) {
@@ -431,6 +481,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   .home .standing-inner { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   /* Stacked, only the first entry still sits under the line. */
   .home .standing-cell:not(:first-child)::before { display: none; }
+  .home .founders { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .home .steps { grid-template-columns: minmax(0, 1fr); margin-left: 0; }
   .home .step { border-right: 0; border-bottom: 1px solid var(--hair); padding: 18px 0; }
   .home .step:not(:first-child) { padding-left: 0; }
