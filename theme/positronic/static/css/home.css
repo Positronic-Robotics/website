@@ -391,6 +391,14 @@
 }
 .home .contact-status.is-error { color: #e8a0a0; }
 
+/* The second way to reach us, on the same left edge as the form. */
+.home .contact-alt { display: flex; align-items: center; gap: 14px; margin-top: 18px; }
+.home .contact-alt > span {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+
 .home .footer-links {
   font-family: var(--mono);
   font-size: 0.8rem;
