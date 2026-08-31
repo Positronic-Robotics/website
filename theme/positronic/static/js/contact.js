@@ -11,6 +11,20 @@
     status.classList.toggle("is-error", ok === false);
   }
 
+  // Both trackers autocapture the submit EVENT, which counts an attempt that the
+  // API can still refuse. Name the ones that reached us.
+  function lead(method) {
+    if (window.plausible) window.plausible("Lead", { props: { method: method } });
+    if (window.gtag) window.gtag("event", "generate_lead", { method: method });
+  }
+
+  var booking = document.querySelector(".contact-alt a[href*='calendar.notion.so']");
+  if (booking) {
+    booking.addEventListener("click", function () {
+      lead("book_a_call");
+    });
+  }
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     var email = form.elements.email.value.trim();
@@ -34,6 +48,7 @@
         if (!response.ok) throw new Error(response.status);
         form.reset();
         say("Got it. We answer within a day.");
+        lead("contact_form");
       })
       .catch(function () {
         say("That did not go through. Write to hi@positronic.ro.", false);
