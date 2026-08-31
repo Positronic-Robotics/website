@@ -456,7 +456,6 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   height: 156px;
   object-fit: cover;
   border-radius: 3px;
-  filter: grayscale(1) contrast(1.04);
 }
 
 .home .founder-name { margin: 16px 0 0; font-family: var(--display); font-weight: 700; font-size: 1.1rem; }
