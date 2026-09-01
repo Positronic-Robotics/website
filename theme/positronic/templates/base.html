@@ -6,10 +6,10 @@
   {% set head_path = article.url %}
   {% set og_type = 'article' %}
 {% elif page %}
-  {% set section = 'home' if page.slug == 'index' else page.slug %}
+  {% set section = 'home' if page.slug == HOME_SLUG else page.slug %}
   {% set head_title = page.title %}
   {% set head_description = page.description | default(SITEDESCRIPTION, true) %}
-  {% set head_path = '' if page.slug == 'index' else page.url %}
+  {% set head_path = '' if page.slug == HOME_SLUG else page.url %}
   {% set og_type = 'website' %}
 {% else %}
   {% set section = 'blog' %}
@@ -18,28 +18,22 @@
   {% set head_path = INDEX_SAVE_AS %}
   {% set og_type = 'website' %}
 {% endif %}
-{% set canonical = CANONICAL_BASE ~ '/' ~ head_path %}
+{% set canonical = ABSOLUTE_BASE_URL ~ '/' ~ head_path %}
 <html lang="{{ DEFAULT_LANG | default('en') }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-{% if section == '404' %}
-  <!-- Served from any path, so the page's own relative URLs need a root to resolve against. -->
-  <base href="/" />
-{% endif %}
+{% block head_meta %}{% endblock %}
   <title>{{ head_title }}</title>
   <meta name="description" content="{{ head_description | escape }}" />
   <link rel="canonical" href="{{ canonical }}" />
-{% if section == '404' %}
-  <meta name="robots" content="noindex" />
-{% endif %}
 
   <meta property="og:type" content="{{ og_type }}" />
   <meta property="og:site_name" content="{{ SITENAME }}" />
   <meta property="og:title" content="{{ head_title }}" />
   <meta property="og:description" content="{{ head_description | escape }}" />
   <meta property="og:url" content="{{ canonical }}" />
-  <meta property="og:image" content="{{ CANONICAL_BASE }}/icon-512.png" />
+  <meta property="og:image" content="{{ ABSOLUTE_BASE_URL }}/icon-512.png" />
   <meta name="twitter:card" content="summary" />
 
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -60,8 +54,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "{{ SITENAME }}",
-    "url": "{{ CANONICAL_BASE }}/",
-    "logo": "{{ CANONICAL_BASE }}/icon-512.png",
+    "url": "{{ ABSOLUTE_BASE_URL }}/",
+    "logo": "{{ ABSOLUTE_BASE_URL }}/icon-512.png",
     "description": "{{ SITEDESCRIPTION | escape }}",
     "sameAs": ["https://github.com/Positronic-Robotics"]
   }

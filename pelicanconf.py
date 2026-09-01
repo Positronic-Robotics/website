@@ -20,10 +20,10 @@ BLOG_DESCRIPTION = (
     "policies, what the numbers mean, and what the leaderboard shows."
 )
 
-# RELATIVE_URLS rewrites SITEURL per page, so a canonical and an og:url need their own
-# absolute base. It always points at production, which also keeps preview builds out of
-# the index.
-CANONICAL_BASE = os.getenv("CANONICAL_BASE", PRODUCTION_ORIGIN).rstrip("/")
+# RELATIVE_URLS rewrites SITEURL per page, so every absolute URL a crawler reads — the
+# canonical, the og:url, the sitemap, robots.txt — needs its own base. It always points at
+# production, which also keeps preview builds out of the index.
+ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/")
 
 # Content paths
 PATH = "content"
@@ -50,6 +50,8 @@ OUTPUT_PATH = "output"
 DELETE_OUTPUT_DIRECTORY = False
 
 # URLs
+# The homepage is the one page whose absolute URL is the bare origin.
+HOME_SLUG = "index"
 PAGE_URL = "{slug}.html"
 PAGE_SAVE_AS = "{slug}.html"
 INDEX_SAVE_AS = "blog.html"

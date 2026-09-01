@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {% for page in pages %}
   <url>
-    <loc>{{ CANONICAL_BASE }}/{{ '' if page.slug == 'index' else page.url }}</loc>
+    <loc>{{ ABSOLUTE_BASE_URL }}/{{ '' if page.slug == HOME_SLUG else page.url }}</loc>
   </url>
 {% endfor %}
   <url>
-    <loc>{{ CANONICAL_BASE }}/{{ INDEX_SAVE_AS }}</loc>
+    <loc>{{ ABSOLUTE_BASE_URL }}/{{ INDEX_SAVE_AS }}</loc>
   </url>
 {% for article in articles %}
   <url>
-    <loc>{{ CANONICAL_BASE }}/{{ article.url }}</loc>
+    <loc>{{ ABSOLUTE_BASE_URL }}/{{ article.url }}</loc>
     <lastmod>{{ (article.modified or article.date).strftime('%Y-%m-%d') }}</lastmod>
   </url>
 {% endfor %}

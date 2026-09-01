@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: {{ CANONICAL_BASE }}/{{ SITEMAP_SAVE_AS }}
+Sitemap: {{ ABSOLUTE_BASE_URL }}/{{ SITEMAP_SAVE_AS }}
