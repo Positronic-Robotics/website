@@ -3,6 +3,7 @@
   --text: #b8b8b8;
   --accent: #b1e74f;
   --accent-soft: rgba(177, 231, 79, 0.18);
+  --rule: rgba(177, 231, 79, 0.22);
 
   --muted: #e0e0e0;
   --text-secondary: #cbd5f5;
@@ -319,6 +320,8 @@ a:hover {
 }
 
 .navbar nav a {
+  position: relative;
+  padding: 4px 0;
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
@@ -329,6 +332,53 @@ a:hover {
 
 .navbar nav a:hover {
   color: var(--accent);
+}
+
+/* The section the reader is in. A hover takes the same colour, so the rule marks it. */
+.navbar nav a.is-current {
+  color: var(--accent);
+}
+
+.navbar nav a.is-current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* The rule under the navbar. It carries no numbers, so nobody can read it as a chart. */
+.scale {
+  position: relative;
+  height: 34px;
+  border-top: 1px solid var(--rule);
+}
+
+.scale::before,
+.scale::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+/* Three tick sizes, as on a real rule, at 7px to the millimetre. */
+.scale::before {
+  height: 8px;
+  background: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 7px);
+}
+
+.scale::after {
+  height: 26px;
+  background-image:
+    repeating-linear-gradient(to right, rgba(177, 231, 79, 0.62) 0 1px, transparent 1px 70px),
+    repeating-linear-gradient(to right, transparent 0 35px, rgba(177, 231, 79, 0.45) 35px 36px, transparent 36px 70px);
+  background-size: 100% 26px, 100% 15px;
+  background-position: left top, left top;
+  background-repeat: repeat-x;
 }
 
 @media (max-width: 768px) {

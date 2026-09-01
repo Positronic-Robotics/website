@@ -5,17 +5,41 @@ from pathlib import Path
 
 # Core site settings
 AUTHOR = "Positronic Robotics"
-SITENAME = "Positronic Robotics — Infrastructure for ML Robotics"
-SITESUBTITLE = "Infrastructure for ML Robotics"
-SITEURL = os.getenv("SITEURL", "https://positronic.ro").rstrip("/")
-SITEDESCRIPTION = "Positronic Robotics builds the trust layer for physical AI: independent evaluation of robot AI models on real hardware. Teams send a checkpoint and get back numbers that say whether it beats the last one. An infrastructure problem becomes an API call. The company built and runs PhAIL, the public Physical AI Leaderboard, on that same stack, with Nebius as founding partner."
+SITENAME = "Positronic Robotics"
+SITESUBTITLE = "The new standard of Physical AI eval"
+PRODUCTION_ORIGIN = "https://positronic.ro"
+SITEURL = os.getenv("SITEURL", PRODUCTION_ORIGIN).rstrip("/")
+
+# A search result shows about 155 characters of the description and cuts the rest.
+SITEDESCRIPTION = (
+    "Positronic Robotics runs independent evaluation for physical AI. Send a checkpoint, "
+    "get video and a score for every run on real robots, back the same day."
+)
+BLOG_DESCRIPTION = (
+    "Notes from Positronic Robotics on evaluating physical AI: how we measure robot "
+    "policies, what the numbers mean, and what the leaderboard shows."
+)
+
+# RELATIVE_URLS rewrites SITEURL per page, so every absolute URL a crawler reads — the
+# canonical, the og:url, the sitemap, robots.txt — needs its own base.
+ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/")
 
 # Content paths
 PATH = "content"
 PAGE_PATHS = ["pages"]
 PAGE_EXCLUDES: list[str] = []
 ARTICLE_PATHS: list[str] = ["blog"]
-STATIC_PATHS: list[str] = ["neapolis_deck", "nebius-berlin-0426"]
+STATIC_PATHS: list[str] = ["neapolis_deck", "nebius-berlin-0426", "extra"]
+
+# Files a browser or a phone looks for at the site root, by name.
+ROOT_FILES = [
+    "favicon.ico",
+    "icon-192.png",
+    "icon-512.png",
+    "apple-touch-icon.png",
+    "site.webmanifest",
+]
+EXTRA_PATH_METADATA = {f"extra/{name}": {"path": name} for name in ROOT_FILES}
 
 # Theme
 THEME = "theme/positronic"
@@ -25,6 +49,7 @@ OUTPUT_PATH = "output"
 DELETE_OUTPUT_DIRECTORY = False
 
 # URLs
+HOME_SLUG = "index"
 PAGE_URL = "{slug}.html"
 PAGE_SAVE_AS = "{slug}.html"
 INDEX_SAVE_AS = "blog.html"
@@ -35,7 +60,12 @@ DEFAULT_PAGINATION = False
 RELATIVE_URLS = True
 
 # Clean unused Pelican pages we don't need for a single-page site
-DIRECT_TEMPLATES: list[str] = ["index"]
+DIRECT_TEMPLATES: list[str] = ["index", "sitemap", "robots"]
+SITEMAP_SAVE_AS = "sitemap.xml"
+ROBOTS_SAVE_AS = "robots.txt"
+# A direct template is looked up by name plus each of these, so a template keeps the
+# extension of the file it writes.
+TEMPLATE_EXTENSIONS: list[str] = [".html", ".xml", ".txt"]
 TAGS_SAVE_AS = ""
 CATEGORY_SAVE_AS = ""
 AUTHORS_SAVE_AS = ""

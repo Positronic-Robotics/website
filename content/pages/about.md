@@ -1,8 +1,9 @@
-Title: About Positronic Robotics
+Title: About Positronic Robotics: independent physical AI evaluation
 Slug: about
 Save_as: about.html
 URL: about.html
 Template: home
+Description: Positronic Robotics is two engineers from Google Search. We train no models and sell no robots, so no result on our rigs is a result about us.
 
 <section class="page-head"><h1>The best thing we can do for <em>Physical AI</em> is measure it properly</h1><p class="hero-lede">We met at Google, and we both worked on Search there. Evaluation there is a whole engineering discipline, and we took it for granted for years, until we found out that it is not a universally solved problem. Physical AI does not have one yet, so we are building it.</p></section>
 
