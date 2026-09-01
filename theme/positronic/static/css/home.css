@@ -3,7 +3,6 @@
 
 .home {
   --hair: rgba(148, 163, 184, 0.16);
-  --rule: rgba(177, 231, 79, 0.22);
   --dim: #7d846f;
   --panel: #161814;
 
@@ -114,46 +113,6 @@
   color: #cdd2c4;
   margin-top: 26px;
 }
-
-/* The scale. It separates the navbar from the page, and it is an instrument
-   rule rather than a chart: it carries no data and says so by having no
-   numbers on it. Full-bleed, because a separator runs edge to edge. The rule
-   line sits on top and the ticks hang below it. */
-.home .scale {
-  position: relative;
-  height: 34px;
-  border-top: 1px solid var(--rule);
-  transform-origin: left center;
-  animation: scale-draw 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
-
-.home .scale::before,
-.home .scale::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
-/* Three tick sizes, as on a real rule: one every millimetre, a taller one at the
-   half centimetre, the tallest at each centimetre. 7px to the millimetre. */
-.home .scale::before {
-  height: 8px;
-  background: repeating-linear-gradient(to right, var(--rule) 0 1px, transparent 1px 7px);
-}
-
-.home .scale::after {
-  height: 26px;
-  background-image:
-    repeating-linear-gradient(to right, rgba(177, 231, 79, 0.62) 0 1px, transparent 1px 70px),
-    repeating-linear-gradient(to right, transparent 0 35px, rgba(177, 231, 79, 0.45) 35px 36px, transparent 36px 70px);
-  background-size: 100% 26px, 100% 15px;
-  background-position: left top, left top;
-  background-repeat: repeat-x;
-}
-
-@keyframes scale-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 /* ---- Actions ------------------------------------------------------------- */
 
@@ -489,6 +448,5 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home .scale { animation: none; }
   .home * { transition: none !important; }
 }
