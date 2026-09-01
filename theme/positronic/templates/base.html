@@ -14,8 +14,8 @@
 {% else %}
   {% set section = 'blog' %}
   {% set head_title = 'Blog — ' ~ SITENAME %}
-  {% set head_description = BLOG_DESCRIPTION | default(SITEDESCRIPTION, true) %}
-  {% set head_path = 'blog.html' %}
+  {% set head_description = BLOG_DESCRIPTION %}
+  {% set head_path = INDEX_SAVE_AS %}
   {% set og_type = 'website' %}
 {% endif %}
 {% set canonical = CANONICAL_BASE ~ '/' ~ head_path %}
@@ -103,7 +103,7 @@
       <nav>
         <a href="{{ SITEURL }}/"{% if section == 'home' %} class="is-current" aria-current="page"{% endif %}>Home</a>
         <a href="{{ SITEURL }}/about.html"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
-        <a href="{{ SITEURL }}/blog.html"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
+        <a href="{{ SITEURL }}/{{ INDEX_SAVE_AS }}"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
       </nav>
     </div>
   </header>

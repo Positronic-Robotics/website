@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://positronic.ro/sitemap.xml

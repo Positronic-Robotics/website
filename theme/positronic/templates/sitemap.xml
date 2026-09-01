@@ -6,7 +6,7 @@
   </url>
 {% endfor %}
   <url>
-    <loc>{{ CANONICAL_BASE }}/blog.html</loc>
+    <loc>{{ CANONICAL_BASE }}/{{ INDEX_SAVE_AS }}</loc>
   </url>
 {% for article in articles %}
   <url>
