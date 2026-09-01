@@ -21,8 +21,7 @@ BLOG_DESCRIPTION = (
 )
 
 # RELATIVE_URLS rewrites SITEURL per page, so every absolute URL a crawler reads — the
-# canonical, the og:url, the sitemap, robots.txt — needs its own base. It always points at
-# production, which also keeps preview builds out of the index.
+# canonical, the og:url, the sitemap, robots.txt — needs its own base.
 ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/")
 
 # Content paths
