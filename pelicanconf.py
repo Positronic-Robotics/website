@@ -49,7 +49,6 @@ OUTPUT_PATH = "output"
 DELETE_OUTPUT_DIRECTORY = False
 
 # URLs
-# The homepage is the one page whose absolute URL is the bare origin.
 HOME_SLUG = "index"
 PAGE_URL = "{slug}.html"
 PAGE_SAVE_AS = "{slug}.html"

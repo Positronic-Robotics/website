@@ -333,7 +333,7 @@ a:hover {
   color: var(--accent);
 }
 
-/* The section the reader is in. The rule is what separates it from a hover. */
+/* The section the reader is in. A hover takes the same colour, so the rule marks it. */
 .navbar nav a.is-current {
   color: var(--accent);
 }
