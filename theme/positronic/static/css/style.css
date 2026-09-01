@@ -319,6 +319,8 @@ a:hover {
 }
 
 .navbar nav a {
+  position: relative;
+  padding: 4px 0;
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
@@ -329,6 +331,21 @@ a:hover {
 
 .navbar nav a:hover {
   color: var(--accent);
+}
+
+/* The section the reader is in. The rule is what separates it from a hover. */
+.navbar nav a.is-current {
+  color: var(--accent);
+}
+
+.navbar nav a.is-current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
 }
 
 @media (max-width: 768px) {

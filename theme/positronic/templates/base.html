@@ -1,16 +1,72 @@
 <!DOCTYPE html>
+{% if article %}
+  {% set section = 'blog' %}
+  {% set head_title = article.title ~ ' — ' ~ SITENAME %}
+  {% set head_description = article.description | default(article.summary | striptags | truncate(157, False, '…'), true) %}
+  {% set head_path = article.url %}
+  {% set og_type = 'article' %}
+{% elif page %}
+  {% set section = 'home' if page.slug == 'index' else page.slug %}
+  {% set head_title = page.title %}
+  {% set head_description = page.description | default(SITEDESCRIPTION, true) %}
+  {% set head_path = '' if page.slug == 'index' else page.url %}
+  {% set og_type = 'website' %}
+{% else %}
+  {% set section = 'blog' %}
+  {% set head_title = 'Blog — ' ~ SITENAME %}
+  {% set head_description = BLOG_DESCRIPTION | default(SITEDESCRIPTION, true) %}
+  {% set head_path = 'blog.html' %}
+  {% set og_type = 'website' %}
+{% endif %}
+{% set canonical = CANONICAL_BASE ~ '/' ~ head_path %}
 <html lang="{{ DEFAULT_LANG | default('en') }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% if article %}{{ article.title }} — {{ SITENAME }}{% elif page %}{{ page.title }}{% else %}{{ SITENAME }}{% endif %}</title>
-  <meta name="description" content="{% if article %}{{ article.summary|striptags|escape }}{% else %}{{ SITEDESCRIPTION|default('')|escape }}{% endif %}" />
+{% if section == '404' %}
+  <!-- Served from any path, so the page's own relative URLs need a root to resolve against. -->
+  <base href="/" />
+{% endif %}
+  <title>{{ head_title }}</title>
+  <meta name="description" content="{{ head_description | escape }}" />
+  <link rel="canonical" href="{{ canonical }}" />
+{% if section == '404' %}
+  <meta name="robots" content="noindex" />
+{% endif %}
+
+  <meta property="og:type" content="{{ og_type }}" />
+  <meta property="og:site_name" content="{{ SITENAME }}" />
+  <meta property="og:title" content="{{ head_title }}" />
+  <meta property="og:description" content="{{ head_description | escape }}" />
+  <meta property="og:url" content="{{ canonical }}" />
+  <meta property="og:image" content="{{ CANONICAL_BASE }}/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#111111" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ SITEURL }}/theme/positronic/static/css/pygments.css" />
   <link rel="stylesheet" href="{{ SITEURL }}/theme/positronic/static/css/style.css" />
   {% block extra_head %}{% endblock %}
+{% if section == 'home' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ SITENAME }}",
+    "url": "{{ CANONICAL_BASE }}/",
+    "logo": "{{ CANONICAL_BASE }}/icon-512.png",
+    "description": "{{ SITEDESCRIPTION | escape }}",
+    "sameAs": ["https://github.com/Positronic-Robotics"]
+  }
+  </script>
+{% endif %}
   <!-- Google tag (gtag.js) - only load on production -->
   <script>
     if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
@@ -45,9 +101,9 @@
         <span class="brand-text">Positronic <span class="brand-suffix">Robotics</span></span>
       </a>
       <nav>
-        <a href="{{ SITEURL }}/">Home</a>
-        <a href="{{ SITEURL }}/about.html">About</a>
-        <a href="{{ SITEURL }}/blog.html">Blog</a>
+        <a href="{{ SITEURL }}/"{% if section == 'home' %} class="is-current" aria-current="page"{% endif %}>Home</a>
+        <a href="{{ SITEURL }}/about.html"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
+        <a href="{{ SITEURL }}/blog.html"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
       </nav>
     </div>
   </header>
@@ -56,4 +112,3 @@
   </main>
 </body>
 </html>
-
