@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="{{ SITEURL }}/theme/positronic/static/css/home.css" />
+<script src="{{ SITEURL }}/theme/positronic/static/js/contact.js" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="home">
+  <div class="scale" aria-hidden="true"></div>
+  {{ page.content }}
+</div>
+{% endblock %}
