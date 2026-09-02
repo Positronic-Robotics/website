@@ -13,6 +13,18 @@ Not success rates in simulation. Real results on real hardware.
 
 Models on the leaderboard include OpenPI 0.5 (Physical Intelligence), GR00T and DreamZero (NVIDIA), and SmolVLA (HuggingFace) – tested alongside human and teleoperated baselines.
 
+<figure style="width: min(96vw, 1600px); max-width: none; margin: 3em 0; margin-left: 50%; transform: translateX(-50%);">
+  <video
+    src="theme/positronic/static/video/model-grid.mp4"
+    poster="theme/positronic/static/img/model-grid-poster.jpg"
+    autoplay muted loop playsinline preload="metadata"
+    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+    aria-label="Four robot AI models, each attempting the same wooden-spoon pick-and-place task four times on the same Franka FR3 station. Sixteen scored runs play at once and each tile stops when its own run ended."></video>
+  <figcaption style="max-width: 708px; margin: 0.8em auto 0; font-size: 0.9em; opacity: 0.7;">
+    Sixteen scored runs, played at 8x. Every tile is the same task on the same station under the same scoring, so the differences are the models. Each model gets four attempts, and the spread between them is why one demo cannot answer the question.
+  </figcaption>
+</figure>
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin: 3em 0;">
   <a href="https://phail.ai" class="btn-primary"
      style="display: inline-flex; flex-direction: column; align-items: center; gap: 0.15rem;
