@@ -452,8 +452,6 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 }
 
 /* ---- The five words, under the hero lede --------------------------------- */
-/* The claim before the explanation: what kind of evaluation, in five words a
-   reader takes in without reading a sentence. */
 .home .creds {
   list-style: none;
   margin: 26px 0 0;
