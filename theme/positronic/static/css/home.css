@@ -29,6 +29,7 @@
 
 .home .band + .band,
 .home .page-head + .band,
+.home .reel + .band,
 .home .standing + .band { margin-top: 92px; }
 
 /* A band's name is a reading on the page's scale, not a stamp over the text: it
@@ -449,4 +450,26 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 
 @media (prefers-reduced-motion: reduce) {
   .home * { transition: none !important; }
+}
+
+/* ---- Real runs -------------------------------------------------------- */
+
+.home .reel {
+  max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
+  margin: 44px auto 0;
+  padding: 0 32px;
+}
+
+/* Halfway between the reading column and the full width of the band. */
+.home .reel figure {
+  margin: 0 auto;
+  max-width: calc(var(--col) + (var(--rail) + var(--gutter)) / 2);
+}
+
+.home .reel video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0f110d;
+  border-radius: 4px;
 }
