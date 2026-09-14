@@ -460,8 +460,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   padding: 0 32px;
 }
 
-/* Narrower than the text above it, so the video reads as evidence under the
-   hero rather than as a second headline. */
+/* 660px: the width the body text takes in every band below. */
 .home .reel figure { margin: 0; max-width: var(--col); }
 
 .home .reel video {
