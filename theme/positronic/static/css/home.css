@@ -471,6 +471,5 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   width: 100%;
   height: auto;
   background: #0f110d;
-  border: 1px solid var(--hair);
   border-radius: 4px;
 }
