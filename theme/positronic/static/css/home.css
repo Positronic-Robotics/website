@@ -458,13 +458,11 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 
 .home .reel {
   max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
-  margin: 74px auto 0;
+  margin: 44px auto 0;
   padding: 0 32px;
 }
 
-.home .reel h2 { margin: 20px 0 14px; }
-
-.home .reel figure { margin: 22px 0 0; }
+.home .reel figure { margin: 0; }
 
 .home .reel video {
   display: block;
