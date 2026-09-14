@@ -461,7 +461,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 }
 
 /* 660px: the width the body text takes in every band below. */
-.home .reel figure { margin: 0; max-width: var(--col); }
+.home .reel figure { margin: 0 auto; max-width: var(--col); }
 
 .home .reel video {
   display: block;
