@@ -1,7 +1,5 @@
-// Keep the run video playing. The autoplay attribute starts it, and a browser is
-// free to refuse or to stop it again: Chrome pauses a muted autoplay whose element
-// it judges off screen, and a returning tab resumes suspended. Ask again on each of
-// those, and swallow the rejection a refusal returns.
+// Keep the run video playing: the autoplay attribute alone is not enough.
+// A browser may refuse it, and Chrome stops one it judges off screen.
 (function () {
   var video = document.querySelector(".reel video");
   if (!video) return;
