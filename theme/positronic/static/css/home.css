@@ -452,9 +452,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   .home * { transition: none !important; }
 }
 
-/* ---- Real runs ----------------------------------------------------------
-   Full reading width, not the 660px column: the model names in the video go
-   unreadable narrower. */
+/* ---- Real runs -------------------------------------------------------- */
 
 .home .reel {
   max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
@@ -462,7 +460,9 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   padding: 0 32px;
 }
 
-.home .reel figure { margin: 0; }
+/* Narrower than the text above it, so the video reads as evidence under the
+   hero rather than as a second headline. */
+.home .reel figure { margin: 0; max-width: var(--col); }
 
 .home .reel video {
   display: block;
@@ -471,12 +471,4 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   background: #0f110d;
   border: 1px solid var(--hair);
   border-radius: 4px;
-}
-
-.home .reel figcaption {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--dim);
-  margin-top: 16px;
-  max-width: var(--col);
 }
