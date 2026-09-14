@@ -460,8 +460,11 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   padding: 0 32px;
 }
 
-/* 660px: the width the body text takes in every band below. */
-.home .reel figure { margin: 0 auto; max-width: var(--col); }
+/* Halfway between the reading column and the full width of the band. */
+.home .reel figure {
+  margin: 0 auto;
+  max-width: calc(var(--col) + (var(--rail) + var(--gutter)) / 2);
+}
 
 .home .reel video {
   display: block;
