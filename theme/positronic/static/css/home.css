@@ -454,7 +454,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 
 /* ---- Real runs ----------------------------------------------------------
    Full reading width, not the 660px column: the model names in the video go
-   unreadable narrower. The poster holds until play; the file is 3 MB. */
+   unreadable narrower. */
 
 .home .reel {
   max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
