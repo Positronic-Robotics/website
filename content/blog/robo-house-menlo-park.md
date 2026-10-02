@@ -6,7 +6,7 @@ Author: Vladimir Yakunin
 Summary: Vladimir Yakunin gave a talk at Robo House in Menlo Park on how to tell a better robot policy from a worse one, on real hardware. Here are the slides and the main points.
 Image: media/hero-droid-grid-poster.jpg
 
-Vladimir Yakunin gave a talk at **Robo House** in Menlo Park on 28 September 2026, titled **"Is your model a top model?"** The talk asks one question: how do you tell a better robot policy from a worse one, on real hardware?
+Vladimir Yakunin gave a talk at **Robo House** in Menlo Park on 28 September 2026, titled **"Is your model a top model?"** It is about how to tell a better robot policy from a worse one, on real hardware.
 
 <div style="margin: 2rem 0; text-align: center;">
     <a href="/robo-house-0926/index.html" class="button" style="
