@@ -25,18 +25,14 @@ Vladimir Yakunin gave a talk at **Robo House** in Menlo Park on 28 September 202
 
 ### Four traps
 
-Most comparisons of robot models fall into one of four traps:
-
 - **The operator and the environment change the outcome.** Run model A on Monday and model B on Tuesday, and part of the difference you measure comes from the day.
 - **Different models speak different languages.** Each model expects its own inputs, action space and control rate. Two models on one robot are not a fair comparison by default.
 - **One metric is not enough.** Speed, reliability and the way a model fails are three different things.
 - **Ten runs do not prove anything.** A robot policy can act differently in each run, and a handful of episodes cannot separate two models.
 
-### Four principles
+### Four principles, one for each trap
 
-Each principle answers one trap:
-
-- **Same-session, blinded A/B.** The models run in the same rounds, in random order, and the operator does not know which model is on the robot. So the results do not drift, and the operator cannot bias them.
+- **Same-session, blinded A/B.** The models run in the same rounds, in random order, and the operator does not know which model is on the robot.
 - **One inference API.** Every model plugs into the same interface, so every model gets the same test.
 - **Full data.** Every episode is recorded in full, so any metric can be computed after the run.
 - **Enough rollouts.** Enough episodes per model to tell a real difference from chance.
@@ -47,7 +43,7 @@ The second half of the talk shows these principles at work on our Franka DROID r
 
 The main chart splits every episode into stages: moving, reaching the item, in contact with it, moving it, at the target, and a scored success. For each policy it shows how many episodes reached each stage.
 
-That view shows where a policy fails, and the policies fail in different places:
+The policies fail at different stages:
 
 - **π0.5** reached the item in 26 of 38 episodes, and made contact in 11. Most of its episodes end before it touches the item.
 - **MolmoAct2** lost 12 of 39 episodes before it reached the item, and 9 more between moving the item and getting it to the target.
