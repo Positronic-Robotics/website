@@ -3,10 +3,18 @@ Date: 2026-09-28
 Category: Blog
 Slug: robo-house-menlo-park
 Author: Vladimir Yakunin
-Summary: Vladimir Yakunin gave a talk at Robo House in Menlo Park on how to tell a better robot policy from a worse one, on real hardware. Here are the slides and the main points.
+Summary: A small room at Robo House in Menlo Park, and why a success rate is not enough to tell a better robot model from a worse one.
 Image: media/hero-droid-grid-poster.jpg
 
-Vladimir Yakunin gave a talk at **Robo House** in Menlo Park on 28 September 2026, titled **"Is your model a top model?"** It is about how to tell a better robot policy from a worse one, on real hardware.
+On Monday, 28 September, I gave a short talk at Robo House in Menlo Park. Khurram Pirov runs a lecture series there for robotics engineers, researchers and people who deploy real robots. The format is simple: a small room, a talk, an open discussion, and then a BBQ.
+
+My question for the room was: is your model a top model, and how do you know?
+
+A success rate hides most of the answer. It tells you how often the robot finished the task. It does not tell you where it failed in all the other episodes. On a real robot, the operator, the day and the setup also move that number, so a comparison of two models run on different days measures the days too.
+
+So we record the whole episode. For each run we check how far the robot got: did it reach the item, touch it, move it, put it at the target. On our DROID rounds the week before the talk, one policy lost most of its episodes before it touched the item. Another lost almost half of its episodes after it already had the item moving. A success rate shows only the end of both stories, and they are two different problems.
+
+The rest is method: run the models in the same session, blind, through one inference API, with enough episodes to tell a real difference from chance. The slides have the details and the charts.
 
 <div style="margin: 2rem 0; text-align: center;">
     <a href="/robo-house-0926/index.html" class="button" style="
@@ -23,32 +31,4 @@ Vladimir Yakunin gave a talk at **Robo House** in Menlo Park on 28 September 202
     </a>
 </div>
 
-### Four traps
-
-- **The operator and the environment change the outcome.** Run model A on Monday and model B on Tuesday, and part of the difference you measure comes from the day.
-- **Different models speak different languages.** Each model expects its own inputs, action space and control rate. Two models on one robot are not a fair comparison by default.
-- **One metric is not enough.** Speed, reliability and the way a model fails are three different things.
-- **Ten runs do not prove anything.** A robot policy can act differently in each run, and a handful of episodes cannot separate two models.
-
-### Four principles, one for each trap
-
-- **Same-session, blinded A/B.** The models run in the same rounds, in random order, and the operator does not know which model is on the robot.
-- **One inference API.** Every model plugs into the same interface, so every model gets the same test.
-- **Full data.** Every episode is recorded in full, so any metric can be computed after the run.
-- **Enough rollouts.** Enough episodes per model to tell a real difference from chance.
-
-### On a real robot
-
-The second half of the talk shows these principles at work on our Franka DROID rig. Five policies ran in the same blind rounds from 21 to 25 September 2026, on single-item tasks, with 37 to 39 episodes per policy.
-
-The main chart splits every episode into stages: moving, reaching the item, in contact with it, moving it, at the target, and a scored success. For each policy it shows how many episodes reached each stage.
-
-The policies fail at different stages:
-
-- **π0.5** reached the item in 26 of 38 episodes, and made contact in 11. Most of its episodes end before it touches the item.
-- **MolmoAct2** lost 12 of 39 episodes before it reached the item, and 9 more between moving the item and getting it to the target.
-- **Cosmos3 nano** lost a few episodes at each stage, and scored a success in 26 of 39.
-
-A success rate shows only the last of these numbers. The slides give the 95% interval for every count, and follow Cosmos3 nano and GR00T N1.7 second by second through an episode.
-
-Is your model a top model? Send us a checkpoint at [hi@positronic.ro](mailto:hi@positronic.ro) and find out.
+Thanks to Khurram for hosting. If you want to know where your model fails, send us a checkpoint at [hi@positronic.ro](mailto:hi@positronic.ro).
