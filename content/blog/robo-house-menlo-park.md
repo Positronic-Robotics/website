@@ -12,7 +12,7 @@ My question for the room was: is your model a top model, and how do you know?
 
 A success rate hides most of the answer. It tells you how often the robot finished the task. It does not tell you where it failed in all the other episodes. On a real robot, the operator, the day and the setup also move that number, so a comparison of two models run on different days measures the days too.
 
-So we record the whole episode. For each run we check how far the robot got: did it reach the item, touch it, move it, put it at the target. On our DROID rounds the week before the talk, one policy lost most of its episodes before it touched the item. Another lost almost half of its episodes after it already had the item moving. A success rate shows only the end of both stories, and they are two different problems.
+So we record the whole episode. For each run we check how far the robot got: did it reach the item, touch it, move it, put it at the target. On our DROID rounds the week before the talk, one policy lost most of its episodes before it touched the item. Another lost almost half of its episodes after it already had the item moving. A success rate counts both as the same failure.
 
 The rest is method: run the models in the same session, blind, through one inference API, with enough episodes to tell a real difference from chance. The slides have the details and the charts.
 
