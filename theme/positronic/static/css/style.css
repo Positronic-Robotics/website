@@ -297,21 +297,16 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 1.2rem;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  color: var(--text);
+  color: #f2f2f2;
 }
 
 .navbar-brand img {
   height: 32px;
   width: auto;
-}
-
-.brand-suffix {
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-left: 2px;
 }
 
 .navbar nav {
