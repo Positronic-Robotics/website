@@ -95,10 +95,15 @@
         <img src="{{ SITEURL }}/theme/positronic/static/img/logo.png" alt="Positronic Logo" />
         <span class="brand-text">Positronic <span class="brand-suffix">Robotics</span></span>
       </a>
-      <nav>
+      <nav aria-label="Site">
         <a href="{{ SITEURL }}/"{% if section == 'home' %} class="is-current" aria-current="page"{% endif %}>Home</a>
         <a href="{{ SITEURL }}/about.html"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
         <a href="{{ SITEURL }}/{{ INDEX_SAVE_AS }}"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
+      </nav>
+      <nav class="navbar-app" aria-label="Platform">
+        <a href="{{ APP_URL }}/pricing">Pricing</a>
+        <a href="{{ APP_URL }}/signin">Sign in</a>
+        <a href="{{ APP_URL }}/start" class="navbar-start">Get started</a>
       </nav>
     </div>
   </header>
