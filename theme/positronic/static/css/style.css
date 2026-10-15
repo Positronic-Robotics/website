@@ -403,7 +403,8 @@ a:hover {
   background-repeat: repeat-x;
 }
 
-@media (max-width: 768px) {
+/* With the platform links, the bar fits in one row at full size only from 963 px. */
+@media (max-width: 962px) {
   .navbar-inner {
     gap: 1.5rem;
     padding: 0 1.5rem;
