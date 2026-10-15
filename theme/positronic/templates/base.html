@@ -100,6 +100,11 @@
         <a href="{{ SITEURL }}/about.html"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
         <a href="{{ SITEURL }}/{{ INDEX_SAVE_AS }}"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
       </nav>
+      <nav class="navbar-app" aria-label="Platform">
+        <a href="{{ APP_URL }}/pricing">Pricing</a>
+        <a href="{{ APP_URL }}/signin">Sign in</a>
+        <a href="{{ APP_URL }}/start" class="navbar-start">Get started</a>
+      </nav>
     </div>
   </header>
   <div class="scale" aria-hidden="true"></div>

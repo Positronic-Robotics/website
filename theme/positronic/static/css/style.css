@@ -349,6 +349,24 @@ a:hover {
   background: var(--accent);
 }
 
+/* The links to the platform web app sit at the right end of the bar. */
+.navbar-app {
+  margin-left: auto;
+  align-items: center;
+}
+
+.navbar nav a.navbar-start {
+  padding: 4px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 99px;
+  color: var(--accent);
+}
+
+.navbar nav a.navbar-start:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 /* The rule under the navbar. It carries no numbers, so nobody can read it as a chart. */
 .scale {
   position: relative;
@@ -389,6 +407,11 @@ a:hover {
 
   .navbar-brand {
     font-size: 1.1rem;
+  }
+
+  .navbar-inner {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
   }
 
   .navbar nav {

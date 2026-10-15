@@ -24,6 +24,9 @@ BLOG_DESCRIPTION = (
 # canonical, the og:url, the sitemap, robots.txt — needs its own base.
 ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/")
 
+# The platform web app, where a customer reads the prices, signs in and buys credits.
+APP_URL = os.getenv("APP_URL", "https://console.positronic.ro").rstrip("/")
+
 # Content paths
 PATH = "content"
 PAGE_PATHS = ["pages"]
