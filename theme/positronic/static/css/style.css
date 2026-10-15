@@ -431,9 +431,10 @@ a:hover {
   }
 }
 
-/* From 360 px the brand takes two lines, as before, so the site links stay in the first row.
-   Below 360 px the site links do not fit next to the brand, so the brand keeps one line. */
-@media (min-width: 360px) and (max-width: 480px) {
+/* From 360 to 434 px the brand takes two lines, as before, so the site links stay in the first
+   row. From 435 px they fit next to the brand on one line. Below 360 px they do not fit next to
+   the brand, so the brand keeps one line. */
+@media (min-width: 360px) and (max-width: 434px) {
   .navbar-brand {
     white-space: normal;
   }
