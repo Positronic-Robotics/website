@@ -364,6 +364,7 @@ a:hover {
   border: 1px solid var(--accent);
   border-radius: 99px;
   color: var(--accent);
+  transition: color 0.15s, background-color 0.15s;
 }
 
 .navbar nav a.navbar-start:hover {
@@ -420,6 +421,25 @@ a:hover {
 
   .navbar nav a {
     font-size: 0.9rem;
+  }
+}
+
+/* On a phone the platform links take their own row, at the left. */
+@media (max-width: 480px) {
+  .navbar-app {
+    margin-left: 0;
+  }
+}
+
+/* From 360 px the brand takes two lines, as before, so the site links stay in the first row.
+   Below 360 px the site links do not fit next to the brand, so the brand keeps one line. */
+@media (min-width: 360px) and (max-width: 480px) {
+  .navbar-brand {
+    white-space: normal;
+  }
+
+  .brand-text {
+    width: min-content;
   }
 }
 
