@@ -1,4 +1,4 @@
-Title: Platform terms
+Title: Positronic platform terms
 Slug: terms
 Save_as: terms.html
 URL: terms

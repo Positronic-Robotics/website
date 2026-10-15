@@ -291,6 +291,8 @@ a:hover {
   padding: 0 2rem;
   margin: 0 auto;
   gap: 6rem;
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
 }
 
 .navbar-brand {
@@ -301,6 +303,7 @@ a:hover {
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--text);
+  white-space: nowrap;
 }
 
 .navbar-brand img {
@@ -327,6 +330,7 @@ a:hover {
   font-weight: 600;
   font-size: 1.0rem;
   letter-spacing: 0.005em;
+  white-space: nowrap;
   transition: color 0.15s;
 }
 
@@ -356,7 +360,7 @@ a:hover {
 }
 
 .navbar nav a.navbar-start {
-  padding: 4px 14px;
+  padding: 3px 14px;
   border: 1px solid var(--accent);
   border-radius: 99px;
   color: var(--accent);
@@ -407,11 +411,6 @@ a:hover {
 
   .navbar-brand {
     font-size: 1.1rem;
-  }
-
-  .navbar-inner {
-    flex-wrap: wrap;
-    row-gap: 0.75rem;
   }
 
   .navbar nav {
