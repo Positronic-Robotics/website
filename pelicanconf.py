@@ -25,7 +25,7 @@ BLOG_DESCRIPTION = (
 ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/")
 
 # The platform web app, where a customer reads the prices, signs in and buys credits.
-APP_URL = os.getenv("APP_URL", "").strip().rstrip("/") or "https://console.positronic.ro"
+APP_URL = os.getenv("APP_URL", "").strip().rstrip("/") or "https://trial-console.barking-elevator.ts.net"
 
 # Content paths
 PATH = "content"
