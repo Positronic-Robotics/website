@@ -531,10 +531,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.announce-short {
-  display: none;
-}
-
 .announce-close {
   position: absolute;
   top: 50%;
@@ -560,11 +556,7 @@ a:hover {
     font-size: 0.85rem;
   }
 
-  .announce-long {
+  .announce-cta {
     display: none;
-  }
-
-  .announce-short {
-    display: inline;
   }
 }
