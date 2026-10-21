@@ -89,6 +89,27 @@
   </script>
 </head>
 <body>
+  <aside class="announce" id="announce" aria-label="Announcement">
+    <a class="announce-link" href="https://competition.phail.ai/?utm_source=positronic.ro&amp;utm_medium=banner">
+      <span class="announce-chip">New</span>
+      <span class="announce-long">The Physical AI Competition by Nebius &times; Positronic is open: $23,500 in prizes, the top 10 run on a real robot.</span>
+      <span class="announce-short">Physical AI Competition is open: $23,500 in prizes.</span>
+      <span class="announce-cta">Register&nbsp;&rarr;</span>
+    </a>
+    <button type="button" class="announce-close" aria-label="Close the announcement">&times;</button>
+  </aside>
+  <script>
+    (function () {
+      // A visitor who closes the strip does not see it again in this browser.
+      var bar = document.getElementById('announce');
+      var key = 'announce-competition-closed';
+      try { if (localStorage.getItem(key)) bar.hidden = true; } catch (e) {}
+      bar.querySelector('.announce-close').addEventListener('click', function () {
+        bar.hidden = true;
+        try { localStorage.setItem(key, '1'); } catch (e) {}
+      });
+    })();
+  </script>
   <header class="navbar">
     <div class="navbar-inner page-shell">
       <a href="{{ SITEURL }}/" class="navbar-brand">
