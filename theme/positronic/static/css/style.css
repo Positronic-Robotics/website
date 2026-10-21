@@ -484,52 +484,89 @@ a:hover {
 
 
 
-/* The announcement strip above the navbar. */
+/* The competition strip above the navbar, in the competition site's violet. */
 .announce {
+  --announce-ground: #5d52f6;
+  --announce-pill: #e0ff4f;
+  --announce-pill-text: #052b42;
   position: relative;
   display: flex;
-  justify-content: center;
-  padding: 0.55rem 2.75rem;
-  background: #1b1b1b;
-  border-bottom: 1px solid var(--rule);
-  font-size: 0.9rem;
+  align-items: center;
+  padding: 0.5rem 2.75rem 0.5rem 0;
+  background: var(--announce-ground);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
   line-height: 1.35;
 }
 
-.announce[hidden] {
-  display: none;
-}
+.announce[hidden] { display: none; }
 
 .announce-link {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  color: #e8e8e8;
-  font-weight: 500;
+  gap: 1rem;
+  color: #ffffff;
+  font-weight: 600;
   text-decoration: none;
 }
 
-.announce-chip {
-  flex: none;
-  padding: 0.15rem 0.45rem;
-  border-radius: 3px;
-  background: var(--accent);
-  color: var(--bg);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+/* The line once, for screen readers; the moving copies are aria-hidden. */
+.announce-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.announce-ticker {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+}
+
+/* Two identical halves, so a shift of -50% loops without a jump. */
+.announce-track {
+  display: flex;
+  width: max-content;
+  animation: announce-scroll 60s linear infinite;
+}
+
+.announce-item { white-space: nowrap; }
+
+.announce-item::after {
+  content: "\2726";
+  margin: 0 1.25rem;
+  color: var(--announce-pill);
+}
+
+.announce-link:hover .announce-track,
+.announce-link:focus-visible .announce-track { animation-play-state: paused; }
+
+@keyframes announce-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announce-track { animation: none; }
 }
 
 .announce-cta {
-  color: var(--accent);
+  flex: none;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: var(--announce-pill);
+  color: var(--announce-pill-text);
   font-weight: 700;
   white-space: nowrap;
 }
 
-.announce-link:hover .announce-cta {
-  text-decoration: underline;
-}
+.announce-link:hover .announce-cta { background: #ffffff; }
 
 .announce-close {
   position: absolute;
@@ -539,24 +576,23 @@ a:hover {
   padding: 0.4rem;
   border: 0;
   background: none;
-  color: #8a8a8a;
+  color: rgba(255, 255, 255, 0.75);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
 }
 
-.announce-close:hover {
-  color: #e8e8e8;
-}
+.announce-close:hover { color: #ffffff; }
 
 @media (max-width: 640px) {
   .announce {
-    justify-content: flex-start;
-    padding-left: 1rem;
+    padding-right: 2.25rem;
     font-size: 0.85rem;
   }
 
-  .announce-cta {
-    display: none;
-  }
+  .announce-link { gap: 0.6rem; }
+
+  .announce-cta { padding: 0.25rem 0.65rem; }
+
+  .announce-close { right: 0.3rem; }
 }

@@ -91,18 +91,25 @@
 <body>
   <aside class="announce" id="announce" aria-label="Announcement">
     <a class="announce-link" href="https://competition.phail.ai/?utm_source=positronic.ro&amp;utm_medium=banner">
-      <span class="announce-chip">Join</span>
-      <span class="announce-text">Is your model a top model? Join Nebius &times; Positronic competition to find out and win prizes!</span>
-      <span class="announce-cta">Register&nbsp;&rarr;</span>
+      <span class="announce-text">Nebius &times; Positronic Physical AI Competition, October&ndash;December 2026</span>
+      <span class="announce-ticker" aria-hidden="true"><span class="announce-track">{%- for _ in range(8) %}<span class="announce-item">Nebius &times; Positronic Physical AI Competition</span><span class="announce-item">October&ndash;December 2026</span>{% endfor -%}</span></span>
+      <span class="announce-cta" id="announce-cta">Submit your model&nbsp;&rarr;</span>
     </a>
     <button type="button" class="announce-close" aria-label="Close the announcement">&times;</button>
   </aside>
   <script>
     (function () {
+      // The button follows the competition.phail.ai timeline; 27 Nov and 7 Dec are still "tbc" there.
+      var stages = [['2026-11-27', 'Watch the final'], ['2026-12-08', 'See results']];
+      var label = 'Submit your model';
+      stages.forEach(function (s) { if (Date.now() >= Date.parse(s[0] + 'T00:00:00Z')) label = s[1]; });
+      document.getElementById('announce-cta').textContent = label + '\u00a0\u2192';
       // A visitor who closes the strip does not see it again in this browser.
       var bar = document.getElementById('announce');
       var key = 'announce-competition-closed';
       try { if (localStorage.getItem(key)) bar.hidden = true; } catch (e) {}
+      // The strip comes down by itself a month after the 7 Dec finale.
+      if (Date.now() >= Date.parse('2027-01-08T00:00:00Z')) bar.hidden = true;
       bar.querySelector('.announce-close').addEventListener('click', function () {
         bar.hidden = true;
         try { localStorage.setItem(key, '1'); } catch (e) {}
