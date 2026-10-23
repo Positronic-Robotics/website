@@ -1,6 +1,7 @@
 Title: How to Train Your Robot: Talk at Neapolis University
 Date: 2025-12-12
 Category: Blog
+Robots: noindex
 Slug: how-to-train-your-robot-neapolis
 Author: Sergey Arkhangelskiy
 Summary: Sergey gave a talk at Neapolis University Pafos on "How to Train Your Robot: A Practical Guide to Physical AI". Here are the slides and summary.

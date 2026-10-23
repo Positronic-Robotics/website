@@ -8,7 +8,7 @@
   <url>
     <loc>{{ ABSOLUTE_BASE_URL }}/{{ INDEX_SAVE_AS }}</loc>
   </url>
-{% for article in articles %}
+{% for article in articles if not article.robots %}
   <url>
     <loc>{{ ABSOLUTE_BASE_URL }}/{{ article.url }}</loc>
     <lastmod>{{ (article.modified or article.date).strftime('%Y-%m-%d') }}</lastmod>
