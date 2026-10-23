@@ -25,6 +25,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 {% block head_meta %}{% endblock %}
+{% if article and article.robots %}
+  <meta name="robots" content="{{ article.robots }}" />
+{% endif %}
   <title>{{ head_title }}</title>
   <meta name="description" content="{{ head_description | escape }}" />
   <link rel="canonical" href="{{ canonical }}" />

@@ -1,4 +1,4 @@
-Title: About Positronic Robotics: independent physical AI evaluation
+Title: About Positronic Robotics
 Slug: about
 Save_as: about.html
 URL: about.html
