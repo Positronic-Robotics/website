@@ -483,3 +483,133 @@ a:hover {
 
 
 
+
+/* The competition strip above the navbar, in the competition site's violet. */
+.announce {
+  --announce-ground: #5d52f6;
+  --announce-pill: #e0ff4f;
+  --announce-pill-text: #052b42;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2.75rem 0.5rem 0;
+  background: var(--announce-ground);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.announce[hidden] { display: none; }
+
+.announce-link {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* The line once, for screen readers; the moving copies are aria-hidden. */
+.announce-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.announce-ticker {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+}
+
+/* Two identical halves, so a shift of -50% loops without a jump. */
+.announce-track {
+  display: flex;
+  width: max-content;
+  animation: announce-scroll 60s linear infinite;
+}
+
+.announce-item { white-space: nowrap; }
+
+.announce-item::after {
+  content: "\2726";
+  margin: 0 1.25rem;
+  color: var(--announce-pill);
+}
+
+.announce-link:hover .announce-track,
+.announce-link:focus-visible .announce-track { animation-play-state: paused; }
+
+@keyframes announce-scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* Without motion, one copy of the line stands still and wraps to fit. */
+@media (prefers-reduced-motion: reduce) {
+  .announce-ticker {
+    padding-left: 1rem;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .announce-track {
+    flex-wrap: wrap;
+    width: auto;
+    animation: none;
+  }
+
+  .announce-item { white-space: normal; }
+
+  .announce-item:nth-child(n + 3) { display: none; }
+
+  .announce-item:nth-child(2)::after { content: none; }
+}
+
+.announce-cta {
+  flex: none;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: var(--announce-pill);
+  color: var(--announce-pill-text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.announce-link:hover .announce-cta { background: #ffffff; }
+
+.announce-close {
+  position: absolute;
+  top: 50%;
+  right: 0.6rem;
+  transform: translateY(-50%);
+  padding: 0.4rem;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.announce-close:hover { color: #ffffff; }
+
+@media (max-width: 640px) {
+  .announce {
+    padding-right: 2.25rem;
+    font-size: 0.85rem;
+  }
+
+  .announce-link { gap: 0.6rem; }
+
+  .announce-cta { padding: 0.25rem 0.65rem; }
+
+  .announce-close { right: 0.3rem; }
+}
