@@ -4,6 +4,8 @@ Category: Blog
 Slug: nebius-positronic-physical-ai-competition
 Author: Positronic Team
 Summary: Policy submissions for the Nebius × Positronic Physical AI Competition are now open. Teams are scored in simulation first, and the top 10 advance to a physical robot arm.
+Image: media/competition-trailer-poster.jpg
+Header_image: no
 
 **Is your model a top model?**
 

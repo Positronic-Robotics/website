@@ -16,7 +16,7 @@
       <h1>{{ article.title }}</h1>
     </header>
 
-    {% if article.image %}
+    {% if article.image and article.header_image != "no" %}
     <div class="article-image">
       <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}" />
     </div>
