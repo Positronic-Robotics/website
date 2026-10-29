@@ -1,4 +1,4 @@
-Title: Positronic Robotics: the new standard of Physical AI eval
+Title: Positronic Robotics: the new standard of physical AI evaluation
 Slug: index
 Save_as: index.html
 URL: index.html
