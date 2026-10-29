@@ -6,7 +6,7 @@ from pathlib import Path
 # Core site settings
 AUTHOR = "Positronic Robotics"
 SITENAME = "Positronic Robotics"
-SITESUBTITLE = "The new standard of Physical AI eval"
+SITESUBTITLE = "The new standard of physical AI evaluation"
 PRODUCTION_ORIGIN = "https://positronic.ro"
 SITEURL = os.getenv("SITEURL", PRODUCTION_ORIGIN).rstrip("/")
 
