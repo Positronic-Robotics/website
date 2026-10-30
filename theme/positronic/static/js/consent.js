@@ -46,6 +46,14 @@
   }
 
   if (choice === GRANTED) loadAnalytics();
+
+  // A choice made in another tab applies to this one too.
+  window.addEventListener('storage', function (event) {
+    if (event.key !== CHOICE_KEY) return;
+    if (event.newValue === GRANTED) loadAnalytics(); else stopAnalytics();
+    if (banner) banner.hidden = event.newValue === GRANTED || event.newValue === DENIED;
+  });
+
   if (!banner) return;
   if (choice !== GRANTED && choice !== DENIED) banner.hidden = false;
 
