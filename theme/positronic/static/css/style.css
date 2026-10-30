@@ -634,7 +634,7 @@ a:hover {
 
 .site-footer-link:hover { color: var(--accent); }
 
-/* The Google Analytics consent banner. Decline and Accept are the same size. */
+/* Decline and Accept stay the same size: a consent banner must not steer the visitor to Accept. */
 .consent {
   position: fixed;
   right: 1rem;
