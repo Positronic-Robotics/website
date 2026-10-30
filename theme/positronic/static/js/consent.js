@@ -1,12 +1,15 @@
-// Google Analytics loads only after the visitor accepts it. Plausible sets no cookies and loads from base.html.
+// Google Analytics loads only after the visitor accepts it.
 // A deck page has no banner and no footer: it loads analytics only on a choice made on the main site.
 (function () {
   var GA_ID = 'G-0LV5R7LHQ3';
   var CHOICE_KEY = 'analytics-consent';
+  var GRANTED = 'granted';
+  var DENIED = 'denied';
   var host = window.location.hostname;
   var isProduction = host === 'positronic.ro' || host === 'www.positronic.ro';
   var banner = document.getElementById('consent');
   var choice = null;
+  // Blocked storage reads as no choice: GA stays off and the banner asks again on each page.
   try { choice = localStorage.getItem(CHOICE_KEY); } catch (e) {}
 
   function loadAnalytics() {
@@ -36,14 +39,15 @@
   }
 
   function decide(value) {
+    // Blocked storage keeps the choice for this page only; see the read above.
     try { localStorage.setItem(CHOICE_KEY, value); } catch (e) {}
     banner.hidden = true;
-    if (value === 'granted') loadAnalytics(); else stopAnalytics();
+    if (value === GRANTED) loadAnalytics(); else stopAnalytics();
   }
 
-  if (choice === 'granted') loadAnalytics();
+  if (choice === GRANTED) loadAnalytics();
   if (!banner) return;
-  if (choice !== 'granted' && choice !== 'denied') banner.hidden = false;
+  if (choice !== GRANTED && choice !== DENIED) banner.hidden = false;
 
   banner.querySelectorAll('[data-consent]').forEach(function (button) {
     button.addEventListener('click', function () { decide(button.getAttribute('data-consent')); });
