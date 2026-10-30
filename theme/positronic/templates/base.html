@@ -65,19 +65,6 @@
   }
   </script>
 {% endif %}
-  <!-- Google tag (gtag.js) - only load on production -->
-  <script>
-    if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0LV5R7LHQ3';
-      document.head.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-0LV5R7LHQ3');
-    }
-  </script>
   <!-- Privacy-friendly analytics by Plausible - only load on production -->
   <script>
     if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
@@ -136,5 +123,16 @@
   <main>
     {% block content %}{% endblock %}
   </main>
+  <footer class="site-footer">
+    <button type="button" class="site-footer-link" data-consent-open>Cookie settings</button>
+  </footer>
+  <div class="consent" id="consent" role="region" aria-label="Cookie consent" hidden>
+    <p class="consent-text">This site uses Google Analytics cookies to count visits and to see how people find us. The cookies are set only if you accept. To change your choice later, use &ldquo;Cookie settings&rdquo; at the bottom of any page.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-button" data-consent="denied">Decline</button>
+      <button type="button" class="consent-button consent-accept" data-consent="granted">Accept</button>
+    </div>
+  </div>
+  <script src="{{ SITEURL }}/theme/positronic/static/js/consent.js"></script>
 </body>
 </html>
