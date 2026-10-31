@@ -291,6 +291,8 @@ a:hover {
   padding: 0 2rem;
   margin: 0 auto;
   gap: 6rem;
+  flex-wrap: wrap;
+  row-gap: 0.75rem;
 }
 
 .navbar-brand {
@@ -302,6 +304,7 @@ a:hover {
   letter-spacing: -0.01em;
   text-decoration: none;
   color: #f2f2f2;
+  white-space: nowrap;
 }
 
 .navbar-brand img {
@@ -322,6 +325,7 @@ a:hover {
   font-weight: 600;
   font-size: 1.0rem;
   letter-spacing: 0.005em;
+  white-space: nowrap;
   transition: color 0.15s;
 }
 
@@ -342,6 +346,25 @@ a:hover {
   bottom: 0;
   height: 2px;
   background: var(--accent);
+}
+
+/* The links to the platform web app sit at the right end of the bar. */
+.navbar-app {
+  margin-left: auto;
+  align-items: center;
+}
+
+.navbar nav a.navbar-start {
+  padding: 3px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 99px;
+  color: var(--accent);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.navbar nav a.navbar-start:hover {
+  background: var(--accent);
+  color: var(--bg);
 }
 
 /* The rule under the navbar. It carries no numbers, so nobody can read it as a chart. */
@@ -376,7 +399,8 @@ a:hover {
   background-repeat: repeat-x;
 }
 
-@media (max-width: 768px) {
+/* With the platform links, the bar fits in one row at full size only from 963 px. */
+@media (max-width: 962px) {
   .navbar-inner {
     gap: 1.5rem;
     padding: 0 1.5rem;
@@ -392,6 +416,26 @@ a:hover {
 
   .navbar nav a {
     font-size: 0.9rem;
+  }
+}
+
+/* On a phone the platform links take their own row, at the left. */
+@media (max-width: 480px) {
+  .navbar-app {
+    margin-left: 0;
+  }
+}
+
+/* From 360 to 434 px the brand takes two lines, as before, so the site links stay in the first
+   row. From 435 px they fit next to the brand on one line. Below 360 px they do not fit next to
+   the brand, so the brand keeps one line. */
+@media (min-width: 360px) and (max-width: 434px) {
+  .navbar-brand {
+    white-space: normal;
+  }
+
+  .brand-text {
+    width: min-content;
   }
 }
 
