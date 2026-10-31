@@ -4,7 +4,7 @@ Save_as: index.html
 URL: index.html
 Template: home
 
-<section class="hero"><h1>The new standard&nbsp;of <em>Physical AI eval</em></h1><p class="hero-lede">We measure whether your model is getting better: your policy on our robots. Video and a score for every run, back the same day.</p><div class="actions"><a class="act act-primary" href="#talk">Talk to us</a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div></section>
+<section class="hero"><h1>The new standard&nbsp;of <em>Physical AI eval</em></h1><p class="hero-lede">We measure whether your model is getting better: your policy on our robots. Video and a score for every run, back the same day.</p><div class="actions"><a class="act act-primary" href="#talk">Talk to us</a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a><a class="act act-ghost" href="/nebius-positronic-physical-ai-competition">Read the launch post<span class="sub">Physical AI Competition</span></a></div></section>
 
 <section class="reel"><figure><video poster="/media/hero-droid-grid-poster.jpg" autoplay muted loop playsinline controls preload="auto" width="1920" height="1080" aria-label="Three robot AI models running four DROID tasks on one Franka arm"><source src="/media/hero-droid-grid.mp4" type="video/mp4"><source src="/media/hero-droid-grid.webm" type="video/webm"></video></figure></section>
 
