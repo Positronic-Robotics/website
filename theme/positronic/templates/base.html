@@ -25,6 +25,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 {% block head_meta %}{% endblock %}
+{% if article and article.robots %}
+  <meta name="robots" content="{{ article.robots }}" />
+{% endif %}
   <title>{{ head_title }}</title>
   <meta name="description" content="{{ head_description | escape }}" />
   <link rel="canonical" href="{{ canonical }}" />
@@ -62,19 +65,6 @@
   }
   </script>
 {% endif %}
-  <!-- Google tag (gtag.js) - only load on production -->
-  <script>
-    if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
-      var script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0LV5R7LHQ3';
-      document.head.appendChild(script);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-0LV5R7LHQ3');
-    }
-  </script>
   <!-- Privacy-friendly analytics by Plausible - only load on production -->
   <script>
     if (window.location.hostname === 'positronic.ro' || window.location.hostname === 'www.positronic.ro') {
@@ -89,11 +79,38 @@
   </script>
 </head>
 <body>
+  <aside class="announce" id="announce" aria-label="Announcement">
+    <a class="announce-link" href="https://competition.phail.ai/?utm_source=positronic.ro&amp;utm_medium=banner&amp;utm_campaign=competition-launch-2026-10&amp;utm_content=company">
+      <span class="announce-text">Nebius &times; Positronic Physical AI Competition, October&ndash;December 2026</span>
+      <span class="announce-ticker" aria-hidden="true"><span class="announce-track">{%- for _ in range(8) %}<span class="announce-item">Nebius &times; Positronic Physical AI Competition</span><span class="announce-item">October&ndash;December 2026</span>{% endfor -%}</span></span>
+      <span class="announce-cta" id="announce-cta">Submit your model&nbsp;&rarr;</span>
+    </a>
+    <button type="button" class="announce-close" aria-label="Close the announcement">&times;</button>
+  </aside>
+  <script>
+    (function () {
+      // The button follows the competition.phail.ai timeline; 27 Nov and 7 Dec are still "tbc" there.
+      var stages = [['2026-11-27', 'Watch the final'], ['2026-12-08', 'See results']];
+      var label = 'Submit your model';
+      stages.forEach(function (s) { if (Date.now() >= Date.parse(s[0] + 'T00:00:00Z')) label = s[1]; });
+      document.getElementById('announce-cta').textContent = label + '\u00a0\u2192';
+      // A visitor who closes the strip does not see it again in this browser.
+      var bar = document.getElementById('announce');
+      var key = 'announce-competition-closed';
+      try { if (localStorage.getItem(key)) bar.hidden = true; } catch (e) {}
+      // The strip comes down by itself a month after the 7 Dec finale.
+      if (Date.now() >= Date.parse('2027-01-08T00:00:00Z')) bar.hidden = true;
+      bar.querySelector('.announce-close').addEventListener('click', function () {
+        bar.hidden = true;
+        try { localStorage.setItem(key, '1'); } catch (e) {}
+      });
+    })();
+  </script>
   <header class="navbar">
     <div class="navbar-inner page-shell">
       <a href="{{ SITEURL }}/" class="navbar-brand">
         <img src="{{ SITEURL }}/theme/positronic/static/img/logo.png" alt="Positronic Logo" />
-        <span class="brand-text">Positronic <span class="brand-suffix">Robotics</span></span>
+        <span class="brand-text">Positronic Robotics</span>
       </a>
       <nav aria-label="Site">
         <a href="{{ SITEURL }}/"{% if section == 'home' %} class="is-current" aria-current="page"{% endif %}>Home</a>
@@ -111,5 +128,16 @@
   <main>
     {% block content %}{% endblock %}
   </main>
+  <footer class="site-footer">
+    <button type="button" class="site-footer-link" data-consent-open>Cookie settings</button>
+  </footer>
+  <div class="consent" id="consent" role="region" aria-label="Cookie consent" hidden>
+    <p class="consent-text">This site uses Google Analytics cookies to count visits and to see how people find us. The cookies are set only if you accept. To change your choice later, use &ldquo;Cookie settings&rdquo; at the bottom of any page.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-button" data-consent="denied">Decline</button>
+      <button type="button" class="consent-button consent-accept" data-consent="granted">Accept</button>
+    </div>
+  </div>
+  <script src="{{ SITEURL }}/theme/positronic/static/js/consent.js"></script>
 </body>
 </html>
