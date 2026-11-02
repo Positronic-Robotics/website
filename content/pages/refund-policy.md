@@ -5,7 +5,7 @@ Description: When Positronic refunds credits on the Positronic platform, and how
 Version: 1.0  
 Effective date: 2 November 2026
 
-This policy is part of the Positronic Platform Terms of Service. The words "Positronic", "customer",
+This policy is part of the [Positronic Platform Terms of Service](/terms). The words "Positronic", "customer",
 "consumer", "credit", "bought credit", "granted credit", "hold", "evaluation", "score" and "pricing
 page" have the meaning that the terms give them. Positronic is Positronic Robotics Inc.
 
