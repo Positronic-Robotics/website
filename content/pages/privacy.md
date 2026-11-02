@@ -6,10 +6,10 @@ Version: 1.0
 Effective date: 2 November 2026
 
 This policy tells how Positronic uses personal data when a person visits the website
-`https://positronic.ro`, signs in to the Positronic platform, buys credits and runs evaluations. The
-platform is the API at `https://platform.positronic.ro`, the web console at
-`https://console.positronic.ro`, and the `positronic` command-line tool. The Physical AI
-Competition has its own privacy policy at `https://competition.phail.ai/privacy`.
+<https://positronic.ro>, signs in to the Positronic platform, buys credits and runs evaluations. The
+platform is the API at <https://platform.positronic.ro>, the web console at
+<https://console.positronic.ro>, and the `positronic` command-line tool. The Physical AI
+Competition has its own privacy policy at <https://competition.phail.ai/privacy>.
 
 ## 1. Who is responsible
 
@@ -64,14 +64,14 @@ Checkout asks the payer for an email address, a name and a billing address, whic
 calculation needs. A business can also give its tax number. Stripe can send the payer an email
 receipt. Stripe processes the payment for Positronic, and it also uses payment data as a separate
 controller for its own duties, such as fraud checks and the law, under the Stripe privacy policy at
-`https://stripe.com/privacy`.
+<https://stripe.com/privacy>.
 
 When Positronic makes a Stripe customer for an organization, it gives Stripe only the organization
 id. For a personal organization, that id has the form `user-<number>` and holds no name.
 
 ## 5. Cookies on the console
 
-The console at `https://console.positronic.ro` sets only the cookies that the sign-in needs:
+The console at <https://console.positronic.ro> sets only the cookies that the sign-in needs:
 
 | Cookie | Use | Duration |
 | --- | --- | --- |
@@ -173,7 +173,7 @@ knowingly collect data from younger people.
 
 ## 13. The website positronic.ro
 
-The website `https://positronic.ro` is hosted on Cloudflare Pages.
+The website <https://positronic.ro> is hosted on Cloudflare Pages.
 
 - **Google Analytics** (measurement id `G-0LV5R7LHQ3`) loads only after the visitor selects Accept
   in the consent banner. It then sets cookies. The visitor can withdraw the consent at any time with

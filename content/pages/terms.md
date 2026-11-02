@@ -54,14 +54,14 @@ accepted and when.
 platform, that agreement wins where it differs from these terms. These terms apply to each matter
 that the signed agreement does not cover.
 
-1.6 **Other documents.** The refund policy at `https://positronic.ro/refund-policy` is part of these
-terms. The privacy policy at `https://positronic.ro/privacy` tells how Positronic uses personal
+1.6 **Other documents.** The refund policy at <https://positronic.ro/refund-policy> is part of these
+terms. The privacy policy at <https://positronic.ro/privacy> tells how Positronic uses personal
 data. The privacy policy is information. It is not part of these terms.
 
 ## 2. Definitions
 
 - **Platform**: Positronic's evaluation service. It includes the API at
-  `https://platform.positronic.ro`, the web console at `https://console.positronic.ro`, and the
+  <https://platform.positronic.ro>, the web console at <https://console.positronic.ro>, and the
   `positronic` command-line tool and client library.
 - **Organization**: the account that holds credits, purchases, evaluations and recordings.
   Registration makes one personal organization for each user.
@@ -80,7 +80,7 @@ data. The privacy policy is information. It is not part of these terms.
 - **Hold**: credits that the platform reserves for an accepted evaluation.
 - **Settlement**: the step that charges the credits that an evaluation used and releases the rest
   of its hold.
-- **Pricing page**: the page at `https://console.positronic.ro/pricing` that shows the credit
+- **Pricing page**: the page at <https://console.positronic.ro/pricing> that shows the credit
   packages, their prices and the rates in credits.
 
 ## 3. The account

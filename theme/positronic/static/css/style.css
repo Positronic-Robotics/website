@@ -253,6 +253,18 @@ tr:last-child td {
   border-bottom: none;
 }
 
+@media (max-width: 640px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
 a {
   color: var(--text);
   font-weight: 600;
