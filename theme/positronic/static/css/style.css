@@ -623,7 +623,9 @@ a:hover {
 
 .site-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1.5rem;
   padding: 1.5rem 1rem 2rem;
 }
 
