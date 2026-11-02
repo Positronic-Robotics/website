@@ -1,41 +1,9 @@
 /* The evaluation page. Extends home.css: the same ground, faces and accent, laid
-   out around portrait clips from the lab instead of the label rail. */
+   out around two real runs from the lab, side by side. */
 
 .home {
   --wide: 1120px;
   --clip-radius: 14px;
-}
-
-/* ---- Clips ---------------------------------------------------------------- */
-
-.home .ev-clip {
-  margin: 0;
-  position: relative;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--clip-radius);
-  overflow: hidden;
-  background: #0f110d;
-  border: 1px solid var(--hair);
-  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.9);
-}
-
-.home .ev-clip video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* A thin accent line on the bottom edge ties each clip to the page accent. */
-.home .ev-clip::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent, #b1e74f), transparent 70%);
-  opacity: 0.8;
 }
 
 /* ---- Hero ----------------------------------------------------------------- */
@@ -44,10 +12,6 @@
   max-width: var(--wide);
   margin: 0 auto;
   padding: 72px 32px 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
-  gap: 72px;
-  align-items: center;
 }
 
 .home .ev-kicker,
@@ -71,24 +35,13 @@
 .home .ev-hero .hero-lede { max-width: 40ch; }
 .home .ev-hero .actions { justify-content: flex-start; }
 
-.home .ev-clip-hero { max-height: 640px; }
-
-/* ---- Text beside a clip --------------------------------------------------- */
+/* ---- Text sections ------------------------------------------------------ */
 
 .home .ev-split {
   max-width: var(--wide);
-  margin: 128px auto 0;
+  margin: 112px auto 0;
   padding: 0 32px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
-  gap: 80px;
-  align-items: start;
 }
-
-.home .ev-split-rev { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); }
-
-/* The clip stays in view while the reader goes down the text beside it. */
-.home .ev-sticky { position: sticky; top: 32px; }
 
 .home .ev-text { display: flex; flex-direction: column; gap: 20px; min-width: 0; max-width: 640px; }
 
@@ -171,68 +124,129 @@
 
 .home .ev-list b { color: var(--accent, #b1e74f); font-weight: 600; }
 
-/* ---- Strip of three clips ------------------------------------------------- */
 
-.home .ev-strip {
-  max-width: var(--wide);
-  margin: 128px auto 0;
+.home .ev-split + .band.close { margin-top: 128px; }
+
+/* ---- Two runs, side by side ----------------------------------------------- */
+
+.home .ev-duel {
+  max-width: 1240px;
+  margin: 88px auto 0;
   padding: 0 32px;
 }
-
-.home .ev-strip-row {
+.home .ev-duel-title { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.home .ev-duel-title .ev-num { margin-bottom: 0; }
+.home .ev-duel-title p { margin: 0; color: #cdd2c4; }
+.home .ev-duel-row {
+  margin-top: 22px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
-
-/* The middle clip sits lower, so the three read as a row of frames, not a grid. */
-.home .ev-strip-row .ev-clip:nth-child(2) { transform: translateY(40px); }
-
-.home .ev-strip-line {
-  margin-top: 76px;
-  text-align: center;
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #f2f5ea;
+.home .ev-duel-card {
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.9);
 }
-
-.home .ev-split + .band.close,
-.home .ev-split-rev + .band.close { margin-top: 128px; }
+.home .ev-duel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 4px 12px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+.home .ev-duel-model { color: #f2f5ea; font-weight: 500; }
+.home .ev-duel-head a { color: var(--dim); text-decoration: underline; text-underline-offset: 3px; }
+.home .ev-duel-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #0f110d;
+}
+.home .ev-duel-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.home .ev-duel-clock {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(15, 17, 13, 0.82);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: #f2f5ea;
+  font-variant-numeric: tabular-nums;
+}
+.home .ev-duel-counts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.home .ev-duel-counts div { padding: 4px 6px; }
+.home .ev-duel-counts b {
+  display: block;
+  font-family: var(--display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent, #b1e74f);
+  font-variant-numeric: tabular-nums;
+}
+.home .ev-duel-counts div + div b { color: #f2f5ea; }
+.home .ev-duel-counts span { display: block; margin-top: 6px; font-size: 0.9rem; color: #cdd2c4; }
+.home .ev-duel-bar {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 5px;
+}
+.home .ev-duel-bar li { height: 8px; border-radius: 3px; background: #26291f; transition: background 0.3s; }
+.home .ev-duel-bar li.is-placed { background: var(--accent, #b1e74f); }
+.home .ev-duel-result {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--hair);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: #cdd2c4;
+}
+.home .ev-duel-result b { color: var(--accent, #b1e74f); font-weight: 500; }
+.home .ev-duel-result.ev-fail b { color: #ff9b8a; }
+.home .ev-duel-card.is-running .ev-duel-result { color: var(--dim); }
+.home .ev-duel-note { margin: 14px 0 0; font-size: 0.85rem; color: var(--dim); }
 
 /* ---- Narrow --------------------------------------------------------------- */
 
 @media (max-width: 900px) {
-  .home .ev-hero,
-  .home .ev-split,
-  .home .ev-split-rev { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .home .ev-hero { padding-top: 48px; }
   .home .ev-split { margin-top: 88px; }
-  .home .ev-clip-hero,
-  .home .ev-sticky { position: static; width: min(100%, 340px); max-height: none; }
-  /* Text first, then its clip, in both sections. */
-  .home .ev-split-rev .ev-clip { order: 2; }
-  .home .ev-strip { margin-top: 88px; padding: 0; }
-  /* On a phone the three clips scroll sideways, one at a time. */
-  .home .ev-strip-row {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: 68%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 0 32px 6px;
-    scrollbar-width: none;
-  }
-  .home .ev-strip-row::-webkit-scrollbar { display: none; }
-  .home .ev-strip-row .ev-clip { scroll-snap-align: center; }
-  .home .ev-strip-row .ev-clip:nth-child(2) { transform: none; }
-  .home .ev-strip-line { margin-top: 32px; padding: 0 32px; }
 }
 
 @media (max-width: 640px) {
   .home .ev-hero,
-  .home .ev-split { padding-left: 16px; padding-right: 16px; }
-  .home .ev-strip-row { padding: 0 16px 6px; }
+  .home .ev-split,
+  .home .ev-duel { padding-left: 16px; padding-right: 16px; }
+  .home .ev-duel { margin-top: 56px; }
+  .home .ev-duel-row { gap: 10px; }
+  .home .ev-duel-card { padding: 8px; border-radius: 10px; }
+  .home .ev-duel-head { flex-direction: column; gap: 2px; padding: 0 2px 8px; font-size: 0.68rem; min-height: 4.6em; }
+  .home .ev-duel-clock { top: 6px; right: 6px; font-size: 0.7rem; padding: 2px 6px; }
+  .home .ev-duel-counts { gap: 4px; margin-top: 8px; }
+  .home .ev-duel-counts div { padding: 2px; }
+  .home .ev-duel-counts b { font-size: 1.8rem; }
+  .home .ev-duel-counts span { font-size: 0.75rem; margin-top: 2px; }
+  .home .ev-duel-bar { gap: 3px; }
+  .home .ev-duel-bar li { height: 6px; }
+  .home .ev-duel-result { font-size: 0.7rem; padding: 7px 8px; }
   .home .ev-stats { grid-template-columns: minmax(0, 1fr); }
 }
