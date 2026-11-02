@@ -38,6 +38,8 @@ Contact for every privacy request: hi@positronic.ro.
 | **Recordings**: for each episode, the robot state, the camera video of the robot and its work area, the commands, the times, the scores, and the notes and labels of operators and reviewers. Each recording is linked to the organization | To score the evaluation, to show it to the customer, to make reports, and to check each charge; and, with no customer name, to improve Positronic's labeling techniques | Performance of the contract; legitimate interest in better labeling (Art. 6(1)(f)) for the last purpose |
 | **Security and operation logs**: the requests to the servers, with the user id, the time and the result | To find faults and abuse, and to keep the platform safe | Legitimate interest in a safe and working platform |
 | **Messages to Positronic**: emails to the support address and their answers | To answer the person | Performance of the contract; legitimate interest |
+| **Contact form on positronic.ro**: the email address and the note that the visitor types (section 13) | To answer the visitor | Steps at the person's request before a contract (Art. 6(1)(b)); legitimate interest in answering requests (Art. 6(1)(f)) |
+| **Call booking**: the name, the email address and the time that a visitor gives on the booking page for a call (section 13) | To hold the call | Steps at the person's request before a contract; legitimate interest in answering requests |
 | **Website analytics**: the pages visited on positronic.ro, and one event when a visitor clicks the link to book a call or sends the contact form (section 13) | To count and understand visits, and to count how many visits lead to a contact | Consent for Google Analytics; legitimate interest for Plausible, which sets no cookies |
 
 To use the platform, a person must give the sign-in data. To buy credits, the payer gives payment
@@ -95,8 +97,9 @@ contract, and only to give their service.
 | Axiom | Security and operation logs | EU (Germany) |
 | Resend | Delivery of sign-in code emails | EU (Ireland), with records of each email in the United States |
 | Slack | Internal alerts to Positronic staff, for example about a payment dispute. A billing alert names the organization, the purchase and the amount | United States |
-| Google | Website analytics (section 13); storage of the leads of the website contact form in Google Workspace | United States |
+| Google | Website analytics (section 13); storage of the leads of the website contact form and of booked calls in Google Workspace | United States |
 | Plausible | Website analytics with no cookies (section 13) | EU |
+| Notion | The booking page for calls (Notion Calendar) | United States |
 | Contracted reviewers | Label recordings of robot evaluations, as part of the scoring, under confidentiality and data-processing terms | Outside the EU |
 
 Positronic's own staff, and the operators who run the robots in Positronic's lab in Cyprus, see
@@ -128,6 +131,7 @@ her contract. A person can ask for a copy of these safeguards at the privacy con
 | Purchases, credit records, acceptance of the terms and payment messages | 7 years after the end of the tax year of the purchase, as accounting and tax law require |
 | Evaluations, scores, recordings and policy logs | While the account is open. Positronic deletes them within 90 days after the customer asks, or after the account closes |
 | Security and operation logs | 365 days. Positronic deletes them after that |
+| Contact-form leads and booked calls | Until Positronic no longer needs them to answer the visitor, or until the visitor asks Positronic to delete them |
 | Backups of the databases | The continuous backup keeps about one day of history. Positronic deletes the copies of the databases that it makes before each deploy after 7 days, except the two most recent copies |
 
 ## 9. Security
@@ -187,6 +191,9 @@ The contact form sends the email address and the note that the visitor types to 
 server. The server keeps them in a file, adds them to a Google Sheet in Positronic's Google
 Workspace, and emails them to Positronic staff. Positronic keeps a lead to answer the visitor, and
 deletes it when the visitor asks.
+
+The link to book a call opens a booking page of Notion Calendar. The name, the email address and
+the time that the visitor gives there reach Positronic as an event in its Google calendar.
 
 ## 14. United States state privacy laws
 
