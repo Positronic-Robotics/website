@@ -2,7 +2,7 @@ Title: Is Physical AI Ready? A New Leaderboard Measures Whether Robots Can Actua
 Date: 2026-03-31
 Category: Blog
 Slug: phail-launch
-URL: press/phail-launch.html
+URL: press/phail-launch
 Save_as: press/phail-launch.html
 Author: Positronic Team
 Summary: Positronic Robotics launches PhAIL (Physical AI Leaderboard) – an ongoing, real-world benchmark evaluating robotics foundation models on commercial tasks using throughput and reliability metrics.

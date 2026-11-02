@@ -6,7 +6,7 @@
   </url>
 {% endfor %}
   <url>
-    <loc>{{ ABSOLUTE_BASE_URL }}/{{ INDEX_SAVE_AS }}</loc>
+    <loc>{{ ABSOLUTE_BASE_URL }}/{{ INDEX_URL }}</loc>
   </url>
 {% for article in articles if not article.robots %}
   <url>
