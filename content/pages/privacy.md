@@ -38,7 +38,7 @@ Contact for every privacy request: hi@positronic.ro.
 | **Recordings**: for each episode, the robot state, the camera video of the robot and its work area, the commands, the times, the scores, and the notes and labels of operators and reviewers. Each recording is linked to the organization | To score the evaluation, to show it to the customer, to make reports, and to check each charge; and, with no customer name, to improve Positronic's labeling techniques | Performance of the contract; legitimate interest in better labeling (Art. 6(1)(f)) for the last purpose |
 | **Security and operation logs**: the requests to the servers, with the user id, the time and the result | To find faults and abuse, and to keep the platform safe | Legitimate interest in a safe and working platform |
 | **Messages to Positronic**: emails to the support address and their answers | To answer the person | Performance of the contract; legitimate interest |
-| **Website analytics**: the pages visited on positronic.ro (section 13) | To count and understand visits | Consent for Google Analytics; legitimate interest for Plausible, which sets no cookies |
+| **Website analytics**: the pages visited on positronic.ro, and one event when a visitor clicks the link to book a call or sends the contact form (section 13) | To count and understand visits, and to count how many visits lead to a contact | Consent for Google Analytics; legitimate interest for Plausible, which sets no cookies |
 
 To use the platform, a person must give the sign-in data. To buy credits, the payer gives payment
 data to Stripe. All other data comes from the use of the platform.
@@ -179,6 +179,9 @@ The website <https://positronic.ro> is hosted on Cloudflare Pages.
   in the consent banner. It then sets cookies. The visitor can withdraw the consent at any time with
   the Cookie settings link in the footer.
 - **Plausible Analytics** counts visits with no cookies and no personal profile.
+- When a visitor clicks the link to book a call, or sends the contact form, the site reports one
+  event to Plausible, and to Google Analytics if the visitor accepted it. The event names the
+  action (the booking link or the contact form). It holds no email address and no note.
 
 The contact form sends the email address and the note that the visitor types to Positronic's
 server. The server keeps them in a file, adds them to a Google Sheet in Positronic's Google
