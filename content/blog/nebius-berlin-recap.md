@@ -13,7 +13,7 @@ The talk opens with a simple question: *is today's robot AI better than yesterda
 PhAIL is built around the four principles that close those gaps. The slides walk through each one, then show what they tell us about where VLAs are right now.
 
 <div style="margin: 2rem 0; text-align: center;">
-    <a href="/nebius-berlin-0426/index.html" class="button" style="
+    <a href="/nebius-berlin-0426/" class="button" style="
         display: inline-block;
         padding: 0.8rem 1.6rem;
         background-color: var(--accent);

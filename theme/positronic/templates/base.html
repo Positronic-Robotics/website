@@ -15,7 +15,7 @@
   {% set section = 'blog' %}
   {% set head_title = 'Blog — ' ~ SITENAME %}
   {% set head_description = BLOG_DESCRIPTION %}
-  {% set head_path = INDEX_SAVE_AS %}
+  {% set head_path = INDEX_URL %}
   {% set og_type = 'website' %}
 {% endif %}
 {% set canonical = ABSOLUTE_BASE_URL ~ '/' ~ head_path %}
@@ -114,8 +114,8 @@
       </a>
       <nav aria-label="Site">
         <a href="{{ SITEURL }}/"{% if section == 'home' %} class="is-current" aria-current="page"{% endif %}>Home</a>
-        <a href="{{ SITEURL }}/about.html"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
-        <a href="{{ SITEURL }}/{{ INDEX_SAVE_AS }}"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
+        <a href="{{ SITEURL }}/about"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
+        <a href="{{ SITEURL }}/{{ INDEX_URL }}"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
       </nav>
       <nav class="navbar-app" aria-label="Platform">
         <a href="{{ APP_URL }}/pricing">Pricing</a>

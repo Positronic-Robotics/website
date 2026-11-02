@@ -1,7 +1,5 @@
 Title: About Positronic Robotics
 Slug: about
-Save_as: about.html
-URL: about.html
 Template: home
 Description: Positronic Robotics is two engineers from Google Search. We train no models and sell no robots, so no result on our rigs is a result about us.
 

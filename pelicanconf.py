@@ -53,9 +53,14 @@ DELETE_OUTPUT_DIRECTORY = False
 
 # URLs
 HOME_SLUG = "index"
-PAGE_URL = "{slug}.html"
+# The host serves each `<name>.html` at `/<name>` and answers 308 on the .html address, so
+# every link, canonical and sitemap entry names the address without the extension.
+PAGE_URL = "{slug}"
 PAGE_SAVE_AS = "{slug}.html"
+ARTICLE_URL = "{slug}"
+ARTICLE_SAVE_AS = "{slug}.html"
 INDEX_SAVE_AS = "blog.html"
+INDEX_URL = "blog"
 
 TIMEZONE = "Europe/Nicosia"
 DEFAULT_LANG = "en"
