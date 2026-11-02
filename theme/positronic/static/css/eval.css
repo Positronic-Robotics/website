@@ -1,57 +1,45 @@
-/* The evaluation page. Extends home.css: the same ground, faces and accent, laid
-   out around portrait clips from the lab instead of the label rail. */
+/* The evaluation page. Extends home.css: the same ground, faces and accent, under a
+   full-width film of the lab with the heading over it. */
 
-.home {
-  --wide: 1120px;
-  --clip-radius: 14px;
-}
-
-/* ---- Clips ---------------------------------------------------------------- */
-
-.home .ev-clip {
-  margin: 0;
+.home .ev-film {
   position: relative;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--clip-radius);
+  width: 100%;
+  height: min(86vh, 56.25vw);
+  min-height: 520px;
   overflow: hidden;
   background: #0f110d;
-  border: 1px solid var(--hair);
-  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.9);
 }
 
-.home .ev-clip video {
-  display: block;
+.home .ev-film-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* A thin accent line on the bottom edge ties each clip to the page accent. */
-.home .ev-clip::after {
+/* A dark wash from the bottom left keeps the heading readable on any frame. */
+.home .ev-film::after {
   content: "";
   position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(15, 17, 13, 0.96) 0%, rgba(15, 17, 13, 0.55) 38%, rgba(15, 17, 13, 0) 70%),
+    linear-gradient(to right, rgba(15, 17, 13, 0.55) 0%, rgba(15, 17, 13, 0) 55%);
+}
+
+.home .ev-film-text {
+  position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent, #b1e74f), transparent 70%);
-  opacity: 0.8;
-}
-
-/* ---- Hero ----------------------------------------------------------------- */
-
-.home .ev-hero {
-  max-width: var(--wide);
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 72px 32px 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
-  gap: 72px;
-  align-items: center;
+  padding: 0 32px 64px;
 }
 
-.home .ev-kicker,
-.home .ev-num {
+.home .ev-kicker {
   display: inline-block;
   font-family: var(--mono);
   font-size: 0.8rem;
@@ -59,180 +47,24 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent, #b1e74f);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
-.home .ev-hero h1 {
-  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+.home .ev-film h1 {
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 5.6vw, 4.6rem);
   letter-spacing: -0.03em;
   line-height: 1.02;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
 }
 
-.home .ev-hero .hero-lede { max-width: 40ch; }
-.home .ev-hero .actions { justify-content: flex-start; }
+.home .ev-film .hero-lede { max-width: 44ch; color: #e8f0d5; }
+.home .ev-film .actions { justify-content: flex-start; }
 
-.home .ev-clip-hero { max-height: 640px; }
+.home .ev-film + .band { margin-top: 112px; }
 
-/* ---- Text beside a clip --------------------------------------------------- */
-
-.home .ev-split {
-  max-width: var(--wide);
-  margin: 128px auto 0;
-  padding: 0 32px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
-  gap: 80px;
-  align-items: start;
-}
-
-.home .ev-split-rev { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); }
-
-/* The clip stays in view while the reader goes down the text beside it. */
-.home .ev-sticky { position: sticky; top: 32px; }
-
-.home .ev-text { display: flex; flex-direction: column; gap: 20px; min-width: 0; max-width: 640px; }
-
-.home .ev-text h2 { font-size: clamp(1.9rem, 3vw, 2.5rem); letter-spacing: -0.025em; }
-
-.home .ev-lead {
-  font-family: var(--display);
-  font-size: 1.3rem;
-  line-height: 1.45;
-  font-weight: 500;
-  color: #e8f0d5;
-}
-
-.home .ev-text a { color: var(--accent, #b1e74f); }
-
-/* ---- Figures -------------------------------------------------------------- */
-
-.home .ev-stats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin: 8px 0;
-}
-
-.home .ev-stat {
-  background: var(--panel);
-  border: 1px solid var(--hair);
-  border-radius: 10px;
-  padding: 22px 22px 20px;
-}
-
-.home .ev-stat b {
-  display: block;
-  font-family: var(--display);
-  font-size: 2.6rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--accent, #b1e74f);
-}
-
-.home .ev-stat span {
-  display: block;
-  margin-top: 12px;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #cdd2c4;
-}
-
-/* ---- Method list ---------------------------------------------------------- */
-
-.home .ev-list {
-  list-style: none;
-  counter-reset: ev;
-  margin: 4px 0;
-  padding: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.home .ev-list li {
-  counter-increment: ev;
-  position: relative;
-  padding: 16px 18px 16px 62px;
-  background: var(--panel);
-  border: 1px solid var(--hair);
-  border-radius: 10px;
-  line-height: 1.5;
-}
-
-.home .ev-list li::before {
-  content: counter(ev, decimal-leading-zero);
-  position: absolute;
-  left: 18px;
-  top: 19px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--accent, #b1e74f);
-}
-
-.home .ev-list b { color: var(--accent, #b1e74f); font-weight: 600; }
-
-/* ---- Strip of three clips ------------------------------------------------- */
-
-.home .ev-strip {
-  max-width: var(--wide);
-  margin: 128px auto 0;
-  padding: 0 32px;
-}
-
-.home .ev-strip-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-/* The middle clip sits lower, so the three read as a row of frames, not a grid. */
-.home .ev-strip-row .ev-clip:nth-child(2) { transform: translateY(40px); }
-
-.home .ev-strip-line {
-  margin-top: 76px;
-  text-align: center;
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #f2f5ea;
-}
-
-.home .ev-split + .band.close,
-.home .ev-split-rev + .band.close { margin-top: 128px; }
-
-/* ---- Narrow --------------------------------------------------------------- */
-
-@media (max-width: 900px) {
-  .home .ev-hero,
-  .home .ev-split,
-  .home .ev-split-rev { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .home .ev-hero { padding-top: 48px; }
-  .home .ev-split { margin-top: 88px; }
-  .home .ev-clip-hero,
-  .home .ev-sticky { position: static; width: min(100%, 340px); max-height: none; }
-  /* Text first, then its clip, in both sections. */
-  .home .ev-split-rev .ev-clip { order: 2; }
-  .home .ev-strip { margin-top: 88px; padding: 0; }
-  /* On a phone the three clips scroll sideways, one at a time. */
-  .home .ev-strip-row {
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: 68%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 0 32px 6px;
-    scrollbar-width: none;
-  }
-  .home .ev-strip-row::-webkit-scrollbar { display: none; }
-  .home .ev-strip-row .ev-clip { scroll-snap-align: center; }
-  .home .ev-strip-row .ev-clip:nth-child(2) { transform: none; }
-  .home .ev-strip-line { margin-top: 32px; padding: 0 32px; }
-}
-
-@media (max-width: 640px) {
-  .home .ev-hero,
-  .home .ev-split { padding-left: 16px; padding-right: 16px; }
-  .home .ev-strip-row { padding: 0 16px 6px; }
-  .home .ev-stats { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 700px) {
+  .home .ev-film { height: 76svh; min-height: 540px; max-height: 720px; }
+  .home .ev-film-text { padding: 0 16px 36px; }
+  .home .ev-film + .band { margin-top: 72px; }
 }
