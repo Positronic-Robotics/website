@@ -1,7 +1,5 @@
 Title: Positronic Robotics: the new standard of physical AI evaluation
 Slug: index
-Save_as: index.html
-URL: index.html
 Template: home
 
 <section class="hero"><h1>The new standard&nbsp;of <em>Physical AI eval</em></h1><p class="hero-lede">We measure whether your model is getting better: your policy on our robots. Video and a score for every run, back the same day.</p><div class="actions"><a class="act act-primary" href="#talk">Talk to us</a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div></section>

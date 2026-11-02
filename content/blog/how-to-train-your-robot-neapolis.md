@@ -10,7 +10,7 @@ Image: neapolis_deck/assets/title-slide.webp
 I recently gave a talk at **Neapolis University Pafos** titled **"How to Train Your Robot: A Practical Guide to Physical AI."**
 
 <div style="margin: 2rem 0; text-align: center;">
-    <a href="/neapolis_deck/index.html" class="button" style="
+    <a href="/neapolis_deck/" class="button" style="
         display: inline-block;
         padding: 0.8rem 1.6rem;
         background-color: var(--accent);

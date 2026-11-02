@@ -1,7 +1,5 @@
 Title: What is physical AI evaluation? | Positronic Robotics
 Slug: physical-ai-evaluation
-Save_as: physical-ai-evaluation.html
-URL: physical-ai-evaluation.html
 Template: home
 Description: Physical AI evaluation measures how well an AI model that controls a robot does real work. Why it is hard, and how we do it on real robots.
 
