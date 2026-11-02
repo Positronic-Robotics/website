@@ -2,7 +2,7 @@ Title: Positronic Platform Terms of Service
 Slug: terms
 Description: Read the terms of service of the Positronic platform: credits, evaluations, charges, refunds and liability.
 
-Version: 1.0  
+Version: 1.1  
 Effective date: 2 November 2026  
 Last changed: 2 November 2026
 
@@ -18,8 +18,8 @@ This summary is not part of the terms. It helps the customer read them.
   and wait time on a real robot. It charges for a usable recording, also when the policy fails.
 - Positronic scores each evaluation with automated measurement and with the review of trained
   people. The customer can ask for a review of a score.
-- Credits have no cash value. The refund policy says when Positronic returns money for credits that
-  the customer did not spend. A consumer in the EU or the UK can withdraw from a purchase within
+- Credits have no cash value. Credits expire 12 months after the purchase or the grant. The refund
+  policy says when Positronic returns money for credits that the customer did not spend. A consumer in the EU or the UK can withdraw from a purchase within
   14 days.
 - The customer keeps the rights in its policy, and owns the recordings and scores of its private
   evaluations.
@@ -143,8 +143,8 @@ page states. The fee and the rate depend on the simulator, and on whether Positr
 policy.
 
 d. **Grants.** Positronic can grant credits at no charge, for example as a prize, a promotion, a
-pilot or a welcome grant. The grant states its conditions. If the grant states no expiry, granted
-credits do not expire. Granted credits follow these terms, have no cash value and cannot be
+pilot or a welcome grant. The grant states its conditions. Granted credits expire 12 months after the
+grant, unless the grant states another period. Granted credits follow these terms, have no cash value and cannot be
 refunded. For a refund, Positronic counts granted credits as spent before bought credits.
 
 ### 4.4 The quote and the hold
@@ -198,8 +198,17 @@ correction cannot use held credits or make the available balance negative.
 
 ### 4.7 Expiry
 
-Credits do not expire. The refund policy states the period in which the customer can ask for a
-refund of available bought credits.
+a. Bought credits expire 12 months after the purchase. Granted credits expire as section 4.3d
+states. An expired credit leaves the balance, and Positronic does not refund it.
+
+b. To find which credits expire, Positronic counts credits as spent in the order of section 2.4 of
+the refund policy: granted credits first, then bought credits, the oldest purchase first.
+
+c. Credits that a hold reserves when they expire stay in the hold. The evaluation can use them.
+Settlement does not return them to the balance.
+
+d. Up to the expiry, the customer can ask for a refund of available bought credits under the
+refund policy.
 
 ### 4.8 Changes to prices and rates
 
@@ -209,7 +218,7 @@ customer already bought.
 b. Positronic can change the rates in credits. A change applies to evaluations that Positronic
 accepts after the change. Positronic tells the customer about an increase by email at least 30 days
 before it applies. In those 30 days, the customer can ask for a refund of its available bought
-credits under the refund policy, also after the refund period of the refund policy ends.
+credits under the refund policy.
 
 ### 4.9 Payment disputes
 
@@ -339,7 +348,7 @@ c. the law requires it; or
 d. Positronic stops the platform. Positronic then gives 30 days notice by email.
 
 9.3 **Credits after termination.** If Positronic closes the account under 9.2(c) or 9.2(d), it
-refunds the available bought credits under the refund policy, with no time limit. If Positronic
+refunds the available bought credits under the refund policy. If Positronic
 closes the account under 9.2(a) or 9.2(b), the customer loses its credits, except where mandatory
 consumer law gives a refund. Positronic can deduct from any refund the amount that the customer
 owes it.
@@ -385,21 +394,23 @@ customer about an important change by email at least 30 days before the change a
 
 14.3 If the customer does not accept a change, it can stop the use of the platform. In the 30 days
 before the change applies, it can ask for a refund of its available bought credits under the refund
-policy, also after the refund period of the refund policy ends.
+policy.
 
 ## 15. Governing law and disputes
 
-15.1 The law of the State of New York governs these terms, with no regard to its conflict-of-law
+15.1 The law of the State of Delaware governs these terms, with no regard to its conflict-of-law
 rules.
 
 15.2 A claim between a business customer and Positronic goes to individual, binding arbitration
-under the Commercial Arbitration Rules of the American Arbitration Association, in New York, New
-York, in English. No claim goes ahead as a class or a representative action. Each party can still
+under the Commercial Arbitration Rules of the American Arbitration Association, in English. The
+place of arbitration is Wilmington, Delaware. The hearings are held by video conference, unless both
+parties agree to meet in person. No claim goes ahead as a class or a representative action. Each party can still
 bring a claim in a small-claims court, or ask a court for an urgent order to protect its
 intellectual property or confidential data.
 
 15.3 A consumer who lives in the United States can choose a small-claims court, or individual
-arbitration under the Consumer Arbitration Rules of the American Arbitration Association.
+arbitration under the Consumer Arbitration Rules of the American Arbitration Association, with the
+hearings held by video conference.
 
 15.4 A consumer who lives in the EU, the UK or another country whose law gives consumers that right
 can bring a claim in the courts of the country where he or she lives. These terms keep each right
