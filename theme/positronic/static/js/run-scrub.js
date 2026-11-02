@@ -59,12 +59,21 @@
   function load() {
     if (loaded) return;
     loaded = true;
+    // The host answers a Range request with the whole file, which leaves the video
+    // unseekable; a blob URL of the whole file seeks anywhere.
+    fetch(video.dataset.src).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.blob();
+    }).then(function (blob) { start(URL.createObjectURL(blob)); })
+      .catch(function () { start(video.dataset.src); });
+  }
+  function start(src) {
     video.preload = "auto";
-    video.src = video.dataset.src;
+    video.src = src;
     video.load();
     // iOS paints a seeked frame only after the element has played once.
     var p = video.play();
-    if (p && p.then) p.then(function () { video.pause(); }).catch(function () {});
+    if (p && p.then) p.then(function () { video.pause(); queue(); }).catch(function () {});
   }
   new IntersectionObserver(function (entries) {
     if (entries[0].isIntersecting) load();
