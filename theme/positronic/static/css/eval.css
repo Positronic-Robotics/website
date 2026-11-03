@@ -1,10 +1,11 @@
 /* The evaluation page. Extends home.css: the same ground, faces and accent, under a
-   full-width film of the lab with the heading over it. */
+   full-width film of the lab with the heading over it. The film is 1.85:1; the band is never
+   taller than that frame. */
 
 .home .ev-film {
   position: relative;
   width: 100%;
-  height: min(86vh, 56.25vw);
+  height: min(86vh, 54vw);
   min-height: 520px;
   overflow: hidden;
   background: #0f110d;
