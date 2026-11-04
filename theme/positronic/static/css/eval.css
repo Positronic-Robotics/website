@@ -1,0 +1,71 @@
+/* The evaluation page. Extends home.css: the same ground, faces and accent, under a
+   full-width film of the lab with the heading over it. The film is 1.85:1; the band is never
+   taller than that frame. */
+
+.home .ev-film {
+  position: relative;
+  width: 100%;
+  height: min(86vh, 54vw);
+  min-height: 520px;
+  overflow: hidden;
+  background: #0f110d;
+}
+
+.home .ev-film-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A dark wash from the bottom left keeps the heading readable on any frame. */
+.home .ev-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(15, 17, 13, 0.96) 0%, rgba(15, 17, 13, 0.55) 38%, rgba(15, 17, 13, 0) 70%),
+    linear-gradient(to right, rgba(15, 17, 13, 0.55) 0%, rgba(15, 17, 13, 0) 55%);
+}
+
+.home .ev-film-text {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 32px 64px;
+}
+
+.home .ev-kicker {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent, #b1e74f);
+  margin-bottom: 18px;
+}
+
+.home .ev-film h1 {
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 5.6vw, 4.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+}
+
+.home .ev-film .hero-lede { max-width: 44ch; color: #e8f0d5; }
+.home .ev-film .actions { justify-content: flex-start; }
+
+.home .ev-film + .band { margin-top: 112px; }
+
+@media (max-width: 700px) {
+  .home .ev-film { height: 76svh; min-height: 540px; max-height: 720px; }
+  .home .ev-film-text { padding: 0 16px 36px; }
+  .home .ev-film + .band { margin-top: 72px; }
+}

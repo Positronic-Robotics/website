@@ -1,9 +1,9 @@
 Title: What is physical AI evaluation? | Positronic Robotics
 Slug: physical-ai-evaluation
-Template: home
+Template: eval
 Description: Physical AI evaluation measures how well an AI model that controls a robot does real work. Why it is hard, and how we do it on real robots.
 
-<section class="page-head"><h1>What is <em>physical AI evaluation</em>?</h1><p class="hero-lede">How do you know if today's robot AI is better than yesterday's? It's the simplest question, and it's almost impossible to answer honestly.</p></section>
+<section class="ev-film"><video class="ev-film-video" data-src="/media/eval-film.mp4" data-src-narrow="/media/eval-film-portrait.mp4" data-poster-narrow="/media/eval-film-portrait-poster.jpg" poster="/media/eval-film-poster.jpg" muted loop playsinline preload="none" aria-label="A robot arm in our lab picks up a cup and a fork"></video><div class="ev-film-text"><span class="ev-kicker">Physical AI evaluation</span><h1>What is <em>physical AI evaluation</em>?</h1><p class="hero-lede">How do you know if today's robot AI is better than yesterday's? It's the simplest question, and it's almost impossible to answer honestly.</p><div class="actions"><a class="act act-primary" href="#talk">Talk to us</a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div></div></section>
 
 <section class="band"><div class="rail"><span class="label">The problem</span></div><div class="col"><h2>Why physical AI evaluation is hard</h2><p>Different environments, different architectures, tiny samples. Most claims you read are unfalsifiable.</p><p>The question is how good these models actually are on real commercial tasks – not demos, not simulation, not success rates on 10 tries.</p><p>Robot evals run ~20 trials with a single success rate and no confidence intervals. At that scale, today's top models are statistically indistinguishable – most reported differences are noise. On the same data, four reasonable scoring choices produce three different "winners."</p><p>We know sim and real scores correlate. What we don't know is how much a sim rank is worth on real hardware, and we don't think anyone does.</p></div></section>
 
