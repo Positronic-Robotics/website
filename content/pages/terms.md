@@ -2,9 +2,9 @@ Title: Positronic Platform Terms of Service
 Slug: terms
 Description: Read the terms of service of the Positronic platform: credits, evaluations, charges, refunds and liability.
 
-Version: 1.1  
-Effective date: 2 November 2026  
-Last changed: 2 November 2026
+Version: 1.2  
+Effective date: 5 November 2026  
+Last changed: 5 November 2026
 
 ## Summary
 
@@ -18,7 +18,8 @@ This summary is not part of the terms. It helps the customer read them.
   and wait time on a real robot. It charges for a usable recording, also when the policy fails.
 - Positronic scores each evaluation with automated measurement and with the review of trained
   people. The customer can ask for a review of a score.
-- Credits have no cash value. Credits expire 12 months after the purchase or the grant. The refund
+- Credits have no cash value. All credits in the account expire 12 months after the last time credits
+  were added to it. The refund
   policy says when Positronic returns money for credits that the customer did not spend. A consumer in the EU or the UK can withdraw from a purchase within
   14 days.
 - The customer keeps the rights in its policy, and owns the recordings and scores of its private
@@ -143,8 +144,8 @@ page states. The fee and the rate depend on the simulator, and on whether Positr
 policy.
 
 d. **Grants.** Positronic can grant credits at no charge, for example as a prize, a promotion, a
-pilot or a welcome grant. The grant states its conditions. Granted credits expire 12 months after the
-grant, unless the grant states another period. Granted credits follow these terms, have no cash value and cannot be
+pilot or a welcome grant. The grant states its conditions. Granted credits expire with the other credits
+in the account, as section 4.7 states. Granted credits follow these terms, have no cash value and cannot be
 refunded. For a refund, Positronic counts granted credits as spent before bought credits.
 
 ### 4.4 The quote and the hold
@@ -198,11 +199,12 @@ correction cannot use held credits or make the available balance negative.
 
 ### 4.7 Expiry
 
-a. Bought credits expire 12 months after the purchase. Granted credits expire as section 4.3d
-states. An expired credit leaves the balance, and Positronic does not refund it.
+a. All credits in the account expire 12 months after the last time credits were added to it: a
+purchase, a grant or a correction that adds credits. All credits in the account have the same
+expiry date. An expired credit leaves the balance, and Positronic does not refund it.
 
-b. To find which credits expire, Positronic counts credits as spent in the order of section 2.4 of
-the refund policy: granted credits first, then bought credits, the oldest purchase first.
+b. The expiry is at the same date and time, one year after the last addition. If that date does not
+exist (29 February), the expiry is on 1 March.
 
 c. Credits that a hold reserves when they expire stay in the hold. The evaluation can use them.
 Settlement does not return them to the balance.

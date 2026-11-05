@@ -2,8 +2,8 @@ Title: Positronic Platform Refund Policy
 Slug: refund-policy
 Description: When Positronic refunds credits on the Positronic platform, and how to ask for a refund.
 
-Version: 1.1  
-Effective date: 2 November 2026
+Version: 1.2  
+Effective date: 5 November 2026
 
 This policy is part of the [Positronic Platform Terms of Service](/terms). The words "Positronic", "customer",
 "consumer", "credit", "bought credit", "granted credit", "hold", "evaluation", "score" and "pricing
@@ -13,7 +13,7 @@ page" have the meaning that the terms give them. Positronic is Positronic Roboti
 
 | What the customer has | Refund |
 | --- | --- |
-| Bought credits that are available (not spent, not held) | Money back, on request, until the credits expire, 12 months after the purchase |
+| Bought credits that are available (not spent, not held) | Money back, on request, until the credits expire, 12 months after the last time credits were added to the account |
 | A purchase made in the last 14 days, by a consumer in the EU or the UK | The consumer can withdraw with no reason (section 8) |
 | Credits in a hold for an evaluation | No refund while the hold stays. The credits that settlement releases become available |
 | Credits that an evaluation used | No refund. The platform charges nothing for a platform fault (section 3) |
@@ -31,7 +31,8 @@ the account page.
 
 2.1 **What Positronic refunds.** On request, Positronic refunds bought credits that are available:
 credits that the customer did not spend and that no hold reserves. The customer can ask until the
-credits expire, 12 months after the purchase (section 4.7 of the terms). Positronic does not
+credits expire, 12 months after the last time credits were added to the account (section 4.7 of
+the terms). Positronic does not
 refund expired credits.
 
 2.2 **How to ask.** The customer sends an email to the support address in section 9 from the email
@@ -96,7 +97,7 @@ the credit history. Section 5A of the terms covers a review of a score.
 
 Positronic does not refund credits that it granted at no charge, for example as a prize, a promotion,
 a pilot or a welcome grant. They have no cash value. The grant states its conditions. Granted credits
-expire 12 months after the grant, unless the grant states another period.
+expire with the other credits in the account, as section 4.7 of the terms states.
 
 ## 5. Payments that did not complete
 
