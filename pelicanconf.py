@@ -34,8 +34,9 @@ PAGE_EXCLUDES: list[str] = []
 ARTICLE_PATHS: list[str] = ["blog"]
 STATIC_PATHS: list[str] = ["neapolis_deck", "nebius-berlin-0426", "robo-house-0926", "extra", "media"]
 
-# Files a browser or a phone looks for at the site root, by name.
+# Files a browser, a phone or the host looks for at the site root, by name.
 ROOT_FILES = [
+    "_redirects",
     "favicon.ico",
     "icon-192.png",
     "icon-512.png",

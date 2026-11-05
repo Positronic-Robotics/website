@@ -39,7 +39,8 @@ def test_canonical_and_og_url_name_the_address_without_html(site: Path) -> None:
 
 def test_sitemap_names_the_address_without_html(site: Path) -> None:
     locs = re.findall(r"<loc>([^<]+)</loc>", (site / "sitemap.xml").read_text())
-    assert "https://positronic.ro/physical-ai-evaluation" in locs
+    assert "https://positronic.ro/about" in locs
+    assert "https://positronic.ro/physical-ai-evaluation" not in locs
     assert [loc for loc in locs if loc.endswith(".html")] == []
 
 
@@ -51,6 +52,19 @@ def test_internal_links_name_the_address_without_html(site: Path) -> None:
 
 
 def test_each_page_is_still_written_as_an_html_file(site: Path) -> None:
-    for name in ("index", "about", "blog", "physical-ai-evaluation", "404"):
+    for name in ("index", "about", "blog", "404"):
         assert (site / f"{name}.html").is_file()
     assert (site / "press" / "phail-launch.html").is_file()
+
+
+def test_the_removed_evaluation_page_redirects_to_about(site: Path) -> None:
+    rules = [line.split() for line in (site / "_redirects").read_text().splitlines()]
+    assert ["/physical-ai-evaluation", "/about", "301"] in rules
+    assert ["/physical-ai-evaluation.html", "/about", "301"] in rules
+    assert not (site / "physical-ai-evaluation.html").exists()
+
+
+def test_about_opens_on_the_lab_film(site: Path) -> None:
+    html = (site / "about.html").read_text()
+    assert 'class="ev-film-video"' in html
+    assert "film.js" in html
