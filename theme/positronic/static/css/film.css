@@ -1,6 +1,6 @@
-/* The evaluation page. Extends home.css: the same ground, faces and accent, under a
-   full-width film of the lab with the heading over it. The film is 1.85:1; the band is never
-   taller than that frame. */
+/* A page that opens on the full-width film of the lab, with the heading over it. Extends
+   home.css: the same ground, faces and accent. The film is 1.85:1; the band is never taller
+   than that frame. */
 
 .home .ev-film {
   position: relative;
@@ -69,3 +69,7 @@
   .home .ev-film-text { padding: 0 16px 36px; }
   .home .ev-film + .band { margin-top: 72px; }
 }
+
+/* About carries a longer heading and lede over the film. */
+.home .ev-film-about h1 { max-width: 20ch; font-size: clamp(2.2rem, 4.6vw, 3.8rem); }
+.home .ev-film-about .hero-lede { max-width: 60ch; }
