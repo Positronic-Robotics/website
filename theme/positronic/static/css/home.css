@@ -324,8 +324,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   max-width: 620px;
 }
 
-.home .contact input,
-.home .contact select,
+.home .contact input:not([type="checkbox"]),
 .home .contact textarea {
   font-family: var(--display);
   /* 16 px: a smaller input makes iOS Safari zoom in on focus. */
@@ -340,8 +339,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 
 .home .contact input::placeholder,
 .home .contact textarea::placeholder { color: var(--dim); }
-.home .contact input:focus,
-.home .contact select:focus,
+.home .contact input:not([type="checkbox"]):focus,
 .home .contact textarea:focus { outline: none; border-color: var(--accent, #b1e74f); }
 .home .contact input[name="email"] { flex: 1 1 100%; }
 .home .contact textarea[name="note"] { flex: 1 1 100%; resize: vertical; line-height: 1.5; }
