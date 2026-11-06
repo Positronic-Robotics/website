@@ -8,7 +8,7 @@ const TOUCH_FIELDS = ["utm_source", "utm_medium", "utm_campaign", "utm_content",
 const ARRIVAL_FIELDS = ["first", "last"].flatMap((which) => TOUCH_FIELDS.map((field) => `${which}_${field}`));
 
 const text = (value, max) => (typeof value === "string" ? value.trim().slice(0, max) : "");
-// The ticked answers to "How did you hear about us?"; phail.ai checks each one against its list.
+// The ticked answers to "How did you hear about us?", at most one per listed channel.
 const MAX_HEARD_FROM = 7;
 const texts = (value, max) => (Array.isArray(value) ? value.map((item) => text(item, max)).filter(Boolean).slice(0, MAX_HEARD_FROM) : []);
 
