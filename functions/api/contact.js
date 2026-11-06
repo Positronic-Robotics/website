@@ -8,7 +8,7 @@ const UTM_TAGS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_c
 const text = (value, max) => (typeof value === "string" ? value.trim().slice(0, max) : "");
 
 // The page that sent the form, and the UTM tags in its address, as the request's Referer names them.
-function formPage(request) {
+function refererPageAndTags(request) {
   const tags = { page: "" };
   for (const tag of UTM_TAGS) tags[tag] = "";
   let url;
@@ -54,7 +54,7 @@ export async function onRequestPost({ request }) {
     heard_from: text(data.heard_from, 64),
     heard_from_detail: text(data.heard_from_detail, 200),
     referrer: text(data.referrer, 500),
-    ...formPage(request),
+    ...refererPageAndTags(request),
   };
 
   const upstream = await fetch(CAPTURE_URL, {

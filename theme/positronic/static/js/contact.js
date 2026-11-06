@@ -45,7 +45,7 @@
     button.disabled = true;
     say("Sending…");
 
-    // The server reads the page and its UTM tags from the request; only the browser knows the page before it.
+    // Only the browser knows the page before this one.
     fetch("/api/contact", {
       method: "POST",
       headers: { "content-type": "application/json" },
