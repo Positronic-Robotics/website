@@ -80,7 +80,7 @@
       });
       return out;
     },
-    // The props a form's success event carries in Plausible.
+    // Each arrival as one source: its utm_source, else its referrer's host, else "direct".
     sources: function () {
       return { first_source: source(state.first), last_source: source(state.last) };
     },

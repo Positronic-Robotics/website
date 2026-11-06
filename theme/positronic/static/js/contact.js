@@ -17,13 +17,13 @@
     status.classList.toggle("is-error", ok === false);
   }
 
-  // window.positronicArrival comes from attribution.js, which every page loads.
+  // base.html loads attribution.js ahead of every page script.
   var arrival = window.positronicArrival;
 
   // Both trackers autocapture the submit EVENT, which counts an attempt that the
   // API can still refuse. Name the ones that reached us.
   function lead(method, heard) {
-    var props = arrival ? arrival.sources() : {};
+    var props = arrival.sources();
     props.method = method;
     if (heard) props.heard_from = heard;
     if (window.plausible) window.plausible("Lead", { props: props });
@@ -49,7 +49,7 @@
     button.disabled = true;
     say("Sending…");
 
-    var body = arrival ? arrival.fields() : {};
+    var body = arrival.fields();
     body.email = email;
     body.note = form.elements.note.value.trim();
     body.company = form.elements.company.value;
