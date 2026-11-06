@@ -59,11 +59,15 @@
   // Blocked storage keeps this view in memory, so a form on the landing page still sends it.
   try {
     stored = JSON.parse(localStorage.getItem(KEY) || "null");
-  } catch (e) {}
+  } catch (e) {
+    console.warn("the stored arrival was not read", e);
+  }
   var state = update(stored, thisView());
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
-  } catch (e) {}
+  } catch (e) {
+    console.warn("the arrival was not stored", e);
+  }
 
   function source(touch) {
     return touch.utm_source || hostOf(touch.referrer) || "direct";
