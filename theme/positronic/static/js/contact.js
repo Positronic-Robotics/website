@@ -5,6 +5,24 @@
 
   var status = form.querySelector(".contact-status");
   var button = form.querySelector("button[type=submit]");
+  var heardFrom = form.elements.heard_from;
+  var heardDetail = form.elements.heard_from_detail;
+
+  heardFrom.addEventListener("change", function () {
+    heardDetail.hidden = heardFrom.value !== "other";
+  });
+
+  // The UTM tags of the link the visitor came by, and the page before this one.
+  function arrival() {
+    var params = new URLSearchParams(window.location.search);
+    var tags = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(function (key) {
+      tags[key] = params.get(key) || "";
+    });
+    tags.referrer = document.referrer;
+    tags.page = window.location.pathname;
+    return tags;
+  }
 
   function say(text, ok) {
     status.textContent = text;
@@ -13,9 +31,11 @@
 
   // Both trackers autocapture the submit EVENT, which counts an attempt that the
   // API can still refuse. Name the ones that reached us.
-  function lead(method) {
-    if (window.plausible) window.plausible("Lead", { props: { method: method } });
-    if (window.gtag) window.gtag("event", "generate_lead", { method: method });
+  function lead(method, heard) {
+    var props = { method: method };
+    if (heard) props.heard_from = heard;
+    if (window.plausible) window.plausible("Lead", { props: props });
+    if (window.gtag) window.gtag("event", "generate_lead", props);
   }
 
   var booking = document.querySelector(".contact-alt a[href*='calendar.notion.so']");
@@ -32,23 +52,34 @@
       say("That address does not look right.", false);
       return;
     }
+    var heard = heardFrom.value;
+    var detail = heard === "other" ? heardDetail.value.trim() : "";
     button.disabled = true;
     say("Sending…");
+
+    var leadRecord = {
+      email: email,
+      note: form.elements.note.value.trim(),
+      company: form.elements.company.value,
+      heard_from: heard,
+      heard_from_detail: detail,
+    };
+    var tags = arrival();
+    Object.keys(tags).forEach(function (key) {
+      leadRecord[key] = tags[key];
+    });
 
     fetch("/api/contact", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        note: form.elements.note.value.trim(),
-        company: form.elements.company.value,
-      }),
+      body: JSON.stringify(leadRecord),
     })
       .then(function (response) {
         if (!response.ok) throw new Error(response.status);
         form.reset();
+        heardDetail.hidden = true;
         say("Got it. We answer within a day.");
-        lead("contact_form");
+        lead("contact_form", heard);
       })
       .catch(function () {
         say("That did not go through. Write to hi@positronic.ro.", false);

@@ -3,7 +3,7 @@ Slug: privacy
 Description: How Positronic uses personal data on positronic.ro and on the Positronic platform.
 
 Version: 1.0  
-Effective date: 2 November 2026
+Effective date: 6 November 2026
 
 This policy tells how Positronic uses personal data when a person visits the website
 <https://positronic.ro>, signs in to the Positronic platform, buys credits and runs evaluations. The
@@ -38,7 +38,7 @@ Contact for every privacy request: hi@positronic.ro.
 | **Recordings**: for each episode, the robot state, the camera video of the robot and its work area, the commands, the times, the scores, and the notes and labels of operators and reviewers. Each recording is linked to the organization | To score the evaluation, to show it to the customer, to make reports, and to check each charge; and, with no customer name, to improve Positronic's labeling techniques | Performance of the contract; legitimate interest in better labeling (Art. 6(1)(f)) for the last purpose |
 | **Security and operation logs**: the requests to the servers, with the user id, the time and the result | To find faults and abuse, and to keep the platform safe | Legitimate interest in a safe and working platform |
 | **Messages to Positronic**: emails to the support address and their answers | To answer the person | Performance of the contract; legitimate interest |
-| **Contact form on positronic.ro**: the email address and the note that the visitor types (section 13) | To answer the visitor | Steps at the person's request before a contract (Art. 6(1)(b)); legitimate interest in answering requests (Art. 6(1)(f)) |
+| **Contact form on positronic.ro**: the email address and the note that the visitor types, where the visitor says they heard of Positronic, and the tags of the link and the page that brought them (section 13) | To answer the visitor, and to count which channels bring requests | Steps at the person's request before a contract (Art. 6(1)(b)); legitimate interest in answering requests (Art. 6(1)(f)) |
 | **Call booking**: the name, the email address and the time that a visitor gives on the booking page for a call (section 13) | To hold the call | Steps at the person's request before a contract; legitimate interest in answering requests |
 | **Website analytics**: the pages visited on positronic.ro, and one event when a visitor clicks the link to book a call or sends the contact form (section 13) | To count and understand visits, and to count how many visits lead to a contact | Consent for Google Analytics; legitimate interest for Plausible, which sets no cookies |
 
@@ -185,10 +185,14 @@ The website <https://positronic.ro> is hosted on Cloudflare Pages.
 - **Plausible Analytics** counts visits with no cookies and no personal profile.
 - When a visitor clicks the link to book a call, or sends the contact form, the site reports one
   event to Plausible, and to Google Analytics if the visitor accepted it. The event names the
-  action (the booking link or the contact form). It holds no email address and no note.
+  action (the booking link or the contact form), and for the form the channel that the visitor
+  picked. It holds no email address and no note.
 
 The contact form sends the email address and the note that the visitor types to Positronic's
-server. The server keeps them in a file, adds them to a Google Sheet in Positronic's Google
+server. It also sends the answer to "How did you hear about us?" if the visitor gives one, the
+campaign tags (`utm_` parameters) of the link that opened the page, the address of the page
+before it (the referrer), and the page that holds the form. The site stores none of these in the
+browser. The server keeps them in a file, adds them to a Google Sheet in Positronic's Google
 Workspace, and emails them to Positronic staff. Positronic keeps a lead to answer the visitor, and
 deletes it when the visitor asks.
 

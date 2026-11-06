@@ -3,6 +3,20 @@
 
 const CAPTURE_URL = "https://phail.ai/api/interest";
 const MAX_BODY = 16 * 1024;
+// Where the visitor says they heard of us, and where the browser says they came from.
+const ARRIVAL_FIELDS = [
+  "heard_from",
+  "heard_from_detail",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "referrer",
+  "page",
+];
+
+const text = (value, max) => (typeof value === "string" ? value.trim().slice(0, max) : "");
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -29,14 +43,18 @@ export async function onRequestPost({ request }) {
     return json({ error: "A valid email is required" }, 400);
   }
 
+  const lead = {
+    email,
+    note: text(data.note, 2000),
+    source: "positronic-home",
+  };
+  // phail.ai owns the channel list and the length of each field; it maps an unknown channel to "other".
+  for (const field of ARRIVAL_FIELDS) lead[field] = text(data[field], 500);
+
   const upstream = await fetch(CAPTURE_URL, {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      email,
-      note: (data.note || "").trim().slice(0, 2000),
-      source: "positronic-home",
-    }),
+    body: JSON.stringify(lead),
   });
   if (!upstream.ok) return json({ error: "Could not record that" }, 502);
   return json({ ok: true });
