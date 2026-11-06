@@ -194,8 +194,9 @@ server. It also sends the answer to "How did you hear about us?" if the visitor 
 page that holds the form, and the first and the last arrival of the visitor on the site. An
 arrival is a visit that comes by a link with campaign tags (`utm_` parameters) or from another
 site. For each one the site keeps the tags, the address of the referring site, the first page and
-the time, in the browser's local storage under the key `positronic-arrival`. Nothing leaves the
-browser until the visitor sends the form. The site replaces the first arrival after 90 days. The
+the time, in the browser's local storage under the key `positronic-arrival`. The whole record
+leaves the browser only with the form. The Plausible event above carries only the source of each
+arrival. The site replaces the first arrival after 90 days. The
 visitor can delete it with the browser's site data. The server keeps them in a file, adds them to a Google Sheet in Positronic's Google
 Workspace, and emails them to Positronic staff. Positronic keeps a lead to answer the visitor, and
 deletes it when the visitor asks.

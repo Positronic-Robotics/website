@@ -5,12 +5,24 @@
 
   var status = form.querySelector(".contact-status");
   var button = form.querySelector("button[type=submit]");
-  var heardFrom = form.elements.heard_from;
+  var heardBoxes = form.querySelectorAll("input[name=heard_from]");
+  var heardOther = form.querySelector("input[name=heard_from][value=other]");
   var heardDetail = form.elements.heard_from_detail;
 
-  heardFrom.addEventListener("change", function () {
-    heardDetail.hidden = heardFrom.value !== "other";
+  heardOther.addEventListener("change", function () {
+    heardDetail.hidden = !heardOther.checked;
   });
+
+  // The ticked answers, in the order the form lists them.
+  function heardFrom() {
+    return Array.prototype.filter
+      .call(heardBoxes, function (box) {
+        return box.checked;
+      })
+      .map(function (box) {
+        return box.value;
+      });
+  }
 
   function say(text, ok) {
     status.textContent = text;
@@ -25,7 +37,7 @@
   function lead(method, heard) {
     var props = arrival.sources();
     props.method = method;
-    if (heard) props.heard_from = heard;
+    if (heard && heard.length) props.heard_from = heard.join(",");
     if (window.plausible) window.plausible("Lead", { props: props });
     if (window.gtag) window.gtag("event", "generate_lead", props);
   }
@@ -44,8 +56,8 @@
       say("That address does not look right.", false);
       return;
     }
-    var heard = heardFrom.value;
-    var detail = heard === "other" ? heardDetail.value.trim() : "";
+    var heard = heardFrom();
+    var detail = heardOther.checked ? heardDetail.value.trim() : "";
     button.disabled = true;
     say("Sending…");
 

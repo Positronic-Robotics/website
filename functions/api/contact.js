@@ -8,6 +8,9 @@ const TOUCH_FIELDS = ["utm_source", "utm_medium", "utm_campaign", "utm_content",
 const ARRIVAL_FIELDS = ["first", "last"].flatMap((which) => TOUCH_FIELDS.map((field) => `${which}_${field}`));
 
 const text = (value, max) => (typeof value === "string" ? value.trim().slice(0, max) : "");
+// The ticked answers to "How did you hear about us?", at most one per listed channel.
+const MAX_HEARD_FROM = 7;
+const texts = (value, max) => (Array.isArray(value) ? value.map((item) => text(item, max)).filter(Boolean).slice(0, MAX_HEARD_FROM) : []);
 
 // The path of the page that sent the form, as the request's Referer names it.
 function refererPage(request) {
@@ -47,7 +50,7 @@ export async function onRequestPost({ request }) {
     email,
     note: text(data.note, 2000),
     source: "positronic-home",
-    heard_from: text(data.heard_from, 64),
+    heard_from: texts(data.heard_from, 64),
     heard_from_detail: text(data.heard_from_detail, 200),
     page: refererPage(request),
   };

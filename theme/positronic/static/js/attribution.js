@@ -1,6 +1,6 @@
-// The visitor's first and last arrival on this site, kept in their own browser and sent only with a form.
-// The same rule runs on phail.ai and competition.phail.ai: a link tag or another site's referrer is an arrival;
-// a direct view replaces nothing. window.positronicArrival.fields() gives the flat fields a form posts.
+// The visitor's first and last arrival on this site, kept in their own browser.
+// A link tag or another site's referrer is an arrival; a direct view replaces nothing.
+// window.positronicArrival.fields() gives the flat fields a form posts, and sources() one source per arrival.
 (function () {
   var KEY = "positronic-arrival";
   var FIRST_TOUCH_DAYS = 90;
@@ -37,7 +37,8 @@
     });
     var refHost = hostOf(document.referrer);
     var referred = refHost !== "" && refHost !== window.location.host && !isSignInHost(refHost);
-    touch.referrer = referred ? cut(document.referrer, 500) : "";
+    // The referring site only: a referrer's path and query can name a private page.
+    touch.referrer = referred ? new URL(document.referrer).origin : "";
     touch.landing_page = cut(window.location.pathname, 200);
     touch.at = new Date().toISOString();
     return { touch: touch, arrival: tagged || referred };
@@ -52,18 +53,29 @@
     if (!stored || !stored.first || !stored.last || expired(stored.first)) {
       return { first: view.touch, last: view.touch };
     }
-    return { first: stored.first, last: view.arrival ? view.touch : stored.last };
+    return { first: siteOnly(stored.first), last: view.arrival ? view.touch : siteOnly(stored.last) };
+  }
+
+  // A touch stored by the first release of this script kept the referrer's full address.
+  function siteOnly(touch) {
+    var host = hostOf(touch.referrer);
+    touch.referrer = host ? new URL(touch.referrer).origin : "";
+    return touch;
   }
 
   var stored = null;
   // Blocked storage keeps this view in memory, so a form on the landing page still sends it.
   try {
     stored = JSON.parse(localStorage.getItem(KEY) || "null");
-  } catch (e) {}
+  } catch (e) {
+    console.warn("the stored arrival was not read", e);
+  }
   var state = update(stored, thisView());
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
-  } catch (e) {}
+  } catch (e) {
+    console.warn("the arrival was not stored", e);
+  }
 
   function source(touch) {
     return touch.utm_source || hostOf(touch.referrer) || "direct";
