@@ -3,20 +3,24 @@
 
 const CAPTURE_URL = "https://phail.ai/api/interest";
 const MAX_BODY = 16 * 1024;
-// Where the visitor says they heard of us, and where the browser says they came from.
-const ARRIVAL_FIELDS = [
-  "heard_from",
-  "heard_from_detail",
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_term",
-  "utm_content",
-  "referrer",
-  "page",
-];
+const UTM_TAGS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 const text = (value, max) => (typeof value === "string" ? value.trim().slice(0, max) : "");
+
+// The page that sent the form, and the UTM tags in its address, as the request's Referer names them.
+function formPage(request) {
+  const tags = { page: "" };
+  for (const tag of UTM_TAGS) tags[tag] = "";
+  let url;
+  try {
+    url = new URL(request.headers.get("referer") || "");
+  } catch {
+    return tags;
+  }
+  tags.page = url.pathname;
+  for (const tag of UTM_TAGS) tags[tag] = (url.searchParams.get(tag) || "").slice(0, 200);
+  return tags;
+}
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -47,9 +51,11 @@ export async function onRequestPost({ request }) {
     email,
     note: text(data.note, 2000),
     source: "positronic-home",
+    heard_from: text(data.heard_from, 64),
+    heard_from_detail: text(data.heard_from_detail, 200),
+    referrer: text(data.referrer, 500),
+    ...formPage(request),
   };
-  // phail.ai owns the channel list and the length of each field; it maps an unknown channel to "other".
-  for (const field of ARRIVAL_FIELDS) lead[field] = text(data[field], 500);
 
   const upstream = await fetch(CAPTURE_URL, {
     method: "POST",

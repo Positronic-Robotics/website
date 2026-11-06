@@ -12,18 +12,6 @@
     heardDetail.hidden = heardFrom.value !== "other";
   });
 
-  // The UTM tags of the link the visitor came by, and the page before this one.
-  function arrival() {
-    var params = new URLSearchParams(window.location.search);
-    var tags = {};
-    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(function (key) {
-      tags[key] = params.get(key) || "";
-    });
-    tags.referrer = document.referrer;
-    tags.page = window.location.pathname;
-    return tags;
-  }
-
   function say(text, ok) {
     status.textContent = text;
     status.classList.toggle("is-error", ok === false);
@@ -57,22 +45,18 @@
     button.disabled = true;
     say("Sending…");
 
-    var leadRecord = {
-      email: email,
-      note: form.elements.note.value.trim(),
-      company: form.elements.company.value,
-      heard_from: heard,
-      heard_from_detail: detail,
-    };
-    var tags = arrival();
-    Object.keys(tags).forEach(function (key) {
-      leadRecord[key] = tags[key];
-    });
-
+    // The server reads the page and its UTM tags from the request; only the browser knows the page before it.
     fetch("/api/contact", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(leadRecord),
+      body: JSON.stringify({
+        email: email,
+        note: form.elements.note.value.trim(),
+        company: form.elements.company.value,
+        heard_from: heard,
+        heard_from_detail: detail,
+        referrer: document.referrer,
+      }),
     })
       .then(function (response) {
         if (!response.ok) throw new Error(response.status);

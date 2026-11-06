@@ -3,7 +3,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["playwright>=1.48"]
 # ///
-"""Fill the contact form of a built or live site in a headless browser and print the lead it sends.
+"""Fill the contact form of a built or live site in a headless browser and print the request it sends.
 
 Usage
   scripts/probe_contact_form.py http://localhost:8000                 # stub the API, send nothing
@@ -11,7 +11,7 @@ Usage
       --email test+source@positronic.ro --note "TEST - lead source selector"
 
 Without `--submit` the probe answers the form's POST itself, so no lead is recorded. The page opens
-with campaign tags in its address, so the printed lead shows whether the form carries them.
+with UTM tags in its address; the function reads them from the request's Referer, which the probe prints.
 """
 
 import argparse
@@ -36,7 +36,9 @@ def main() -> None:
     sent: list[dict] = []
 
     def capture(route: Route) -> None:
-        sent.append(json.loads(route.request.post_data or "{}"))
+        sent.append(
+            {"referer": route.request.headers.get("referer", ""), "body": json.loads(route.request.post_data or "{}")}
+        )
         if args.submit:
             route.continue_()
         else:
@@ -57,12 +59,14 @@ def main() -> None:
         if detail.is_visible():
             detail.fill(args.detail)
         form.locator("button[type=submit]").click()
-        page.wait_for_function("document.querySelector('.contact-status').textContent.startsWith('Got it') || "
-                               "document.querySelector('.contact-status').classList.contains('is-error')")
+        page.wait_for_function(
+            "document.querySelector('.contact-status').textContent.startsWith('Got it') || "
+            "document.querySelector('.contact-status').classList.contains('is-error')"
+        )
         print("status:", page.locator(".contact-status").text_content())
         browser.close()
 
-    print("lead sent:", json.dumps(sent, indent=2))
+    print("request sent:", json.dumps(sent, indent=2))
 
 
 if __name__ == "__main__":
