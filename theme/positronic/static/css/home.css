@@ -362,6 +362,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .contact-heard legend { float: left; margin-right: 4px; padding: 0; }
 .home .contact-heard label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
 .home .contact-heard input[type="checkbox"] { margin: 0; accent-color: var(--accent, #b1e74f); }
+.home .contact-heard input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent, #b1e74f); outline-offset: 2px; }
 .home .contact-heard input[name="heard_from_detail"] { flex: 0 1 220px; padding: 6px 10px; }
 .home .contact button { border: 0; cursor: pointer; }
 .home .contact button:disabled { opacity: 0.6; cursor: default; }
