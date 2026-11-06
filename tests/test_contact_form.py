@@ -15,16 +15,12 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Must equal HEARD_FROM_CHANNELS in phail.ai's phail/interest.py, which stores the lead.
 CHANNELS = [
-    "search",
     "linkedin",
     "x",
-    "phail",
-    "competition",
-    "event",
+    "search",
     "referral",
+    "event",
     "media",
-    "github",
-    "discord",
     "other",
 ]
 
@@ -85,38 +81,48 @@ def _post(tmp_path: Path, body: dict, referer: str = "") -> dict:
     return json.loads(out.stdout)
 
 
-def test_the_function_forwards_the_channel_and_the_arrival_tags(tmp_path: Path) -> None:
-    result = _post(
-        tmp_path,
-        {
-            "email": "lead@lab.example.edu",
-            "note": "hi",
-            "heard_from": "other",
-            "heard_from_detail": " CoRL booth ",
-            "referrer": "https://www.linkedin.com/",
-        },
-        referer="https://positronic.ro/about?utm_source=linkedin&utm_campaign=competition-launch-2026-10",
-    )
+def _arrival(first_source: str, last_source: str) -> dict:
+    fields = {}
+    for which, source in (("first", first_source), ("last", last_source)):
+        for field in ("utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "referrer", "landing_page", "at"):
+            fields[f"{which}_{field}"] = ""
+        fields[f"{which}_utm_source"] = source
+    return fields
+
+
+def test_the_function_forwards_the_channel_and_both_arrivals(tmp_path: Path) -> None:
+    body = {
+        "email": "lead@lab.example.edu",
+        "note": "hi",
+        "heard_from": "other",
+        "heard_from_detail": " CoRL booth ",
+        **_arrival("linkedin", "newsletter"),
+        "first_referrer": "https://www.linkedin.com/",
+        "last_landing_page": "/blog",
+    }
+    result = _post(tmp_path, body, referer="https://positronic.ro/about?utm_source=x")
     assert result["status"] == 200
     [lead] = result["sent"]
     assert lead["source"] == "positronic-home"
     assert lead["heard_from"] == "other"
     assert lead["heard_from_detail"] == "CoRL booth"
     assert lead["page"] == "/about"
-    assert lead["utm_source"] == "linkedin"
-    assert lead["utm_campaign"] == "competition-launch-2026-10"
-    assert lead["utm_term"] == ""
-    assert lead["referrer"] == "https://www.linkedin.com/"
+    assert lead["first_utm_source"] == "linkedin"
+    assert lead["first_referrer"] == "https://www.linkedin.com/"
+    assert lead["last_utm_source"] == "newsletter"
+    assert lead["last_landing_page"] == "/blog"
+    assert lead["last_utm_term"] == ""
 
 
-def test_the_function_sends_empty_tags_without_a_referer(tmp_path: Path) -> None:
-    [lead] = _post(tmp_path, {"email": "lead@lab.example.edu"})["sent"]
+def test_the_function_forwards_no_field_outside_the_lead(tmp_path: Path) -> None:
+    [lead] = _post(tmp_path, {"email": "lead@lab.example.edu", "utm_source": "x", "referrer": "y", "admin": 1})["sent"]
+    assert not {"utm_source", "referrer", "admin"} & lead.keys()
+    assert lead["first_utm_source"] == ""
     assert lead["page"] == ""
-    assert lead["utm_source"] == ""
 
 
 def test_the_function_sends_empty_strings_for_a_field_that_is_not_text(tmp_path: Path) -> None:
-    result = _post(tmp_path, {"email": "lead@lab.example.edu", "heard_from": ["x"], "referrer": 5})
+    result = _post(tmp_path, {"email": "lead@lab.example.edu", "heard_from": ["x"], "first_referrer": 5})
     [lead] = result["sent"]
     assert lead["heard_from"] == ""
-    assert lead["referrer"] == ""
+    assert lead["first_referrer"] == ""

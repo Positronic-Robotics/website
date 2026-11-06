@@ -3,23 +3,19 @@
 
 const CAPTURE_URL = "https://phail.ai/api/interest";
 const MAX_BODY = 16 * 1024;
-const UTM_TAGS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+// The first and the last arrival of the visitor, as theme/positronic/static/js/attribution.js names them.
+const TOUCH_FIELDS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "referrer", "landing_page", "at"];
+const ARRIVAL_FIELDS = ["first", "last"].flatMap((which) => TOUCH_FIELDS.map((field) => `${which}_${field}`));
 
 const text = (value, max) => (typeof value === "string" ? value.trim().slice(0, max) : "");
 
-// The page that sent the form, and the UTM tags in its address, as the request's Referer names them.
-function refererPageAndTags(request) {
-  const tags = { page: "" };
-  for (const tag of UTM_TAGS) tags[tag] = "";
-  let url;
+// The path of the page that sent the form, as the request's Referer names it.
+function refererPage(request) {
   try {
-    url = new URL(request.headers.get("referer") || "");
+    return new URL(request.headers.get("referer") || "").pathname;
   } catch {
-    return tags;
+    return "";
   }
-  tags.page = url.pathname;
-  for (const tag of UTM_TAGS) tags[tag] = (url.searchParams.get(tag) || "").slice(0, 200);
-  return tags;
 }
 
 const json = (body, status = 200) =>
@@ -53,9 +49,9 @@ export async function onRequestPost({ request }) {
     source: "positronic-home",
     heard_from: text(data.heard_from, 64),
     heard_from_detail: text(data.heard_from_detail, 200),
-    referrer: text(data.referrer, 500),
-    ...refererPageAndTags(request),
+    page: refererPage(request),
   };
+  for (const field of ARRIVAL_FIELDS) lead[field] = text(data[field], field.endsWith("referrer") ? 500 : 200);
 
   const upstream = await fetch(CAPTURE_URL, {
     method: "POST",

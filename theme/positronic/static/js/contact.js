@@ -17,10 +17,14 @@
     status.classList.toggle("is-error", ok === false);
   }
 
+  // base.html loads attribution.js ahead of every page script.
+  var arrival = window.positronicArrival;
+
   // Both trackers autocapture the submit EVENT, which counts an attempt that the
   // API can still refuse. Name the ones that reached us.
   function lead(method, heard) {
-    var props = { method: method };
+    var props = arrival.sources();
+    props.method = method;
     if (heard) props.heard_from = heard;
     if (window.plausible) window.plausible("Lead", { props: props });
     if (window.gtag) window.gtag("event", "generate_lead", props);
@@ -45,18 +49,16 @@
     button.disabled = true;
     say("Sending…");
 
-    // Only the browser knows the page before this one.
+    var body = arrival.fields();
+    body.email = email;
+    body.note = form.elements.note.value.trim();
+    body.company = form.elements.company.value;
+    body.heard_from = heard;
+    body.heard_from_detail = detail;
     fetch("/api/contact", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        note: form.elements.note.value.trim(),
-        company: form.elements.company.value,
-        heard_from: heard,
-        heard_from_detail: detail,
-        referrer: document.referrer,
-      }),
+      body: JSON.stringify(body),
     })
       .then(function (response) {
         if (!response.ok) throw new Error(response.status);

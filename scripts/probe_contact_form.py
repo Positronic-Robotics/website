@@ -7,11 +7,14 @@
 
 Usage
   scripts/probe_contact_form.py http://localhost:8000                 # stub the API, send nothing
+  scripts/probe_contact_form.py http://localhost:8000 --before '/blog.html?utm_source=linkedin' \
+      --referrer https://www.google.com/                              # an earlier arrival, then the form
   scripts/probe_contact_form.py https://positronic.ro --submit \\
       --email test+source@positronic.ro --note "TEST - lead source selector"
 
 Without `--submit` the probe answers the form's POST itself, so no lead is recorded. The page opens
-with UTM tags in its address; the function reads them from the request's Referer, which the probe prints.
+with UTM tags in its address; attribution.js records them as the first and last arrival, and the form
+posts them as first_* and last_* fields, which the probe prints.
 """
 
 import argparse
@@ -31,6 +34,8 @@ def main() -> None:
     parser.add_argument("--note", default="TEST - lead source selector")
     parser.add_argument("--channel", default="other")
     parser.add_argument("--detail", default="probe")
+    parser.add_argument("--before", action="append", default=[], help="a page to visit before the form page")
+    parser.add_argument("--referrer", help="the referrer of the form page's visit")
     args = parser.parse_args()
 
     sent: list[dict] = []
@@ -48,7 +53,9 @@ def main() -> None:
         browser = pw.chromium.launch()
         page = browser.new_page()
         page.route("**/api/contact", capture)
-        page.goto(f"{args.base_url.rstrip('/')}{args.page}?{TAGS}#talk")
+        for before in args.before:
+            page.goto(f"{args.base_url.rstrip('/')}{before}")
+        page.goto(f"{args.base_url.rstrip('/')}{args.page}?{TAGS}#talk", referer=args.referrer)
         form = page.locator("#contact-form")
         detail = form.locator("input[name=heard_from_detail]")
         print("detail field visible before a pick:", detail.is_visible())
