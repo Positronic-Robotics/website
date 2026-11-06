@@ -37,7 +37,8 @@
     });
     var refHost = hostOf(document.referrer);
     var referred = refHost !== "" && refHost !== window.location.host && !isSignInHost(refHost);
-    touch.referrer = referred ? cut(document.referrer, 500) : "";
+    // The referring site only: a referrer's path and query can name a private page.
+    touch.referrer = referred ? new URL(document.referrer).origin : "";
     touch.landing_page = cut(window.location.pathname, 200);
     touch.at = new Date().toISOString();
     return { touch: touch, arrival: tagged || referred };

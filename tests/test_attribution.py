@@ -60,7 +60,7 @@ def test_a_later_arrival_from_another_site_replaces_the_last_and_keeps_the_first
     fields = result["fields"]
     assert fields["first_utm_source"] == "linkedin"
     assert fields["last_utm_source"] == ""
-    assert fields["last_referrer"] == "https://www.google.com/"
+    assert fields["last_referrer"] == "https://www.google.com"
     assert fields["last_landing_page"] == "/blog"
     assert result["sources"] == {"first_source": "linkedin", "last_source": "www.google.com"}
 
@@ -79,7 +79,12 @@ def test_a_return_from_a_sign_in_provider_is_not_an_arrival(tmp_path: Path) -> N
 
 def test_a_host_that_only_ends_like_a_sign_in_provider_is_an_arrival(tmp_path: Path) -> None:
     fields = _run(tmp_path, [LINKEDIN, ("https://positronic.ro/", "https://notworkos.com/")])["fields"]
-    assert fields["last_referrer"] == "https://notworkos.com/"
+    assert fields["last_referrer"] == "https://notworkos.com"
+
+
+def test_a_referrer_keeps_only_its_site(tmp_path: Path) -> None:
+    views = [("https://positronic.ro/", "https://mail.example.com/inbox/42?token=secret")]
+    assert _run(tmp_path, views)["fields"]["first_referrer"] == "https://mail.example.com"
 
 
 def test_a_direct_first_visit_is_the_first_arrival_with_its_landing_page(tmp_path: Path) -> None:
