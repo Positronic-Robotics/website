@@ -1,6 +1,6 @@
-// The visitor's first and last arrival on this site, kept in their own browser and sent only with a form.
-// The same rule runs on phail.ai and competition.phail.ai: a link tag or another site's referrer is an arrival;
-// a direct view replaces nothing. window.positronicArrival.fields() gives the flat fields a form posts.
+// The visitor's first and last arrival on this site, kept in their own browser.
+// A link tag or another site's referrer is an arrival; a direct view replaces nothing.
+// window.positronicArrival.fields() gives the flat fields a form posts, and sources() one source per arrival.
 (function () {
   var KEY = "positronic-arrival";
   var FIRST_TOUCH_DAYS = 90;
