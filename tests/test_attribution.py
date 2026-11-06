@@ -87,6 +87,14 @@ def test_a_referrer_keeps_only_its_site(tmp_path: Path) -> None:
     assert _run(tmp_path, views)["fields"]["first_referrer"] == "https://mail.example.com"
 
 
+def test_a_stored_referrer_with_a_path_is_cut_to_its_site(tmp_path: Path) -> None:
+    old = {k: "" for k in ("utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term")}
+    old.update(referrer="https://mail.example.com/inbox/42?token=secret", landing_page="/", at="2099-01-01T00:00:00.000Z")
+    stored = {"positronic-arrival": json.dumps({"first": old, "last": old})}
+    fields = _run(tmp_path, [("https://positronic.ro/", "")], stored)["fields"]
+    assert fields["first_referrer"] == fields["last_referrer"] == "https://mail.example.com"
+
+
 def test_a_direct_first_visit_is_the_first_arrival_with_its_landing_page(tmp_path: Path) -> None:
     result = _run(tmp_path, [("https://positronic.ro/about", "")])
     assert result["fields"]["first_landing_page"] == "/about"

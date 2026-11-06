@@ -53,7 +53,14 @@
     if (!stored || !stored.first || !stored.last || expired(stored.first)) {
       return { first: view.touch, last: view.touch };
     }
-    return { first: stored.first, last: view.arrival ? view.touch : stored.last };
+    return { first: siteOnly(stored.first), last: view.arrival ? view.touch : siteOnly(stored.last) };
+  }
+
+  // A touch stored by the first release of this script kept the referrer's full address.
+  function siteOnly(touch) {
+    var host = hostOf(touch.referrer);
+    touch.referrer = host ? new URL(touch.referrer).origin : "";
+    return touch;
   }
 
   var stored = null;
