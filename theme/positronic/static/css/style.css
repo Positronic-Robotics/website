@@ -687,6 +687,59 @@ a:hover {
 
 .site-footer-link:hover { color: var(--accent); }
 
+/* The "Keep in touch" form: a full row above the footer links. */
+.updates-form {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* 16 px: a smaller input makes iOS Safari zoom in on focus. */
+.updates-form input[type="email"] {
+  flex: 0 1 16rem;
+  min-width: 0;
+  padding: 0.5rem 0.8rem;
+  font: inherit;
+  font-size: 1rem;
+  color: #e8f0d5;
+  background: #1a1d17;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+}
+
+.updates-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+
+.updates-button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--bg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.updates-button:disabled { opacity: 0.6; cursor: default; }
+
+.updates-status { flex: 1 1 100%; text-align: center; color: var(--accent); }
+.updates-status:empty { display: none; }
+.updates-status.is-error { color: #ff8a80; }
+
+/* Off-screen rather than hidden: only a bot fills it. */
+.updates-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 /* Decline and Accept stay the same size: a consent banner must not steer the visitor to Accept. */
 .consent {
   position: fixed;

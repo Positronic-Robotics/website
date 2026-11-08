@@ -2,14 +2,16 @@ Title: Positronic Privacy Policy
 Slug: privacy
 Description: How Positronic uses personal data on positronic.ro and on the Positronic platform.
 
-Version: 1.0  
-Effective date: 6 November 2026
+Version: 1.1  
+Effective date: 8 November 2026
 
 This policy tells how Positronic uses personal data when a person visits the website
 <https://positronic.ro>, signs in to the Positronic platform, buys credits and runs evaluations. The
 platform is the API at <https://platform.positronic.ro>, the web console at
 <https://console.positronic.ro>, and the `positronic` command-line tool. The Physical AI
-Competition has its own privacy policy at <https://competition.phail.ai/privacy>.
+Competition has its own privacy policy at <https://competition.phail.ai/privacy>. This policy also
+covers the updates list that a person joins with the "Keep in touch" form in the footer of
+positronic.ro or of <https://phail.ai> (section 13).
 
 ## 1. Who is responsible
 
@@ -39,6 +41,7 @@ Contact for every privacy request: hi@positronic.ro.
 | **Security and operation logs**: the requests to the servers, with the user id, the time and the result | To find faults and abuse, and to keep the platform safe | Legitimate interest in a safe and working platform |
 | **Messages to Positronic**: emails to the support address and their answers | To answer the person | Performance of the contract; legitimate interest |
 | **Contact form on positronic.ro**: the email address and the note that the visitor types, where the visitor says they heard of Positronic, and the first and the last arrival of the visitor on the site: the tags of the link, the referring site and the landing page of each (section 13) | To answer the visitor, and to count which channels bring requests | Steps at the person's request before a contract (Art. 6(1)(b)); legitimate interest in answering requests (Art. 6(1)(f)) |
+| **Updates list**: the email address that a person gives in the "Keep in touch" form in the footer of positronic.ro or of phail.ai (section 13) | To send news and updates from Positronic and from the PhAIL leaderboard, for example new models on the board | Consent (Art. 6(1)(a)), which the person withdraws with the unsubscribe link in each update |
 | **Call booking**: the name, the email address and the time that a visitor gives on the booking page for a call (section 13) | To hold the call | Steps at the person's request before a contract; legitimate interest in answering requests |
 | **Website analytics**: the pages visited on positronic.ro, and one event when a visitor clicks the link to book a call or sends the contact form (section 13) | To count and understand visits, and to count how many visits lead to a contact | Consent for Google Analytics; legitimate interest for Plausible, which sets no cookies |
 
@@ -95,7 +98,7 @@ contract, and only to give their service.
 | Nebius | Cloud compute for the platform servers and the simulators, storage of recordings, container registry, and secret storage | EU (Finland) |
 | Cloudflare | Storage and delivery of reports and view pages; hosting of the website | Storage in Western Europe; delivery through Cloudflare's worldwide network |
 | Axiom | Security and operation logs | EU (Germany) |
-| Resend | Delivery of sign-in code emails | EU (Ireland), with records of each email in the United States |
+| Resend | Delivery of sign-in code emails; storage of the updates list and delivery of the updates | EU (Ireland), with records of each email in the United States |
 | Slack | Internal alerts to Positronic staff, for example about a payment dispute. A billing alert names the organization, the purchase and the amount | United States |
 | Google | Website analytics (section 13); storage of the leads of the website contact form and of booked calls in Google Workspace | United States |
 | Plausible | Website analytics with no cookies (section 13) | EU |
@@ -131,6 +134,7 @@ her contract. A person can ask for a copy of these safeguards at the privacy con
 | Purchases, credit records, acceptance of the terms and payment messages | 7 years after the end of the tax year of the purchase, as accounting and tax law require |
 | Evaluations, scores, recordings and policy logs | While the account is open. Positronic deletes them within 90 days after the customer asks, or after the account closes |
 | Security and operation logs | 365 days. Positronic deletes them after that |
+| Updates list | The person unsubscribes, or asks Positronic to delete the address |
 | Contact-form leads and booked calls | Until Positronic no longer needs them to answer the visitor, or until the visitor asks Positronic to delete them |
 | Backups of the databases | The continuous backup keeps about one day of history. Positronic deletes the copies of the databases that it makes before each deploy after 7 days, except the two most recent copies |
 
@@ -200,6 +204,11 @@ arrival. The site replaces the first arrival after 90 days. The
 visitor can delete it with the browser's site data. The server keeps them in a file, adds them to a Google Sheet in Positronic's Google
 Workspace, and emails them to Positronic staff. Positronic keeps a lead to answer the visitor, and
 deletes it when the visitor asks.
+
+The "Keep in touch" form in the footer of positronic.ro, and the same form on phail.ai, send only
+the email address that the person types. Positronic's server adds it to the updates list, which
+Resend keeps for Positronic. Positronic uses the address only to send news and updates. Each update
+has a link to unsubscribe. A person can also leave the list with an email to hi@positronic.ro.
 
 The link to book a call opens a booking page of Notion Calendar. The name, the email address and
 the time that the visitor gives there reach Positronic as an event in its Google calendar.
