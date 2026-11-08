@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import html
 import re
 import subprocess
 import sys
@@ -43,6 +44,15 @@ def test_every_page_footer_carries_the_same_form(site: Path) -> None:
 
 
 SCRIPT = ROOT / "theme" / "positronic" / "static" / "js" / "subscribe.js"
+
+# Must equal VALID_EMAIL in phail.ai's phail/interest.py, which refuses any other address with 400.
+PHAIL_EMAIL_PATTERN = r"[A-Za-z0-9_][A-Za-z0-9_.%+'\-]*@[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)+"
+
+
+def test_the_address_field_checks_the_rule_phail_checks(site: Path) -> None:
+    field = re.search(r'<input type="email" name="email" id="updates-email"[^>]*>', _footer((site / "index.html").read_text()))
+    assert field, "no address field"
+    assert html.unescape(re.search(r'pattern="([^"]*)"', field.group(0)).group(1)) == PHAIL_EMAIL_PATTERN
 
 
 def test_the_form_script_posts_to_the_form_action_and_reports_no_analytics_event() -> None:

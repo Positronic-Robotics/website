@@ -134,7 +134,7 @@
     <form class="updates-form" id="updates-form" method="post" action="https://phail.ai/api/subscribe">
       <label class="updates-text" for="updates-email">Keep in touch. Get news and updates from Positronic. Unsubscribe anytime.</label>
       <input type="text" name="company" class="updates-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <input type="email" name="email" id="updates-email" placeholder="you@company.com" required autocomplete="email" />
+      <input type="email" name="email" id="updates-email" placeholder="you@company.com" required autocomplete="email" pattern="[A-Za-z0-9_][A-Za-z0-9_.%+'\-]*@[A-Za-z0-9_\-]+(\.[A-Za-z0-9_\-]+)+" title="A full address, like you@company.com" />
       <button type="submit" class="updates-button">Subscribe</button>
       <span class="updates-status" role="status"></span>
     </form>
