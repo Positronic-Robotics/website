@@ -29,7 +29,6 @@
         if (!response.ok) throw new Error(response.status);
         form.reset();
         say("Thanks, you are on the list.");
-        if (window.plausible) window.plausible("Updates signup");
       })
       .catch(function () {
         say("That did not go through. Write to hi@positronic.ro.", false);

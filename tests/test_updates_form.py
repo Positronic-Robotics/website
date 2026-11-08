@@ -37,10 +37,15 @@ def test_every_page_footer_carries_the_same_form(site: Path) -> None:
     footers = {_footer(page.read_text()) for page in pages if page.exists()}
     assert len(footers) == 1
     [footer] = footers
-    assert '<form class="updates-form" id="updates-form"' in footer
+    assert '<form class="updates-form" id="updates-form" method="post" action="/api/subscribe"' in footer
     assert 'type="email" name="email"' in footer and 'name="company"' in footer
     assert "Unsubscribe anytime." in footer
     assert all("subscribe.js" in page.read_text() for page in pages if page.exists())
+
+
+def test_the_form_script_reports_no_analytics_event() -> None:
+    script = (ROOT / "theme" / "positronic" / "static" / "js" / "subscribe.js").read_text()
+    assert "plausible" not in script and "gtag" not in script
 
 
 def test_the_privacy_policy_names_the_updates_list(site: Path) -> None:
