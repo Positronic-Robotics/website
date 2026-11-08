@@ -48,7 +48,7 @@ SCRIPT = ROOT / "theme" / "positronic" / "static" / "js" / "subscribe.js"
 def test_the_form_script_posts_to_the_form_action_and_reports_no_analytics_event() -> None:
     script = SCRIPT.read_text()
     assert "fetch(form.action," in script
-    assert "form.noValidate = true;" in script
+    assert "noValidate" not in script  # the browser's email check runs before the submit event
     assert "plausible" not in script and "gtag" not in script
 
 
