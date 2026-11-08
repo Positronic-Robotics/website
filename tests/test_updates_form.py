@@ -57,15 +57,16 @@ def test_the_privacy_policy_names_the_updates_list(site: Path) -> None:
 RUNNER = """
 import { onRequestPost } from "./subscribe.mjs";
 const sent = [];
-const [body, upstreamStatus] = process.argv.slice(2);
+const [body, upstreamStatus, contentType] = process.argv.slice(2);
 globalThis.fetch = async (url, init) => { sent.push({ url, body: JSON.parse(init.body) }); return new Response("{}", { status: Number(upstreamStatus) }); };
-const request = new Request("https://positronic.ro/api/subscribe", { method: "POST", body });
+const headers = contentType ? { "content-type": contentType } : {};
+const request = new Request("https://positronic.ro/api/subscribe", { method: "POST", body, headers });
 const response = await onRequestPost({ request });
-console.log(JSON.stringify({ status: response.status, sent }));
+console.log(JSON.stringify({ status: response.status, text: await response.text(), sent }));
 """
 
 
-def _post(tmp_path: Path, body: object, upstream_status: int = 200) -> dict:
+def _post(tmp_path: Path, body: object, upstream_status: int = 200, content_type: str = "") -> dict:
     node = shutil.which("node")
     if node is None:
         pytest.skip("node is not installed")
@@ -73,7 +74,11 @@ def _post(tmp_path: Path, body: object, upstream_status: int = 200) -> dict:
     (tmp_path / "run.mjs").write_text(RUNNER)
     raw = body if isinstance(body, str) else json.dumps(body)
     out = subprocess.run(
-        [node, "run.mjs", raw, str(upstream_status)], cwd=tmp_path, capture_output=True, text=True, check=True
+        [node, "run.mjs", raw, str(upstream_status), content_type],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+        check=True,
     )
     return json.loads(out.stdout)
 
@@ -82,6 +87,14 @@ def test_the_function_sends_only_the_address_to_phail(tmp_path: Path) -> None:
     result = _post(tmp_path, {"email": " reader@lab.example.edu ", "note": "x", "admin": 1})
     assert result["status"] == 200
     assert result["sent"] == [{"url": "https://phail.ai/api/subscribe", "body": {"email": "reader@lab.example.edu"}}]
+
+
+def test_a_form_the_browser_posts_without_script_is_sent_and_answered_in_text(tmp_path: Path) -> None:
+    form = "company=&email=reader%40lab.example.edu"
+    result = _post(tmp_path, form, content_type="application/x-www-form-urlencoded")
+    assert result["status"] == 200
+    assert result["text"] == "Thanks, you are on the list."
+    assert [s["body"] for s in result["sent"]] == [{"email": "reader@lab.example.edu"}]
 
 
 @pytest.mark.parametrize("body", [{"email": "no-at-sign"}, {"email": 5}, {}, "[1]", "not json"])

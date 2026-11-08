@@ -10,17 +10,27 @@ const json = (body, status = 200) =>
     headers: { "content-type": "application/json" },
   });
 
+// The answer a visitor with no script reads after the browser posts the form itself.
+const SIGNED_UP_TEXT = "Thanks, you are on the list.";
+
+const isPlainFormPost = (request) =>
+  (request.headers.get("content-type") || "").startsWith("application/x-www-form-urlencoded");
+
 export async function onRequestPost({ request }) {
   const raw = await request.text();
   if (raw.length > MAX_BODY) return json({ error: "Request too large" }, 413);
 
   let data;
-  try {
-    data = JSON.parse(raw || "{}");
-  } catch {
-    return json({ error: "Invalid JSON" }, 400);
+  if (isPlainFormPost(request)) {
+    data = Object.fromEntries(new URLSearchParams(raw));
+  } else {
+    try {
+      data = JSON.parse(raw || "{}");
+    } catch {
+      return json({ error: "Invalid JSON" }, 400);
+    }
+    if (!data || typeof data !== "object" || Array.isArray(data)) return json({ error: "Invalid JSON" }, 400);
   }
-  if (!data || typeof data !== "object" || Array.isArray(data)) return json({ error: "Invalid JSON" }, 400);
 
   // The hidden field is filled by bots only. Answer them as if it worked.
   if (typeof data.company === "string" && data.company.trim()) return json({ ok: true });
@@ -36,6 +46,7 @@ export async function onRequestPost({ request }) {
     body: JSON.stringify({ email }),
   });
   if (!upstream.ok) return json({ error: "Could not record that" }, upstream.status === 429 ? 429 : 502);
+  if (isPlainFormPost(request)) return new Response(SIGNED_UP_TEXT, { headers: { "content-type": "text/plain; charset=utf-8" } });
   return json({ ok: true });
 }
 
