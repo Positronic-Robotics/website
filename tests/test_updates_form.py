@@ -36,6 +36,7 @@ def test_every_page_footer_carries_the_same_form(site: Path) -> None:
     assert len(footers) == 1
     [footer] = footers
     assert '<form class="updates-form" id="updates-form" method="post" action="https://phail.ai/api/subscribe"' in footer
+    assert "novalidate" not in footer  # the browser checks the address when the script does not run
     assert 'type="email" name="email"' in footer and 'name="company"' in footer
     assert "Unsubscribe anytime." in footer
     assert all("subscribe.js" in page.read_text() for page in pages if page.exists())
@@ -47,6 +48,7 @@ SCRIPT = ROOT / "theme" / "positronic" / "static" / "js" / "subscribe.js"
 def test_the_form_script_posts_to_the_form_action_and_reports_no_analytics_event() -> None:
     script = SCRIPT.read_text()
     assert "fetch(form.action," in script
+    assert "form.noValidate = true;" in script
     assert "plausible" not in script and "gtag" not in script
 
 

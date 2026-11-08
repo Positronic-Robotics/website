@@ -4,6 +4,8 @@
   var form = document.getElementById("updates-form");
   if (!form) return;
 
+  // The browser checks the address only when this script does not run.
+  form.noValidate = true;
   var status = form.querySelector(".updates-status");
   var button = form.querySelector("button[type=submit]");
 
