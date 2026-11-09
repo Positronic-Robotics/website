@@ -45,7 +45,7 @@ An operator places items in an outbound tote, sets the item count in the interfa
 
 Evaluation is blind: model checkpoints are rotated randomly, and the operator does not know which model is running. This eliminates unconscious bias in how episodes are initiated or scored.
 
-We publish the fine-tuning dataset, training scripts, and full methodology in our [white paper](https://phail.ai/whitepaper.pdf). The hardware – Franka FR3 arm with Robotiq 2F-85 gripper in the DROID configuration – is widely available and reproducible.
+We publish the fine-tuning dataset, training scripts, and full methodology in our [PhAIL paper](https://arxiv.org/abs/2605.29710). The hardware – Franka FR3 arm with Robotiq 2F-85 gripper in the DROID configuration – is widely available and reproducible.
 
 ### Why bin-to-bin picking?
 
@@ -91,7 +91,7 @@ The leaderboard is open. If your model can do better – with your own architect
 
 PhAIL launches with one task and four models. More tasks, more hardware, and more models are coming. We're also planning to test generalization to unseen objects – currently all items appear in the training dataset, but real deployments face new objects constantly. The consortium – including Nebius as founding compute partner and Toloka as data partner – is actively welcoming new members.
 
-- Full methodology: [white paper](https://phail.ai/whitepaper.pdf)
+- Full methodology: [PhAIL paper](https://arxiv.org/abs/2605.29710)
 - Live results: [phail.ai](https://phail.ai)
 - [Fine-tuning dataset](https://phail.ai/about) (352 episodes, 12GB)
 - Positronic – the platform powering PhAIL: [GitHub](https://github.com/Positronic-Robotics/positronic)
