@@ -511,6 +511,16 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .card-more::after { content: " \2192"; }
 .home .card:hover .card-more { color: var(--accent, #b1e74f); }
 
+.home .cards-note {
+  margin: 18px 0 0;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: #cdd2c4;
+  text-align: center;
+}
+.home .cards-note a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.35); }
+.home .cards-note a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+
 /* ---- Narrow -------------------------------------------------------------- */
 
 @media (max-width: 900px) {
