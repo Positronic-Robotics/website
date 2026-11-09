@@ -3,7 +3,7 @@ Slug: privacy
 Description: How Positronic uses personal data on positronic.ro and on the Positronic platform.
 
 Version: 1.1  
-Effective date: 8 November 2026
+Effective date: 9 November 2026
 
 This policy tells how Positronic uses personal data when a person visits the website
 <https://positronic.ro>, signs in to the Positronic platform, buys credits and runs evaluations. The
