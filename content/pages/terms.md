@@ -338,7 +338,7 @@ non-transferable right to use the platform for its own evaluations while these t
 
 8.2 **Publication of results.** The customer can publish, quote and share the results of its own
 evaluations, for example in a paper, a blog post or a presentation. The customer must not alter
-the results or present them in a misleading manner. The customer can state that the evaluation ran
+the scores or present the results in a misleading manner. The customer can state that the evaluation ran
 on the Positronic platform.
 
 8.3 The `positronic` client library and command-line tool have their own open-source licence. That
