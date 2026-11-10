@@ -111,10 +111,10 @@ evaluation data and recordings when their work needs it.
 Positronic can disclose data where the law requires it, or to protect its rights and the safety of
 people.
 
-**Links to results.** The platform can make a page that shows the results of an evaluation, with a
-link that is hard to guess. Any person who has the link can open the page until the link expires,
-7 days after the platform makes it, unless the platform shows another expiry when it makes the
-link. The storage deletes the
+**Links to results.** The platform can make a web page that shows the results of an evaluation. The
+page has a unique address that contains a randomly generated code, and it does not require sign-in.
+Any person who has the link can open the page until the link expires, 7 days after the platform
+makes it, unless the platform shows another expiry when it makes the link. The storage deletes the
 files within about two more days. The customer decides who gets the link.
 
 ## 7. Transfers outside the EU

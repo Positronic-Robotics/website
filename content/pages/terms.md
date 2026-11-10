@@ -73,8 +73,9 @@ data. The privacy policy is information. It is not part of these terms.
 - **Episode**: one attempt of the policy at one task.
 - **Recording**: the data of an episode: robot state, camera video, commands, times and scores.
 - **Score**: the measure of an episode or an evaluation, as section 6 states.
-- **Results**: everything that the platform makes from the customer's evaluations, in any form. For
-  example: recordings, scores, labels, reports, analyses, comparisons, view pages and exports.
+- **Results**: all data and materials that the platform generates from the customer's evaluations,
+  in any form, including recordings, scores, labels, reports, analyses, comparisons, view pages and
+  exports.
 - **Credit**: a prepaid unit that pays for evaluations on the platform.
 - **Bought credit**: a credit that the customer paid for. A **granted credit** is a credit that
   Positronic gave at no charge.
@@ -255,18 +256,19 @@ credential, Positronic stores it as a secret and sends it only to that endpoint.
 
 5.6 **Results.** The results of the customer's private evaluations belong to the customer. The
 customer gives Positronic a licence to store, process, score and label them, to show them to the
-customer, to make more results from them for the customer, to find faults, to improve the
-evaluation, and, with no customer name, to improve Positronic's labeling techniques. Positronic keeps them while the
-account is open, and deletes them within 90 days after the customer asks or the account closes.
+customer, to generate further results from them for the customer, to diagnose faults, to improve
+the evaluation, and, with no customer name, to improve Positronic's labeling techniques. Positronic
+keeps them while the account is open, and deletes them within 90 days after the customer asks or
+the account closes.
 
 5.7 **No training.** Positronic does not use the customer's policy or its recordings to train a
 robot policy, or any model that controls a robot or copies the customer's policy.
 
-5.8 **Links to results.** The platform can make a page that shows results, with a link that is
-hard to guess. Any person who has the link can open the page until the link expires, 7 days after
-the platform makes it, unless the platform shows another expiry when it makes the link. The customer
-controls who gets the link. The expiry of a link does not limit the right of the customer to publish
-its results under section 8.2.
+5.8 **Links to results.** The platform can make a web page that shows results. The page has a unique
+address that contains a randomly generated code, and it does not require sign-in. Any person who has
+the link can open the page until the link expires, 7 days after the platform makes it, unless the
+platform shows another expiry when it makes the link. The customer controls who gets the link. The
+expiry of a link does not limit the right of the customer to publish its results under section 8.2.
 
 5.9 **The customer's data.** The customer puts personal data, secrets and data of other people in
 its policy, its task text or its endpoint answers only where the evaluation needs it.
@@ -331,9 +333,9 @@ methods, and the tools and formats that present results. These terms give the cu
 non-transferable right to use the platform for its own evaluations while these terms apply.
 
 8.2 **Publication of results.** The customer can publish, quote and share the results of its own
-evaluations, for example in a paper, a blog post or a presentation. The customer must not change
-the results, or present them in a way that misleads. The customer can say
-that the evaluation ran on the Positronic platform.
+evaluations, for example in a paper, a blog post or a presentation. The customer must not alter
+the results or present them in a misleading manner. The customer can state that the evaluation ran
+on the Positronic platform.
 
 8.3 The `positronic` client library and command-line tool have their own open-source licence. That
 licence applies to them.
