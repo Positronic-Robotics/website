@@ -14,8 +14,8 @@ This summary is not part of the terms. It helps the customer read them.
   evaluation of a robot policy, in simulation or on a real robot.
 - When Positronic accepts an evaluation, it holds the maximum that the evaluation can cost. When
   the evaluation ends, the platform charges what the evaluation used and releases the rest.
-- The platform does not charge for a platform fault, for an invalid recording, or for setup, reset
-  and wait time on a real robot. It charges for a usable recording, also when the policy fails.
+- The platform does not charge for a platform fault or for an invalid recording. It charges for a
+  usable recording, also when the policy fails.
 - Positronic scores each evaluation with automated measurement and with the review of trained
   people. The customer can ask for a review of a score.
 - Credits have no cash value. All credits in the account expire 12 months after the last time credits
@@ -84,12 +84,15 @@ data. The privacy policy is information. It is not part of these terms.
 - **Hold**: credits that the platform reserves for an accepted evaluation.
 - **Settlement**: the step that charges the credits that an evaluation used and releases the rest
   of its hold.
+- **Payment provider**: the third-party service that processes payments for Positronic. The
+  privacy policy names it.
 - **Pricing page**: the page at <https://console.positronic.ro/pricing> that shows the credit
   packages, their prices and the rates in credits.
 
 ## 3. The account
 
-3.1 **Sign-in.** The customer signs in through WorkOS, with Google, GitHub or a code sent by email.
+3.1 **Sign-in.** The customer signs in with a method that the platform offers, for example Google,
+GitHub or a code sent by email.
 The customer must give a correct email address.
 
 3.2 **API key.** Each user gets one API key. The key gives full access to the user's organizations
@@ -119,18 +122,18 @@ another organization, sell them or exchange them.
 
 4.2.1 The pricing page shows each credit package, its number of credits, its price and its currency.
 
-4.2.2 Each price includes the VAT, GST or sales tax that applies. Stripe calculates the tax at Checkout
+4.2.2 Each price includes the VAT, GST or sales tax that applies. The tax is calculated at checkout
 from the billing address, and the receipt shows it. A business customer can give its tax number at
-Checkout.
+checkout.
 
-4.2.3 The customer pays through Stripe Checkout. Stripe processes the card. Positronic does not receive
-or store the full card number.
+4.2.3 The customer pays on the checkout page of the payment provider. Positronic does not receive or
+store the full card number.
 
-4.2.4 Positronic adds the credits to the balance when Stripe confirms the payment to Positronic. The
+4.2.4 Positronic adds the credits to the balance when the payment provider confirms the payment. The
 page that the browser shows after the payment does not add credits. A cancelled, declined or
 expired payment adds no credits.
 
-4.2.5 If Stripe confirms a payment late, Positronic adds the credits of that purchase one time.
+4.2.5 If the payment provider confirms a payment late, Positronic adds the credits of that purchase one time.
 
 ### 4.3 What an evaluation costs
 
@@ -138,8 +141,9 @@ expired payment adds no credits.
 
 4.3.2 **Robot evaluation.** The platform charges a fee for each episode, which depends on the task,
 and a rate for each minute of the recording. The platform measures the recording time from the
-recorded robot and camera data, and rounds it up to the step that the pricing page states. Setup,
-scene reset and wait time cost nothing.
+recorded robot and camera data, and rounds it up to the step that the pricing page states. The fee
+for each episode covers setup and scene reset. The rate for each minute applies only to the
+recording time, and not to setup, scene reset or wait time.
 
 4.3.3 **Simulated evaluation.** The platform charges a fee for each start of the simulator and a rate
 for each minute of simulated robot time of each episode, rounded up to the step that the pricing
@@ -266,8 +270,8 @@ robot policy, or any model that controls a robot or copies the customer's policy
 
 5.8 **Links to results.** The platform can make a web page that shows results. The page has a unique
 address that contains a randomly generated code, and it does not require sign-in. Any person who has
-the link can open the page until the link expires, 7 days after the platform makes it, unless the
-platform shows another expiry when it makes the link. The customer controls who gets the link. The
+the link can open the page until the link expires. A link stays valid for a limited period of at
+least 7 days after the platform makes it. The customer controls who gets the link. The
 expiry of a link does not limit the right of the customer to publish its results under section 8.2.
 
 5.9 **The customer's data.** The customer puts personal data, secrets and data of other people in

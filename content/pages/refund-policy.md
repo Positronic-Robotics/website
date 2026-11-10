@@ -6,8 +6,8 @@ Version: 1.3
 Effective date: 10 November 2026
 
 This policy is part of the [Positronic Platform Terms of Service](/terms). The words "Positronic", "customer",
-"consumer", "credit", "bought credit", "granted credit", "hold", "evaluation", "score" and "pricing
-page" have the meaning that the terms give them. Positronic is Positronic Robotics Inc.
+"consumer", "credit", "bought credit", "granted credit", "hold", "evaluation", "score", "payment
+provider" and "pricing page" have the meaning that the terms give them. Positronic is Positronic Robotics Inc.
 
 ## Summary
 
@@ -22,8 +22,8 @@ page" have the meaning that the terms give them. Positronic is Positronic Roboti
 
 ## 1. What the customer buys
 
-The customer buys credits in advance. Positronic adds the credits to the balance when Stripe
-confirms the payment. The platform then takes credits for each evaluation, as the terms and the
+The customer buys credits in advance. Positronic adds the credits to the balance when the payment
+provider confirms the payment. The platform then takes credits for each evaluation, as the terms and the
 pricing page state. The customer sees each purchase, each hold and each charge in the console, under
 the account page.
 
@@ -38,7 +38,7 @@ refund expired credits.
 2.2 **How to ask.** The customer sends an email to the support address in section 9 from the email
 address of the account. The email gives:
 
-- the date and the amount of the purchase, or the receipt from Stripe; and
+- the date and the amount of the purchase, or the receipt for the purchase; and
 - the number of credits to refund, or "all available credits".
 
 2.3 **The amount.** Positronic refunds the price that the customer paid for each credit in that
@@ -53,13 +53,13 @@ purchases. A refund takes them from the latest purchase first, at the price of t
 
 2.5 **Tax.** The refund includes the tax that the refunded part of the price included.
 
-2.6 **Fees.** Positronic pays the Stripe processing fee. A refund is never less because of it.
+2.6 **Fees.** Positronic pays the fee of the payment provider. A refund is never less because of it.
 
 2.7 **What happens.** Positronic first removes the refunded credits from the balance. Then it
-sends the refund through Stripe to the card or the payment method that paid. Stripe cannot send a
-refund to another card or account. Positronic sends the refund within 10 business days after it
-receives a complete request. Stripe states that the customer sees the refund on the statement about
-5 to 10 business days later. The time depends on the bank.
+sends the refund through the payment provider to the card or the payment method that paid. The
+refund cannot go to another card or account. Positronic sends the refund within 10 business days
+after it receives a complete request. The time until the refund appears on the customer's statement
+depends on the payment provider and the bank.
 
 2.8 **If the credits are not available.** If the customer spent part of the credits, or a hold
 reserves them, Positronic refunds only the available part. When a hold settles, the credits that it
@@ -71,7 +71,8 @@ releases become available, and the customer can ask again.
 
 3.2 **What the platform does not charge.** The platform already charges nothing for:
 
-- setup, scene reset and wait time on a real robot;
+- time on a real robot outside the recording, such as setup, scene reset and wait time, apart from
+  the fee for each episode, which covers setup and scene reset;
 - an attempt that the platform discarded, or that a platform error stopped. The platform runs the
   episode again within its retry limits;
 - a recording with robot data that is missing, cut short or not valid;
@@ -96,8 +97,8 @@ expire with the other credits in the account, as section 4.7 of the terms states
 
 ## 5. Payments that did not complete
 
-If the customer cancels Checkout, or if the payment fails or expires, Positronic charges nothing and
-adds no credits. If the bank later confirms a payment that the customer thought failed, Positronic
+If the customer cancels the checkout, or if the payment fails or expires, Positronic charges nothing
+and adds no credits. If the bank later confirms a payment that the customer thought failed, Positronic
 adds the credits of that purchase one time. The customer can then ask for a refund under section 2.
 
 ## 6. Payment disputes
@@ -124,7 +125,7 @@ it refunds the available bought credits.
 8.1 **The right.** A consumer who lives in the EU or the UK can withdraw from a purchase of credits
 within 14 days after the purchase, with no reason.
 
-8.2 **The service starts at once.** At Checkout, the consumer asks Positronic to make the credits
+8.2 **The service starts at once.** At checkout, the consumer asks Positronic to make the credits
 available at once, and confirms that he or she knows the effect: the right to withdraw ends when the
 consumer has spent all the credits of that purchase. Positronic sends a confirmation of the purchase
 by email that repeats this request.
