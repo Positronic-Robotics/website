@@ -2,9 +2,9 @@ Title: Positronic Platform Terms of Service
 Slug: terms
 Description: Read the terms of service of the Positronic platform: credits, evaluations, charges, refunds and liability.
 
-Version: 1.2  
-Effective date: 5 November 2026  
-Last changed: 5 November 2026
+Version: 1.3  
+Effective date: 9 November 2026  
+Last changed: 9 November 2026
 
 ## Summary
 
@@ -23,7 +23,8 @@ This summary is not part of the terms. It helps the customer read them.
   policy says when Positronic returns money for credits that the customer did not spend. A consumer in the EU or the UK can withdraw from a purchase within
   14 days.
 - The customer keeps the rights in its policy, and owns the recordings and scores of its private
-  evaluations.
+  evaluations. The customer can publish the results of its own evaluations.
+- Positronic keeps the customer's information confidential.
 
 ## 1. The parties and these terms
 
@@ -263,10 +264,31 @@ robot policy, or any model that controls a robot or copies the customer's policy
 5.8 **Reports and view links.** When an evaluation ends, the platform can make a report and a page
 that shows the recordings. Each one has a link that is hard to guess. Any person who has the link
 can open the page until the link expires, 7 days after the platform makes it. The customer controls
-who gets the link.
+who gets the link. The expiry of a link does not limit the right of the customer to publish its
+results under section 7.2.
 
 5.9 **The customer's data.** The customer puts personal data, secrets and data of other people in
 its policy, its task text or its endpoint answers only where the evaluation needs it.
+
+5.10 **Confidentiality.** The customer's "**confidential information**" is the information that the
+customer gives to the platform, and the information that the platform makes from the customer's
+evaluations. It includes the policy, the recordings, the scores, the reports, the task text, the
+endpoint details and the credentials. Positronic keeps the customer's confidential information
+confidential. It uses the information only to provide the platform and for the uses that section
+5.6 allows. It discloses the information only to its staff, subcontractors and service providers
+who need it to provide the platform and who are bound by duties of confidentiality. This section
+does not apply to information that:
+
+a. is public, or becomes public, through no fault of Positronic;
+
+b. Positronic had before the customer gave it, or develops independently;
+
+c. Positronic gets lawfully from a third party that has no duty of confidentiality; or
+
+d. the law or a court requires Positronic to disclose. Positronic then tells the customer before the
+disclosure, where the law allows it, and discloses only the information that the law requires.
+
+This section continues after the account closes.
 
 ## 5A. Scores
 
@@ -313,13 +335,18 @@ it as section 4.5 states. Positronic can refuse or stop a policy that it thinks 
 ## 7. Positronic's rights
 
 7.1 Positronic and its licensors own the platform, the simulators, the task catalogue, the scoring
-and the reports. These terms give the customer a limited, non-exclusive, non-transferable right to
-use the platform for its own evaluations while these terms apply.
+method and the format of the reports. These terms give the customer a limited, non-exclusive,
+non-transferable right to use the platform for its own evaluations while these terms apply.
 
-7.2 The `positronic` client library and command-line tool have their own open-source licence. That
+7.2 **Publication of results.** The customer can publish, quote and share the reports, scores and
+recordings of its own evaluations, for example in a paper, a blog post or a presentation. The
+customer must not change the scores, or present them in a way that misleads. The customer can say
+that the evaluation ran on the Positronic platform.
+
+7.3 The `positronic` client library and command-line tool have their own open-source licence. That
 licence applies to them.
 
-7.3 If the customer sends ideas or feedback, Positronic can use them with no duty to the customer.
+7.4 If the customer sends ideas or feedback, Positronic can use them with no duty to the customer.
 
 ## 8. Availability and changes
 
