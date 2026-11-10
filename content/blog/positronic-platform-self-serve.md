@@ -8,7 +8,7 @@ Image: media/self-checkout-card.png
 
 **tl;dr** Positronic Platform is open to everyone. Make an account, buy credits, submit your policy as a Docker image, and get video and scores back from a real robot arm or a simulator. No sales call, no contract, no web forms. Your coding agent can drive the whole thing.
 
-Until now, every evaluation we ran for a lab started with a call. That works for a design partner, and it does not work for a student with a fresh fine-tune at 2 am, or for an agent that wants to try ten checkpoints before lunch. So we made the path self-serve.
+Until now, every evaluation we ran for a lab started with a call. Now a student with a fresh fine-tune at 2 am, or an agent with ten checkpoints to try before lunch, can run one alone.
 
 ## What you can run
 
@@ -49,7 +49,7 @@ A credit is $3, and you buy 4 to 1,666 at a time.
 
 The full table is on the [pricing page](https://console.positronic.ro/pricing).
 
-When you submit, we hold the most that the run can cost. When it ends, we charge what it used and release the rest. We do not charge for our own faults or for a recording that is not usable. We do charge for a usable run where the policy fails: a failure is data too. Credits expire 12 months after the last time you added credits.
+When you submit, we hold the most that the run can cost. When it ends, we charge what it used and release the rest. We do not charge for our own faults or for a recording that is not usable. We do charge for a usable run where the policy fails. Credits expire 12 months after the last time you added credits.
 
 Scores come from automated measurement and from the review of trained people. If a score looks wrong, ask us for a review.
 
