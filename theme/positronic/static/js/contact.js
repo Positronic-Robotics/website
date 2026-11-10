@@ -1,5 +1,7 @@
 // Homepage contact form: post it without leaving the page, and say what happened.
 (function () {
+  // phail.ai stores the lead; the visitor's browser posts there, so its hourly limit counts the visitor.
+  var LEADS_URL = "https://phail.ai/api/interest";
   var form = document.getElementById("contact-form");
   if (!form) return;
 
@@ -67,7 +69,9 @@
     body.company = form.elements.company.value;
     body.heard_from = heard;
     body.heard_from_detail = detail;
-    fetch("/api/contact", {
+    body.source = "positronic-home";
+    body.page = window.location.pathname;
+    fetch(LEADS_URL, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(body),

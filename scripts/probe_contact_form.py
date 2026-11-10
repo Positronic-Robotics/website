@@ -23,6 +23,12 @@ import json
 from playwright.sync_api import Route, sync_playwright
 
 TAGS = "utm_source=probe&utm_medium=test&utm_campaign=lead-source-probe"
+# What phail.ai answers to the preflight of a cross-origin JSON post.
+PREFLIGHT_GRANT = {
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "POST",
+    "access-control-allow-headers": "content-type",
+}
 
 
 def main() -> None:
@@ -43,18 +49,26 @@ def main() -> None:
     sent: list[dict] = []
 
     def capture(route: Route) -> None:
+        if route.request.method == "OPTIONS":
+            route.fulfill(status=204, headers=PREFLIGHT_GRANT)
+            return
         sent.append(
             {"referer": route.request.headers.get("referer", ""), "body": json.loads(route.request.post_data or "{}")}
         )
         if args.submit:
             route.continue_()
         else:
-            route.fulfill(status=200, content_type="application/json", body='{"ok": true}')
+            route.fulfill(
+                status=200,
+                content_type="application/json",
+                headers={"access-control-allow-origin": "*"},
+                body='{"ok": true}',
+            )
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
         page = browser.new_page(viewport={"width": args.width, "height": 900})
-        page.route("**/api/contact", capture)
+        page.route("https://phail.ai/api/interest", capture)
         for before in args.before:
             page.goto(f"{args.base_url.rstrip('/')}{before}")
         page.goto(f"{args.base_url.rstrip('/')}{args.page}?{TAGS}#talk", referer=args.referrer)
