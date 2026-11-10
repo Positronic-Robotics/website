@@ -2,8 +2,8 @@ Title: Positronic Privacy Policy
 Slug: privacy
 Description: How Positronic uses personal data on positronic.ro and on the Positronic platform.
 
-Version: 1.1  
-Effective date: 9 November 2026
+Version: 1.2  
+Effective date: 10 November 2026
 
 This policy tells how Positronic uses personal data when a person visits the website
 <https://positronic.ro>, signs in to the Positronic platform, buys credits and runs evaluations. The
@@ -37,7 +37,7 @@ Contact for every privacy request: hi@positronic.ro.
 | **Evaluations**: the tasks, the episode counts and time limits, the container image reference and its digest, the address of a remote endpoint, the status and the scores | To run and score the evaluation that the customer asks for | Performance of the contract |
 | **Secrets of an evaluation**: a registry login for a private image, and a credential for a remote endpoint | To pull the image, or to call the endpoint | Performance of the contract |
 | **Policy log**: for a container image, the last 4 MiB of the log of the policy container | To let the customer find faults in its policy | Performance of the contract |
-| **Recordings**: for each episode, the robot state, the camera video of the robot and its work area, the commands, the times, the scores, and the notes and labels of operators and reviewers. Each recording is linked to the organization | To score the evaluation, to show it to the customer, to make reports, and to check each charge; and, with no customer name, to improve Positronic's labeling techniques | Performance of the contract; legitimate interest in better labeling (Art. 6(1)(f)) for the last purpose |
+| **Recordings**: for each episode, the robot state, the camera video of the robot and its work area, the commands, the times, the scores, and the notes and labels of operators and reviewers. Each recording is linked to the organization | To score the evaluation, to show it and the other results of the evaluation to the customer, and to check each charge; and, with no customer name, to improve Positronic's labeling techniques | Performance of the contract; legitimate interest in better labeling (Art. 6(1)(f)) for the last purpose |
 | **Security and operation logs**: the requests to the servers, with the user id, the time and the result | To find faults and abuse, and to keep the platform safe | Legitimate interest in a safe and working platform |
 | **Messages to Positronic**: emails to the support address and their answers | To answer the person | Performance of the contract; legitimate interest |
 | **Contact form on positronic.ro**: the email address and the note that the visitor types, where the visitor says they heard of Positronic, and the first and the last arrival of the visitor on the site: the tags of the link, the referring site and the landing page of each (section 13) | To answer the visitor, and to count which channels bring requests | Steps at the person's request before a contract (Art. 6(1)(b)); legitimate interest in answering requests (Art. 6(1)(f)) |
@@ -96,7 +96,7 @@ contract, and only to give their service.
 | WorkOS | Sign-in with Google, GitHub or an email code | United States |
 | Stripe | Payments, tax calculation, refunds and disputes | United States |
 | Nebius | Cloud compute for the platform servers and the simulators, storage of recordings, container registry, and secret storage | EU (Finland) |
-| Cloudflare | Storage and delivery of reports and view pages; hosting of the website | Storage in Western Europe; delivery through Cloudflare's worldwide network |
+| Cloudflare | Storage and delivery of results and view pages; hosting of the website | Storage in Western Europe; delivery through Cloudflare's worldwide network |
 | Axiom | Security and operation logs | EU (Germany) |
 | Resend | Delivery of sign-in code emails; storage of the updates list and delivery of the updates | EU (Ireland), with records of each email in the United States |
 | Slack | Internal alerts to Positronic staff, for example about a payment dispute. A billing alert names the organization, the purchase and the amount | United States |
@@ -111,9 +111,10 @@ evaluation data and recordings when their work needs it.
 Positronic can disclose data where the law requires it, or to protect its rights and the safety of
 people.
 
-**Reports and view links.** When an evaluation ends, the platform can make a report and a page that
-shows the recordings. Each one has a link that is hard to guess. Any person who has the link can
-open the page until the link expires, 7 days after the platform makes it. The storage deletes the
+**Links to results.** The platform can make a page that shows the results of an evaluation, with a
+link that is hard to guess. Any person who has the link can open the page until the link expires,
+7 days after the platform makes it, unless the platform shows another expiry when it makes the
+link. The storage deletes the
 files within about two more days. The customer decides who gets the link.
 
 ## 7. Transfers outside the EU

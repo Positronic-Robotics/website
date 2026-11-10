@@ -2,8 +2,8 @@ Title: Positronic Platform Refund Policy
 Slug: refund-policy
 Description: When Positronic refunds credits on the Positronic platform, and how to ask for a refund.
 
-Version: 1.2  
-Effective date: 5 November 2026
+Version: 1.3  
+Effective date: 10 November 2026
 
 This policy is part of the [Positronic Platform Terms of Service](/terms). The words "Positronic", "customer",
 "consumer", "credit", "bought credit", "granted credit", "hold", "evaluation", "score" and "pricing
@@ -38,9 +38,8 @@ refund expired credits.
 2.2 **How to ask.** The customer sends an email to the support address in section 9 from the email
 address of the account. The email gives:
 
-a. the date and the amount of the purchase, or the receipt from Stripe; and
-
-b. the number of credits to refund, or "all available credits".
+- the date and the amount of the purchase, or the receipt from Stripe; and
+- the number of credits to refund, or "all available credits".
 
 2.3 **The amount.** Positronic refunds the price that the customer paid for each credit in that
 purchase, times the number of credits to refund, in the currency of the purchase. For example, if a
@@ -72,16 +71,12 @@ releases become available, and the customer can ask again.
 
 3.2 **What the platform does not charge.** The platform already charges nothing for:
 
-a. setup, scene reset and wait time on a real robot;
-
-b. an attempt that the platform discarded, or that a platform error stopped. The platform runs the
-episode again within its retry limits;
-
-c. a recording with robot data that is missing, cut short or not valid;
-
-d. a simulated evaluation that a platform fault ended, or that never started; and
-
-e. an evaluation that the customer cancelled before the platform started it.
+- setup, scene reset and wait time on a real robot;
+- an attempt that the platform discarded, or that a platform error stopped. The platform runs the
+  episode again within its retry limits;
+- a recording with robot data that is missing, cut short or not valid;
+- a simulated evaluation that a platform fault ended, or that never started; and
+- an evaluation that the customer cancelled before the platform started it.
 
 3.3 **A usable recording costs credits.** The platform charges for a usable recording when the
 policy fails the task, and when the operator stops the robot for safety. These are results of the
@@ -91,7 +86,7 @@ evaluation, so they are not grounds for a refund.
 support address within 60 days after the evaluation ends, with the evaluation and the reason.
 Positronic checks the records of the evaluation and answers within 10 business days. If the charge
 was wrong, Positronic gives the credits back to the balance. The customer sees each correction in
-the credit history. Section 5A of the terms covers a review of a score.
+the credit history. Section 6 of the terms covers a review of a score.
 
 ## 4. Granted credits
 
@@ -118,7 +113,7 @@ already, Positronic can suspend the account until the customer pays for the cred
 7.1 If the customer closes its account, Positronic refunds its available bought credits under
 section 2, if the customer asks for it before the credits expire.
 
-7.2 If Positronic closes the account, section 9.3 of the terms applies.
+7.2 If Positronic closes the account, section 10.3 of the terms applies.
 
 7.3 If Positronic stops new credit sales, accepted evaluations continue, and the customer can spend
 its balance or ask for a refund of its available bought credits. If Positronic stops the platform,
