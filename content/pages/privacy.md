@@ -2,8 +2,8 @@ Title: Positronic Privacy Policy
 Slug: privacy
 Description: How Positronic uses personal data on positronic.ro and on the Positronic platform.
 
-Version: 1.2  
-Effective date: 10 November 2026
+Version: 1.3  
+Effective date: 11 November 2026
 
 This policy tells how Positronic uses personal data when a person visits the website
 <https://positronic.ro>, signs in to the Positronic platform, buys credits and runs evaluations. The
@@ -100,7 +100,7 @@ contract, and only to give their service.
 | Axiom | Security and operation logs | EU (Germany) |
 | Resend | Delivery of sign-in code emails; storage of the updates list and delivery of the updates | EU (Ireland), with records of each email in the United States |
 | Slack | Internal alerts to Positronic staff, for example about a payment dispute. A billing alert names the organization, the purchase and the amount | United States |
-| Google | Website analytics (section 13); storage of the leads of the website contact form and of booked calls in Google Workspace | United States |
+| Google | Website analytics (section 13); storage of the leads of the website contact form, of a copy of the updates list and of booked calls in Google Workspace | United States |
 | Plausible | Website analytics with no cookies (section 13) | EU |
 | Notion | The booking page for calls (Notion Calendar) | United States |
 | Contracted reviewers | Label recordings of robot evaluations, as part of the scoring, under confidentiality and data-processing terms | Outside the EU |
@@ -208,7 +208,9 @@ deletes it when the visitor asks.
 
 The "Keep in touch" form in the footer of positronic.ro, and the same form on phail.ai, send only
 the email address that the person types. Positronic's server adds it to the updates list, which
-Resend keeps for Positronic. Positronic uses the address only to send news and updates. Each update
+Resend keeps for Positronic. Positronic also keeps a copy of the list in a Google Sheet in its Google
+Workspace, so that its staff see who joins. The copy drops an address when the person leaves the
+list. Positronic uses the address only to send news and updates. Each update
 has a link to unsubscribe. A person can also leave the list with an email to hi@positronic.ro.
 
 The link to book a call opens a booking page of Notion Calendar. The name, the email address and

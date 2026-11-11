@@ -70,3 +70,9 @@ def test_the_privacy_policy_names_the_updates_list(site: Path) -> None:
     policy = (site / "privacy.html").read_text()
     assert "Updates list" in policy
     assert "Keep in touch" in policy
+
+
+def test_the_privacy_policy_names_the_sheet_copy_of_the_updates_list(site: Path) -> None:
+    policy = (site / "privacy.html").read_text()
+    assert "copy of the list in a Google Sheet" in policy
+    assert "a copy of the updates list" in policy
