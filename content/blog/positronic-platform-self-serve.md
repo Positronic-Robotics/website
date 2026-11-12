@@ -1,16 +1,20 @@
 Title: You Don't Need a Robot to Test on a Robot
-Date: 2026-12-01 14:00
+Date: 2026-12-08 14:00
 Category: Blog
 Slug: positronic-platform-self-serve
 Author: Vladimir Yakunin
-Summary: Positronic Platform is open to everyone, self-serve. Make an account, buy credits and test your robot policy on our robots, a Franka or a YAM arm, or in MolmoSpaces and RoboLab. Your coding agent can drive all of it.
+Summary: Positronic Platform is open to everyone, self-serve. Test your robot policy on our Franka and YAM arms, or in MolmoSpaces and RoboLab, and get fully labelled rollout data back. Your coding agent can run the whole loop.
 Image: media/self-checkout-card.png
 
-**tl;dr** Test your robot model on our robots. Positronic Platform is open to everyone and is self-serve: make an account, buy credits, submit your policy as a Docker image, and get video and scores back from a real robot arm or a simulator. Your coding agent can drive the whole thing.
+<video controls playsinline preload="metadata" poster="{static}/media/self-checkout-video-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
+  <source src="{static}/media/self-checkout-video.mp4" type="video/mp4">
+</video>
+
+**tl;dr** Test your robot model on our robots. Positronic Platform is open to everyone and is self-serve: make an account, buy credits, submit your policy as a Docker image, and get fully labelled rollout data back from a real robot arm or a simulator. Your coding agent can run the whole loop.
 
 - **Self-serve.** A student with a fresh fine-tune at 2 am, or an agent with ten checkpoints to try before lunch, can start a run alone.
-- **Transparent.** The prices are public, and your account page shows each run and what it cost.
-- **Fast.** You submit from the command line and follow the run there, from the queue to the scores.
+- **No human in the loop.** Your agent submits a checkpoint, reads the results, changes the model and submits again. Nobody has to watch a robot. You focus on research, and we handle the rest.
+- **Full data, not only a score.** Each run returns the video, every sensor, every command and the task progress step by step.
 
 **Limited offer while we ramp up:** ask for free welcome credits (see "Try it for free" below).
 
@@ -39,21 +43,28 @@ positronic eval status --id=<submission id>
 - `buy` prints a payment link, and you pay in your browser. Run it again with the same transaction key and you get the same purchase, not a second one. `eval run` works the same way.
 - The account page on [console.positronic.ro](https://console.positronic.ro/account) shows each submission, its status and its charge.
 
-## Your agent can do it
+## Let your agent iterate
 
-The [Get started](https://console.positronic.ro/start) page has a ready prompt for Claude Code, Codex or your favourite agent. The agent installs the tool, registers you, checks your balance, submits your image and checks the status until the run ends. It never sees your card: it shows you the payment link and waits while you pay. Sorry, no autonomous shopping sprees: you choose how many credits to buy.
+The [Get started](https://console.positronic.ro/start) page has a ready prompt for Claude Code, Codex or your favourite agent. The agent installs the tool, registers you, checks your balance, submits your image and checks the status until the run ends.
+
+Then ask it to improve your model. It reads the rollout data of each run, changes the model, and submits the next checkpoint, on the real robot or in simulation. You do not need to watch a robot. You get the results when the loop ends.
+
+The agent never sees your card: it shows you the payment link and waits while you pay. Sorry, no autonomous shopping sprees: you choose how many credits to buy, and the agent spends them.
 
 ## What it costs
 
-A credit is $3, and you buy 4 to 1,666 at a time.
+A credit is $3, and you buy 4 to 1,666 at a time. Some examples:
 
-- **Real arm:** 2 credits per episode, plus 60 credits per hour of robot time, rounded up to 10 seconds. Ten one-minute episodes on the Franka cost 30 credits, $90.
-- **RoboLab, your policy on our GPU:** 120 episodes at the standard time limits cost about 45.8 credits.
-- **MolmoSpaces, your policy on your own server:** 320 episodes cost about 3.2 credits.
+| Run | Credits | Price |
+|---|---|---|
+| 10 one-minute episodes on the Franka DROID setup | 30 | $90 |
+| 4 two-minute episodes on YAM | 16 | $48 |
+| 120 RoboLab episodes, your policy on our GPU | about 46 | about $138 |
+| 320 MolmoSpaces episodes, your policy on your own server | about 3.2 | about $10 |
 
-The full table is on the [pricing page](https://console.positronic.ro/pricing).
+The rates and the full table are on the [pricing page](https://console.positronic.ro/pricing).
 
-When you submit, we hold the most that the run can cost. When it ends, we charge what it used and release the rest. We do not charge for our own faults or for a recording that is not usable. We do charge for a usable run where the policy fails. Credits expire 12 months after the last time you added credits.
+When you submit, we hold the most that the run can cost. When it ends, we charge what it used and release the rest. If a run fails because of us, you pay nothing. If your policy fails, you still get the full data, and you pay for the run. Credits expire 12 months after the last time you added credits.
 
 Scores come from automated measurement and from the review of trained people. If a score looks wrong, ask us for a review.
 
