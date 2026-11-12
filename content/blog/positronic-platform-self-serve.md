@@ -1,14 +1,18 @@
-Title: Test Your Robot Model on Our Arms, No Call Needed
+Title: You Don't Need a Robot to Test on a Robot
 Date: 2026-12-01 14:00
 Category: Blog
 Slug: positronic-platform-self-serve
 Author: Vladimir Yakunin
-Summary: Positronic Platform is open to everyone. Make an account, buy credits and test your robot policy on a real Franka or YAM arm, or in MolmoSpaces and RoboLab. Your coding agent can drive all of it.
+Summary: Positronic Platform is open to everyone, self-serve. Make an account, buy credits and test your robot policy on our robots, a Franka or a YAM arm, or in MolmoSpaces and RoboLab. Your coding agent can drive all of it.
 Image: media/self-checkout-card.png
 
-**tl;dr** Positronic Platform is open to everyone. Make an account, buy credits, submit your policy as a Docker image, and get video and scores back from a real robot arm or a simulator. No sales call, no contract, no web forms. Your coding agent can drive the whole thing.
+**tl;dr** Test your robot model on our robots. Positronic Platform is open to everyone and is self-serve: make an account, buy credits, submit your policy as a Docker image, and get video and scores back from a real robot arm or a simulator. Your coding agent can drive the whole thing.
 
-Until now, every evaluation we ran for a lab started with a call. Now a student with a fresh fine-tune at 2 am, or an agent with ten checkpoints to try before lunch, can run one alone.
+- **Self-serve.** A student with a fresh fine-tune at 2 am, or an agent with ten checkpoints to try before lunch, can start a run alone.
+- **Transparent.** The prices are public, and your account page shows each run and what it cost.
+- **Fast.** You submit from the command line and follow the run there, from the queue to the scores.
+
+**Limited offer while we ramp up:** ask for free welcome credits (see "Try it for free" below).
 
 ## What you can run
 
@@ -55,8 +59,8 @@ Scores come from automated measurement and from the review of trained people. If
 
 ## Try it for free
 
-Email [hi@positronic.ro](mailto:hi@positronic.ro) with your user id (your account page shows it) and what you plan to evaluate. We review each request and give welcome credits.
+While we ramp up, we give free welcome credits to teams that want to try the platform. This is a limited offer. Email [hi@positronic.ro](mailto:hi@positronic.ro) with your user id (your account page shows it) and what you plan to evaluate. We review each request and give welcome credits.
 
 Questions go to our [Discord](https://discord.gg/PXvBy4NBgv).
 
-Is your model a top model? Now you can find out without talking to us.
+Is your model a top model? Now you can find out today.
