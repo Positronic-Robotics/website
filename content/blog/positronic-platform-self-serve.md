@@ -1,5 +1,5 @@
 Title: You Don't Need a Robot to Test on a Robot
-Date: 2026-12-08 14:00
+Date: 2026-11-17 14:00
 Category: Blog
 Slug: positronic-platform-self-serve
 Author: Vladimir Yakunin
