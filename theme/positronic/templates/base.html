@@ -20,6 +20,7 @@
 {% endif %}
 {% set canonical = ABSOLUTE_BASE_URL ~ '/' ~ head_path %}
 {% set site_icon = ABSOLUTE_BASE_URL ~ '/icon-512.png' %}
+{% set head_image = page.image if page and not article else '' %}
 <html lang="{{ DEFAULT_LANG | default('en') }}">
 <head>
   <meta charset="utf-8" />
@@ -37,8 +38,8 @@
   <meta property="og:title" content="{{ head_title }}" />
   <meta property="og:description" content="{{ head_description | escape }}" />
   <meta property="og:url" content="{{ canonical }}" />
-  <meta property="og:image" content="{{ site_icon }}" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="{{ ABSOLUTE_BASE_URL ~ '/' ~ head_image if head_image else site_icon }}" />
+  <meta name="twitter:card" content="{{ 'summary_large_image' if head_image else 'summary' }}" />
 
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
