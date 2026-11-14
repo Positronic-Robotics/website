@@ -4,6 +4,7 @@
 Usage
   scripts/check_platform_prices.py                              # the page source in this checkout
   scripts/check_platform_prices.py https://positronic.ro/platform
+  APP_URL=https://<console host> scripts/check_platform_prices.py   # another platform deployment
 
 It prints each figure the page must show, and exits 1 when the page does not show one of them.
 """
@@ -16,8 +17,12 @@ import sys
 import urllib.request
 from pathlib import Path
 
-PRICE_LIST = "https://console.positronic.ro/api/pricing.get"
-PAGE = Path(__file__).resolve().parent.parent / "content" / "pages" / "platform.md"
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from pelicanconf import APP_URL
+
+PRICE_LIST = f"{APP_URL}/api/pricing.get"
+PAGE = ROOT / "content" / "pages" / "platform.md"
 
 
 def _get(url: str) -> str:

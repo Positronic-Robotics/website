@@ -3,26 +3,9 @@
 from __future__ import annotations
 
 import re
-import subprocess
-import sys
 from pathlib import Path
 
-import pytest
-
-ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
-
-
-@pytest.fixture(scope="module")
-def site(tmp_path_factory: pytest.TempPathFactory) -> Path:
-    out = tmp_path_factory.mktemp("output")
-    subprocess.run(
-        [sys.executable, "-m", "pelican", "content", "-s", "publishconf.py", "-o", str(out), "-q"],
-        cwd=ROOT,
-        env={"PYTHONPATH": str(ROOT)},
-        check=True,
-    )
-    return out
 
 
 def test_platform_page_plays_the_launch_video(site: Path) -> None:
