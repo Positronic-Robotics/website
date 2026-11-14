@@ -1,7 +1,26 @@
-// Homepage contact form: post it without leaving the page, and say what happened.
+// The contact form posts without leaving the page and says what happened; a booking link counts as a lead.
 (function () {
   // phail.ai stores the lead; the visitor's browser posts there, so its hourly limit counts the visitor.
   var LEADS_URL = "https://phail.ai/api/interest";
+  // base.html loads attribution.js ahead of every page script.
+  var arrival = window.positronicArrival;
+
+  // Both trackers autocapture the submit EVENT, which counts an attempt that the
+  // API can still refuse. Name the ones that reached us.
+  function lead(method, heard) {
+    var props = arrival.sources();
+    props.method = method;
+    if (heard && heard.length) props.heard_from = heard.join(",");
+    if (window.plausible) window.plausible("Lead", { props: props });
+    if (window.gtag) window.gtag("event", "generate_lead", props);
+  }
+
+  document.querySelectorAll("a[href*='calendar.notion.so']").forEach(function (booking) {
+    booking.addEventListener("click", function () {
+      lead("book_a_call");
+    });
+  });
+
   var form = document.getElementById("contact-form");
   if (!form) return;
 
@@ -29,26 +48,6 @@
   function say(text, ok) {
     status.textContent = text;
     status.classList.toggle("is-error", ok === false);
-  }
-
-  // base.html loads attribution.js ahead of every page script.
-  var arrival = window.positronicArrival;
-
-  // Both trackers autocapture the submit EVENT, which counts an attempt that the
-  // API can still refuse. Name the ones that reached us.
-  function lead(method, heard) {
-    var props = arrival.sources();
-    props.method = method;
-    if (heard && heard.length) props.heard_from = heard.join(",");
-    if (window.plausible) window.plausible("Lead", { props: props });
-    if (window.gtag) window.gtag("event", "generate_lead", props);
-  }
-
-  var booking = document.querySelector(".contact-alt a[href*='calendar.notion.so']");
-  if (booking) {
-    booking.addEventListener("click", function () {
-      lead("book_a_call");
-    });
   }
 
   form.addEventListener("submit", function (event) {

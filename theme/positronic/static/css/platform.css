@@ -11,6 +11,7 @@
 }
 
 .platform .pf-actions { justify-content: flex-start; margin-top: 28px; }
+.platform .act-alt { text-align: left; }
 .platform .pf-reel { margin-top: 40px; }
 
 .platform code {
