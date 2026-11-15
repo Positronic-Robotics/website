@@ -13,12 +13,10 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Must equal HEARD_FROM_CHANNELS in phail.ai's phail/interest.py, which stores the lead.
 CHANNELS = [
-    "linkedin",
-    "x",
+    "ai",
+    "social",
     "search",
     "referral",
-    "event",
-    "media",
     "other",
 ]
 
