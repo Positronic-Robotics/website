@@ -38,7 +38,7 @@ def main() -> None:
     parser.add_argument("--submit", action="store_true", help="let the POST reach the server")
     parser.add_argument("--email", default="probe@example.com")
     parser.add_argument("--note", default="TEST - lead source selector")
-    parser.add_argument("--channel", default="other", help="the channel to pick in the dropdown")
+    parser.add_argument("--channel", action="append", help="a channel to tick; repeatable (default: other)")
     parser.add_argument("--detail", default="probe")
     parser.add_argument("--before", action="append", default=[], help="a page to visit before the form page")
     parser.add_argument("--referrer", help="the referrer of the form page's visit")
@@ -77,7 +77,8 @@ def main() -> None:
         print("detail field visible before a pick:", detail.is_visible())
         form.locator("input[name=email]").fill(args.email)
         form.locator("textarea[name=note]").fill(args.note)
-        form.locator("select[name=heard_from]").select_option(args.channel)
+        for channel in args.channel or ["other"]:
+            form.locator(f"input[name=heard_from][value={channel}]").check()
         print("detail field visible after the pick:", detail.is_visible())
         if detail.is_visible():
             detail.fill(args.detail)

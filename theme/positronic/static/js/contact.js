@@ -7,12 +7,24 @@
 
   var status = form.querySelector(".contact-status");
   var button = form.querySelector("button[type=submit]");
-  var heardSelect = form.elements.heard_from;
+  var heardBoxes = form.querySelectorAll("input[name=heard_from]");
+  var heardOther = form.querySelector("input[name=heard_from][value=other]");
   var heardDetail = form.elements.heard_from_detail;
 
-  heardSelect.addEventListener("change", function () {
-    heardDetail.hidden = heardSelect.value !== "other";
+  heardOther.addEventListener("change", function () {
+    heardDetail.hidden = !heardOther.checked;
   });
+
+  // The ticked answers, in the order the form lists them.
+  function heardFrom() {
+    return Array.prototype.filter
+      .call(heardBoxes, function (box) {
+        return box.checked;
+      })
+      .map(function (box) {
+        return box.value;
+      });
+  }
 
   function say(text, ok) {
     status.textContent = text;
@@ -46,14 +58,13 @@
       say("That address does not look right.", false);
       return;
     }
-    if (!heardSelect.value) {
-      say("Pick where you heard about us.", false);
-      heardSelect.focus();
+    var heard = heardFrom();
+    if (!heard.length) {
+      say("Tick where you heard about us.", false);
+      heardBoxes[0].focus();
       return;
     }
-    // phail.ai takes a list of channels.
-    var heard = [heardSelect.value];
-    var detail = heardSelect.value === "other" ? heardDetail.value.trim() : "";
+    var detail = heardOther.checked ? heardDetail.value.trim() : "";
     button.disabled = true;
     say("Sending…");
 
