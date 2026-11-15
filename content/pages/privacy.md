@@ -195,8 +195,8 @@ The website <https://positronic.ro> is hosted on Cloudflare Pages.
   holds no email address and no note.
 
 The contact form sends the email address and the note that the visitor types to Positronic's
-server. It also sends the answer to "How did you hear about us?" if the visitor gives one, the
-page that holds the form, and the first and the last arrival of the visitor on the site. An
+server. It also sends the answer to "How did you hear about us?", the place that the visitor
+types after "Other" if any, the page that holds the form, and the first and the last arrival of the visitor on the site. An
 arrival is a visit that comes by a link with campaign tags (`utm_` parameters) or from another
 site. For each one the site keeps the tags, the address of the referring site, the first page and
 the time, in the browser's local storage under the key `positronic-arrival`. The whole record
