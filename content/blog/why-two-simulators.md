@@ -7,7 +7,7 @@ Summary: A simulator can score a run as a success when the robot did not do the 
 Image: media/sim-success-poster.jpg
 Header_image: no
 
-Stage 1 of the Nebius × Positronic Physical AI Competition ended on 15 November. 40 teams sent an entry, and 20 of them beat every baseline model, NVIDIA's GR00T N1.7 and the Allen Institute for AI's (Ai2) MolmoAct2 included. A baseline is a public model that we run as a reference. From today, in stage 2, every entry runs in two simulators: MolmoSpaces and RoboLab. The reason: one simulator can score a run as a success when the robot did not do the task.
+Stage 1 of the Nebius × Positronic Physical AI Competition ended on 15 November. 40 teams sent an entry, and 20 of them beat every baseline model, NVIDIA's GR00T N1.7 and the Allen Institute for AI's (Ai2) MolmoAct2 included. A baseline is a public model that we run as a reference. From today, in stage 2, every entry runs in two simulators, MolmoSpaces and RoboLab, because one simulator can score a run as a success when the robot did not do the task.
 
 ### What a simulator is
 
@@ -31,7 +31,7 @@ A June 2026 [paper from the University of California, Berkeley](https://arxiv.or
 
 One wrong score is a small problem. A leaderboard that ranks models by these scores has a larger problem: a model can learn to pass the check and not do the task. The more a team tunes a model to one simulator, the more the model can learn the mistakes of that simulator.
 
-We saw this on a real robot. [On 10 November](https://competition.phail.ai/updates?utm_source=positronic.ro&utm_medium=blog&utm_campaign=competition-launch-2026-10&utm_content=company), we ran the entries of the 10 leading teams on our real robot arm, on 9 tasks that public models also ran. The teams succeeded in 3% of the runs (7 of 270). The public models succeeded in 42% (21 of 50).
+[On 10 November](https://competition.phail.ai/updates?utm_source=positronic.ro&utm_medium=blog&utm_campaign=competition-launch-2026-10&utm_content=company), we ran the entries of the 10 leading teams on our real robot arm, on 9 tasks that public models also ran. The teams succeeded in 3% of the runs (7 of 270). The public models succeeded in 42% (21 of 50).
 
 Simulators are still useful. We ran six models on our real robot and in the first simulator of the competition. The real robot put 14 pairs of these models in a clear order, and the simulator put [13 of the 14 pairs](https://competition.phail.ai/rules?utm_source=positronic.ro&utm_medium=blog&utm_campaign=competition-launch-2026-10&utm_content=company) in the same order.
 
