@@ -11,7 +11,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
-PAGES = ["index.html", "labs.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
+PAGES = ["index.html", "pricing.html", "docs.html", "labs.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
 
 
 @pytest.fixture(scope="module")
@@ -42,8 +42,8 @@ def test_every_page_has_the_same_menu(site: Path) -> None:
         site_nav = _block(html, r'<nav class="navbar-site".*?</nav>')
         app_nav = _block(html, r'<nav class="navbar-app".*?</nav>')
         assert _links(site_nav) == [
-            ("Pricing", f"{APP}/pricing"),
-            ("Docs", f"{APP}/start"),
+            ("Pricing", "https://positronic.ro/pricing"),
+            ("Docs", "https://positronic.ro/docs"),
             ("For labs", "https://positronic.ro/labs"),
             ("About", "https://positronic.ro/about"),
             ("Blog", "https://positronic.ro/blog"),
@@ -119,3 +119,10 @@ def test_about_opens_on_why_we_exist_then_traction_team_backers_contact(site: Pa
 
 def test_sitemap_lists_the_labs_page(site: Path) -> None:
     assert "<loc>https://positronic.ro/labs</loc>" in (site / "sitemap.xml").read_text()
+
+
+def test_only_sign_in_and_account_links_leave_for_the_console(site: Path) -> None:
+    for page in ("index.html", "pricing.html", "docs.html", "labs.html", "about.html"):
+        html = (site / page).read_text()
+        console = set(re.findall(rf'href="{APP}(/[^"]*)"', html))
+        assert console <= {"/signin", "/account"}, (page, console)

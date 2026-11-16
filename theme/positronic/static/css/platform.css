@@ -146,3 +146,11 @@
   .platform .pf-loop li:nth-child(3) { padding-left: 0; }
   .platform .pf-loop li:nth-child(n+3) { padding-top: 14px; }
 }
+
+/* ---- The rate tables on the pricing page. */
+
+.platform .pf-rates { width: 100%; border-collapse: collapse; margin: 6px 0 14px; font-size: 0.95rem; }
+.platform .pf-rates th, .platform .pf-rates td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
+.platform .pf-rates th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }
+.platform .pf-rates td + td, .platform .pf-rates th + th { font-family: var(--mono); }
+@media (max-width: 560px) { .platform .pf-rates { font-size: 0.85rem; } .platform .pf-rates th, .platform .pf-rates td { padding-right: 8px; } }
