@@ -7,7 +7,7 @@ Summary: A simulator can score a run as a success when the robot did not do the 
 Image: media/sim-success-poster.jpg
 Header_image: no
 
-Stage 1 of the Nebius × Positronic Physical AI Competition ended on 15 November. 40 teams sent an entry, and 20 of them beat every baseline model, NVIDIA's GR00T N1.7 and the Allen Institute for AI's (Ai2) MolmoAct2 included. A baseline is a public model that we run as a reference. From today, in stage 2, every entry runs in two simulators: MolmoSpaces and RoboLab. This article shows why one simulator is not enough.
+Stage 1 of the Nebius × Positronic Physical AI Competition ended on 15 November. 40 teams sent an entry, and 20 of them beat every baseline model, NVIDIA's GR00T N1.7 and the Allen Institute for AI's (Ai2) MolmoAct2 included. A baseline is a public model that we run as a reference. From today, in stage 2, every entry runs in two simulators: MolmoSpaces and RoboLab. The reason: one simulator can score a run as a success when the robot did not do the task.
 
 ### What a simulator is
 
