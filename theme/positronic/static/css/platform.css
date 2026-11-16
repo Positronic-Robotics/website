@@ -1,18 +1,5 @@
-/* The platform page. Extends home.css: the same grid, faces and accent, plus
-   command blocks, the agent loop, the price examples and the questions. */
+/* The Pricing and Docs pages. Extends home.css with command blocks, rate tables and price examples. */
 
-.platform .pf-kicker {
-  display: block;
-  margin-bottom: 14px;
-  font-family: var(--mono);
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--accent, #b1e74f);
-}
-
-.platform .pf-actions { justify-content: flex-start; margin-top: 28px; }
-.platform .act-alt { text-align: left; }
-.platform .pf-reel { margin-top: 40px; }
 
 .platform code {
   font-family: var(--mono);
@@ -54,40 +41,7 @@
 .platform .col a.act-ghost { border-color: rgba(177, 231, 79, 0.42); }
 .platform .pf-more a::after { content: " \2192"; }
 
-/* ---- The agent loop: four readings on one line, the last one back to the first. */
-
-.platform .pf-loop {
-  list-style: none;
-  counter-reset: loop;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  margin: 6px 0 4px;
-  padding: 0;
-  border-top: 1px solid var(--rule);
-}
-
-.platform .pf-loop li {
-  counter-increment: loop;
-  padding: 16px 16px 0 0;
-  border-right: 1px solid var(--hair);
-}
-.platform .pf-loop li:not(:first-child) { padding-left: 16px; }
-.platform .pf-loop li:last-child { border-right: 0; padding-right: 0; }
-
-.platform .pf-loop b {
-  display: block;
-  margin-bottom: 6px;
-  font-family: var(--mono);
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: var(--accent, #b1e74f);
-}
-.platform .pf-loop b::before { content: counter(loop) " "; color: var(--dim); }
-.platform .pf-loop li:last-child b::after { content: " \21BA"; }
-.platform .pf-loop span { display: block; font-size: 0.95rem; line-height: 1.5; }
-
-/* ---- Start in 4 steps --------------------------------------------------- */
+/* ---- Steps --------------------------------------------------- */
 
 .platform .pf-steps { margin: 4px 0 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 18px; }
 .platform .pf-steps li { line-height: 1.65; padding-left: 4px; }
@@ -98,7 +52,7 @@
 
 .platform .pf-prices {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin: 4px 0;
 }
@@ -123,28 +77,8 @@
   color: var(--accent, #b1e74f);
 }
 
-/* ---- Questions ---------------------------------------------------------- */
-
-.platform .pf-faq { border-top: 1px solid var(--rule); }
-.platform .pf-faq details { border-bottom: 1px solid var(--hair); padding: 14px 0; }
-.platform .pf-faq summary {
-  cursor: pointer;
-  font-family: var(--display);
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: #e8f0d5;
-  list-style-position: outside;
-}
-.platform .pf-faq summary::marker { color: var(--accent, #b1e74f); }
-.platform .pf-faq summary:focus-visible { outline: 2px solid var(--accent, #b1e74f); outline-offset: 3px; }
-.platform .pf-faq details p { margin-top: 10px; }
-
 @media (max-width: 900px) {
   .platform .pf-prices { grid-template-columns: minmax(0, 1fr); }
-  .platform .pf-loop { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .platform .pf-loop li:nth-child(2) { border-right: 0; padding-right: 0; }
-  .platform .pf-loop li:nth-child(3) { padding-left: 0; }
-  .platform .pf-loop li:nth-child(n+3) { padding-top: 14px; }
 }
 
 /* ---- The rate tables on the pricing page. */
