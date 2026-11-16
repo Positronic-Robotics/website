@@ -360,23 +360,21 @@ a:hover {
   background: var(--accent);
 }
 
-/* The links to the platform web app sit at the right end of the bar. */
+/* "Log in" sits alone at the right end of the bar, quiet: the page carries the sign-up button. */
 .navbar-app {
   margin-left: auto;
   align-items: center;
 }
 
-.navbar nav a.navbar-start {
+.navbar nav a.navbar-login {
   padding: 3px 14px;
-  border: 1px solid var(--accent);
+  border: 1px solid rgba(184, 184, 184, 0.38);
   border-radius: 99px;
-  color: var(--accent);
-  transition: color 0.15s, background-color 0.15s;
+  transition: color 0.15s, border-color 0.15s;
 }
 
-.navbar nav a.navbar-start:hover {
-  background: var(--accent);
-  color: var(--bg);
+.navbar nav a.navbar-login:hover {
+  border-color: var(--accent);
 }
 
 /* The rule under the navbar. It carries no numbers, so nobody can read it as a chart. */
@@ -411,43 +409,64 @@ a:hover {
   background-repeat: repeat-x;
 }
 
-/* With the platform links, the bar fits in one row at full size only from 963 px. */
-@media (max-width: 962px) {
+/* The bar fits in one row at full size from 1080 px. */
+@media (max-width: 1079px) {
   .navbar-inner {
-    gap: 1.5rem;
+    gap: 2.5rem;
     padding: 0 1.5rem;
+  }
+
+  .navbar nav {
+    gap: 1.5rem;
+  }
+}
+
+/* Below 900 px the site links take a second row, so the brand and "Log in" share the first. */
+@media (max-width: 899px) {
+  .navbar-inner {
+    gap: 0.75rem 1rem;
   }
 
   .navbar-brand {
     font-size: 1.1rem;
   }
 
+  .navbar-app {
+    order: 2;
+  }
+
+  .navbar-site {
+    order: 3;
+    flex: 1 1 100%;
+  }
+}
+
+/* On a phone the five site links spread across the full width of their row. */
+@media (max-width: 560px) {
+  .navbar-inner {
+    padding: 0 1rem;
+  }
+
+  .navbar-site {
+    justify-content: space-between;
+  }
+
   .navbar nav {
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .navbar nav a {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
   }
 }
 
-/* On a phone the platform links take their own row, at the left. */
-@media (max-width: 480px) {
-  .navbar-app {
-    margin-left: 0;
-  }
-}
-
-/* From 360 to 434 px the brand takes two lines, as before, so the site links stay in the first
-   row. From 435 px they fit next to the brand on one line. Below 360 px they do not fit next to
-   the brand, so the brand keeps one line. */
-@media (min-width: 360px) and (max-width: 434px) {
+@media (max-width: 359px) {
   .navbar-brand {
-    white-space: normal;
+    font-size: 1rem;
   }
 
-  .brand-text {
-    width: min-content;
+  .navbar nav a {
+    font-size: 0.85rem;
   }
 }
 

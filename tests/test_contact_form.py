@@ -39,12 +39,16 @@ def _form(html: str) -> str:
     return match.group(0)
 
 
-def test_home_and_about_carry_the_same_form(site: Path) -> None:
-    assert _form((site / "index.html").read_text()) == _form((site / "about.html").read_text())
+def test_labs_and_about_carry_the_same_form(site: Path) -> None:
+    assert _form((site / "labs.html").read_text()) == _form((site / "about.html").read_text())
+
+
+def test_the_home_page_carries_no_form(site: Path) -> None:
+    assert 'id="contact-form"' not in (site / "index.html").read_text()
 
 
 def test_the_form_asks_the_channel_as_a_list_of_ticks_above_the_fields(site: Path) -> None:
-    form = _form((site / "index.html").read_text())
+    form = _form((site / "labs.html").read_text())
     heard = re.search(r'<fieldset class="contact-heard">(.*?)</fieldset>', form, re.S)
     assert heard, "no channel ticks"
     assert "<select" not in form

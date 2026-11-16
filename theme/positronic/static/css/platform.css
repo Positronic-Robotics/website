@@ -1,0 +1,148 @@
+/* The platform page. Extends home.css: the same grid, faces and accent, plus
+   command blocks, the agent loop, the price examples and the questions. */
+
+.platform .pf-kicker {
+  display: block;
+  margin-bottom: 14px;
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--accent, #b1e74f);
+}
+
+.platform .pf-actions { justify-content: flex-start; margin-top: 28px; }
+.platform .act-alt { text-align: left; }
+.platform .pf-reel { margin-top: 40px; }
+
+.platform code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+.platform pre {
+  margin: 10px 0 0;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.platform pre code {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #dfe6d2;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  white-space: pre;
+}
+
+.platform .pf-prompt { border-left: 2px solid var(--accent, #b1e74f); }
+.platform .pf-prompt code { white-space: pre-wrap; }
+
+.platform .pf-more { font-family: var(--mono); font-size: 0.85rem; }
+.platform .col a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.35); }
+.platform .col a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+.platform .col a.act { border-bottom: 1px solid; }
+.platform .col a.act-primary { color: #0d1005; border-color: var(--accent, #b1e74f); }
+.platform .col a.act-primary:hover { color: #0d1005; border-color: #c3f065; }
+.platform .col a.act-ghost { border-color: rgba(177, 231, 79, 0.42); }
+.platform .pf-more a::after { content: " \2192"; }
+
+/* ---- The agent loop: four readings on one line, the last one back to the first. */
+
+.platform .pf-loop {
+  list-style: none;
+  counter-reset: loop;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 6px 0 4px;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.platform .pf-loop li {
+  counter-increment: loop;
+  padding: 16px 16px 0 0;
+  border-right: 1px solid var(--hair);
+}
+.platform .pf-loop li:not(:first-child) { padding-left: 16px; }
+.platform .pf-loop li:last-child { border-right: 0; padding-right: 0; }
+
+.platform .pf-loop b {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--accent, #b1e74f);
+}
+.platform .pf-loop b::before { content: counter(loop) " "; color: var(--dim); }
+.platform .pf-loop li:last-child b::after { content: " \21BA"; }
+.platform .pf-loop span { display: block; font-size: 0.95rem; line-height: 1.5; }
+
+/* ---- Start in 4 steps --------------------------------------------------- */
+
+.platform .pf-steps { margin: 4px 0 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 18px; }
+.platform .pf-steps li { line-height: 1.65; padding-left: 4px; }
+.platform .pf-steps li::marker { font-family: var(--mono); color: var(--accent, #b1e74f); }
+.platform .pf-steps b { color: #e8f0d5; font-weight: 600; }
+
+/* ---- Price examples: one card per run, the price read last and largest. -- */
+
+.platform .pf-prices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 4px 0;
+}
+
+.platform .pf-price {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 18px 16px;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 4px;
+}
+
+.platform .pf-price-run { flex: 1; font-size: 0.95rem; line-height: 1.45; color: #cdd2c4; }
+.platform .pf-price-credits { font-family: var(--mono); font-size: 0.8rem; color: var(--dim); }
+.platform .pf-price-usd {
+  font-family: var(--display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--accent, #b1e74f);
+}
+
+/* ---- Questions ---------------------------------------------------------- */
+
+.platform .pf-faq { border-top: 1px solid var(--rule); }
+.platform .pf-faq details { border-bottom: 1px solid var(--hair); padding: 14px 0; }
+.platform .pf-faq summary {
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #e8f0d5;
+  list-style-position: outside;
+}
+.platform .pf-faq summary::marker { color: var(--accent, #b1e74f); }
+.platform .pf-faq summary:focus-visible { outline: 2px solid var(--accent, #b1e74f); outline-offset: 3px; }
+.platform .pf-faq details p { margin-top: 10px; }
+
+@media (max-width: 900px) {
+  .platform .pf-prices { grid-template-columns: minmax(0, 1fr); }
+  .platform .pf-loop { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .platform .pf-loop li:nth-child(2) { border-right: 0; padding-right: 0; }
+  .platform .pf-loop li:nth-child(3) { padding-left: 0; }
+  .platform .pf-loop li:nth-child(n+3) { padding-top: 14px; }
+}

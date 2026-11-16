@@ -31,6 +31,7 @@
 .home .page-head + .band,
 .home .reel + .band,
 .home .cards + .band,
+.home .hero + .band,
 .home .standing + .band { margin-top: 92px; }
 
 /* A band's name is a reading on the page's scale, not a stamp over the text: it
@@ -226,6 +227,25 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   line-height: 1;
 }
 .home .standing-phail:hover span { color: var(--accent, #b1e74f); }
+
+/* The repo holds no Black Forest Labs logo, so a text mark stands in at the cap height of the
+   two wordmarks. */
+.home .standing-bfl {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* The program on the For labs page is four parts, not a loop. */
+.platform .pf-loop.pf-program li:last-child b::after { content: none; }
+
+/* On the product page the design partner's quote follows the row of marks. */
+.home .proof-quote { margin-top: 30px; padding: 16px 22px; }
+.home .proof-quote blockquote { font-size: 1.04rem; line-height: 1.45; }
+.home .proof-quote figcaption { margin-top: 10px; }
 
 /* A measure wide enough to hold each role on one line at the reading width. */
 .home .standing-role {
@@ -538,16 +558,11 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 
 @media (max-width: 640px) {
   .home .hero { padding-top: 40px; }
-  /* The partner row stays one row on a phone: smaller marks, shorter gaps. */
-  .home .standing-inner { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-  .home .standing-cell:not(:first-child)::before { display: block; }
-  .home .standing-mark { height: 18px; }
-  .home .standing-runway svg { width: 64px; margin-bottom: -4px; }
-  .home .standing-nebius svg { width: 76px; }
-  .home .standing-phail { gap: 6px; }
-  .home .standing-phail-icon { width: 20px; height: 23px; }
-  .home .standing-phail span { font-size: 1rem; }
-  .home .standing-role { font-size: 0.66rem; margin-top: 7px; }
+  /* On a phone the partner marks stack, each with its role under it. */
+  .home .standing-inner { gap: 22px; }
+  .home .proof-quote { margin-top: 24px; padding: 14px 18px; }
+  .home .proof-quote blockquote { font-size: 0.98rem; }
+  .home .contact-alt { flex-wrap: wrap; }
   .home .band + .band { margin-top: 64px; }
   .home .act { width: 100%; justify-content: center; }
 }

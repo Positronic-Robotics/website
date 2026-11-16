@@ -1,0 +1,12 @@
+{% extends "home.html" %}
+
+{% block extra_head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ SITEURL }}/theme/positronic/static/css/platform.css" />
+{% endblock %}
+
+{% block content %}
+<div class="home platform">
+  {{ page.content | replace('{APP_URL}', APP_URL) }}
+</div>
+{% endblock %}
