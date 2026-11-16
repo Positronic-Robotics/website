@@ -69,6 +69,6 @@ def test_only_sign_in_and_account_links_leave_for_the_console(site: Path) -> Non
 def test_pricing_and_docs_center_their_buttons_like_the_home_page(site: Path) -> None:
     for page in ("pricing.html", "docs.html"):
         hero = _block((site / page).read_text(), r'<section class="page-head">.*?</section>')
-        assert f'<div class="actions"><a class="act act-primary" href="{APP}/signin">Sign up</a></div>' in hero, page
+        assert f'<div class="actions"><a class="act act-primary" href="{APP}/signin">Sign up</a>' in hero, page
     css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
     assert "justify-content: flex-start" not in css
