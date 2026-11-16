@@ -87,4 +87,9 @@
 .platform .pf-rates th, .platform .pf-rates td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
 .platform .pf-rates th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }
 .platform .pf-rates td + td, .platform .pf-rates th + th { font-family: var(--mono); }
+.platform .pf-rates .pf-op { color: var(--dim); text-align: center; padding-right: 12px; width: 1ch; }
+.platform .pf-rates .pf-total { font-weight: 600; }
+.platform .pf-length { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0 0 6px; font-family: var(--mono); font-size: 0.85rem; color: var(--dim); }
+.platform .pf-length input { flex: 1 1 160px; max-width: 320px; accent-color: var(--accent); }
+.platform .pf-length output { color: var(--muted); min-width: 9ch; }
 @media (max-width: 560px) { .platform .pf-rates { font-size: 0.85rem; } .platform .pf-rates th, .platform .pf-rates td { padding-right: 8px; } }
