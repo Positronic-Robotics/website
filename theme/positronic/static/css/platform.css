@@ -102,3 +102,6 @@
   .platform .pf-rates td:first-child { flex-basis: 100%; }
   .platform .pf-rates .pf-op { width: auto; padding: 0; }
 }
+
+/* The subtitle runs to the same right edge as the text below it. */
+.platform .page-head .hero-lede { max-width: none; }
