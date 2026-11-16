@@ -48,7 +48,8 @@ def test_every_page_has_the_same_menu(site: Path) -> None:
             ("About", "https://positronic.ro/about"),
             ("Blog", "https://positronic.ro/blog"),
         ], page
-        assert _links(app_nav) == [("Log in", f"{APP}/signin")], page
+        assert _links(app_nav) == [("Log in / Sign up", f"{APP}/signin")], page
+        assert 'class="navbar-start"' in app_nav, page
 
 
 def test_the_logo_goes_home(site: Path) -> None:
