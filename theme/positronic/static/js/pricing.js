@@ -1,4 +1,4 @@
-// The Pricing page slider: the cost of one episode of the chosen length, for each environment.
+// The Pricing page slider: per episode + per minute × length = the cost of one episode, for each environment.
 (function () {
   var slider = document.getElementById("pf-length");
   if (!slider) return;

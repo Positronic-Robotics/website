@@ -92,4 +92,11 @@
 .platform .pf-length { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 0 0 6px; font-family: var(--mono); font-size: 0.85rem; color: var(--dim); }
 .platform .pf-length input { flex: 1 1 160px; max-width: 320px; accent-color: var(--accent); }
 .platform .pf-length output { color: var(--muted); min-width: 9ch; }
-@media (max-width: 560px) { .platform .pf-rates { font-size: 0.85rem; } .platform .pf-rates th, .platform .pf-rates td { padding-right: 8px; } }
+/* Phone: each environment on its own line, its sum on the next. */
+@media (max-width: 560px) {
+  .platform .pf-rates thead { display: none; }
+  .platform .pf-rates tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .platform .pf-rates td { border: 0; padding: 0; }
+  .platform .pf-rates td:first-child { flex-basis: 100%; }
+  .platform .pf-rates .pf-op { width: auto; padding: 0; }
+}
