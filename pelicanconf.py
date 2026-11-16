@@ -27,6 +27,11 @@ ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/"
 # The platform web app, where a customer reads the prices, signs in and buys credits.
 APP_URL = os.getenv("APP_URL", "").strip().rstrip("/") or "https://console.positronic.ro"
 
+# The Pricing page reads the console's public price list at build time (plugins/pricing.py).
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["pricing"]
+PRICING_SOURCE = os.getenv("PRICING_SOURCE", "").strip()
+
 # Content paths
 PATH = "content"
 PAGE_PATHS = ["pages"]

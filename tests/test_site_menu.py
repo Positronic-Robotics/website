@@ -1,28 +1,23 @@
-"""The menu of every page, and the Pricing and Docs pages that it opens on the website."""
+"""The menu of every page, and the Pricing page that it opens on the website."""
 
 from __future__ import annotations
 
+import json
 import re
-import subprocess
-import sys
 from pathlib import Path
 
 import pytest
+from conftest import PRICE_LIST, build_site
 
 ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
-PAGES = ["index.html", "pricing.html", "docs.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
+PAGES = ["index.html", "pricing.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
 
 
 @pytest.fixture(scope="module")
 def site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     out = tmp_path_factory.mktemp("output")
-    subprocess.run(
-        [sys.executable, "-m", "pelican", "content", "-s", "publishconf.py", "-o", str(out), "-q"],
-        cwd=ROOT,
-        env={"PYTHONPATH": str(ROOT)},
-        check=True,
-    )
+    build_site(out).check_returncode()
     return out
 
 
@@ -43,7 +38,7 @@ def test_every_page_has_the_same_menu(site: Path) -> None:
         app_nav = _block(html, r'<nav class="navbar-app".*?</nav>')
         assert _links(site_nav) == [
             ("Pricing", "https://positronic.ro/pricing"),
-            ("Docs", "https://positronic.ro/docs"),
+            ("Docs", f"{APP}/start"),
             ("For labs", "https://positronic.ro/#talk"),
             ("About", "https://positronic.ro/about"),
             ("Blog", "https://positronic.ro/blog"),
@@ -57,18 +52,48 @@ def test_the_logo_goes_home(site: Path) -> None:
     assert '<a href="https://positronic.ro/" class="navbar-brand">' in header
 
 
-def test_only_sign_in_and_account_links_leave_for_the_console(site: Path) -> None:
+def test_only_sign_in_account_and_docs_links_leave_for_the_console(site: Path) -> None:
     # The terms define the console's pricing page by its address, so they keep that link.
     for page in (page for page in PAGES if page != "terms.html"):
         html = (site / page).read_text()
         assert "{APP_URL}" not in html, page
         console = set(re.findall(rf'href="{APP}(/[^"]*)"', html))
-        assert console <= {"/signin", "/account"}, (page, console)
+        assert console <= {"/signin", "/account", "/start"}, (page, console)
 
 
-def test_pricing_and_docs_center_their_buttons_like_the_home_page(site: Path) -> None:
-    for page in ("pricing.html", "docs.html"):
-        hero = _block((site / page).read_text(), r'<section class="page-head">.*?</section>')
-        assert f'<div class="actions"><a class="act act-primary" href="{APP}/signin">Sign up</a>' in hero, page
+def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
+    hero = _block((site / "pricing.html").read_text(), r'<section class="page-head">.*?</section>')
+    assert f'<div class="actions"><a class="act act-primary" href="{APP}/signin">Sign up</a>' in hero
     css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
     assert "justify-content: flex-start" not in css
+
+
+def test_the_website_has_no_copy_of_the_console_get_started_page(site: Path) -> None:
+    assert not (site / "docs.html").exists()
+
+
+def test_pricing_rates_come_from_the_price_list(site: Path) -> None:
+    # The fixture: 1000 units a credit, $5 a credit, so 1 unit is $0.005.
+    rows = re.findall(r"<tr data-episode=\"([^\"]+)\" data-minute=\"([^\"]+)\"><td>([^<]+)</td>.*?<td class=\"pf-total\">([^<]+)</td>",
+                      (site / "pricing.html").read_text())
+    assert rows == [
+        ("10", "10", "Real robot: Franka DROID", "$30"),
+        ("10", "10", "Real robot: two-arm YAM", "$30"),
+        ("0.02", "0.5", "RoboLab simulator", "$1.02"),
+        ("0.01", "0.1", "MolmoSpaces simulator, model on your server", "$0.21"),
+    ]
+    assert "One credit is $5." in (site / "pricing.html").read_text()
+
+
+def test_a_simulator_with_no_display_name_fails_the_build(tmp_path: Path) -> None:
+    price_list = json.loads(PRICE_LIST.read_text())
+    price_list["sim"][0]["simulator"] = "newsim"
+    source = tmp_path / "pricing.json"
+    source.write_text(json.dumps(price_list))
+    result = build_site(tmp_path / "out", source)
+    assert result.returncode != 0
+    assert "newsim" in result.stderr + result.stdout
+
+
+def test_an_unreadable_price_list_fails_the_build(tmp_path: Path) -> None:
+    assert build_site(tmp_path / "out", tmp_path / "missing.json").returncode != 0
