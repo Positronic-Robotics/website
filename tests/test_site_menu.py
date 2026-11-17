@@ -65,7 +65,7 @@ def test_only_sign_in_account_and_docs_links_leave_for_the_console(site: Path) -
         html = (site / page).read_text()
         assert "{APP_URL}" not in html, page
         console = set(re.findall(rf'href="{APP}(/[^"]*)"', html))
-        assert console <= {"/signin", "/account", "/start"}, (page, console)
+        assert console <= {"/signin", "/account"}, (page, console)
 
 
 def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
@@ -79,13 +79,28 @@ def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
 GUIDE = "https://github.com/Positronic-Robotics/positronic/blob/main/client/README.md"
 
 
-def test_docs_list_their_own_sections_in_the_rail(site: Path) -> None:
+def test_docs_open_on_the_agent_quick_start(site: Path) -> None:
     main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
-    nav = _block(main, r'<nav class="rail docs-nav" aria-label="On this page">.*?</nav>')
-    sections = _links(nav)
-    assert sections == [("Quick start", "#quick-start"), ("What the agent does", "#what-the-agent-does"),
-                        ("Without an agent", "#without-an-agent"), ("Full guide", "#full-guide")]
-    assert re.findall(r'<h2 id="([^"]+)">', main) == [anchor[1:] for _, anchor in sections]
+    assert main.index('<h2 id="quick-start">') < main.index('<div class="prompt">') < main.index('<h2 id="what-the-agent-does">')
+    assert re.findall(r'<span class="step-verb">([^<]+)</span>', main) == ["1. Sign in", "2. Add credits", "3. Submit"]
+    assert "Claude Code, Codex or another coding agent" in main
+
+
+def test_each_docs_heading_links_to_itself(site: Path) -> None:
+    main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
+    assert "docs-nav" not in main and 'class="rail"' not in main
+    headings = re.findall(r'<h2 id="([^"]+)">([^<]+)<a class="anchor" href="#([^"]+)" aria-label="Link to ([^"]+)">#</a></h2>', main)
+    assert [(anchor, title) for anchor, title, _, _ in headings] == [
+        ("quick-start", "Quick start"), ("what-the-agent-does", "What the agent does"), ("full-guide", "Full guide")]
+    assert all(anchor == target and title == label for anchor, title, target, label in headings)
+    assert main.count("<h2") == len(headings)
+
+
+def test_docs_put_get_started_where_the_console_steps_were(site: Path) -> None:
+    main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
+    assert "Without an agent" not in main and f"{APP}/start" not in main
+    cta = f'<div class="actions docs-cta"><a class="act act-primary" href="{APP}/signin">Get started</a></div>'
+    assert main.index("</ol>") < main.index(cta) < main.index('<h2 id="full-guide">')
 
 
 def test_docs_show_the_console_agent_prompt_with_a_copy_button(site: Path) -> None:
@@ -150,6 +165,11 @@ def test_pricing_does_not_name_the_credit_price(site: Path) -> None:
 def test_pricing_shows_the_episode_total_in_the_accent_colour() -> None:
     css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
     assert ".platform .pf-rates .pf-total { font-weight: 600; color: var(--accent, #b1e74f); }" in css
+
+
+def test_pricing_keeps_each_figure_and_length_on_one_line() -> None:
+    css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
+    assert ".platform .pf-rates td + td { white-space: nowrap; }" in css
 
 
 def test_a_simulator_with_no_display_name_fails_the_build(tmp_path: Path) -> None:

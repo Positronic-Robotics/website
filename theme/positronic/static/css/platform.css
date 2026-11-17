@@ -13,6 +13,8 @@
 .platform .pf-rates th, .platform .pf-rates td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
 .platform .pf-rates th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }
 .platform .pf-rates td + td, .platform .pf-rates th + th { font-family: var(--mono); }
+/* A figure or a length such as "2 min 30 s" never breaks inside its cell. */
+.platform .pf-rates td + td { white-space: nowrap; }
 .platform .pf-rates .pf-op { color: var(--dim); text-align: center; padding-right: 12px; width: 1ch; }
 /* The sum of one episode stands out in the accent colour. */
 .platform .pf-rates .pf-total { font-weight: 600; color: var(--accent, #b1e74f); }
@@ -33,26 +35,33 @@
 /* The subtitle runs to the same right edge as the text below it. */
 .platform .page-head .hero-lede { max-width: none; }
 
-/* ---- The Docs page: its own sections in the rail, the prompt with a Copy button. */
+/* ---- The Docs page: one column, a link on each heading, the prompt with a Copy button. */
 
-.platform .docs-nav { position: sticky; top: 96px; align-self: start; }
-.platform .docs-nav ul { margin: 0; padding: 0.62rem 0 0; list-style: none; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 0.84rem; }
-.platform .docs-nav a { color: #99a189; text-decoration: none; }
-.platform .docs-nav a:hover { color: var(--accent, #b1e74f); }
+.platform .docs {
+  max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
+  margin: 56px auto 0;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 .platform .docs h2 { font-size: 24px; scroll-margin-top: 90px; }
 .platform .docs h2:not(:first-child) { margin-top: 30px; }
+/* The heading's own link shows on hover or focus, so a reader can copy the section's address. */
+.platform .docs .anchor { margin-left: 0.4em; font-family: var(--mono); font-weight: 400; color: var(--dim); text-decoration: none; opacity: 0; transition: opacity 0.15s ease; }
+.platform .docs h2:hover .anchor, .platform .docs .anchor:focus-visible { opacity: 1; }
+.platform .docs .anchor:hover { color: var(--accent, #b1e74f); }
+.platform .docs p a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.35); }
+.platform .docs p a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
 .platform .docs code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
+.platform .docs-cta { margin-top: 6px; }
 .platform .prompt { position: relative; }
 .platform .prompt pre { margin: 0; padding: 16px 18px 64px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .platform .prompt pre code { font-size: 0.84rem; line-height: 1.6; color: #dfe6d2; background: transparent; border: 0; padding: 0; }
 .platform .prompt-copy { position: absolute; right: 14px; bottom: 14px; padding: 8px 18px; font-size: 0.9rem; cursor: pointer; }
 
-/* Phone: the section list sits on top, in one wrapped row. */
-@media (max-width: 900px) {
-  .platform .docs-nav { position: static; }
-  .platform .docs-nav ul { flex-direction: row; flex-wrap: wrap; gap: 8px 18px; }
-}
-
 @media (max-width: 640px) {
   .platform .prompt-copy { width: auto; }
+  /* A phone has no hover, so the heading links stay in view. */
+  .platform .docs .anchor { opacity: 1; }
 }
