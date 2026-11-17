@@ -110,9 +110,12 @@ def test_pricing_rates_come_from_the_price_list(site: Path) -> None:
     ]
 
 
-def test_pricing_names_volume_discounts_next_to_a_talk_to_us_button(site: Path) -> None:
-    rates = _block((site / "pricing.html").read_text(), r'<section class="band close" id="rates">.*?</section>')
-    assert '<div class="pf-volume"><p>Volume discounts for committed spend.</p><a class="act act-ghost" href="/#talk">Talk to us</a></div>' in rates
+def test_pricing_names_volume_discounts_once_above_a_plain_talk_to_us_button(site: Path) -> None:
+    html = (site / "pricing.html").read_text()
+    head = _block(html, r'<section class="page-head">.*?</section>')
+    assert "Volume discounts for committed spend.</p>" in head
+    assert '<a class="act act-ghost" href="/#talk">Talk to us</a>' in head
+    assert html.count("Volume discounts for committed spend.</p>") == 1
 
 
 def test_pricing_does_not_name_the_credit_price(site: Path) -> None:

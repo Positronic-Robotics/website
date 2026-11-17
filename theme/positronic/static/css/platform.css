@@ -21,8 +21,6 @@
 .platform .pf-length input { flex: 1 1 160px; max-width: 320px; accent-color: var(--accent); }
 .platform .pf-length output { color: var(--muted); min-width: 9ch; }
 /* The volume-discount line and its contact button, under the table. */
-.platform .pf-volume { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; margin-top: 28px; }
-.platform .pf-volume p { margin: 0; }
 /* Phone: each environment on its own line, its sum on the next. */
 @media (max-width: 560px) {
   .platform .pf-rates thead { display: none; }
