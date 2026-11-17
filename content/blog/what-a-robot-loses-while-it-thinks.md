@@ -37,7 +37,7 @@ GPT-6 Astra shows the extreme case. It is a general AI model, not a robot model,
 
 A model that thinks with the clock running does not get confused. It makes the same moves, just later.
 
-You can check this directly. Take each episode recorded with the sim paused and slow it down by the share of time that model waits. The result predicts the curve of the clock-running run along the whole episode. For Cosmos3 Nano, the prediction of the final partial-credit score lands within one point of the measured score.
+Take each episode recorded with the sim paused and slow it down by the share of time that model waits. The result predicts the curve of the clock-running run along the whole episode. For Cosmos3 Nano, the prediction of the final partial-credit score lands within one point of the measured score.
 
 The gap opens in the first seconds. At 20% of the time limit, Cosmos3 Nano with the clock running has only a third of the score it has with the sim paused. After that it stays behind, and the time limit cuts off the finishes that come late.
 
@@ -59,7 +59,7 @@ The ranges of these groups overlap, so this split is weaker evidence than the pe
 
 ### Study 2: does stopping to think cost more than moving slowly?
 
-Study 1 shows that thinking costs time. A second question follows: does it cost anything more than time?
+Study 1 shows that thinking costs time. Does it cost anything more than time?
 
 A robot that thinks with the clock running moves in bursts: it holds still, plays its next moves, then holds still again. Compare it with a robot that never stops but moves slower, at the same average pace. Both get through the same work in the same time. If the bursts cost something on their own, for example because the scene changes while the arm holds still, the first robot should do worse.
 
@@ -68,8 +68,7 @@ We tested this on Cosmos3 Nano, the robot model that loses the most in study 1. 
 - **Fixed thinking.** The arm holds still for 1.47 seconds on each call, then moves at normal speed.
 - **Slow motion.** The sim waits while the model thinks, and every move plays 1.69× slower. That is the same average pace with no stops.
 
-We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3 Nano sometimes succeeds, and ran 51 episodes per task per setup, 714 episodes in total.
-<!-- Episode viewer links (fixed thinking, slow motion) go here. -->
+We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3 Nano sometimes succeeds, and ran 51 episodes per task per setup, 714 episodes in total. You can watch every episode: [fixed thinking](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/), [slow motion](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/).
 
 
 | Cosmos3 Nano, 7 tasks | Fixed thinking | Slow motion |
