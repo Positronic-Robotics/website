@@ -16,3 +16,11 @@ platform-register --alias=<display name>
 | Status | Fault |
 |---|---|
 | 1 | the caller |
+
+## From the command line
+
+```bash
+platform-register --alias=<display name>            # in a checkout: uv run platform-register
+uv run positronic eval run --eval=<name> --policy-image=org/policy@sha256:…
+uv run positronic eval status --id=<hex id>
+```

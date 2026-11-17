@@ -2,8 +2,8 @@
 
 The console serves the list at `<APP_URL>/api/pricing.get` with no key, and its own Pricing page reads
 the same list, so the website carries no copy of a price. `PRICING_SOURCE` names another URL or a local
-JSON file (the tests pass a fixture). A failed read, or a simulator or hosting with no display name,
-fails the build.
+JSON file (the tests pass a fixture). The home page lists each environment at its per-episode charge
+from the same list. A failed read, or a simulator or hosting with no display name, fails the build.
 """
 
 from __future__ import annotations
@@ -16,11 +16,13 @@ from pathlib import Path
 from pelican import signals
 
 RATES_PLACEHOLDER = "{PRICE_RATES}"
+ENVIRONMENTS_PLACEHOLDER = "{PRICE_ENVIRONMENTS}"
 DEFAULT_LENGTH_SEC = 120
 
-SIMULATOR_NAMES = {"molmospaces": "MolmoSpaces", "robolab": "RoboLab"}
+SIMULATOR_NAMES = {"robolab": "RoboLab", "molmospaces": "MolmoSpaces"}
 HOSTING_SUFFIX = {"hosted": "", "own_server": ", model on your server"}
 RIG_NAMES = ["Real robot: Franka DROID", "Real robot: two-arm YAM"]
+ROBOT_NAMES = ["Franka DROID", "Two-arm YAM"]
 
 _price_list: dict | None = None
 
@@ -86,10 +88,29 @@ def _read(pelican) -> None:
 
 def _fill(content) -> None:
     text = getattr(content, "_content", None)
-    if not text or RATES_PLACEHOLDER not in text:
+    if not text or not (RATES_PLACEHOLDER in text or ENVIRONMENTS_PLACEHOLDER in text):
         return
     assert _price_list is not None
-    content._content = text.replace(RATES_PLACEHOLDER, rate_rows(_price_list))
+    text = text.replace(RATES_PLACEHOLDER, rate_rows(_price_list))
+    content._content = text.replace(ENVIRONMENTS_PLACEHOLDER, environments(_price_list))
+
+
+def _environment(kind: str, name: str, episode: Decimal) -> str:
+    return (
+        f'<li class="env"><span class="env-kind">{kind}</span><span class="env-name">{name}</span>'
+        f'<span class="env-price">from {money(episode)} per episode</span></li>'
+    )
+
+
+def environments(price_list: dict) -> str:
+    """The home page list: the real robots, then each simulator in the list at its lowest per-episode charge."""
+    rig_episode = _dollars(price_list["rig"]["episode_units"], price_list)
+    items = [_environment("Real robot", name, rig_episode) for name in ROBOT_NAMES]
+    for simulator, name in SIMULATOR_NAMES.items():
+        episodes = [_dollars(line["price"]["episode_units"], price_list) for line in price_list["sim"] if line["simulator"] == simulator]
+        if episodes:
+            items.append(_environment("Simulator", name, min(episodes)))
+    return "".join(items)
 
 
 def register() -> None:

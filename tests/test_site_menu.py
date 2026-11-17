@@ -88,7 +88,11 @@ def test_docs_shows_the_client_guide_at_its_ref(site: Path) -> None:
     assert '<a href="https://pypi.org/project/positronic/">PyPI</a>' in guide
     assert "<table>" in guide
     contents = _block(html, r'<div class="col pf-guide-contents">.*?</section>')
-    assert _links(contents) == [("Registering", "#registering"), ("Eval plans", "#eval-plans")]
+    assert _links(contents) == [
+        ("Registering", "#registering"),
+        ("Eval plans", "#eval-plans"),
+        ("From the command line", "#from-the-command-line"),
+    ]
     assert f'href="{blob}/client/README.md">Guide on GitHub</a>' in html
     assert "{CLIENT_GUIDE" not in html
 
