@@ -28,9 +28,12 @@ ABSOLUTE_BASE_URL = os.getenv("ABSOLUTE_BASE_URL", PRODUCTION_ORIGIN).rstrip("/"
 APP_URL = os.getenv("APP_URL", "").strip().rstrip("/") or "https://console.positronic.ro"
 
 # The Pricing page reads the console's public price list at build time (plugins/pricing.py).
+# The Docs page reads the client guide in the public positronic repository (plugins/docs.py).
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["pricing"]
+PLUGINS = ["pricing", "docs"]
 PRICING_SOURCE = os.getenv("PRICING_SOURCE", "").strip()
+DOCS_SOURCE = os.getenv("DOCS_SOURCE", "").strip()
+DOCS_REF = os.getenv("DOCS_REF", "").strip()
 
 # Content paths
 PATH = "content"

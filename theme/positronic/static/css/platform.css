@@ -1,4 +1,4 @@
-/* The Pricing page. Extends home.css with the rate table and its length slider. */
+/* The Pricing and Docs pages. Extends home.css with the rate table, its length slider, and the guide. */
 
 .platform .col a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.35); }
 .platform .col a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
@@ -34,3 +34,17 @@
 
 /* The subtitle runs to the same right edge as the text below it. */
 .platform .page-head .hero-lede { max-width: none; }
+
+/* ---- The client guide on the Docs page. */
+
+.platform .pf-guide h2 { margin-top: 26px; scroll-margin-top: 90px; }
+.platform .pf-guide h2:first-child { margin-top: 0; }
+.platform .pf-guide ul, .platform .pf-guide ol { margin: 0; padding-left: 1.3em; line-height: 1.65; }
+.platform .pf-guide-contents ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--mono); font-size: 0.85rem; }
+.platform .pf-guide code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
+.platform .pf-guide pre { margin: 0; padding: 14px 16px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; overflow-x: auto; }
+.platform .pf-guide pre code { font-size: 0.84rem; line-height: 1.6; color: #dfe6d2; background: transparent; border: 0; padding: 0; white-space: pre; }
+.platform .pf-guide blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--accent, #b1e74f); }
+.platform .pf-guide table { display: block; overflow-x: auto; border-collapse: collapse; font-size: 0.9rem; }
+.platform .pf-guide th, .platform .pf-guide td { text-align: left; vertical-align: top; padding: 8px 14px 8px 0; border-bottom: 1px solid var(--rule); line-height: 1.5; }
+.platform .pf-guide th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }

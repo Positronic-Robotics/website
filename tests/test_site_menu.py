@@ -1,4 +1,4 @@
-"""The menu of every page, and the Pricing page that it opens on the website."""
+"""The menu of every page, and the Pricing and Docs pages that it opens on the website."""
 
 from __future__ import annotations
 
@@ -7,11 +7,11 @@ import re
 from pathlib import Path
 
 import pytest
-from conftest import PRICE_LIST, build_site
+from conftest import GUIDE_REF, PRICE_LIST, build_site
 
 ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
-PAGES = ["index.html", "pricing.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
+PAGES = ["index.html", "pricing.html", "docs.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
 
 
 @pytest.fixture(scope="module")
@@ -38,7 +38,7 @@ def test_every_page_has_the_same_menu(site: Path) -> None:
         app_nav = _block(html, r'<nav class="navbar-app".*?</nav>')
         assert _links(site_nav) == [
             ("Pricing", "https://positronic.ro/pricing"),
-            ("Docs", f"{APP}/start"),
+            ("Docs", "https://positronic.ro/docs"),
             ("For labs", "https://positronic.ro/#talk"),
             ("About", "https://positronic.ro/about"),
             ("Blog", "https://positronic.ro/blog"),
@@ -69,8 +69,33 @@ def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
     assert "justify-content: flex-start" not in css
 
 
-def test_the_website_has_no_copy_of_the_console_get_started_page(site: Path) -> None:
-    assert not (site / "docs.html").exists()
+def test_docs_shows_the_client_guide_at_its_ref(site: Path) -> None:
+    html = (site / "docs.html").read_text()
+    guide = _block(html, r'<div class="col pf-guide">.*?</section>')
+    assert "positronic-platform-client" not in guide
+    assert '<h2 id="registering">Registering</h2>' in guide
+    assert "<pre><code" in guide and "platform-register --alias=&lt;display name&gt;" in guide
+    blob = f"https://github.com/Positronic-Robotics/positronic/blob/{GUIDE_REF}"
+    assert f'<a href="{blob}/docs/submit-a-policy-image.md">Submit a policy image</a>' in guide
+    assert '<a href="#registering">Registering</a>' in guide
+    assert '<a href="https://pypi.org/project/positronic/">PyPI</a>' in guide
+    assert "<table>" in guide
+    contents = _block(html, r'<div class="col pf-guide-contents">.*?</section>')
+    assert _links(contents) == [("Registering", "#registering"), ("Eval plans", "#eval-plans")]
+    assert f'href="{blob}/client/README.md">Guide on GitHub</a>' in html
+    assert "{CLIENT_GUIDE" not in html
+
+
+def test_a_guide_with_no_sections_fails_the_build(tmp_path: Path) -> None:
+    guide = tmp_path / "guide.md"
+    guide.write_text("# A title\n\nNo sections.\n")
+    result = build_site(tmp_path / "out", guide=guide)
+    assert result.returncode != 0
+    assert "no sections" in result.stderr + result.stdout
+
+
+def test_an_unreadable_guide_fails_the_build(tmp_path: Path) -> None:
+    assert build_site(tmp_path / "out", guide=tmp_path / "missing.md").returncode != 0
 
 
 def test_pricing_rates_come_from_the_price_list(site: Path) -> None:
