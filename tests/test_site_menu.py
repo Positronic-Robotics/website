@@ -64,6 +64,7 @@ def test_only_sign_in_account_and_docs_links_leave_for_the_console(site: Path) -
 def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
     hero = _block((site / "pricing.html").read_text(), r'<section class="page-head">.*?</section>')
     assert f'<div class="actions"><a class="act act-primary" href="{APP}/signin">Sign up</a>' in hero
+    assert '<a class="act act-ghost" href="/#talk">Talk to us</a>' in hero
     css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
     assert "justify-content: flex-start" not in css
 
@@ -82,7 +83,22 @@ def test_pricing_rates_come_from_the_price_list(site: Path) -> None:
         ("0.02", "0.5", "RoboLab simulator", "$1.02"),
         ("0.01", "0.1", "MolmoSpaces simulator, model on your server", "$0.21"),
     ]
-    assert "One credit is $5." in (site / "pricing.html").read_text()
+
+
+def test_pricing_names_volume_discounts_next_to_a_talk_to_us_button(site: Path) -> None:
+    rates = _block((site / "pricing.html").read_text(), r'<section class="band close" id="rates">.*?</section>')
+    assert '<div class="pf-volume"><p>Volume discounts for committed spend.</p><a class="act act-ghost" href="/#talk">Talk to us</a></div>' in rates
+
+
+def test_pricing_does_not_name_the_credit_price(site: Path) -> None:
+    html = (site / "pricing.html").read_text()
+    assert "One credit is" not in html
+    assert "{CREDIT_PRICE}" not in html
+
+
+def test_pricing_shows_the_episode_total_in_the_accent_colour() -> None:
+    css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
+    assert ".platform .pf-rates .pf-total { font-weight: 600; color: var(--accent, #b1e74f); }" in css
 
 
 def test_a_simulator_with_no_display_name_fails_the_build(tmp_path: Path) -> None:

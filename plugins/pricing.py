@@ -16,7 +16,6 @@ from pathlib import Path
 from pelican import signals
 
 RATES_PLACEHOLDER = "{PRICE_RATES}"
-CREDIT_PRICE_PLACEHOLDER = "{CREDIT_PRICE}"
 DEFAULT_LENGTH_SEC = 120
 
 SIMULATOR_NAMES = {"molmospaces": "MolmoSpaces", "robolab": "RoboLab"}
@@ -78,10 +77,6 @@ def rate_rows(price_list: dict) -> str:
     return "".join(rows)
 
 
-def credit_price(price_list: dict) -> str:
-    return _plain(_dollars(price_list["units_per_credit"], price_list))
-
-
 def _read(pelican) -> None:
     global _price_list
     settings = pelican.settings
@@ -94,9 +89,7 @@ def _fill(content) -> None:
     if not text or RATES_PLACEHOLDER not in text:
         return
     assert _price_list is not None
-    content._content = text.replace(RATES_PLACEHOLDER, rate_rows(_price_list)).replace(
-        CREDIT_PRICE_PLACEHOLDER, credit_price(_price_list)
-    )
+    content._content = text.replace(RATES_PLACEHOLDER, rate_rows(_price_list))
 
 
 def register() -> None:
