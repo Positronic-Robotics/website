@@ -41,7 +41,7 @@
 .platform .pf-guide h2:first-child { margin-top: 0; }
 .platform .pf-guide ul, .platform .pf-guide ol { margin: 0; padding-left: 1.3em; line-height: 1.65; }
 .platform .pf-guide-contents ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--mono); font-size: 0.85rem; }
-.platform .pf-guide code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
+.platform .pf-guide code { overflow-wrap: anywhere; font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
 .platform .pf-guide pre { margin: 0; padding: 14px 16px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; overflow-x: auto; }
 .platform .pf-guide pre code { font-size: 0.84rem; line-height: 1.6; color: #dfe6d2; background: transparent; border: 0; padding: 0; white-space: pre; }
 .platform .pf-guide blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--accent, #b1e74f); }
