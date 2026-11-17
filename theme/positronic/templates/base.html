@@ -11,6 +11,7 @@
   {% set head_description = page.description | default(SITEDESCRIPTION, true) %}
   {% set head_path = '' if page.slug == HOME_SLUG else page.url %}
   {% set og_type = 'website' %}
+  {% set head_card = page.social_card %}
 {% else %}
   {% set section = 'blog' %}
   {% set head_title = 'Blog — ' ~ SITENAME %}
@@ -19,6 +20,7 @@
   {% set og_type = 'website' %}
 {% endif %}
 {% set canonical = ABSOLUTE_BASE_URL ~ '/' ~ head_path %}
+{% set social_card = ABSOLUTE_BASE_URL ~ '/' ~ (head_card | default(SOCIAL_CARD, true)) %}
 {% set site_icon = ABSOLUTE_BASE_URL ~ '/icon-512.png' %}
 <html lang="{{ DEFAULT_LANG | default('en') }}">
 <head>
@@ -37,8 +39,11 @@
   <meta property="og:title" content="{{ head_title }}" />
   <meta property="og:description" content="{{ head_description | escape }}" />
   <meta property="og:url" content="{{ canonical }}" />
-  <meta property="og:image" content="{{ site_icon }}" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="{{ social_card }}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@positronic_ro" />
 
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
@@ -62,8 +67,8 @@
     "name": "{{ SITENAME }}",
     "url": "{{ ABSOLUTE_BASE_URL }}/",
     "logo": "{{ site_icon }}",
-    "description": "{{ SITEDESCRIPTION | escape }}",
-    "sameAs": ["https://github.com/Positronic-Robotics"]
+    "description": {{ SITEDESCRIPTION | tojson }},
+    "sameAs": {{ SOCIAL_PROFILES | tojson }}
   }
   </script>
 {% endif %}

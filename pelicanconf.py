@@ -12,13 +12,21 @@ SITEURL = os.getenv("SITEURL", PRODUCTION_ORIGIN).rstrip("/")
 
 # A search result shows about 155 characters of the description and cuts the rest.
 SITEDESCRIPTION = (
-    "Positronic Robotics runs independent evaluation for physical AI. Send a checkpoint, "
-    "get video and a score for every run on real robots, back the same day."
+    "Positronic Robotics tests physical AI on real robots and in sim. Your coding agent submits "
+    "the model; you get video, robot data and a score. Pay as you go."
 )
 BLOG_DESCRIPTION = (
     "Notes from Positronic Robotics on evaluating physical AI: how we measure robot "
     "policies, what the numbers mean, and what the leaderboard shows."
 )
+
+# A link preview shows this 1200x630 image; a page names another with `Social_card:`.
+SOCIAL_CARD = "media/social-card.jpg"
+SOCIAL_PROFILES = [
+    "https://github.com/Positronic-Robotics",
+    "https://www.linkedin.com/company/positronic-robotics",
+    "https://x.com/positronic_ro",
+]
 
 # RELATIVE_URLS rewrites SITEURL per page, so every absolute URL a crawler reads — the
 # canonical, the og:url, the sitemap, robots.txt — needs its own base.

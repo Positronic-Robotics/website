@@ -1,7 +1,7 @@
 Title: Pricing — Positronic Robotics
 Slug: pricing
 Template: platform
-Description: Pay as you go, per episode and per minute. Volume discounts for committed spend.
+Description: Pricing for physical AI evaluation on real robots and in simulators. Pay as you go, per episode and per minute. Volume discounts for committed spend.
 
 <section class="page-head"><h1>Pricing</h1><p class="hero-lede">Pay as you go, per episode and per minute. Volume discounts for committed spend.</p><div class="actions"><a class="act act-primary" href="{APP_URL}/signin">Sign up</a><a class="act act-ghost" href="/labs#talk">Talk to us</a></div></section>
 
