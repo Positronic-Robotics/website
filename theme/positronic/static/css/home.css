@@ -581,7 +581,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 /* ---- Home: the product, step by step -------------------------------------- */
 
 .home .hero + .band,
-.home .proof + .band { margin-top: 92px; }
+.home .testimonial + .band { margin-top: 92px; }
 
 /* The two hero buttons share one width and one height. */
 .home .actions-even { display: grid; grid-template-columns: repeat(2, 11rem); }
@@ -605,18 +605,14 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 }
 .home .env-kind { font-family: var(--mono); font-size: 0.78rem; color: var(--accent, #b1e74f); }
 .home .env-name { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: #e8f0d5; }
-.home .env-price { font-size: 0.95rem; color: #cdd2c4; }
+.home .env-price { font-size: 0.85rem; color: var(--dim); }
 
 .home .hero + .reel { margin-top: 48px; max-width: 1064px; }
 .home .hero + .reel figure { max-width: 1000px; }
 
 .home .more { font-size: 0.95rem; }
-.home .more a,
-.home .proof a,
-.home .home-more a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.5); }
-.home .more a:hover,
-.home .proof a:hover,
-.home .home-more a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
+.home .more a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.5); }
+.home .more a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
 
 /* Who uses it: one muted row of logos, each a link to where they name us. */
 .home .trusted { margin: 72px auto 0; padding: 0 32px; text-align: center; }
@@ -629,27 +625,41 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .trusted-bfl svg { width: 132px; }
 .home .trusted-nebius svg { width: 116px; }
 
-/* A quiet strip: the customer line and the leaderboard, with no heading. */
-.home .proof {
+/* The customer quote: the same card as on For labs, under the logos. */
+.home .testimonial {
   max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
-  margin: 72px auto 0;
-  padding: 26px 32px;
-  border-top: 1px solid var(--hair);
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
+  margin: 46px auto 0;
+  padding: 0 32px;
 }
-.home .proof figure { margin: 0; }
-.home .proof blockquote { margin: 0; font-family: var(--display); font-size: 1.12rem; line-height: 1.45; color: #dfe6d2; text-wrap: balance; }
-.home .proof figcaption { margin-top: 8px; font-family: var(--mono); font-size: 0.78rem; color: var(--dim); }
-.home .proof p { margin-top: 14px; font-size: 0.95rem; }
 
-.home .home-more { margin-top: 64px; padding: 0 32px; text-align: center; font-size: 1.05rem; color: #cdd2c4; }
+/* The line to For labs: a card of its own with one accent button. */
+.home .labs-cta {
+  max-width: calc(var(--rail) + var(--gutter) + var(--col));
+  margin: 92px auto 0;
+  padding: 26px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-left: 2px solid var(--accent, #b1e74f);
+  border-radius: 0 4px 4px 0;
+}
+.home .labs-cta p { font-family: var(--display); font-size: 1.4rem; font-weight: 600; color: #e8f0d5; }
+
 
 @media (max-width: 640px) {
   .home .envs { grid-template-columns: minmax(0, 1fr); }
   .home .actions-even { grid-template-columns: minmax(0, 1fr); }
   .home .hero + .reel { margin-top: 36px; padding: 0 16px; }
-  .home .trusted, .home .proof { margin-top: 56px; }
+  .home .trusted { margin-top: 56px; }
+  .home .testimonial { margin-top: 36px; padding: 0 16px; }
+  .home .testimonial .quote { padding: 18px 20px; }
+  .home .testimonial .quote blockquote { font-size: 1.08rem; }
+  .home .labs-cta { margin: 64px 16px 0; padding: 22px 20px; }
+  .home .labs-cta .act { width: 100%; justify-content: center; }
   .home .trusted-logos { gap: 16px 24px; }
   .home .trusted-runway svg { width: 76px; }
   .home .trusted-bfl svg { width: 100px; }

@@ -78,7 +78,7 @@ def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
 
 def test_docs_shows_the_client_guide_at_its_ref(site: Path) -> None:
     html = (site / "docs.html").read_text()
-    guide = _block(html, r'<div class="col pf-guide">.*?</section>')
+    guide = _block(html, r'<div class="pf-guide">.*?</section>')
     assert "positronic-platform-client" not in guide
     assert '<h2 id="registering">Registering</h2>' in guide
     assert "<pre><code" in guide and "platform-register --alias=&lt;display name&gt;" in guide
@@ -89,8 +89,20 @@ def test_docs_shows_the_client_guide_at_its_ref(site: Path) -> None:
     assert "<table>" in guide
     contents = _block(html, r'<div class="col pf-guide-contents">.*?</section>')
     assert _links(contents) == [("Registering", "#registering"), ("Eval plans", "#eval-plans")]
-    assert f'href="{blob}/client/README.md">Guide on GitHub</a>' in html
+    assert "Guide on GitHub" not in html and f"{blob}/client/README.md" not in html
+    assert f"from positronic {GUIDE_REF}." in html
     assert "{CLIENT_GUIDE" not in html
+
+
+def test_docs_open_on_the_agent_quick_start(site: Path) -> None:
+    main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
+    labels = re.findall(r'<span class="label">([^<]+)</span>', main)
+    assert labels == ["Quick start", "Contents", "Guide"]
+    quick = _block(main, r'<section class="band" id="quick-start">.*?</section>')
+    steps = re.findall(r'<span class="step-verb">([^<]+)</span>', quick)
+    assert steps == ["1. Give your agent the prompt", "2. Sign in", "3. Add credits", "4. Submit"]
+    assert f'<a href="{APP}/start">Get started</a> in the console' in quick
+    assert "Claude Code, Codex or another coding agent" in quick
 
 
 def test_a_guide_with_no_sections_fails_the_build(tmp_path: Path) -> None:

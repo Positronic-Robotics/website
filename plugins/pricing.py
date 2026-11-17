@@ -23,7 +23,7 @@ DEFAULT_LENGTH_SEC = 120
 SIMULATOR_NAMES = {"robolab": "RoboLab", "molmospaces": "MolmoSpaces"}
 HOSTING_SUFFIX = {"hosted": "", "own_server": ", model on your server"}
 RIG_NAMES = ["Real robot: Franka DROID", "Real robot: two-arm YAM"]
-ROBOT_NAMES = ["Franka DROID", "Two-arm YAM"]
+ROBOT_NAMES = ["Franka FR3 (DROID)", "Bimanual YAM"]
 
 _price_list: dict | None = None
 

@@ -46,3 +46,8 @@
 .platform .pf-guide table { display: block; overflow-x: auto; border-collapse: collapse; font-size: 0.9rem; }
 .platform .pf-guide th, .platform .pf-guide td { text-align: left; vertical-align: top; padding: 8px 14px 8px 0; border-bottom: 1px solid var(--rule); line-height: 1.5; }
 .platform .pf-guide th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }
+
+/* ---- The quick start on the Docs page. */
+
+.platform .howto code, .platform .pf-guide-note code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
+.platform .pf-guide-note { color: var(--dim); font-size: 0.95rem; }

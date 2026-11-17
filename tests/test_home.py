@@ -40,7 +40,7 @@ def _band(site: Path, label: str) -> str:
 def test_home_opens_on_the_headline_a_sub_line_and_two_buttons(site: Path) -> None:
     assert _sections(site)[0] == (
         '<section class="hero"><h1>Test your physical AI on <em>real robots</em> and in sim.</h1>'
-        '<p class="hero-lede">Submit from your terminal. Get a video and a score for every episode.</p>'
+        '<p class="hero-lede">Your coding agent submits your model. We run it and send back a video, the robot data and a score for every episode.</p>'
         '<div class="actions actions-even">'
         f'<a class="act act-primary" href="{APP}/signin">Get started</a>'
         '<a class="act act-ghost" href="/labs#talk">Talk to us</a></div></section>'
@@ -60,9 +60,9 @@ def test_home_sections_come_in_the_approved_order(site: Path) -> None:
         label = re.search(r'<span class="label">([^<]+)</span>', section)
         return label.group(1) if label else re.match(r'<section class="([^"]+)"', section).group(1)
 
-    assert [name(s) for s in _sections(site)] == ["hero", "reel", "trusted", "proof", "How it works", "Where it runs"]
+    assert [name(s) for s in _sections(site)] == ["hero", "reel", "trusted", "testimonial", "How it works", "Robots and simulators", "labs-cta"]
     main = _main((site / "index.html").read_text())
-    assert "Proof" not in main and "What you get back" not in main
+    assert "Proof" not in main and "What you get back" not in main and "Where it runs" not in main
 
 
 def test_the_two_hero_buttons_share_one_size(site: Path) -> None:
@@ -80,6 +80,7 @@ def test_how_it_works_is_four_plain_steps(site: Path) -> None:
         ("3. Choose where it runs", "Real robots or simulators, and the tasks."),
         ("4. Get the results", "We run the episodes. You get a video, the robot data and a score for each one."),
     ]
+    assert '<p class="more"><a href="/docs">Read the docs</a></p>' in band
     main = _main((site / "index.html").read_text())
     assert "<pre" not in main and "<code" not in main and "positronic eval" not in main
 
@@ -88,7 +89,7 @@ def _environments(site: Path) -> list[tuple[str, str, str]]:
     return re.findall(
         r'<li class="env"><span class="env-kind">([^<]+)</span><span class="env-name">([^<]+)</span>'
         r'<span class="env-price">([^<]+)</span></li>',
-        _band(site, "Where it runs"),
+        _band(site, "Robots and simulators"),
     )
 
 
@@ -96,12 +97,12 @@ def test_where_it_runs_prices_a_two_minute_episode_from_the_price_list(site: Pat
     # The fixture: 1000 units a credit, $5 a credit. A 2-min rig episode is 2000 + 2 x 2000 units;
     # RoboLab (hosted only) 4 + 2 x 100 units; MolmoSpaces (own server only) 2 + 2 x 20 units.
     assert _environments(site) == [
-        ("Real robot", "Franka DROID", "from $30 per 2-min episode"),
-        ("Real robot", "Two-arm YAM", "from $30 per 2-min episode"),
+        ("Real robot", "Franka FR3 (DROID)", "from $30 per 2-min episode"),
+        ("Real robot", "Bimanual YAM", "from $30 per 2-min episode"),
         ("Simulator", "RoboLab", "from $1.02 per 2-min episode"),
         ("Simulator", "MolmoSpaces", "from $0.21 per 2-min episode"),
     ]
-    band = _band(site, "Where it runs")
+    band = _band(site, "Robots and simulators")
     assert '<a href="/pricing">' in band
     assert "{PRICE_ENVIRONMENTS}" not in band
 
@@ -118,7 +119,7 @@ def test_each_home_figure_is_the_cheapest_default_total_on_pricing(tmp_path: Pat
     build_site(tmp_path / "out", source).check_returncode()
     totals = re.findall(r'<tr data-episode="[^"]+" data-minute="[^"]+"><td>([^<]+)</td>.*?<td class="pf-total">\$([^<]+)</td>',
                         (tmp_path / "out" / "pricing.html").read_text())
-    rows = {"Franka DROID": "Real robot: Franka DROID", "Two-arm YAM": "Real robot: two-arm YAM",
+    rows = {"Franka FR3 (DROID)": "Real robot: Franka DROID", "Bimanual YAM": "Real robot: two-arm YAM",
             "RoboLab": "RoboLab simulator", "MolmoSpaces": "MolmoSpaces simulator"}
     for _kind, name, price in _environments(tmp_path / "out"):
         cheapest = min((Decimal(total) for row, total in totals if row.startswith(rows[name])), default=None)
@@ -133,7 +134,7 @@ def test_where_it_runs_lists_only_the_simulators_the_price_list_names(tmp_path: 
     source.write_text(json.dumps(price_list))
     build_site(tmp_path / "out", source).check_returncode()
     html = (tmp_path / "out" / "index.html").read_text()
-    assert re.findall(r'<span class="env-name">([^<]+)</span>', html) == ["Franka DROID", "Two-arm YAM", "RoboLab"]
+    assert re.findall(r'<span class="env-name">([^<]+)</span>', html) == ["Franka FR3 (DROID)", "Bimanual YAM", "RoboLab"]
 
 
 def test_the_clip_of_one_public_phail_run_sits_under_the_buttons(site: Path) -> None:
@@ -158,23 +159,25 @@ def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:
     ]
 
 
-def test_a_quiet_strip_quotes_runway_word_for_word_and_links_the_leaderboard(site: Path) -> None:
-    strip = _sections(site)[3]
-    assert strip.startswith('<section class="proof">')
-    assert 'class="label"' not in strip
-    line = re.search(r"<blockquote>([^<]+)</blockquote>", strip).group(1)
-    assert line == "Positronic lets us evaluate checkpoints continuously as we train, so we can course-correct our research quickly."
+def test_the_quote_is_the_for_labs_card_with_the_full_runway_quote(site: Path) -> None:
+    card = _sections(site)[3]
     labs_quote = re.search(r"<blockquote>([^<]+)</blockquote>", (site / "labs.html").read_text()).group(1)
-    assert labs_quote.startswith(line + " ")
-    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in strip
-    assert '<p><a href="https://phail.ai">See the PhAIL leaderboard</a></p>' in strip
+    assert card == (
+        f'<section class="testimonial"><figure class="quote"><blockquote>{labs_quote}</blockquote>'
+        "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption></figure></section>"
+    )
+    assert "phail.ai" not in card
 
 
-def test_home_ends_on_the_line_to_for_labs(site: Path) -> None:
-    main = _main((site / "index.html").read_text())
-    last = '<p class="home-more">Running evals at scale? See <a href="/labs">For labs</a>.</p>'
-    assert last in main
-    assert main.rindex("</section>") < main.index(last)
+def test_the_price_line_is_quieter_than_the_name(site: Path) -> None:
+    css = (ROOT / "theme/positronic/static/css/home.css").read_text()
+    assert ".home .env-price { font-size: 0.85rem; color: var(--dim); }" in css
+
+
+def test_home_ends_on_a_for_labs_card(site: Path) -> None:
+    last = _sections(site)[-1]
+    assert last == '<section class="labs-cta"><p>Running evals at scale?</p><a class="act act-primary" href="/labs">For labs</a></section>'
+    assert "home-more" not in _main((site / "index.html").read_text())
 
 
 def test_home_title_names_the_headline(site: Path) -> None:
