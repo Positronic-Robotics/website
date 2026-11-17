@@ -16,7 +16,7 @@ Image: media/self-checkout-card.png
 - **No human in the loop.** Your agent submits a checkpoint, reads the results, changes the model and submits again. Nobody has to watch a robot. You focus on research, and we handle the rest.
 - **Full data, not only a score.** Each run returns the video, every sensor, every command and the task progress step by step.
 
-**Limited offer while we ramp up:** ask for free welcome credits (see "Try it for free" below).
+**Start today:** sign up at [console.positronic.ro](https://console.positronic.ro/start) and submit your first run.
 
 ## What you can run
 
@@ -68,9 +68,9 @@ When you submit, we hold the most that the run can cost. When it ends, we charge
 
 Scores come from automated measurement and from the review of trained people. If a score looks wrong, ask us for a review.
 
-## Try it for free
+## Sign up
 
-While we ramp up, we give free welcome credits to teams that want to try the platform. This is a limited offer. Email [hi@positronic.ro](mailto:hi@positronic.ro) with your user id (your account page shows it) and what you plan to evaluate. We review each request and give welcome credits.
+Make your account at [console.positronic.ro](https://console.positronic.ro/start). The Get started page shows each step of your first run, and has the prompt for your agent.
 
 Questions go to our [Discord](https://discord.gg/PXvBy4NBgv).
 
