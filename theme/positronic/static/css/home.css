@@ -617,7 +617,8 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .env-price { font-size: 0.95rem; color: #cdd2c4; }
 
 .home .run { margin: 0; }
-.home .run video { display: block; width: 100%; height: auto; background: #0f110d; border-radius: 4px; }
+/* At most about 480 px tall, centred in the column; a phone is narrower than that cap. */
+.home .run video { display: block; width: auto; max-width: 100%; height: auto; max-height: 480px; margin: 0 auto; background: #0f110d; border-radius: 4px; }
 .home .run figcaption {
   display: flex;
   flex-wrap: wrap;

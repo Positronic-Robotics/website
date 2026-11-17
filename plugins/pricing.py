@@ -2,8 +2,9 @@
 
 The console serves the list at `<APP_URL>/api/pricing.get` with no key, and its own Pricing page reads
 the same list, so the website carries no copy of a price. `PRICING_SOURCE` names another URL or a local
-JSON file (the tests pass a fixture). The home page lists each environment at its per-episode charge
-from the same list. A failed read, or a simulator or hosting with no display name, fails the build.
+JSON file (the tests pass a fixture). The home page lists each environment at the cost of one episode
+of the default length, from the same list and the same math. A failed read, or a simulator or hosting
+with no display name, fails the build.
 """
 
 from __future__ import annotations
@@ -52,21 +53,32 @@ def money(amount: Decimal) -> str:
     return f"${float(f'{amount:.2g}'):g}"
 
 
+def episode_total(episode: Decimal, minute: Decimal) -> Decimal:
+    """One episode of the default length: the Pricing page's total and the home page's figure."""
+    return episode + minute * DEFAULT_LENGTH_SEC / 60
+
+
 def _row(name: str, episode: Decimal, minute: Decimal) -> str:
-    total = episode + minute * DEFAULT_LENGTH_SEC / 60
     op = '<td class="pf-op">{}</td>'.format
     return (
         f'<tr data-episode="{episode.normalize():f}" data-minute="{minute.normalize():f}"><td>{name}</td>'
         f"<td>{_plain(episode)}</td>{op('+')}<td>{_plain(minute)}</td>{op('×')}"
-        f'<td class="pf-length-value">2 min</td>{op("=")}<td class="pf-total">{money(total)}</td></tr>'
+        f'<td class="pf-length-value">2 min</td>{op("=")}<td class="pf-total">{money(episode_total(episode, minute))}</td></tr>'
     )
 
 
-def rate_rows(price_list: dict) -> str:
+def _rig_rates(price_list: dict) -> tuple[Decimal, Decimal]:
     rig = price_list["rig"]
-    rig_episode = _dollars(rig["episode_units"], price_list)
-    rig_minute = _dollars(rig["units_per_hour"], price_list) / 60
-    rows = [_row(name, rig_episode, rig_minute) for name in RIG_NAMES]
+    return _dollars(rig["episode_units"], price_list), _dollars(rig["units_per_hour"], price_list) / 60
+
+
+def _sim_rates(line: dict, price_list: dict) -> tuple[Decimal, Decimal]:
+    price = line["price"]
+    return _dollars(price["episode_units"], price_list), _dollars(price["minute_units"], price_list)
+
+
+def rate_rows(price_list: dict) -> str:
+    rows = [_row(name, *_rig_rates(price_list)) for name in RIG_NAMES]
     for line in price_list["sim"]:
         simulator, hosting = line["simulator"], line["hosting"]
         if simulator not in SIMULATOR_NAMES:
@@ -74,8 +86,7 @@ def rate_rows(price_list: dict) -> str:
         if hosting not in HOSTING_SUFFIX:
             raise ValueError(f"the price list names hosting {hosting!r}, which has no display name")
         name = f"{SIMULATOR_NAMES[simulator]} simulator{HOSTING_SUFFIX[hosting]}"
-        price = line["price"]
-        rows.append(_row(name, _dollars(price["episode_units"], price_list), _dollars(price["minute_units"], price_list)))
+        rows.append(_row(name, *_sim_rates(line, price_list)))
     return "".join(rows)
 
 
@@ -95,21 +106,21 @@ def _fill(content) -> None:
     content._content = text.replace(ENVIRONMENTS_PLACEHOLDER, environments(_price_list))
 
 
-def _environment(kind: str, name: str, episode: Decimal) -> str:
+def _environment(kind: str, name: str, total: Decimal) -> str:
     return (
         f'<li class="env"><span class="env-kind">{kind}</span><span class="env-name">{name}</span>'
-        f'<span class="env-price">from {money(episode)} per episode</span></li>'
+        f'<span class="env-price">from {money(total)} per {DEFAULT_LENGTH_SEC // 60}-min episode</span></li>'
     )
 
 
 def environments(price_list: dict) -> str:
-    """The home page list: the real robots, then each simulator in the list at its lowest per-episode charge."""
-    rig_episode = _dollars(price_list["rig"]["episode_units"], price_list)
-    items = [_environment("Real robot", name, rig_episode) for name in ROBOT_NAMES]
+    """The home page list: the real robots, then each simulator in the list at its cheapest hosting."""
+    rig_total = episode_total(*_rig_rates(price_list))
+    items = [_environment("Real robot", name, rig_total) for name in ROBOT_NAMES]
     for simulator, name in SIMULATOR_NAMES.items():
-        episodes = [_dollars(line["price"]["episode_units"], price_list) for line in price_list["sim"] if line["simulator"] == simulator]
-        if episodes:
-            items.append(_environment("Simulator", name, min(episodes)))
+        totals = [episode_total(*_sim_rates(line, price_list)) for line in price_list["sim"] if line["simulator"] == simulator]
+        if totals:
+            items.append(_environment("Simulator", name, min(totals)))
     return "".join(items)
 
 

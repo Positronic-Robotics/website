@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from decimal import Decimal
 from pathlib import Path
 
 import pytest
@@ -72,23 +73,46 @@ def test_a_guide_with_no_submit_command_fails_the_build(tmp_path: Path) -> None:
     assert "positronic eval run" in result.stderr + result.stdout
 
 
-def test_where_it_runs_prices_each_environment_from_the_price_list(site: Path) -> None:
-    band = _band(site, "Where it runs")
-    # The fixture: 1000 units a credit, $5 a credit. The rig episode is 2000 units; the
-    # cheapest RoboLab episode 4 units, the cheapest MolmoSpaces episode 2 units.
-    envs = re.findall(
+def _environments(site: Path) -> list[tuple[str, str, str]]:
+    return re.findall(
         r'<li class="env"><span class="env-kind">([^<]+)</span><span class="env-name">([^<]+)</span>'
         r'<span class="env-price">([^<]+)</span></li>',
-        band,
+        _band(site, "Where it runs"),
     )
-    assert envs == [
-        ("Real robot", "Franka DROID", "from $10 per episode"),
-        ("Real robot", "Two-arm YAM", "from $10 per episode"),
-        ("Simulator", "RoboLab", "from $0.02 per episode"),
-        ("Simulator", "MolmoSpaces", "from $0.01 per episode"),
+
+
+def test_where_it_runs_prices_a_two_minute_episode_from_the_price_list(site: Path) -> None:
+    # The fixture: 1000 units a credit, $5 a credit. A 2-min rig episode is 2000 + 2 x 2000 units;
+    # RoboLab (hosted only) 4 + 2 x 100 units; MolmoSpaces (own server only) 2 + 2 x 20 units.
+    assert _environments(site) == [
+        ("Real robot", "Franka DROID", "from $30 per 2-min episode"),
+        ("Real robot", "Two-arm YAM", "from $30 per 2-min episode"),
+        ("Simulator", "RoboLab", "from $1.02 per 2-min episode"),
+        ("Simulator", "MolmoSpaces", "from $0.21 per 2-min episode"),
     ]
+    band = _band(site, "Where it runs")
     assert '<a href="/pricing">' in band
     assert "{PRICE_ENVIRONMENTS}" not in band
+
+
+def test_each_home_figure_is_the_cheapest_default_total_on_pricing(tmp_path: Path) -> None:
+    # Both hostings of each simulator, so the home page must take the cheaper one.
+    price_list = json.loads(PRICE_LIST.read_text())
+    price_list["sim"] += [
+        {"simulator": "robolab", "hosting": "own_server", "price": {"episode_units": 3, "minute_units": 60, "duration_rounding_sec": 10}},
+        {"simulator": "molmospaces", "hosting": "hosted", "price": {"episode_units": 5, "minute_units": 300, "duration_rounding_sec": 10}},
+    ]
+    source = tmp_path / "pricing.json"
+    source.write_text(json.dumps(price_list))
+    build_site(tmp_path / "out", source).check_returncode()
+    totals = re.findall(r'<tr data-episode="[^"]+" data-minute="[^"]+"><td>([^<]+)</td>.*?<td class="pf-total">\$([^<]+)</td>',
+                        (tmp_path / "out" / "pricing.html").read_text())
+    rows = {"Franka DROID": "Real robot: Franka DROID", "Two-arm YAM": "Real robot: two-arm YAM",
+            "RoboLab": "RoboLab simulator", "MolmoSpaces": "MolmoSpaces simulator"}
+    for _kind, name, price in _environments(tmp_path / "out"):
+        cheapest = min((Decimal(total) for row, total in totals if row.startswith(rows[name])), default=None)
+        assert cheapest is not None, name
+        assert price == f"from ${cheapest:f} per 2-min episode", name
 
 
 def test_where_it_runs_lists_only_the_simulators_the_price_list_names(tmp_path: Path) -> None:
