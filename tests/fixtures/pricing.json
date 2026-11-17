@@ -1,0 +1,10 @@
+{
+  "units_per_credit": 1000,
+  "credit_price": {"unit_amount_minor": 500, "currency": "usd", "min_credits": 1, "max_credits": 100, "default_credits": 10},
+  "rig": {"episode_units": 2000, "units_per_hour": 120000, "duration_rounding_sec": 10},
+  "sim": [
+    {"simulator": "robolab", "hosting": "hosted", "price": {"episode_units": 4, "minute_units": 100, "duration_rounding_sec": 10}},
+    {"simulator": "molmospaces", "hosting": "own_server", "price": {"episode_units": 2, "minute_units": 20, "duration_rounding_sec": 10}}
+  ],
+  "sim_examples": []
+}

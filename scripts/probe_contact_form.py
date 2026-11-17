@@ -34,7 +34,7 @@ PREFLIGHT_GRANT = {
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("base_url")
-    parser.add_argument("--page", default="/")
+    parser.add_argument("--page", default="/labs")
     parser.add_argument("--submit", action="store_true", help="let the POST reach the server")
     parser.add_argument("--email", default="probe@example.com")
     parser.add_argument("--note", default="TEST - lead source selector")

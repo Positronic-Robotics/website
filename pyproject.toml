@@ -20,6 +20,7 @@ packages = []
 only-include = [
   "content",
   "theme",
+  "plugins",
   "pelicanconf.py",
   "publishconf.py",
   "pyproject.toml",
@@ -29,6 +30,7 @@ only-include = [
 include = [
   "content",
   "theme",
+  "plugins",
   "pelicanconf.py",
   "publishconf.py",
   "pyproject.toml",

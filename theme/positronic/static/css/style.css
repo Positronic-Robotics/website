@@ -431,10 +431,15 @@ a:hover {
   }
 }
 
-/* On a phone the platform links take their own row, at the left. */
+/* On a phone "Log in" stays next to the brand, and the site links take their own row. */
 @media (max-width: 480px) {
   .navbar-app {
-    margin-left: 0;
+    order: 1;
+  }
+
+  .navbar nav[aria-label="Site"] {
+    order: 2;
+    flex-basis: 100%;
   }
 }
 

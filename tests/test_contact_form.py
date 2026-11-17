@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 import re
-import subprocess
-import sys
 from pathlib import Path
 
 import pytest
+from conftest import build_site
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -24,12 +23,7 @@ CHANNELS = [
 @pytest.fixture(scope="module")
 def site(tmp_path_factory: pytest.TempPathFactory) -> Path:
     out = tmp_path_factory.mktemp("output")
-    subprocess.run(
-        [sys.executable, "-m", "pelican", "content", "-s", "publishconf.py", "-o", str(out), "-q"],
-        cwd=ROOT,
-        env={"PYTHONPATH": str(ROOT)},
-        check=True,
-    )
+    build_site(out).check_returncode()
     return out
 
 
@@ -39,12 +33,12 @@ def _form(html: str) -> str:
     return match.group(0)
 
 
-def test_home_and_about_carry_the_same_form(site: Path) -> None:
-    assert _form((site / "index.html").read_text()) == _form((site / "about.html").read_text())
+def test_labs_and_about_carry_the_same_form(site: Path) -> None:
+    assert _form((site / "labs.html").read_text()) == _form((site / "about.html").read_text())
 
 
 def test_the_form_asks_the_channel_as_a_list_of_ticks_above_the_fields(site: Path) -> None:
-    form = _form((site / "index.html").read_text())
+    form = _form((site / "labs.html").read_text())
     heard = re.search(r'<fieldset class="contact-heard">(.*?)</fieldset>', form, re.S)
     assert heard, "no channel ticks"
     assert "<select" not in form

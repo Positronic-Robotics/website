@@ -115,14 +115,14 @@
         <span class="brand-text">Positronic Robotics</span>
       </a>
       <nav aria-label="Site">
-        <a href="{{ SITEURL }}/"{% if section == 'home' %} class="is-current" aria-current="page"{% endif %}>Home</a>
+        <a href="{{ SITEURL }}/pricing"{% if section == 'pricing' %} class="is-current" aria-current="page"{% endif %}>Pricing</a>
+        <a href="{{ SITEURL }}/docs"{% if section == 'docs' %} class="is-current" aria-current="page"{% endif %}>Docs</a>
+        <a href="{{ SITEURL }}/labs"{% if section == 'labs' %} class="is-current" aria-current="page"{% endif %}>For labs</a>
         <a href="{{ SITEURL }}/about"{% if section == 'about' %} class="is-current" aria-current="page"{% endif %}>About</a>
         <a href="{{ SITEURL }}/{{ INDEX_URL }}"{% if section == 'blog' %} class="is-current" aria-current="page"{% endif %}>Blog</a>
       </nav>
       <nav class="navbar-app" aria-label="Platform">
-        <a href="{{ APP_URL }}/pricing">Pricing</a>
-        <a href="{{ APP_URL }}/signin">Sign in</a>
-        <a href="{{ APP_URL }}/start" class="navbar-start">Get started</a>
+        <a href="{{ APP_URL }}/signin" class="navbar-start">Log in / Sign up</a>
       </nav>
     </div>
   </header>
