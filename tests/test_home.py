@@ -138,14 +138,13 @@ def test_where_it_runs_lists_only_the_simulators_the_price_list_names(tmp_path: 
 
 def test_the_clip_of_one_public_phail_run_sits_under_the_buttons(site: Path) -> None:
     reel = _sections(site)[1]
-    assert re.findall(r'<video [^>]*src="([^"]+)"', reel) == ["/media/episode-1086.mp4"]
-    assert 'poster="/media/episode-1086-poster.jpg"' in reel
-    assert '<span class="run-task">Put the banana on the plate on the left</span>' in reel
-    assert '<span class="run-model">Ai2 MolmoAct2</span>' in reel
-    assert '<span class="run-score">Success in 13 s</span>' in reel
-    clip = ROOT / "content/media/episode-1086.mp4"
+    assert re.findall(r'<video [^>]*src="([^"]+)"', reel) == ["/media/phail-droid-1086.mp4"]
+    assert 'poster="/media/phail-droid-1086-poster.jpg"' in reel
+    assert "<figcaption" not in reel
+    clip = ROOT / "content/media/phail-droid-1086.mp4"
     assert clip.stat().st_size < 5_000_000
-    assert (site / "media/episode-1086.mp4").is_file() and (site / "media/episode-1086-poster.jpg").is_file()
+    assert (site / "media/phail-droid-1086.mp4").is_file() and (site / "media/phail-droid-1086-poster.jpg").is_file()
+    assert not (ROOT / "content/media/episode-1086.mp4").exists()
 
 
 def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:
@@ -155,18 +154,20 @@ def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:
     assert links == [
         ("runway", "https://runway.com/research/praxis-1-video-pretraining-to-robot-control#real", "Runway"),
         ("bfl", "https://bfl.ai/models/flux-3-action", "Black Forest Labs"),
-        ("nebius", "/press/phail-launch", "Nebius"),
+        ("nebius", "https://nebius.com/blog/posts/nebius-partners-with-positronic-on-physical-ai-leaderboard", "Nebius"),
     ]
-    assert (site / "press/phail-launch.html").is_file()
 
 
-def test_the_quote_is_the_runway_quote_on_labs_word_for_word(site: Path) -> None:
-    proof = _sections(site)[3]
-    assert 'class="label"' not in proof
-    line = re.search(r"<blockquote>([^<]+)</blockquote>", proof).group(1)
+def test_a_quiet_strip_quotes_runway_word_for_word_and_links_the_leaderboard(site: Path) -> None:
+    strip = _sections(site)[3]
+    assert strip.startswith('<section class="proof">')
+    assert 'class="label"' not in strip
+    line = re.search(r"<blockquote>([^<]+)</blockquote>", strip).group(1)
+    assert line == "Positronic lets us evaluate checkpoints continuously as we train, so we can course-correct our research quickly."
     labs_quote = re.search(r"<blockquote>([^<]+)</blockquote>", (site / "labs.html").read_text()).group(1)
-    assert line == labs_quote
-    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in proof
+    assert labs_quote.startswith(line + " ")
+    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in strip
+    assert '<p><a href="https://phail.ai">See the PhAIL leaderboard</a></p>' in strip
 
 
 def test_home_ends_on_the_line_to_for_labs(site: Path) -> None:

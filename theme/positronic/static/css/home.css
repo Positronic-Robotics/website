@@ -607,19 +607,8 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .env-name { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: #e8f0d5; }
 .home .env-price { font-size: 0.95rem; color: #cdd2c4; }
 
-.home .hero + .reel { margin-top: 48px; }
-.home .run figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 18px;
-  margin-top: 12px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--dim);
-}
-.home .run-task { color: #dfe6d2; }
-.home .run-score { color: var(--accent, #b1e74f); }
+.home .hero + .reel { margin-top: 48px; max-width: 1064px; }
+.home .hero + .reel figure { max-width: 1000px; }
 
 .home .more { font-size: 0.95rem; }
 .home .more a,
@@ -640,16 +629,19 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .trusted-bfl svg { width: 132px; }
 .home .trusted-nebius svg { width: 116px; }
 
-/* The customer quote, with no heading. */
+/* A quiet strip: the customer line and the leaderboard, with no heading. */
 .home .proof {
-  max-width: calc(var(--col) + 64px);
+  max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
   margin: 72px auto 0;
-  padding: 0 32px;
+  padding: 26px 32px;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
   text-align: center;
 }
 .home .proof figure { margin: 0; }
-.home .proof blockquote { margin: 0; font-family: var(--display); font-size: 1.3rem; line-height: 1.45; color: #e8f0d5; text-wrap: balance; }
-.home .proof figcaption { margin-top: 14px; font-family: var(--mono); font-size: 0.8rem; color: var(--dim); }
+.home .proof blockquote { margin: 0; font-family: var(--display); font-size: 1.12rem; line-height: 1.45; color: #dfe6d2; text-wrap: balance; }
+.home .proof figcaption { margin-top: 8px; font-family: var(--mono); font-size: 0.78rem; color: var(--dim); }
+.home .proof p { margin-top: 14px; font-size: 0.95rem; }
 
 .home .home-more { margin-top: 64px; padding: 0 32px; text-align: center; font-size: 1.05rem; color: #cdd2c4; }
 
@@ -662,5 +654,4 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
   .home .trusted-runway svg { width: 76px; }
   .home .trusted-bfl svg { width: 100px; }
   .home .trusted-nebius svg { width: 86px; }
-  .home .proof blockquote { font-size: 1.1rem; }
 }
