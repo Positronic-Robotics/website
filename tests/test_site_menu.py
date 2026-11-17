@@ -11,7 +11,7 @@ from conftest import GUIDE_REF, PRICE_LIST, build_site
 
 ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
-PAGES = ["index.html", "pricing.html", "docs.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
+PAGES = ["index.html", "labs.html", "pricing.html", "docs.html", "about.html", "blog.html", "privacy.html", "terms.html", "introducing-phail.html"]
 
 
 @pytest.fixture(scope="module")
@@ -39,12 +39,19 @@ def test_every_page_has_the_same_menu(site: Path) -> None:
         assert _links(site_nav) == [
             ("Pricing", "https://positronic.ro/pricing"),
             ("Docs", "https://positronic.ro/docs"),
-            ("For labs", "https://positronic.ro/#talk"),
+            ("For labs", "https://positronic.ro/labs"),
             ("About", "https://positronic.ro/about"),
             ("Blog", "https://positronic.ro/blog"),
         ], page
         assert _links(app_nav) == [("Log in / Sign up", f"{APP}/signin")], page
         assert 'class="navbar-start"' in app_nav, page
+
+
+def test_for_labs_is_current_only_on_the_labs_page(site: Path) -> None:
+    for page in PAGES:
+        site_nav = _block((site / page).read_text(), r'<nav aria-label="Site">.*?</nav>')
+        current = re.findall(r'<a href="[^"]+" class="is-current" aria-current="page">([^<]+)</a>', site_nav)
+        assert ("For labs" in current) == (page == "labs.html"), page
 
 
 def test_the_logo_goes_home(site: Path) -> None:
@@ -64,7 +71,7 @@ def test_only_sign_in_account_and_docs_links_leave_for_the_console(site: Path) -
 def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
     hero = _block((site / "pricing.html").read_text(), r'<section class="page-head">.*?</section>')
     assert f'<div class="actions"><a class="act act-primary" href="{APP}/signin">Sign up</a>' in hero
-    assert '<a class="act act-ghost" href="/#talk">Talk to us</a>' in hero
+    assert '<a class="act act-ghost" href="/labs#talk">Talk to us</a>' in hero
     css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
     assert "justify-content: flex-start" not in css
 
@@ -114,7 +121,7 @@ def test_pricing_names_volume_discounts_once_above_a_plain_talk_to_us_button(sit
     html = (site / "pricing.html").read_text()
     head = _block(html, r'<section class="page-head">.*?</section>')
     assert "Volume discounts for committed spend.</p>" in head
-    assert '<a class="act act-ghost" href="/#talk">Talk to us</a>' in head
+    assert '<a class="act act-ghost" href="/labs#talk">Talk to us</a>' in head
     assert html.count("Volume discounts for committed spend.</p>") == 1
 
 
