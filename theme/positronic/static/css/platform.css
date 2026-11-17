@@ -33,21 +33,26 @@
 /* The subtitle runs to the same right edge as the text below it. */
 .platform .page-head .hero-lede { max-width: none; }
 
-/* ---- The client guide on the Docs page. */
+/* ---- The Docs page: its own sections in the rail, the prompt with a Copy button. */
 
-.platform .pf-guide h2 { margin-top: 26px; scroll-margin-top: 90px; }
-.platform .pf-guide h2:first-child { margin-top: 0; }
-.platform .pf-guide ul, .platform .pf-guide ol { margin: 0; padding-left: 1.3em; line-height: 1.65; }
-.platform .pf-guide-contents ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--mono); font-size: 0.85rem; }
-.platform .pf-guide code { overflow-wrap: anywhere; font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
-.platform .pf-guide pre { margin: 0; padding: 14px 16px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; overflow-x: auto; }
-.platform .pf-guide pre code { font-size: 0.84rem; line-height: 1.6; color: #dfe6d2; background: transparent; border: 0; padding: 0; white-space: pre; }
-.platform .pf-guide blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--accent, #b1e74f); }
-.platform .pf-guide table { display: block; overflow-x: auto; border-collapse: collapse; font-size: 0.9rem; }
-.platform .pf-guide th, .platform .pf-guide td { text-align: left; vertical-align: top; padding: 8px 14px 8px 0; border-bottom: 1px solid var(--rule); line-height: 1.5; }
-.platform .pf-guide th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }
+.platform .docs-nav { position: sticky; top: 96px; align-self: start; }
+.platform .docs-nav ul { margin: 0; padding: 0.62rem 0 0; list-style: none; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 0.84rem; }
+.platform .docs-nav a { color: #99a189; text-decoration: none; }
+.platform .docs-nav a:hover { color: var(--accent, #b1e74f); }
+.platform .docs h2 { font-size: 24px; scroll-margin-top: 90px; }
+.platform .docs h2:not(:first-child) { margin-top: 30px; }
+.platform .docs code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
+.platform .prompt { position: relative; }
+.platform .prompt pre { margin: 0; padding: 16px 18px 64px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.platform .prompt pre code { font-size: 0.84rem; line-height: 1.6; color: #dfe6d2; background: transparent; border: 0; padding: 0; }
+.platform .prompt-copy { position: absolute; right: 14px; bottom: 14px; padding: 8px 18px; font-size: 0.9rem; cursor: pointer; }
 
-/* ---- The quick start on the Docs page. */
+/* Phone: the section list sits on top, in one wrapped row. */
+@media (max-width: 900px) {
+  .platform .docs-nav { position: static; }
+  .platform .docs-nav ul { flex-direction: row; flex-wrap: wrap; gap: 8px 18px; }
+}
 
-.platform .howto code, .platform .pf-guide-note code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
-.platform .pf-guide-note { color: var(--dim); font-size: 0.95rem; }
+@media (max-width: 640px) {
+  .platform .prompt-copy { width: auto; }
+}

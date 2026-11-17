@@ -607,8 +607,9 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .env-name { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: #e8f0d5; }
 .home .env-price { font-size: 0.85rem; color: var(--dim); }
 
-.home .hero + .reel { margin-top: 48px; max-width: 1064px; }
-.home .hero + .reel figure { max-width: 1000px; }
+/* The clip takes the width of the text above it. */
+.home .hero + .reel { margin-top: 48px; }
+.home .hero + .reel figure { max-width: none; }
 
 .home .more { font-size: 0.95rem; }
 .home .more a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.5); }
@@ -635,6 +636,7 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 /* The line to For labs: a card of its own with one accent button. */
 .home .labs-cta {
   max-width: calc(var(--rail) + var(--gutter) + var(--col));
+  width: calc(100% - 64px);
   margin: 92px auto 0;
   padding: 26px 30px;
   display: flex;
@@ -653,12 +655,12 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 @media (max-width: 640px) {
   .home .envs { grid-template-columns: minmax(0, 1fr); }
   .home .actions-even { grid-template-columns: minmax(0, 1fr); }
-  .home .hero + .reel { margin-top: 36px; padding: 0 16px; }
+  .home .hero + .reel { margin-top: 36px; }
   .home .trusted { margin-top: 56px; }
-  .home .testimonial { margin-top: 36px; padding: 0 16px; }
+  .home .testimonial { margin-top: 36px; }
   .home .testimonial .quote { padding: 18px 20px; }
   .home .testimonial .quote blockquote { font-size: 1.08rem; }
-  .home .labs-cta { margin: 64px 16px 0; padding: 22px 20px; }
+  .home .labs-cta { margin-top: 64px; padding: 22px 20px; }
   .home .labs-cta .act { width: 100%; justify-content: center; }
   .home .trusted-logos { gap: 16px 24px; }
   .home .trusted-runway svg { width: 76px; }

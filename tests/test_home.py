@@ -146,6 +146,10 @@ def test_the_clip_of_one_public_phail_run_sits_under_the_buttons(site: Path) -> 
     assert clip.stat().st_size < 5_000_000
     assert (site / "media/phail-droid-1086.mp4").is_file() and (site / "media/phail-droid-1086-poster.jpg").is_file()
     assert not (ROOT / "content/media/episode-1086.mp4").exists()
+    # The clip sits in the hero's box, so it takes the width of the headline and the sub-line.
+    css = (ROOT / "theme/positronic/static/css/home.css").read_text()
+    assert ".home .hero + .reel figure { max-width: none; }" in css
+    assert "1064px" not in css and "1000px" not in css
 
 
 def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:

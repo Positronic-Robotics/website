@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 import pytest
-from conftest import GUIDE_REF, PRICE_LIST, build_site
+from conftest import CONSOLE_SCRIPT, PRICE_LIST, build_site
 
 ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
@@ -76,45 +76,49 @@ def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
     assert "justify-content: flex-start" not in css
 
 
-def test_docs_shows_the_client_guide_at_its_ref(site: Path) -> None:
-    html = (site / "docs.html").read_text()
-    guide = _block(html, r'<div class="pf-guide">.*?</section>')
-    assert "positronic-platform-client" not in guide
-    assert '<h2 id="registering">Registering</h2>' in guide
-    assert "<pre><code" in guide and "platform-register --alias=&lt;display name&gt;" in guide
-    blob = f"https://github.com/Positronic-Robotics/positronic/blob/{GUIDE_REF}"
-    assert f'<a href="{blob}/docs/submit-a-policy-image.md">Submit a policy image</a>' in guide
-    assert '<a href="#registering">Registering</a>' in guide
-    assert '<a href="https://pypi.org/project/positronic/">PyPI</a>' in guide
-    assert "<table>" in guide
-    contents = _block(html, r'<div class="col pf-guide-contents">.*?</section>')
-    assert _links(contents) == [("Registering", "#registering"), ("Eval plans", "#eval-plans")]
-    assert "Guide on GitHub" not in html and f"{blob}/client/README.md" not in html
-    assert f"from positronic {GUIDE_REF}." in html
-    assert "{CLIENT_GUIDE" not in html
+GUIDE = "https://github.com/Positronic-Robotics/positronic/blob/main/client/README.md"
 
 
-def test_docs_open_on_the_agent_quick_start(site: Path) -> None:
+def test_docs_list_their_own_sections_in_the_rail(site: Path) -> None:
     main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
-    labels = re.findall(r'<span class="label">([^<]+)</span>', main)
-    assert labels == ["Quick start", "Contents", "Guide"]
-    quick = _block(main, r'<section class="band" id="quick-start">.*?</section>')
-    steps = re.findall(r'<span class="step-verb">([^<]+)</span>', quick)
-    assert steps == ["1. Give your agent the prompt", "2. Sign in", "3. Add credits", "4. Submit"]
-    assert f'<a href="{APP}/start">Get started</a> in the console' in quick
-    assert "Claude Code, Codex or another coding agent" in quick
+    nav = _block(main, r'<nav class="rail docs-nav" aria-label="On this page">.*?</nav>')
+    sections = _links(nav)
+    assert sections == [("Quick start", "#quick-start"), ("What the agent does", "#what-the-agent-does"),
+                        ("Without an agent", "#without-an-agent"), ("Full guide", "#full-guide")]
+    assert re.findall(r'<h2 id="([^"]+)">', main) == [anchor[1:] for _, anchor in sections]
 
 
-def test_a_guide_with_no_sections_fails_the_build(tmp_path: Path) -> None:
-    guide = tmp_path / "guide.md"
-    guide.write_text("# A title\n\nNo sections.\n")
-    result = build_site(tmp_path / "out", guide=guide)
+def test_docs_show_the_console_agent_prompt_with_a_copy_button(site: Path) -> None:
+    html = (site / "docs.html").read_text()
+    prompt = _block(html, r'<div class="prompt">.*?</div>')
+    assert '<pre><code id="agent-prompt">Help me test a policy.\n1. Install the tool.\n2. Ask help@example.com for credits.</code></pre>' in prompt
+    assert '<button class="act act-ghost prompt-copy" type="button" data-copy="agent-prompt">Copy</button>' in prompt
+    assert "copy.js" in html
+    assert "{AGENT_PROMPT}" not in html
+
+
+def test_docs_link_the_full_guide_on_github_and_embed_none_of_it(site: Path) -> None:
+    main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
+    assert f'<a href="{GUIDE}">client/README.md</a>' in main
+    assert "pf-guide" not in main and "Registering" not in main
+
+
+def test_a_console_script_without_the_prompt_fails_the_build(tmp_path: Path) -> None:
+    script = tmp_path / "console.js"
+    script.write_text(CONSOLE_SCRIPT.read_text().replace("id:`agent-prompt`", "id:`other`"))
+    result = build_site(tmp_path / "out", console_script=script)
     assert result.returncode != 0
-    assert "no sections" in result.stderr + result.stdout
+    assert "agent-prompt" in result.stderr + result.stdout
 
 
-def test_an_unreadable_guide_fails_the_build(tmp_path: Path) -> None:
-    assert build_site(tmp_path / "out", guide=tmp_path / "missing.md").returncode != 0
+def test_a_prompt_that_names_an_unknown_string_fails_the_build(tmp_path: Path) -> None:
+    script = tmp_path / "console.js"
+    script.write_text(CONSOLE_SCRIPT.read_text().replace("${hr}", "${zz}"))
+    assert build_site(tmp_path / "out", console_script=script).returncode != 0
+
+
+def test_an_unreadable_console_script_fails_the_build(tmp_path: Path) -> None:
+    assert build_site(tmp_path / "out", console_script=tmp_path / "missing.js").returncode != 0
 
 
 def test_pricing_rates_come_from_the_price_list(site: Path) -> None:
