@@ -41,7 +41,7 @@ def test_home_opens_on_the_headline_a_sub_line_and_two_buttons(site: Path) -> No
     assert _sections(site)[0] == (
         '<section class="hero"><h1>Test your physical AI on <em>real robots</em> and in sim.</h1>'
         '<p class="hero-lede">Submit from your terminal. Get a video and a score for every episode.</p>'
-        '<div class="actions">'
+        '<div class="actions actions-even">'
         f'<a class="act act-primary" href="{APP}/signin">Get started</a>'
         '<a class="act act-ghost" href="/labs#talk">Talk to us</a></div></section>'
     )
@@ -56,9 +56,19 @@ def test_home_and_labs_headlines_share_the_hero_accent(site: Path) -> None:
 
 
 def test_home_sections_come_in_the_approved_order(site: Path) -> None:
-    labels = [re.search(r'<span class="label">([^<]+)</span>', s) for s in _sections(site)[1:]]
-    assert [m.group(1) for m in labels if m] == ["How it works", "Where it runs", "What you get back"]
-    assert "Proof" not in _main((site / "index.html").read_text())
+    def name(section: str) -> str:
+        label = re.search(r'<span class="label">([^<]+)</span>', section)
+        return label.group(1) if label else re.match(r'<section class="([^"]+)"', section).group(1)
+
+    assert [name(s) for s in _sections(site)] == ["hero", "reel", "trusted", "proof", "How it works", "Where it runs"]
+    main = _main((site / "index.html").read_text())
+    assert "Proof" not in main and "What you get back" not in main
+
+
+def test_the_two_hero_buttons_share_one_size(site: Path) -> None:
+    css = (ROOT / "theme/positronic/static/css/home.css").read_text()
+    assert ".home .actions-even { display: grid; grid-template-columns: repeat(2, 11rem); }" in css
+    assert ".home .actions-even .act { justify-content: center; }" in css
 
 
 def test_how_it_works_is_four_plain_steps(site: Path) -> None:
@@ -126,31 +136,37 @@ def test_where_it_runs_lists_only_the_simulators_the_price_list_names(tmp_path: 
     assert re.findall(r'<span class="env-name">([^<]+)</span>', html) == ["Franka DROID", "Two-arm YAM", "RoboLab"]
 
 
-def test_what_you_get_back_shows_the_video_and_robot_data_of_one_public_phail_run(site: Path) -> None:
-    band = _band(site, "What you get back")
-    assert "<p>For every episode you get the video, the robot data (joint positions and actions) and a score.</p>" in band
-    assert re.findall(r'<video [^>]*src="([^"]+)"', band) == ["/media/episode-1086.mp4"]
-    assert 'poster="/media/episode-1086-poster.jpg"' in band
-    assert '<span class="run-task">Put the banana on the plate on the left</span>' in band
-    assert '<span class="run-model">Ai2 MolmoAct2</span>' in band
-    assert '<span class="run-score">Success in 13 s</span>' in band
-    assert '<a href="https://phail.ai/benchmark/droid#episodes">' in band
+def test_the_clip_of_one_public_phail_run_sits_under_the_buttons(site: Path) -> None:
+    reel = _sections(site)[1]
+    assert re.findall(r'<video [^>]*src="([^"]+)"', reel) == ["/media/episode-1086.mp4"]
+    assert 'poster="/media/episode-1086-poster.jpg"' in reel
+    assert '<span class="run-task">Put the banana on the plate on the left</span>' in reel
+    assert '<span class="run-model">Ai2 MolmoAct2</span>' in reel
+    assert '<span class="run-score">Success in 13 s</span>' in reel
     clip = ROOT / "content/media/episode-1086.mp4"
     assert clip.stat().st_size < 5_000_000
     assert (site / "media/episode-1086.mp4").is_file() and (site / "media/episode-1086-poster.jpg").is_file()
 
 
-def test_a_quiet_strip_quotes_runway_word_for_word_and_links_the_leaderboard(site: Path) -> None:
-    strips = [s for s in _sections(site) if s.startswith('<section class="proof">')]
-    assert len(strips) == 1
-    strip = strips[0]
-    assert 'class="label"' not in strip
-    line = re.search(r"<blockquote>([^<]+)</blockquote>", strip).group(1)
-    assert line == "Positronic lets us evaluate checkpoints continuously as we train, so we can course-correct our research quickly."
+def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:
+    trusted = _sections(site)[2]
+    assert '<p class="trusted-label">Trusted by</p>' in trusted
+    links = re.findall(r'<a class="trusted-(\w+)" href="([^"]+)"><svg [^>]*aria-label="([^"]+)"', trusted)
+    assert links == [
+        ("runway", "https://runway.com/research/praxis-1-video-pretraining-to-robot-control#real", "Runway"),
+        ("bfl", "https://bfl.ai/models/flux-3-action", "Black Forest Labs"),
+        ("nebius", "/press/phail-launch", "Nebius"),
+    ]
+    assert (site / "press/phail-launch.html").is_file()
+
+
+def test_the_quote_is_the_runway_quote_on_labs_word_for_word(site: Path) -> None:
+    proof = _sections(site)[3]
+    assert 'class="label"' not in proof
+    line = re.search(r"<blockquote>([^<]+)</blockquote>", proof).group(1)
     labs_quote = re.search(r"<blockquote>([^<]+)</blockquote>", (site / "labs.html").read_text()).group(1)
-    assert labs_quote.startswith(line + " ")
-    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in strip
-    assert '<p><a href="https://phail.ai">See the PhAIL leaderboard</a></p>' in strip
+    assert line == labs_quote
+    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in proof
 
 
 def test_home_ends_on_the_line_to_for_labs(site: Path) -> None:

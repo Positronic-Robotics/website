@@ -9,8 +9,9 @@ Usage
   scripts/render_episode_clip.py https://phail.ai/api/episode_rrd/1086?v=9b6b96b000058992 \\
       content/media/episode-1086.mp4
 
-The script downloads the recording, lays out the three camera views above the joint-state and
-joint-command plots, and opens it in the Rerun web viewer in a headless Google Chrome. It steps the
+The script downloads the recording and lays out the two outer camera views, the wrist camera, a 3D
+view of the robot and its gripper, and a short gripper plot. It opens the recording in the Rerun web
+viewer in a headless Google Chrome. It steps the
 viewer through the episode one frame at a time, takes a screenshot of each frame, and encodes the
 frames as an H.264 MP4 with ffmpeg. It writes a JPEG poster next to the clip. Google Chrome must be
 installed: the camera streams are H.264, which the Chromium that Playwright ships cannot decode.
@@ -36,8 +37,9 @@ VIEWER_PACKAGE = "https://registry.npmjs.org/@rerun-io/web-viewer/-/web-viewer-0
 VIEWER_FILES = ["index.js", "re_viewer.js", "re_viewer_bg.wasm"]
 TIMELINE = "recorded"
 CAMERAS = [("/image.exterior", "Camera 1"), ("/image.exterior_2", "Camera 2"), ("/image.wrist", "Wrist camera")]
-JOINT_COLORS = [0xB1E74FFF, 0x4FC3E7FF, 0xE7A94FFF, 0xE75F8BFF, 0xA98BE7FF, 0x5FE7B2FF, 0xF2F5EAFF]
-PLOTS = [("/signals/robot_state.q", "Joint positions"), ("/signals/robot_command.joints", "Joint targets (actions)")]
+GRIPPER = [("/signals/grip", "Gripper", 0xB1E74FFF), ("/signals/target_grip", "Gripper target", 0x4FC3E7FF)]
+# Front right of the arm, high enough to see the gripper fingers open and close.
+EYE = rrb.EyeControls3D(kind=rrb.Eye3DKind.Orbital, position=[1.2, 0.7, 0.75], look_target=[0.3, 0.0, 0.42], eye_up=[0, 0, 1], spin_speed=0.0)
 
 PAGE = """<!doctype html>
 <html><head><meta charset="utf-8"><style>html, body { margin: 0; height: 100%; background: #111; overflow: hidden; }</style></head>
@@ -71,16 +73,20 @@ def _unpack_viewer(package: Path, into: Path) -> None:
     (into / "re_viewer").write_bytes((into / "re_viewer.js").read_bytes())
 
 
-def _plot(origin: str, name: str) -> rrb.TimeSeriesView:
-    # Joint i has one colour in both plots, so a state line and its target line read as a pair.
-    colors = {f"{origin}/{i}": rr.SeriesLines.from_fields(colors=[color], widths=[2.0]) for i, color in enumerate(JOINT_COLORS)}
-    return rrb.TimeSeriesView(origin=origin, name=name, plot_legend=rrb.PlotLegend(visible=False), overrides=colors)
+def _gripper() -> rrb.TimeSeriesView:
+    lines = {origin: rr.SeriesLines.from_fields(colors=[color], widths=[2.0], names=[name]) for origin, name, color in GRIPPER}
+    return rrb.TimeSeriesView(
+        origin="/signals", contents=[origin for origin, _, _ in GRIPPER], name="Gripper", axis_y=rrb.ScalarAxis(range=(-0.15, 1.1)),
+        plot_legend=rrb.PlotLegend(corner=rrb.Corner2D.LeftTop, visible=True), overrides=lines,
+    )
 
 
 def _layout() -> rrb.Blueprint:
-    cameras = rrb.Horizontal(*(rrb.Spatial2DView(origin=origin, name=name) for origin, name in CAMERAS))
-    plots = rrb.Horizontal(*(_plot(origin, name) for origin, name in PLOTS))
-    return rrb.Blueprint(rrb.Vertical(cameras, plots, row_shares=[2, 3]), collapse_panels=True)
+    # The plot row is too short for its time axis, so the clip shows no time label.
+    outer, outer_2, wrist = (rrb.Spatial2DView(origin=origin, name=name) for origin, name in CAMERAS)
+    robot = rrb.Spatial3DView(origin="/3d", name="Robot", eye_controls=EYE)
+    rows = rrb.Vertical(rrb.Horizontal(outer, outer_2), rrb.Horizontal(wrist, robot), _gripper(), row_shares=[5, 5, 2])
+    return rrb.Blueprint(rows, collapse_panels=True)
 
 
 class _Files(http.server.SimpleHTTPRequestHandler):
@@ -150,7 +156,7 @@ def main() -> None:
     parser.add_argument("out", type=Path, help="the MP4 to write; the poster goes next to it")
     parser.add_argument("--fps", type=int, default=25)
     parser.add_argument("--width", type=int, default=1000, help="viewport width in CSS pixels")
-    parser.add_argument("--height", type=int, default=625, help="viewport height in CSS pixels")
+    parser.add_argument("--height", type=int, default=720, help="viewport height in CSS pixels")
     parser.add_argument("--scale", type=float, default=1.6, help="device pixel ratio of the capture")
     parser.add_argument("--out-width", type=int, default=1440)
     parser.add_argument("--crf", type=int, default=26)
