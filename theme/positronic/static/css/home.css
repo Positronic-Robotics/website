@@ -583,24 +583,10 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .hero + .band { margin-top: 92px; }
 
 .home .howto { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.home .howto li { display: flex; flex-direction: column; gap: 10px; padding: 18px 0; border-bottom: 1px solid var(--hair); }
+.home .howto li { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; border-bottom: 1px solid var(--hair); }
 .home .howto .step-verb { margin-bottom: 0; }
-
-.home .cmd {
-  margin: 0;
-  padding: 12px 14px;
-  background: var(--panel);
-  border: 1px solid var(--hair);
-  border-radius: 4px;
-}
-.home .cmd code {
-  font-family: var(--mono);
-  font-size: 0.84rem;
-  line-height: 1.6;
-  color: #dfe6d2;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
+.home .howto a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.5); }
+.home .howto a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
 
 .home .envs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .home .env {
@@ -616,12 +602,13 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .env-name { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: #e8f0d5; }
 .home .env-price { font-size: 0.95rem; color: #cdd2c4; }
 
-.home .run { margin: 0; }
-/* At most about 480 px tall, centred in the column; a phone is narrower than that cap. */
+/* The clip breaks left across the label rail, so its plots stay readable. */
+.home .run { margin: 0 0 0 calc(-1 * (var(--rail) + var(--gutter))); }
 .home .run video { display: block; width: auto; max-width: 100%; height: auto; max-height: 480px; margin: 0 auto; background: #0f110d; border-radius: 4px; }
 .home .run figcaption {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 6px 18px;
   margin-top: 12px;
   font-family: var(--mono);
@@ -631,15 +618,33 @@ a.standing-mark:hover { color: var(--accent, #b1e74f); }
 .home .run-task { color: #dfe6d2; }
 .home .run-score { color: var(--accent, #b1e74f); }
 
-.home .actions-start { justify-content: flex-start; margin-top: 0; }
-
 .home .more { font-size: 0.95rem; }
 .home .more a,
+.home .proof a,
 .home .home-more a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.5); }
 .home .more a:hover,
+.home .proof a:hover,
 .home .home-more a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
 
-.home .home-more { margin-top: 92px; padding: 0 32px; text-align: center; font-size: 1.05rem; color: #cdd2c4; }
+/* A quiet strip: the customer line and the leaderboard, with no heading. */
+.home .proof {
+  max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
+  margin: 92px auto 0;
+  padding: 26px 32px;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  text-align: center;
+}
+.home .proof figure { margin: 0; }
+.home .proof blockquote { margin: 0; font-family: var(--display); font-size: 1.12rem; line-height: 1.45; color: #dfe6d2; text-wrap: balance; }
+.home .proof figcaption { margin-top: 8px; font-family: var(--mono); font-size: 0.78rem; color: var(--dim); }
+.home .proof p { margin-top: 14px; font-size: 0.95rem; }
+
+.home .home-more { margin-top: 64px; padding: 0 32px; text-align: center; font-size: 1.05rem; color: #cdd2c4; }
+
+@media (max-width: 900px) {
+  .home .run { margin-left: 0; }
+}
 
 @media (max-width: 640px) {
   .home .envs { grid-template-columns: minmax(0, 1fr); }

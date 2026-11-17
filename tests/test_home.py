@@ -10,8 +10,8 @@ from pathlib import Path
 import pytest
 from conftest import PRICE_LIST, build_site
 
+ROOT = Path(__file__).resolve().parent.parent
 APP = "https://console.positronic.ro"
-HEADLINE = "Test your physical AI on real robots and in sim."
 
 
 @pytest.fixture(scope="module")
@@ -39,7 +39,7 @@ def _band(site: Path, label: str) -> str:
 
 def test_home_opens_on_the_headline_a_sub_line_and_two_buttons(site: Path) -> None:
     assert _sections(site)[0] == (
-        f'<section class="hero"><h1>{HEADLINE}</h1>'
+        '<section class="hero"><h1>Test your physical AI on <em>real robots</em> and in sim.</h1>'
         '<p class="hero-lede">Submit from your terminal. Get a video and a score for every episode.</p>'
         '<div class="actions">'
         f'<a class="act act-primary" href="{APP}/signin">Get started</a>'
@@ -47,30 +47,31 @@ def test_home_opens_on_the_headline_a_sub_line_and_two_buttons(site: Path) -> No
     )
 
 
+def test_home_and_labs_headlines_share_the_hero_accent(site: Path) -> None:
+    for page in ("index.html", "labs.html"):
+        hero = _main((site / page).read_text()).split("</section>", 1)[0]
+        assert re.search(r'<section class="hero"><h1>[^<]*<em>[^<]+</em>', hero), page
+    css = (ROOT / "theme/positronic/static/css/home.css").read_text()
+    assert css.count(".home h1 em {") == 1
+
+
 def test_home_sections_come_in_the_approved_order(site: Path) -> None:
     labels = [re.search(r'<span class="label">([^<]+)</span>', s) for s in _sections(site)[1:]]
-    assert [m.group(1) for m in labels if m] == ["How it works", "Where it runs", "What you get back", "Proof"]
+    assert [m.group(1) for m in labels if m] == ["How it works", "Where it runs", "What you get back"]
+    assert "Proof" not in _main((site / "index.html").read_text())
 
 
-def test_how_it_works_shows_the_submit_command_from_the_client_guide(site: Path) -> None:
+def test_how_it_works_is_four_plain_steps(site: Path) -> None:
     band = _band(site, "How it works")
-    assert re.findall(r'<span class="step-verb">([^<]+)</span>', band) == [
-        "1. Sign up",
-        "2. Submit with one command",
-        "3. Watch the results",
+    steps = re.findall(r'<li><span class="step-verb">([^<]+)</span><p>(.*?)</p></li>', band)
+    assert steps == [
+        ("1. Sign up", f'Create an account in the <a href="{APP}/signin">console</a> and add funds.'),
+        ("2. Connect your model", "A container image, or an endpoint you serve."),
+        ("3. Choose where it runs", "Real robots or simulators, and the tasks."),
+        ("4. Get the results", "We run the episodes. You get a video, the robot data and a score for each one."),
     ]
-    command = "uv run positronic eval run --eval=&lt;name&gt; --policy-image=org/policy@sha256:…"
-    assert f'<pre class="cmd"><code>{command}</code></pre>' in band
-    assert "{CLIENT_SUBMIT_COMMAND}" not in band
-    assert f'href="{APP}/signin"' in band
-
-
-def test_a_guide_with_no_submit_command_fails_the_build(tmp_path: Path) -> None:
-    guide = tmp_path / "guide.md"
-    guide.write_text("# A title\n\n## Registering\n\n```bash\nplatform-register\n```\n")
-    result = build_site(tmp_path / "out", guide=guide)
-    assert result.returncode != 0
-    assert "positronic eval run" in result.stderr + result.stdout
+    main = _main((site / "index.html").read_text())
+    assert "<pre" not in main and "<code" not in main and "positronic eval" not in main
 
 
 def _environments(site: Path) -> list[tuple[str, str, str]]:
@@ -125,23 +126,31 @@ def test_where_it_runs_lists_only_the_simulators_the_price_list_names(tmp_path: 
     assert re.findall(r'<span class="env-name">([^<]+)</span>', html) == ["Franka DROID", "Two-arm YAM", "RoboLab"]
 
 
-def test_what_you_get_back_is_one_public_phail_run(site: Path) -> None:
+def test_what_you_get_back_shows_the_video_and_robot_data_of_one_public_phail_run(site: Path) -> None:
     band = _band(site, "What you get back")
-    assert re.findall(r'<video [^>]*src="([^"]+)"', band) == ["https://phail.ai/api/episode/1086/video?v=d893698644b5bb11"]
+    assert "<p>For every episode you get the video, the robot data (joint positions and actions) and a score.</p>" in band
+    assert re.findall(r'<video [^>]*src="([^"]+)"', band) == ["/media/episode-1086.mp4"]
+    assert 'poster="/media/episode-1086-poster.jpg"' in band
     assert '<span class="run-task">Put the banana on the plate on the left</span>' in band
     assert '<span class="run-model">Ai2 MolmoAct2</span>' in band
     assert '<span class="run-score">Success in 13 s</span>' in band
     assert '<a href="https://phail.ai/benchmark/droid#episodes">' in band
+    clip = ROOT / "content/media/episode-1086.mp4"
+    assert clip.stat().st_size < 5_000_000
+    assert (site / "media/episode-1086.mp4").is_file() and (site / "media/episode-1086-poster.jpg").is_file()
 
 
-def test_proof_links_the_leaderboard_and_quotes_runway_word_for_word(site: Path) -> None:
-    band = _band(site, "Proof")
-    line = re.search(r"<blockquote>([^<]+)</blockquote>", band).group(1)
+def test_a_quiet_strip_quotes_runway_word_for_word_and_links_the_leaderboard(site: Path) -> None:
+    strips = [s for s in _sections(site) if s.startswith('<section class="proof">')]
+    assert len(strips) == 1
+    strip = strips[0]
+    assert 'class="label"' not in strip
+    line = re.search(r"<blockquote>([^<]+)</blockquote>", strip).group(1)
     assert line == "Positronic lets us evaluate checkpoints continuously as we train, so we can course-correct our research quickly."
     labs_quote = re.search(r"<blockquote>([^<]+)</blockquote>", (site / "labs.html").read_text()).group(1)
     assert labs_quote.startswith(line + " ")
-    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in band
-    assert 'href="https://phail.ai"' in band
+    assert "<figcaption>Andy Chen, Head of Robotics, Runway</figcaption>" in strip
+    assert '<p><a href="https://phail.ai">See the PhAIL leaderboard</a></p>' in strip
 
 
 def test_home_ends_on_the_line_to_for_labs(site: Path) -> None:
