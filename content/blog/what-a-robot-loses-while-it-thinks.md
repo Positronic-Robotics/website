@@ -15,21 +15,21 @@ We ran seven models on the same 120 RoboLab tasks, 3 episodes per task, in two m
 
 Every episode of both modes is on PhAIL, with its video. The switch at the top of the board changes the mode: [clock runs](https://phail.ai/benchmark/robolab) or [sim waits](https://phail.ai/benchmark/robolab?thinking=free).
 
-| Model | Share of the episode the arm waits | Success, sim waits | Success, clock runs | Partial-credit change |
+| Model | Arm waits | Success, sim waits | Success, clock runs | Change |
 |---|---|---|---|---|
-| Galaxea G0.5 | 45% | 20.8% (75/360) | 16.7% (60/360) | **−5.9 pts** |
-| NVIDIA Cosmos3 Nano | 40% | 34.2% (123/360) | 26.4% (95/360) | **−6.7 pts** |
-| Ai2 MolmoAct2 | 36% | 17.5% (63/360) | 13.9% (50/360) | **−5.8 pts** |
-| FLUX 3 Action | 19% | 42.2% (152/360) | 40.3% (145/360) | −2.7 pts |
-| NVIDIA GR00T N1.7 | 14% | 21.4% (77/360) | 21.9% (79/360) | +0.4 pts |
-| π0.5 | 12% | 28.6% (103/360) | 26.4% (95/360) | −2.6 pts |
-| OpenAI GPT-6 Astra | not measured | 48.9% (176/360) | 0.6% (2/360) | **−55.5 pts** |
+| [Galaxea G0.5](https://phail.ai/model/Galaxea%20G0.5?benchmark=robolab) | 45% | [20.8%](https://phail.ai/benchmark/robolab?thinking=free) | [16.7%](https://phail.ai/benchmark/robolab) | **−4.2 ± 3.2 pts** |
+| [NVIDIA Cosmos3 Nano](https://phail.ai/model/NVIDIA%20Cosmos3%20Nano?benchmark=robolab) | 40% | [34.2%](https://phail.ai/benchmark/robolab?thinking=free) | [26.4%](https://phail.ai/benchmark/robolab) | **−7.8 ± 4.6 pts** |
+| [Ai2 MolmoAct2](https://phail.ai/model/Ai2%20MolmoAct2?benchmark=robolab) | 36% | [17.5%](https://phail.ai/benchmark/robolab?thinking=free) | [13.9%](https://phail.ai/benchmark/robolab) | −3.6 ± 4.6 pts |
+| [FLUX 3 Action](https://phail.ai/model/Black%20Forest%20Labs%20FLUX%203%20Action?benchmark=robolab) | 19% | [42.2%](https://phail.ai/benchmark/robolab?thinking=free) | [40.3%](https://phail.ai/benchmark/robolab) | −1.9 ± 4.4 pts |
+| [NVIDIA GR00T N1.7](https://phail.ai/model/NVIDIA%20GR00T?benchmark=robolab) | 14% | [21.4%](https://phail.ai/benchmark/robolab?thinking=free) | [21.9%](https://phail.ai/benchmark/robolab) | +0.6 ± 4.0 pts |
+| [π0.5](https://phail.ai/model/Physical%20Intelligence%20%CF%80%E2%82%80.%E2%82%85?benchmark=robolab) | 12% | [28.6%](https://phail.ai/benchmark/robolab?thinking=free) | [26.4%](https://phail.ai/benchmark/robolab) | −2.2 ± 4.0 pts |
+| [OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=robolab) | not measured | [48.9%](https://phail.ai/benchmark/robolab?thinking=free) | [0.6%](https://phail.ai/benchmark/robolab) | **−48.3 ± 6.9 pts** |
 
-Partial credit is RoboLab's own subtask score. A change in bold is larger than noise: its 95% range does not include zero.
+"Arm waits" is the share of the episode in which the arm stands still while the model thinks. The ± value is the 95% range. A change in bold is larger than noise: its range does not include zero.
 
-The slow models lose, and the fast models do not. Cosmos3 Nano is one of the two slowest robot models on the board: it needs about 1.5 seconds each time it plans, so its arm stands still for 40% of every episode. It also has the largest loss of the robot models. Galaxea G0.5 waits a little longer and loses almost as much. MolmoAct2 is third on both counts. The three fast models wait 12–19% of the time, and their change is inside noise.
+The slow models lose, and the fast models do not. Cosmos3 Nano is one of the two slowest robot models on the board: it needs about 1.5 seconds each time it plans, so its arm stands still for 40% of every episode. It also has the largest loss of the robot models. Galaxea G0.5 waits a little longer and also loses more than noise. MolmoAct2 is third on both counts, and its loss is at the edge of noise. The three fast models wait 12–19% of the time, and their change is inside noise.
 
-GPT-6 Astra shows the extreme case. It is a general AI model, not a robot model, and it controls the arm by itself. With the sim paused, it has the best score on the board. With the clock running, it succeeds in 2 episodes of 360.
+GPT-6 Astra shows the extreme case. It is a general AI model, not a robot model, and it controls the arm by itself. With the sim paused, it has the best score on the board. With the clock running, it almost never succeeds.
 
 <!-- Figure: success per model in both modes, against the share of time the arm waits -->
 
@@ -47,16 +47,6 @@ The gap opens in the first seconds. At 20% of the time limit, Cosmos3 Nano with 
 
 <!-- Figure: Cosmos3 Nano progress over the time limit, both modes, with the slow-motion prediction -->
 
-This also tells you which tasks lose most: the ones where a late finish runs out of time. Across Cosmos3 Nano, π0.5, FLUX 3 Action and GR00T N1.7 together:
-
-| Task group | Tasks | Successes, sim waits | Successes, clock runs | Partial-credit change |
-|---|---|---|---|---|
-| Long tasks (150–300 s limit) | 26 | 57 | 40 | −5.6 pts |
-| Tasks with 3 or more steps | 26 | 79 | 58 | −5.4 pts |
-| Short tasks (20–40 s limit) | 26 | — | — | −1.3 pts |
-
-The ranges of these groups overlap, so this split is weaker evidence than the per-model result.
-
 ### Study 2: does stopping to think cost more than moving slowly?
 
 Study 1 shows that thinking costs time. Does it cost anything more than time?
@@ -68,25 +58,24 @@ We tested this on Cosmos3 Nano, the robot model that loses the most in study 1. 
 - **Fixed thinking.** The arm holds still for 1.47 seconds on each call, then moves at normal speed.
 - **Slow motion.** The sim waits while the model thinks, and every move plays 1.69× slower. That is the same average pace with no stops.
 
-We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3 Nano sometimes succeeds, and ran 51 episodes per task per setup, 714 episodes in total. You can watch every episode: [fixed thinking](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/), [slow motion](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/).
+We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3 Nano sometimes succeeds, and ran 51 episodes per task per setup, 714 episodes in total. Each number in the tables below opens the replays of its episodes.
 
+| Cosmos3 Nano, 7 tasks | [Fixed thinking](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/) | [Slow motion](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/) | Change |
+|---|---|---|---|
+| Success | [50.7%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/) | [52.1%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/) | −1.4 ± 9.7 pts |
+| Median time to success | 28.1 s | 29.5 s | |
 
-| Cosmos3 Nano, 7 tasks | Fixed thinking | Slow motion |
-|---|---|---|
-| Successes | 181/357 (50.7%) | 186/357 (52.1%) |
-| Median time to success | 28.1 s | 29.5 s |
+The time-to-success curves cross many times and end at almost the same place. Per task, the gaps go in both directions, and chance explains their spread:
 
-The difference is −1.4 points, with a 95% range across tasks from −11.2 to +8.1 points. The time-to-success curves cross many times and end at almost the same place. Per task, the gaps go in both directions, and chance explains their spread:
-
-| Task | Fixed thinking | Slow motion |
-|---|---|---|
-| Put a white plastic bottle in the square pail | 47/51 | 49/51 |
-| Put the red BBQ sauce bottle in the crate | 47/51 | 40/51 |
-| Stack the yellow block on the red block | 28/51 | 32/51 |
-| Stack the white mugs | 22/51 | 26/51 |
-| Put three fruits on the plate | 21/51 | 30/51 |
-| Stand the jug upright | 12/51 | 7/51 |
-| Put all the green fruit on the plate | 4/51 | 2/51 |
+| Task | Fixed thinking | Slow motion | Change |
+|---|---|---|---|
+| Put a white plastic bottle in the square pail | [92%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+any+white+plastic+bottle+in+the+square+pail) | [96%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+any+white+plastic+bottle+in+the+square+pail) | −4 ± 9 pts |
+| Put the red BBQ sauce bottle in the crate | [92%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+the+red+bbq+sauce+bottle+in+the+crate) | [78%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+the+red+bbq+sauce+bottle+in+the+crate) | +14 ± 13 pts |
+| Stack the yellow block on the red block | [55%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stack+the+yellow+block+on+the+red+block) | [63%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stack+the+yellow+block+on+the+red+block) | −8 ± 19 pts |
+| Stack the white mugs | [43%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stack+the+white+mugs+on+top+of+each+other.) | [51%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stack+the+white+mugs+on+top+of+each+other.) | −8 ± 19 pts |
+| Put three fruits on the plate | [41%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+three+%283%29+fruits+on+the+plate) | [59%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+three+%283%29+fruits+on+the+plate) | −18 ± 19 pts |
+| Stand the jug upright | [24%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stand+the+jug+upright) | [14%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stand+the+jug+upright) | +10 ± 15 pts |
+| Put all the green fruit on the plate | [8%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+all+the+green+fruit+on+the+plate) | [4%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+all+the+green+fruit+on+the+plate) | +4 ± 9 pts |
 
 In RoboLab, a robot that stops to think does as well as a robot that moves slowly at the same pace.
 
@@ -94,7 +83,7 @@ In RoboLab, a robot that stops to think does as well as a robot that moves slowl
 
 ### Why, and what we test next
 
-RoboLab's world is still while the robot waits. An object moves during a wait only if the arm just released it or bumped it. Nothing rolls, slides or arrives on its own. We checked MolmoSpaces too, and its scenes are static in the same way. So a robot that stops to think loses nothing that a slow robot keeps.
+RoboLab's world is still while the robot waits. An object moves during a wait only if the arm just released it or bumped it. Nothing rolls, slides or arrives on its own. We checked [MolmoSpaces](https://phail.ai/benchmark/molmospaces) too, and its scenes are static in the same way. So a robot that stops to think loses nothing that a slow robot keeps.
 
 A real workplace is different. A conveyor keeps running, a person reaches in, a part settles after the robot lets go. That is where stopping to think should cost more than slow motion, and these two studies cannot show it. The next test needs a scene where the world moves without the robot.
 
