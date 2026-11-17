@@ -1,4 +1,4 @@
-/* The Pricing and Docs pages. Extends home.css with the rate table, its length slider, and the guide. */
+/* The Pricing and Docs pages. Extends home.css with the rate table, its length slider, and the agent prompt. */
 
 .platform .col a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.35); }
 .platform .col a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
@@ -13,8 +13,15 @@
 .platform .pf-rates th, .platform .pf-rates td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); }
 .platform .pf-rates th { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--dim); }
 .platform .pf-rates td + td, .platform .pf-rates th + th { font-family: var(--mono); }
-/* A figure or a length such as "2 min 30 s" never breaks inside its cell. */
-.platform .pf-rates td + td { white-space: nowrap; }
+/* A figure or a length never breaks inside its cell, and figures take equal widths. */
+.platform .pf-rates td + td { white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Fixed columns: the length and the totals change as the slider moves, and no column moves with them. */
+@media (min-width: 561px) {
+  .platform .pf-rates { table-layout: fixed; }
+  .platform .pf-rates .pf-c-figure { width: 5.6rem; }
+  .platform .pf-rates .pf-c-op { width: 1.6rem; }
+  .platform .pf-rates .pf-c-length { width: 5.8rem; }
+}
 .platform .pf-rates .pf-op { color: var(--dim); text-align: center; padding-right: 12px; width: 1ch; }
 /* The sum of one episode stands out in the accent colour. */
 .platform .pf-rates .pf-total { font-weight: 600; color: var(--accent, #b1e74f); }
@@ -30,31 +37,22 @@
   .platform .pf-rates td { border: 0; padding: 0; }
   .platform .pf-rates td:first-child { flex-basis: 100%; }
   .platform .pf-rates .pf-op { width: auto; padding: 0; }
+  /* The length and the total keep one width while the slider moves: "10.0 min", "$13.50". */
+  .platform .pf-rates td.pf-length-value { min-width: 8ch; }
+  .platform .pf-rates td.pf-total { min-width: 7ch; }
 }
 
 /* The subtitle runs to the same right edge as the text below it. */
 .platform .page-head .hero-lede { max-width: none; }
 
-/* ---- The Docs page: one column, a link on each heading, the prompt with a Copy button. */
+/* ---- The Docs page: a link on each section label, the prompt with a Copy button. */
 
-.platform .docs {
-  max-width: calc(var(--rail) + var(--gutter) + var(--col) + 64px);
-  margin: 56px auto 0;
-  padding: 0 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.platform .docs h2 { font-size: 24px; scroll-margin-top: 90px; }
-.platform .docs h2:not(:first-child) { margin-top: 30px; }
-/* The heading's own link shows on hover or focus, so a reader can copy the section's address. */
-.platform .docs .anchor { margin-left: 0.4em; font-family: var(--mono); font-weight: 400; color: var(--dim); text-decoration: none; opacity: 0; transition: opacity 0.15s ease; }
-.platform .docs h2:hover .anchor, .platform .docs .anchor:focus-visible { opacity: 1; }
-.platform .docs .anchor:hover { color: var(--accent, #b1e74f); }
-.platform .docs p a { color: #dfe6d2; text-decoration: none; border-bottom: 1px solid rgba(177, 231, 79, 0.35); }
-.platform .docs p a:hover { color: var(--accent, #b1e74f); border-color: var(--accent, #b1e74f); }
-.platform .docs code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
-.platform .docs-cta { margin-top: 6px; }
+.platform .band[id] { scroll-margin-top: 90px; }
+/* The label's own link shows on hover or focus, so a reader can copy the section's address. */
+.platform .label .anchor { margin-left: 0.5em; color: var(--dim); text-decoration: none; border: 0; opacity: 0; transition: opacity 0.15s ease; }
+.platform .band:hover .label .anchor, .platform .label .anchor:focus-visible { opacity: 1; }
+.platform .label .anchor:hover { color: var(--accent, #b1e74f); }
+.platform .band code { font-family: var(--mono); font-size: 0.88em; background: var(--panel); border: 1px solid var(--hair); border-radius: 3px; padding: 0.1em 0.35em; }
 .platform .prompt { position: relative; }
 .platform .prompt pre { margin: 0; padding: 16px 18px 64px; background: var(--panel); border: 1px solid var(--hair); border-radius: 4px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .platform .prompt pre code { font-size: 0.84rem; line-height: 1.6; color: #dfe6d2; background: transparent; border: 0; padding: 0; }
@@ -62,6 +60,6 @@
 
 @media (max-width: 640px) {
   .platform .prompt-copy { width: auto; }
-  /* A phone has no hover, so the heading links stay in view. */
-  .platform .docs .anchor { opacity: 1; }
+  /* A phone has no hover, so the section links stay in view. */
+  .platform .label .anchor { opacity: 1; }
 }

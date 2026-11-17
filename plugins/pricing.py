@@ -53,6 +53,11 @@ def money(amount: Decimal) -> str:
     return f"${float(f'{amount:.2g}'):g}"
 
 
+def length(seconds: int) -> str:
+    """A length as the page's slider script writes it: minutes with one decimal."""
+    return f"{seconds / 60:.1f} min"
+
+
 def episode_total(episode: Decimal, minute: Decimal) -> Decimal:
     """One episode of the default length: the Pricing page's total and the home page's figure."""
     return episode + minute * DEFAULT_LENGTH_SEC / 60
@@ -63,7 +68,7 @@ def _row(name: str, episode: Decimal, minute: Decimal) -> str:
     return (
         f'<tr data-episode="{episode.normalize():f}" data-minute="{minute.normalize():f}"><td>{name}</td>'
         f"<td>{_plain(episode)}</td>{op('+')}<td>{_plain(minute)}</td>{op('×')}"
-        f'<td class="pf-length-value">2 min</td>{op("=")}<td class="pf-total">{money(episode_total(episode, minute))}</td></tr>'
+        f'<td class="pf-length-value">{length(DEFAULT_LENGTH_SEC)}</td>{op("=")}<td class="pf-total">{money(episode_total(episode, minute))}</td></tr>'
     )
 
 

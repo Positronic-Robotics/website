@@ -79,28 +79,32 @@ def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
 GUIDE = "https://github.com/Positronic-Robotics/positronic/blob/main/client/README.md"
 
 
+DOCS_SECTIONS = [("quick-start", "Quick start"), ("what-the-agent-does", "What the agent does"), ("full-guide", "Full guide")]
+
+
+def test_docs_sections_take_the_label_rail_like_the_other_pages(site: Path) -> None:
+    main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
+    assert "docs-nav" not in main and "<h2" not in main
+    sections = re.findall(
+        r'<section class="band(?: close)?" id="([^"]+)"><div class="rail"><span class="label">([^<]+)'
+        r'<a class="anchor" href="#([^"]+)" aria-label="Link to ([^"]+)">#</a></span></div><div class="col">', main)
+    assert [(anchor, title) for anchor, title, _, _ in sections] == DOCS_SECTIONS
+    assert all(anchor == target and title == label for anchor, title, target, label in sections)
+    assert main.count('<section class="band') == len(DOCS_SECTIONS)
+
+
 def test_docs_open_on_the_agent_quick_start(site: Path) -> None:
     main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
-    assert main.index('<h2 id="quick-start">') < main.index('<div class="prompt">') < main.index('<h2 id="what-the-agent-does">')
+    assert main.index('id="quick-start"') < main.index('<div class="prompt">') < main.index('id="what-the-agent-does"')
     assert re.findall(r'<span class="step-verb">([^<]+)</span>', main) == ["1. Sign in", "2. Add credits", "3. Submit"]
     assert "Claude Code, Codex or another coding agent" in main
-
-
-def test_each_docs_heading_links_to_itself(site: Path) -> None:
-    main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
-    assert "docs-nav" not in main and 'class="rail"' not in main
-    headings = re.findall(r'<h2 id="([^"]+)">([^<]+)<a class="anchor" href="#([^"]+)" aria-label="Link to ([^"]+)">#</a></h2>', main)
-    assert [(anchor, title) for anchor, title, _, _ in headings] == [
-        ("quick-start", "Quick start"), ("what-the-agent-does", "What the agent does"), ("full-guide", "Full guide")]
-    assert all(anchor == target and title == label for anchor, title, target, label in headings)
-    assert main.count("<h2") == len(headings)
 
 
 def test_docs_put_get_started_where_the_console_steps_were(site: Path) -> None:
     main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
     assert "Without an agent" not in main and f"{APP}/start" not in main
     cta = f'<div class="actions docs-cta"><a class="act act-primary" href="{APP}/signin">Get started</a></div>'
-    assert main.index("</ol>") < main.index(cta) < main.index('<h2 id="full-guide">')
+    assert main.index("</ol>") < main.index(cta) < main.index('id="full-guide"')
 
 
 def test_docs_show_the_console_agent_prompt_with_a_copy_button(site: Path) -> None:
@@ -169,7 +173,24 @@ def test_pricing_shows_the_episode_total_in_the_accent_colour() -> None:
 
 def test_pricing_keeps_each_figure_and_length_on_one_line() -> None:
     css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
-    assert ".platform .pf-rates td + td { white-space: nowrap; }" in css
+    assert ".platform .pf-rates td + td { white-space: nowrap; font-variant-numeric: tabular-nums; }" in css
+
+
+def test_pricing_columns_have_fixed_widths(site: Path) -> None:
+    html = (site / "pricing.html").read_text()
+    cols = re.findall(r"<col(?: class=\"([^\"]+)\")?>", _block(html, r"<colgroup>.*?</colgroup>"))
+    assert cols == ["", "pf-c-figure", "pf-c-op", "pf-c-figure", "pf-c-op", "pf-c-length", "pf-c-op", "pf-c-figure"]
+    assert len(cols) == len(re.findall(r"<th[ >]", _block(html, r"<thead>.*?</thead>")))
+    css = (ROOT / "theme/positronic/static/css/platform.css").read_text()
+    assert ".platform .pf-rates { table-layout: fixed; }" in css
+
+
+def test_pricing_writes_the_length_in_minutes_with_one_decimal(site: Path) -> None:
+    html = (site / "pricing.html").read_text()
+    lengths = re.findall(r'class="pf-length-value">([^<]+)<', html)
+    assert lengths and set(lengths) == {"2.0 min"}
+    script = (ROOT / "theme/positronic/static/js/pricing.js").read_text()
+    assert 'return (seconds / 60).toFixed(1) + " min";' in script
 
 
 def test_a_simulator_with_no_display_name_fails_the_build(tmp_path: Path) -> None:

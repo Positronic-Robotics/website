@@ -3,10 +3,9 @@
   var slider = document.getElementById("pf-length");
   if (!slider) return;
 
+  // Minutes with one decimal, so every length has the same shape: 0.5 min, 2.0 min, 10.0 min.
   function length(seconds) {
-    var min = Math.floor(seconds / 60), sec = seconds % 60;
-    if (!min) return sec + " s";
-    return sec ? min + " min " + sec + " s" : min + " min";
+    return (seconds / 60).toFixed(1) + " min";
   }
 
   function money(dollars) {
