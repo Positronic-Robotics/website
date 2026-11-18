@@ -2,7 +2,7 @@ Title: Positronic Robotics: test your physical AI on real robots and in sim
 Slug: index
 Template: home
 
-<section class="hero"><h1>Test your physical AI on <em>real robots</em> and in sim.</h1><p class="hero-lede">Your coding agent submits your model. We run it and send back a video, the robot data and a score for every episode.</p><div class="actions actions-even"><a class="act act-primary" href="{APP_URL}/signin">Get started</a><a class="act act-ghost" href="/labs#talk">Talk to us</a></div></section>
+<section class="hero"><h1>Test your physical AI on <em>real robots</em> and in sim.</h1><p class="hero-lede">Your coding agent submits your model. We run it and send back a video, the robot data and a score for every episode.</p><div class="actions actions-even"><a class="act act-primary" href="{APP_URL}/start">Get started</a><a class="act act-ghost" href="/labs#talk">Talk to us</a></div></section>
 
 <section class="reel"><figure class="run"><video src="/media/phail-droid-1086.mp4" poster="/media/phail-droid-1086-poster.jpg" autoplay muted loop playsinline controls preload="metadata" width="1440" height="712" aria-label="A DROID episode on PhAIL: three camera views, a 3D view of the arm and its gripper, and plots of the joint positions, the joint targets and the gripper"></video></figure></section>
 

@@ -59,13 +59,13 @@ def test_the_logo_goes_home(site: Path) -> None:
     assert '<a href="https://positronic.ro/" class="navbar-brand">' in header
 
 
-def test_only_sign_in_account_and_docs_links_leave_for_the_console(site: Path) -> None:
+def test_only_sign_in_start_account_and_docs_links_leave_for_the_console(site: Path) -> None:
     # The terms define the console's pricing page by its address, so they keep that link.
     for page in (page for page in PAGES if page != "terms.html"):
         html = (site / page).read_text()
         assert "{APP_URL}" not in html, page
         console = set(re.findall(rf'href="{APP}(/[^"]*)"', html))
-        assert console <= {"/signin", "/account"}, (page, console)
+        assert console <= {"/signin", "/start", "/account"}, (page, console)
 
 
 def test_pricing_centers_its_buttons_like_the_home_page(site: Path) -> None:
@@ -102,8 +102,8 @@ def test_docs_open_on_the_agent_quick_start(site: Path) -> None:
 
 def test_docs_put_get_started_where_the_console_steps_were(site: Path) -> None:
     main = _block((site / "docs.html").read_text(), r"<main>.*?</main>")
-    assert "Without an agent" not in main and f"{APP}/start" not in main
-    cta = f'<div class="actions docs-cta"><a class="act act-primary" href="{APP}/signin">Get started</a></div>'
+    assert "Without an agent" not in main
+    cta = f'<div class="actions docs-cta"><a class="act act-primary" href="{APP}/start">Get started</a></div>'
     assert main.index("</ol>") < main.index(cta) < main.index('id="full-guide"')
 
 

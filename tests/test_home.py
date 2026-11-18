@@ -42,7 +42,7 @@ def test_home_opens_on_the_headline_a_sub_line_and_two_buttons(site: Path) -> No
         '<section class="hero"><h1>Test your physical AI on <em>real robots</em> and in sim.</h1>'
         '<p class="hero-lede">Your coding agent submits your model. We run it and send back a video, the robot data and a score for every episode.</p>'
         '<div class="actions actions-even">'
-        f'<a class="act act-primary" href="{APP}/signin">Get started</a>'
+        f'<a class="act act-primary" href="{APP}/start">Get started</a>'
         '<a class="act act-ghost" href="/labs#talk">Talk to us</a></div></section>'
     )
 
