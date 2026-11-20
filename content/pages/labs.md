@@ -1,6 +1,8 @@
-Title: For labs — Positronic Robotics
+Title: Physical AI evaluation for labs — Positronic Robotics
 Slug: labs
 Template: home
+Description: Independent physical AI evaluation for labs: your checkpoint runs blind on our robots, scored by fixed rules. Video and a score for every run, same day.
+Social_card: media/social-card-labs.jpg
 
 <section class="hero"><h1>The new standard&nbsp;of <em>Physical AI evaluation</em></h1><p class="hero-lede">We measure whether your model is getting better: your policy on our robots. Video and a score for every run, back the same day.</p><figure class="quote quote-hero"><blockquote>Positronic lets us evaluate checkpoints continuously as we train, so we can course-correct our research quickly. Day-to-day evaluation doesn’t compete with our robot fleet or operators for time, which keeps them focused on data collection and real-world deployment.</blockquote><figcaption>Andy Chen, Head of Robotics, Runway</figcaption></figure><div class="actions"><a class="act act-primary" href="#talk">Talk to us</a><a class="act act-ghost" href="https://phail.ai">See the leaderboard<span class="sub">phail.ai</span></a></div></section>
 
