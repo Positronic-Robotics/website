@@ -125,6 +125,19 @@ main {
   line-height: 1.7;
 }
 
+/* A note under a table reads as its caption: small, grey, close to the table. */
+.article-body p.table-note {
+  margin: -1rem 0 1.5rem;
+  padding: 0 1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #8a8a8a;
+}
+
+@media (max-width: 640px) {
+  .article-body p.table-note { padding: 0 0.5rem; }
+}
+
 h1 {
   margin: 0 0 0.5rem;
   font-size: 40px;
