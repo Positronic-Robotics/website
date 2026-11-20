@@ -3,7 +3,7 @@ Date: 2026-11-17
 Category: Blog
 Slug: what-a-robot-loses-while-it-thinks
 Author: Positronic Team
-Image: media/thinking-time-two-clocks.jpg
+Image: media/thinking-time-card.jpg
 Header_image: no
 Summary: In most simulators the world waits while a robot model thinks. On a real robot it doesn't. We ran the same models both ways on RoboLab: the slowest models lose the most. Then we tested whether thinking costs more than the time it takes.
 
