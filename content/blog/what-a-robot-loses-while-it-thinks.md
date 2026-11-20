@@ -17,13 +17,13 @@ Every episode of both modes is on PhAIL, with its video. The switch at the top o
 
 | Model | Arm waits | Success, sim waits | Success, clock runs | Change |
 |---|---|---|---|---|
-| [Galaxea G0.5](https://phail.ai/model/Galaxea%20G0.5?benchmark=robolab) | 45% | [20.8%](https://phail.ai/benchmark/robolab?thinking=free) | [16.7%](https://phail.ai/benchmark/robolab) | **−4.2 ± 3.2 pts** |
-| [NVIDIA Cosmos3 Nano](https://phail.ai/model/NVIDIA%20Cosmos3%20Nano?benchmark=robolab) | 40% | [34.2%](https://phail.ai/benchmark/robolab?thinking=free) | [26.4%](https://phail.ai/benchmark/robolab) | **−7.8 ± 4.6 pts** |
-| [Ai2 MolmoAct2](https://phail.ai/model/Ai2%20MolmoAct2?benchmark=robolab) | 36% | [17.5%](https://phail.ai/benchmark/robolab?thinking=free) | [13.9%](https://phail.ai/benchmark/robolab) | −3.6 ± 4.6 pts |
-| [FLUX 3 Action](https://phail.ai/model/Black%20Forest%20Labs%20FLUX%203%20Action?benchmark=robolab) | 19% | [42.2%](https://phail.ai/benchmark/robolab?thinking=free) | [40.3%](https://phail.ai/benchmark/robolab) | −1.9 ± 4.4 pts |
-| [NVIDIA GR00T N1.7](https://phail.ai/model/NVIDIA%20GR00T?benchmark=robolab) | 14% | [21.4%](https://phail.ai/benchmark/robolab?thinking=free) | [21.9%](https://phail.ai/benchmark/robolab) | +0.6 ± 4.0 pts |
-| [π0.5](https://phail.ai/model/Physical%20Intelligence%20%CF%80%E2%82%80.%E2%82%85?benchmark=robolab) | 12% | [28.6%](https://phail.ai/benchmark/robolab?thinking=free) | [26.4%](https://phail.ai/benchmark/robolab) | −2.2 ± 4.0 pts |
-| [OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=robolab) | not measured | [48.9%](https://phail.ai/benchmark/robolab?thinking=free) | [0.6%](https://phail.ai/benchmark/robolab) | **−48.3 ± 6.9 pts** |
+| [Galaxea G0.5](https://phail.ai/model/Galaxea%20G0.5?benchmark=robolab) | 45% | [20.8%](https://phail.ai/benchmark/robolab?thinking=free) | [16.7%](https://phail.ai/benchmark/robolab) | **−4.2&nbsp;±&nbsp;3.2%** |
+| [NVIDIA Cosmos3 Nano](https://phail.ai/model/NVIDIA%20Cosmos3%20Nano?benchmark=robolab) | 40% | [34.2%](https://phail.ai/benchmark/robolab?thinking=free) | [26.4%](https://phail.ai/benchmark/robolab) | **−7.8&nbsp;±&nbsp;4.6%** |
+| [Ai2 MolmoAct2](https://phail.ai/model/Ai2%20MolmoAct2?benchmark=robolab) | 36% | [17.5%](https://phail.ai/benchmark/robolab?thinking=free) | [13.9%](https://phail.ai/benchmark/robolab) | −3.6&nbsp;±&nbsp;4.6% |
+| [FLUX 3 Action](https://phail.ai/model/Black%20Forest%20Labs%20FLUX%203%20Action?benchmark=robolab) | 19% | [42.2%](https://phail.ai/benchmark/robolab?thinking=free) | [40.3%](https://phail.ai/benchmark/robolab) | −1.9&nbsp;±&nbsp;4.4% |
+| [NVIDIA GR00T N1.7](https://phail.ai/model/NVIDIA%20GR00T?benchmark=robolab) | 14% | [21.4%](https://phail.ai/benchmark/robolab?thinking=free) | [21.9%](https://phail.ai/benchmark/robolab) | +0.6&nbsp;±&nbsp;4.0% |
+| [π0.5](https://phail.ai/model/Physical%20Intelligence%20%CF%80%E2%82%80.%E2%82%85?benchmark=robolab) | 12% | [28.6%](https://phail.ai/benchmark/robolab?thinking=free) | [26.4%](https://phail.ai/benchmark/robolab) | −2.2&nbsp;±&nbsp;4.0% |
+| [OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=robolab) | not measured | [48.9%](https://phail.ai/benchmark/robolab?thinking=free) | [0.6%](https://phail.ai/benchmark/robolab) | **−48.3&nbsp;±&nbsp;6.9%** |
 
 "Arm waits" is the share of the episode in which the arm stands still while the model thinks. The ± value is the 95% range. A change in bold is larger than noise: its range does not include zero.
 
@@ -62,20 +62,20 @@ We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3
 
 | Cosmos3 Nano, 7 tasks | [Fixed thinking](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/) | [Slow motion](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/) | Change |
 |---|---|---|---|
-| Success | [50.7%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/) | [52.1%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/) | −1.4 ± 9.7 pts |
+| Success | [50.7%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/) | [52.1%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/) | −1.4&nbsp;±&nbsp;9.7% |
 | Median time to success | 28.1 s | 29.5 s | |
 
 The time-to-success curves cross many times and end at almost the same place. Per task, the gaps go in both directions, and chance explains their spread:
 
 | Task | Fixed thinking | Slow motion | Change |
 |---|---|---|---|
-| Put a white plastic bottle in the square pail | [92%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+any+white+plastic+bottle+in+the+square+pail) | [96%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+any+white+plastic+bottle+in+the+square+pail) | −4 ± 9 pts |
-| Put the red BBQ sauce bottle in the crate | [92%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+the+red+bbq+sauce+bottle+in+the+crate) | [78%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+the+red+bbq+sauce+bottle+in+the+crate) | +14 ± 13 pts |
-| Stack the yellow block on the red block | [55%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stack+the+yellow+block+on+the+red+block) | [63%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stack+the+yellow+block+on+the+red+block) | −8 ± 19 pts |
-| Stack the white mugs | [43%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stack+the+white+mugs+on+top+of+each+other.) | [51%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stack+the+white+mugs+on+top+of+each+other.) | −8 ± 19 pts |
-| Put three fruits on the plate | [41%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+three+%283%29+fruits+on+the+plate) | [59%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+three+%283%29+fruits+on+the+plate) | −18 ± 19 pts |
-| Stand the jug upright | [24%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stand+the+jug+upright) | [14%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stand+the+jug+upright) | +10 ± 15 pts |
-| Put all the green fruit on the plate | [8%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+all+the+green+fruit+on+the+plate) | [4%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+all+the+green+fruit+on+the+plate) | +4 ± 9 pts |
+| Put a white plastic bottle in the square pail | [92%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+any+white+plastic+bottle+in+the+square+pail) | [96%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+any+white+plastic+bottle+in+the+square+pail) | −4&nbsp;±&nbsp;9% |
+| Put the red BBQ sauce bottle in the crate | [92%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+the+red+bbq+sauce+bottle+in+the+crate) | [78%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+the+red+bbq+sauce+bottle+in+the+crate) | +14&nbsp;±&nbsp;13% |
+| Stack the yellow block on the red block | [55%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stack+the+yellow+block+on+the+red+block) | [63%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stack+the+yellow+block+on+the+red+block) | −8&nbsp;±&nbsp;19% |
+| Stack the white mugs | [43%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stack+the+white+mugs+on+top+of+each+other.) | [51%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stack+the+white+mugs+on+top+of+each+other.) | −8&nbsp;±&nbsp;19% |
+| Put three fruits on the plate | [41%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+three+%283%29+fruits+on+the+plate) | [59%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+three+%283%29+fruits+on+the+plate) | −18&nbsp;±&nbsp;19% |
+| Stand the jug upright | [24%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Stand+the+jug+upright) | [14%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Stand+the+jug+upright) | +10&nbsp;±&nbsp;15% |
+| Put all the green fruit on the plate | [8%](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/?task=Put+all+the+green+fruit+on+the+plate) | [4%](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/?task=Put+all+the+green+fruit+on+the+plate) | +4&nbsp;±&nbsp;9% |
 
 In RoboLab, a robot that stops to think does as well as a robot that moves slowly at the same pace.
 
