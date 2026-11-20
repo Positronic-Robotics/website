@@ -28,7 +28,7 @@ Every episode of both modes is on PhAIL, with its video. The switch at the top o
 "Arm waits" is the share of the episode in which the arm stands still while the model thinks. The ± value is the 95% range. A change in bold is larger than noise: its range does not include zero.
 {: .table-note }
 
-The slow models lose, and the fast models do not. Cosmos3 Nano is one of the two slowest robot models on the board: it needs about 1.5 seconds each time it plans, so its arm stands still for 40% of every episode. It also has the largest loss of the robot models. Galaxea G0.5 waits a little longer and also loses more than noise. MolmoAct2 is third on both counts, and its loss is at the edge of noise. The three fast models wait 12–19% of the time, and their change is inside noise.
+Unsurprisingly, the slow models lose and the fast ones barely change. Cosmos3 Nano is one of the two slowest robot models on the board: it needs about 1.5 seconds each time it plans, so its arm stands still for 40% of every episode. It also has the largest loss of the robot models. Galaxea G0.5 waits a little longer and also loses more than noise. MolmoAct2 is third on both counts, and its loss is at the edge of noise. The three fast models wait 12–19% of the time, and their change is inside noise.
 
 GPT-6 Astra shows the extreme case. It is a general AI model, not a robot model, and it controls the arm by itself. With the sim paused, it has the best score on the board. With the clock running, it almost never succeeds.
 
