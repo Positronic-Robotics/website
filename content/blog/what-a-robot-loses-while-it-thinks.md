@@ -26,6 +26,7 @@ Every episode of both modes is on PhAIL, with its video. The switch at the top o
 | [OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=robolab) | not measured | [48.9%](https://phail.ai/benchmark/robolab?thinking=free) | [0.6%](https://phail.ai/benchmark/robolab) | **−48.3&nbsp;±&nbsp;6.9%** |
 
 "Arm waits" is the share of the episode in which the arm stands still while the model thinks. The ± value is the 95% range. A change in bold is larger than noise: its range does not include zero.
+{: .table-note }
 
 The slow models lose, and the fast models do not. Cosmos3 Nano is one of the two slowest robot models on the board: it needs about 1.5 seconds each time it plans, so its arm stands still for 40% of every episode. It also has the largest loss of the robot models. Galaxea G0.5 waits a little longer and also loses more than noise. MolmoAct2 is third on both counts, and its loss is at the edge of noise. The three fast models wait 12–19% of the time, and their change is inside noise.
 
