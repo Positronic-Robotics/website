@@ -3,9 +3,15 @@ Date: 2026-11-17
 Category: Blog
 Slug: what-a-robot-loses-while-it-thinks
 Author: Positronic Team
+Image: media/thinking-time-two-clocks.jpg
+Header_image: no
 Summary: In most simulators the world waits while a robot model thinks. On a real robot it doesn't. We ran the same models both ways on RoboLab: the slowest models lose the most. Then we tested whether thinking costs more than the time it takes.
 
 In most robot simulators, the world stops while the model thinks. The model receives a camera frame, takes its time to choose the next moves, and the simulator waits for the answer. On a real robot, nothing waits. The arm holds its last position, and the clock keeps running.
+
+<figure style="margin: 2rem auto; max-width: 600px;">
+  <img src="{static}/media/thinking-time-two-clocks.jpg" alt="In simulation the clock stops while the model thinks. On a real robot the arm waits and the clock keeps running, so the same motion takes more time." style="width: 100%; height: auto; border-radius: 8px;" />
+</figure>
 
 The robot models we test need between 0.2 and 1.5 seconds to plan their next moves. That is a large share of an episode, and a benchmark that pauses the world does not see it. We wanted to know what the pause hides. We ran two studies on RoboLab, NVIDIA's simulated benchmark of household tasks.
 
@@ -32,11 +38,19 @@ Unsurprisingly, the slow models lose and the fast ones barely change. Cosmos3 Na
 
 GPT-6 Astra shows the extreme case. It is a general AI model, not a robot model, and it controls the arm by itself. With the sim paused, it has the best score on the board. With the clock running, it almost never succeeds.
 
-<!-- Figure: success per model in both modes, against the share of time the arm waits -->
+<figure style="margin: 2rem auto; max-width: 600px;">
+  <img src="{static}/media/thinking-time-change-vs-wait.png" alt="Change in success rate against the share of each episode the arm waits, for six robot models. Cosmos3 Nano and Galaxea G0.5 wait longest and lose more than noise." style="width: 100%; height: auto; border-radius: 8px;" />
+</figure>
 
 ### Thinking time works like slow motion
 
 A model that thinks with the clock running does not get confused. It makes the same moves, just later.
+
+<figure style="margin: 2rem 0;">
+  <video controls playsinline muted preload="metadata" poster="{static}/media/thinking-time-onion-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
+    <source src="{static}/media/thinking-time-onion.mp4" type="video/mp4">
+  </video>
+</figure>
 
 Take each episode recorded with the sim paused and slow it down by the share of time that model waits. The result predicts the curve of the clock-running run along the whole episode. For Cosmos3 Nano, the prediction of the final partial-credit score lands within one point of the measured score.
 
@@ -46,7 +60,9 @@ The gap opens in the first seconds. At 20% of the time limit, Cosmos3 Nano with 
 |---|---|---|
 | Typical success comes at | 34% of the time limit | 59% of the time limit |
 
-<!-- Figure: Cosmos3 Nano progress over the time limit, both modes, with the slow-motion prediction -->
+<figure style="margin: 2rem auto; max-width: 600px;">
+  <img src="{static}/media/thinking-time-cosmos-over-time.jpg" alt="Cosmos3 Nano success rate over the time limit. With the sim paused it reaches 34%. With the clock running it falls behind in the first seconds and ends at 26%." style="width: 100%; height: auto; border-radius: 8px;" />
+</figure>
 
 ### Study 2: does stopping to think cost more than moving slowly?
 
