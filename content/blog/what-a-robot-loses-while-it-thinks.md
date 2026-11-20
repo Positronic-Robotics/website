@@ -75,7 +75,7 @@ We tested this on Cosmos3 Nano, the robot model that loses the most in study 1. 
 - **Fixed thinking.** The arm holds still for 1.47 seconds on each call, then moves at normal speed.
 - **Slow motion.** The sim waits while the model thinks, and every move plays 1.69× slower. That is the same average pace with no stops.
 
-We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3 Nano sometimes succeeds, and ran 51 episodes per task per setup, 714 episodes in total. Each number in the tables below opens the replays of its episodes.
+We picked 7 RoboLab tasks where objects can move during a wait and where Cosmos3 Nano sometimes succeeds, and ran 51 episodes per task per setup, 714 episodes in total. Each success rate in the tables below opens the replays of its episodes.
 
 | Cosmos3 Nano, 7 tasks | [Fixed thinking](https://app.positronic.ro/v/gTyZDa0vs7bJ_kc0XVo9aA/) | [Slow motion](https://app.positronic.ro/v/EPHoXzx90onrf09P8lfasw/) | Change |
 |---|---|---|---|
