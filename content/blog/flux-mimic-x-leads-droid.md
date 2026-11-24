@@ -5,7 +5,7 @@ Slug: flux-mimic-x-leads-droid
 Author: Positronic Team
 Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
-Summary: Two new models joined the PhAIL DROID board today, and both share the first rank. Mimic's FLUX-mimic-x works faster than a human operator. Runway's Praxis-1 moves at human pace, and when it misses a grasp it often tries again and finishes. The four leading robot models are all built on video models.
+Summary: Mimic's FLUX-mimic-x and Runway's Praxis-1 joined the PhAIL DROID board today, and both share the first rank.
 
 Today we added two models to the [PhAIL DROID board](https://phail.ai/benchmark/droid): [Mimic FLUX-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). The board runs each model on a real Franka arm, on everyday tasks, with a limit of 240 seconds for each episode.
 
