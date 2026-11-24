@@ -52,7 +52,7 @@ The failures of flux-mimic-x cluster in four kinds of task: drawers, cloth and t
 
 When Praxis-1 loses its hold on an object, it tries again and often finishes the task. In 58 of its 187 episodes, the object slipped from the gripper at least once. 38 of these 58 episodes still ended in a success, and 30 of the 38 finished in under 60 seconds. In one episode, Praxis-1 lost the bottle 14 times and then put it on the table.
 
-Praxis-1 also moves at the pace of our human operator: on the same tasks, its median time to a success is the same as the human's. It ran out of time in 5 of its 187 episodes, and the human in 4 on the same tasks.
+Praxis-1 also moves at the pace of our human operator: on the same tasks, its median time to a success is the same as the human's.
 
 <figure style="margin: 2rem 0;">
   <video controls playsinline muted preload="metadata" poster="{static}/media/droid-praxis-1-banana-plate-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
