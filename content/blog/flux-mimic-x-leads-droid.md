@@ -5,7 +5,7 @@ Slug: flux-mimic-x-leads-droid
 Author: Positronic Team
 Image: media/flux-mimic-x-card.jpg
 Header_image: no
-Summary: Two new models joined the PhAIL DROID board today, and both share the first rank. Mimic's flux-mimic-x works faster than a human operator. Runway's Praxis-1 moves at human pace and almost never runs out of time. The four leading robot models are all built on video models.
+Summary: Two new models joined the PhAIL DROID board today, and both share the first rank. Mimic's flux-mimic-x works faster than a human operator. Runway's Praxis-1 moves at human pace, and when it misses a grasp it often tries again and finishes. The four leading robot models are all built on video models.
 
 Today we added two models to the [PhAIL DROID board](https://phail.ai/benchmark/droid): [Mimic flux-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). The board runs each model on a real Franka arm, on everyday tasks, with a limit of 240 seconds for each episode.
 
@@ -48,9 +48,11 @@ A video model learns how objects move before it sees a single robot action. We t
 
 The failures of flux-mimic-x cluster in four kinds of task: drawers, cloth and towels, two-step tasks, and unstacking. The rest are spread over single pick-and-place moves.
 
-### Praxis-1: human pace, and almost no stalls
+### Praxis-1: a missed grasp is not a lost task
 
-Praxis-1 moves at the pace of our human operator. On the same tasks, its median time to a success is the same as the human's. It also almost never runs out of time: only 5 of its 187 episodes reached the time limit.
+When Praxis-1 loses its hold on an object, it tries again and often finishes the task. In 58 of its 187 episodes, the object slipped from the gripper at least once. 38 of these 58 episodes still ended in a success, and 30 of the 38 finished in under 60 seconds. In one episode, Praxis-1 lost the bottle 14 times and then put it on the table.
+
+Praxis-1 also moves at the pace of our human operator: on the same tasks, its median time to a success is the same as the human's. It ran out of time in 5 of its 187 episodes, and the human in 4 on the same tasks.
 
 <figure style="margin: 2rem 0;">
   <video controls playsinline muted preload="metadata" poster="{static}/media/droid-praxis-1-banana-plate-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
