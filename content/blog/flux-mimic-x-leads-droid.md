@@ -3,7 +3,7 @@ Date: 2026-11-25
 Category: Blog
 Slug: flux-mimic-x-leads-droid
 Author: Positronic Team
-Image: media/flux-mimic-x-card.jpg
+Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
 Summary: Two new models joined the PhAIL DROID board today, and both share the first rank. Mimic's FLUX-mimic-x works faster than a human operator. Runway's Praxis-1 moves at human pace, and when it misses a grasp it often tries again and finishes. The four leading robot models are all built on video models.
 
