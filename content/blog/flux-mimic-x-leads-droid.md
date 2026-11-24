@@ -61,6 +61,12 @@ Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab]
 
 ### The leading robot models all predict video
 
-The four robot models at the top of the DROID board share one design. [FLUX-mimic-x](https://x.com/mimicrobotics/status/2122343940653224018) and [FLUX 3 Action](https://huggingface.co/blog/black-forest-labs/flux-3-action) build on FLUX 3. [Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) builds on Runway's video models. [Cosmos3 Nano](https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID) builds on NVIDIA's Cosmos 3 world model. Each one predicts the next video frames together with the next actions.
+Two kinds of robot model compete today. One kind builds on a vision-language model, which learns from images and text. The other kind builds on a video model, which learns from video how objects move. A model of the second kind predicts the next video frames together with the next actions.
+
+On the DROID board, the four leading robot models are all of the second kind. [FLUX-mimic-x](https://x.com/mimicrobotics/status/2122343940653224018) and [FLUX 3 Action](https://huggingface.co/blog/black-forest-labs/flux-3-action) build on FLUX 3. [Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) builds on Runway's video models. [Cosmos3 Nano](https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID) builds on NVIDIA's Cosmos 3 world model. Their Reliability is from 63.7 to 71.2.
+
+The robot models of the first kind are lower on the board, from 42.5 to 55.6. [π0.5](https://arxiv.org/abs/2504.16054) builds on PaliGemma, [GR00T N1.7](https://huggingface.co/nvidia/GR00T-N1.7-3B) on Cosmos-Reason2, [MolmoAct2](https://huggingface.co/allenai/MolmoAct2) on Molmo2-ER, and [G0.5](https://huggingface.co/OpenGalaxea/G05) on Qwen3.5. Each of these is a vision-language model.
+
+NVIDIA made the same change in its own robot models. GR00T N1.7 builds on a vision-language model. [GR00T 2](https://research.nvidia.com/labs/gear/gr00t-2/), which NVIDIA introduced in November, is a world-action model: it predicts future video and robot actions together. It is not on the board yet.
 
 All episodes of both new models are on the [DROID board](https://phail.ai/benchmark/droid), with video from three cameras.
