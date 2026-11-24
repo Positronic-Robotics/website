@@ -61,6 +61,6 @@ Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab]
 
 ### The leading robot models all predict video
 
-The four robot models at the top of the DROID board share one design. GPT-6 Astra, between them in the table, is a general AI model that controls the arm, not a robot model. [FLUX-mimic-x](https://x.com/mimicrobotics/status/2122343940653224018) and [FLUX 3 Action](https://huggingface.co/blog/black-forest-labs/flux-3-action) build on FLUX 3. [Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) builds on Runway's video models. [Cosmos3 Nano](https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID) builds on NVIDIA's Cosmos 3 world model. Each one predicts the next video frames together with the next actions.
+The four robot models at the top of the DROID board share one design. [FLUX-mimic-x](https://x.com/mimicrobotics/status/2122343940653224018) and [FLUX 3 Action](https://huggingface.co/blog/black-forest-labs/flux-3-action) build on FLUX 3. [Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) builds on Runway's video models. [Cosmos3 Nano](https://huggingface.co/nvidia/Cosmos3-Nano-Policy-DROID) builds on NVIDIA's Cosmos 3 world model. Each one predicts the next video frames together with the next actions.
 
 All episodes of both new models are on the [DROID board](https://phail.ai/benchmark/droid), with video from three cameras.
