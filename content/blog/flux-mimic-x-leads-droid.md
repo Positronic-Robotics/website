@@ -45,7 +45,7 @@ On the 73 tasks that both new models ran, flux-mimic-x and Praxis-1 succeeded th
 
 Praxis-1 moves at the pace of our human operator. On the same 187 tasks, its median time to a success is 24.9 seconds, and the human's is 24.8 seconds. It also almost never stalls. Only 5 of its 187 episodes ran out of time, against 12 of 100 for flux-mimic-x.
 
-Praxis-1 also has results on the two simulated Franka boards of PhAIL, where flux-mimic-x has none yet. It scores 51.8 on [RoboLab](https://phail.ai/benchmark/robolab) and 41.9 on [MolmoSpaces](https://phail.ai/benchmark/molmospaces), close behind FLUX 3 Action in both. Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 12 November as open weights, under Apache 2.0. It is a 27B diffusion transformer that predicts video and actions together.
+Praxis-1 also has results on the two simulated Franka boards of PhAIL, where flux-mimic-x has none yet. It scores 51.8 on [RoboLab](https://phail.ai/benchmark/robolab) and 41.9 on [MolmoSpaces](https://phail.ai/benchmark/molmospaces), close behind FLUX 3 Action in both. Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0. It is a 27B diffusion transformer that predicts video and actions together.
 
 ### The leading robot models all predict video
 
