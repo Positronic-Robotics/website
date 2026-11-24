@@ -5,12 +5,12 @@ Slug: flux-mimic-x-leads-droid
 Author: Positronic Team
 Image: media/flux-mimic-x-card.jpg
 Header_image: no
-Summary: Two new models joined the PhAIL DROID board this month. Mimic's flux-mimic-x is first, and it works faster than a human operator. Runway's Praxis-1 succeeds as often on the same tasks, at human pace. The four leading robot models are all built on video models.
+Summary: Two new models joined the PhAIL DROID board this month. Mimic's flux-mimic-x is first, and it works faster than a human operator. Runway's Praxis-1 shares the first rank, moves at human pace and almost never runs out of time. The four leading robot models are all built on video models.
 
 This month we added two models to the [PhAIL DROID board](https://phail.ai/benchmark/droid): [Mimic flux-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). The board runs each model on a real Franka arm, on everyday tasks, with a limit of 240 seconds for each episode.
 
 <figure style="margin: 2rem 0;">
-  <img src="{static}/media/flux-mimic-x-card.jpg" alt="Reliability against Speed on the PhAIL DROID board. flux-mimic-x is at the top right, faster than the human operator. Praxis-1 is close behind." style="width: 100%; height: auto; border-radius: 8px;">
+  <img src="{static}/media/flux-mimic-x-card.jpg" alt="Reliability against Speed on the PhAIL DROID board. flux-mimic-x is at the top right, faster than the human operator. Praxis-1 is also near the top." style="width: 100%; height: auto; border-radius: 8px;">
 </figure>
 
 | Model | Reliability | Speed |
@@ -32,10 +32,10 @@ flux-mimic-x has the highest Speed on the board. It is above the human who drive
 The arm also almost never waits for the model. The next actions are ready before the current ones run out, so the arm keeps moving.
 
 <figure style="margin: 2rem 0;">
-  <video controls playsinline muted preload="metadata" poster="{static}/media/droid-fork-on-plate-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
-    <source src="{static}/media/droid-fork-on-plate.mp4" type="video/mp4">
+  <video controls playsinline muted preload="metadata" poster="{static}/media/droid-flux-mimic-x-fork-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
+    <source src="{static}/media/droid-flux-mimic-x-fork.mp4" type="video/mp4">
   </video>
-  <figcaption>"Put the fork on the plate": flux-mimic-x and Praxis-1 on the same task, in real time.</figcaption>
+  <figcaption>flux-mimic-x: "Put the fork on the plate", in real time.</figcaption>
 </figure>
 
 ### What it is
@@ -48,18 +48,18 @@ A video model learns how objects move before it sees a single robot action. We t
 
 The failures of flux-mimic-x cluster in four kinds of task: drawers, cloth and towels, two-step tasks, and unstacking. The rest are spread over single pick-and-place moves.
 
-### Praxis-1: the same successes, at human pace
+### Praxis-1: human pace, and almost no stalls
 
-On the tasks that both new models ran, flux-mimic-x and Praxis-1 succeeded the same number of times. The difference is time. Praxis-1 needs about twice as long for a success, which is the pace of our human operator. It also almost never runs out of time.
+Praxis-1 moves at the pace of our human operator. On the same tasks, its median time to a success is the same as the human's. It also almost never runs out of time: only 5 of its 187 episodes reached the time limit.
 
 <figure style="margin: 2rem 0;">
-  <video controls playsinline muted preload="metadata" poster="{static}/media/droid-keys-in-bowl-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
-    <source src="{static}/media/droid-keys-in-bowl.mp4" type="video/mp4">
+  <video controls playsinline muted preload="metadata" poster="{static}/media/droid-praxis-1-mix-mug-poster.jpg" style="width: 100%; height: auto; border-radius: 8px;">
+    <source src="{static}/media/droid-praxis-1-mix-mug.mp4" type="video/mp4">
   </video>
-  <figcaption>"Pick up the keys and put them in the bowl": both models succeed, Praxis-1 at a slower pace.</figcaption>
+  <figcaption>Praxis-1: "Use the spoon to mix in the mug and then put it on the table", in real time.</figcaption>
 </figure>
 
-Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab](https://phail.ai/benchmark/robolab) and [MolmoSpaces](https://phail.ai/benchmark/molmospaces). There it is close behind FLUX 3 Action. Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0. It is a diffusion transformer that predicts video and actions together.
+Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab](https://phail.ai/benchmark/robolab) and [MolmoSpaces](https://phail.ai/benchmark/molmospaces). Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0, so anyone can run it and train it further. It is a diffusion transformer that predicts video and actions together.
 
 ### The leading robot models all predict video
 
