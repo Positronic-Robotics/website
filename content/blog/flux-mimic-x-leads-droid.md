@@ -44,10 +44,6 @@ Mimic published FLUX-mimic-x [as a preview](https://x.com/mimicrobotics/status/2
 
 A video model learns how objects move before it sees a single robot action. We think this pretraining is the main reason for its speed and its reliability.
 
-### Where it fails
-
-The failures of FLUX-mimic-x cluster in four kinds of task: drawers, cloth and towels, two-step tasks, and unstacking. The rest are spread over single pick-and-place moves.
-
 ### Praxis-1 tries again after a missed grasp
 
 When Praxis-1 loses its hold on an object, it tries again and often finishes the task. In 58 of its 187 episodes, the object slipped from the gripper at least once. 38 of these 58 episodes still ended in a success, and 30 of the 38 finished in under 60 seconds. In one episode, Praxis-1 lost the bottle 14 times and then put it on the table.
