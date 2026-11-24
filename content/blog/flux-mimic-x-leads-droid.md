@@ -46,7 +46,7 @@ A video model learns how objects move before it sees a single robot action. We t
 
 ### Praxis-1 tries again after a missed grasp
 
-When Praxis-1 loses its hold on an object, it tries again and often finishes the task. In 58 of its 187 episodes, the object slipped from the gripper at least once. 38 of these 58 episodes still ended in a success, and 30 of the 38 finished in under 60 seconds. In one episode, Praxis-1 lost the bottle 14 times and then put it on the table.
+When Praxis-1 loses its hold on an object, it tries again and often finishes the task. Of the episodes where the object slipped from the gripper, 66% still ended in a success, and 79% of these successes took less than 60 seconds.
 
 Praxis-1 also moves at the pace of our human operator: on the same tasks, its median time to a success is the same as the human's.
 
