@@ -18,7 +18,7 @@ This month we added two models to the [PhAIL DROID board](https://phail.ai/bench
 | [OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=droid) | 64.1&nbsp;±&nbsp;5.2 | 0.45 |
 | [Black Forest Labs FLUX 3 Action](https://phail.ai/model/Black%20Forest%20Labs%20FLUX%203%20Action?benchmark=droid) | 63.6&nbsp;±&nbsp;4.0 | 1.59 |
 
-Reliability is the percent of the task done within the time limit. Speed is successful tasks per minute. The ± value is the 95% range. flux-mimic-x shares the first rank with Cosmos3 Nano and Praxis-1, because chance can explain the gaps between them.
+Reliability is the percent of the task done within the time limit. Speed is successful tasks per minute. The ± value is half the 95% range. flux-mimic-x shares the first rank with Cosmos3 Nano and Praxis-1, because chance can explain the gaps between them.
 {: .table-note }
 
 ### flux-mimic-x is faster than our human operator
