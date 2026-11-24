@@ -44,7 +44,7 @@ Mimic published FLUX-mimic-x [as a preview](https://x.com/mimicrobotics/status/2
 
 A video model learns how objects move before it sees a single robot action. We think this pretraining is the main reason for its speed and its reliability.
 
-### Praxis-1 tries again after a missed grasp
+### Praxis-1: a missed grasp is not a lost task
 
 When Praxis-1 loses its hold on an object, it tries again and often finishes the task. Of the episodes where the object slipped from the gripper, 66% still ended in a success, and 79% of these successes took less than 60 seconds.
 
