@@ -37,7 +37,7 @@ A video model learns how objects move before it sees a single robot action. We t
 
 ### Where it fails
 
-flux-mimic-x did not succeed on 29 of its 100 tasks. The failures group in four kinds of task: drawers (4 tasks), cloth and towels (4), two-step tasks such as "spoon in the cup, then on the table" (3), and unstacking (2). Every episode is on PhAIL, with its video.
+flux-mimic-x did not succeed on 29 of its 100 tasks. Four kinds of task account for 13 of them: drawers (4 tasks), cloth and towels (4), two-step tasks such as "put the spoon in the cup, then put the spoon on the table" (3), and unstacking (2). Most of the other 16 are single pick-and-place moves. Every episode is on PhAIL, with its video.
 
 ### Praxis-1: the same successes, at human pace
 
