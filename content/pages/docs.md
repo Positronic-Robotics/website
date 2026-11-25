@@ -1,7 +1,7 @@
 Title: Docs — Positronic Robotics
 Slug: docs
 Template: platform
-Description: Run an evaluation with a coding agent: the prompt to copy, what the agent does, and the full guide.
+Description: Run physical AI evaluations with Claude Code, Codex or another coding agent. Copy the prompt; the agent signs you in and submits your model.
 
 <section class="page-head"><h1>Docs</h1><p class="hero-lede">A coding agent can run your evaluations for you. Copy the prompt below into your agent, then follow along.</p></section>
 
