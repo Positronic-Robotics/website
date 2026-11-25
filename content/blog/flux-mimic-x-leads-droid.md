@@ -2,7 +2,7 @@ Title: Mimic FLUX-mimic-x and Runway Praxis-1 Join the Top of the PhAIL DROID Bo
 Date: 2026-11-25
 Category: Blog
 Slug: flux-mimic-x-leads-droid
-Author: Positronic Team
+Author: Dmitry Matov
 Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
 Summary: Mimic's FLUX-mimic-x and Runway's Praxis-1 joined the PhAIL DROID board today, and both share the first rank.
