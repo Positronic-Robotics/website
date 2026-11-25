@@ -1,11 +1,11 @@
-Title: FLUX-mimic-x and Praxis-1 on real robots: the top score, the fastest model and quick recovery
+Title: mimic's FLUX-mimic-x and Runway's Praxis-1 tested on real robots: top score, top speed, quick recovery
 Date: 2026-11-25
 Category: Blog
 Slug: flux-mimic-x-praxis-1-droid
 Author: Dmitry Matov
 Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
-Summary: mimic's FLUX-mimic-x and Runway's Praxis-1 joined the PhAIL DROID board, and both are among its four top scores.
+Summary: mimic's FLUX-mimic-x and Runway's Praxis-1 tested on real robots: top score, top speed, quick recovery.
 
 PhAIL tests physical AI models in simulation and on a real Franka arm. On the [DROID tasks](https://phail.ai/benchmark/droid), which run on the real arm, we added two models: [mimic FLUX-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). Each episode has a limit of 240 seconds.
 
@@ -22,7 +22,7 @@ PhAIL tests physical AI models in simulation and on a real Franka arm. On the [D
 | <img src="{static}/media/logo-openai.svg" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=droid) | 64.1 | 0.37 |
 | <img src="{static}/media/logo-black-forest-labs.svg" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[Black Forest Labs FLUX 3 Action](https://phail.ai/model/Black%20Forest%20Labs%20FLUX%203%20Action?benchmark=droid) | 63.7 | 1.59 |
 
-Reliability is the percent of the task done within the time limit. Speed is successful tasks per minute. FLUX-mimic-x has the top score so far, after its first 100 runs, just ahead of three other models: Cosmos3 Nano, Praxis-1 and GPT-6 Astra.
+Reliability is the percent of the task done within the time limit. Speed is successful tasks per minute. FLUX-mimic-x has the top score so far, after its first 100 runs, just ahead of three other models, among them Runway's new open model, Praxis-1.
 {: .table-note }
 
 ### FLUX-mimic-x is faster than our human operator
