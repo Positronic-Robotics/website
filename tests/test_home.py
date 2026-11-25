@@ -152,7 +152,7 @@ def test_the_clip_of_one_public_phail_run_sits_under_the_buttons(site: Path) -> 
     assert "1064px" not in css and "1000px" not in css
 
 
-def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:
+def test_trusted_by_links_each_logo_to_its_page(site: Path) -> None:
     trusted = _sections(site)[2]
     assert '<p class="trusted-label">Trusted by</p>' in trusted
     links = re.findall(r'<a class="trusted-(\w+)" href="([^"]+)"><svg [^>]*aria-label="([^"]+)"', trusted)
@@ -160,6 +160,7 @@ def test_trusted_by_links_each_logo_to_where_it_names_us(site: Path) -> None:
         ("runway", "https://runway.com/research/praxis-1-video-pretraining-to-robot-control#real", "Runway"),
         ("bfl", "https://bfl.ai/models/flux-3-action", "Black Forest Labs"),
         ("nebius", "https://nebius.com/blog/posts/nebius-partners-with-positronic-on-physical-ai-leaderboard", "Nebius"),
+        ("mimic", "https://www.mimicrobotics.com/", "mimic"),
     ]
 
 
