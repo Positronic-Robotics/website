@@ -7,7 +7,7 @@ Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
 Summary: mimic's FLUX-mimic-x and Runway's Praxis-1 joined the PhAIL DROID board, and both are among its four top scores.
 
-We added two models to the [PhAIL DROID board](https://phail.ai/benchmark/droid): [mimic FLUX-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). The board runs each model on a real Franka arm, on everyday tasks, with a limit of 240 seconds for each episode.
+PhAIL tests physical AI models in simulation and on a real Franka arm. On the [DROID tasks](https://phail.ai/benchmark/droid), which run on the real arm, we added two models: [mimic FLUX-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). Each episode has a limit of 240 seconds.
 
 <figure style="margin: 2rem 0;">
   <img src="{static}/media/flux-mimic-x-card.jpg" alt="Reliability against Speed on the PhAIL DROID board. FLUX-mimic-x and Praxis-1 are near the top. FLUX-mimic-x is faster than the human operator, and Praxis-1 is a little slower than the human operator." style="width: 100%; height: auto; border-radius: 8px;">
