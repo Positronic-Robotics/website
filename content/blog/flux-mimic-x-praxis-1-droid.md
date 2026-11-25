@@ -1,4 +1,4 @@
-Title: mimic FLUX-mimic-x and Runway Praxis-1 Join the Top of the PhAIL DROID Board
+Title: FLUX-mimic-x and Praxis-1 on real robots: the top score, the fastest model and quick recovery
 Date: 2026-11-25
 Category: Blog
 Slug: flux-mimic-x-praxis-1-droid
