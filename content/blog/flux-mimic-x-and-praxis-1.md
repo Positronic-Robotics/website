@@ -7,7 +7,7 @@ Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
 Summary: mimic's FLUX-mimic-x and Runway's Praxis-1 tested on real robots: top score, top speed, quick recovery.
 
-PhAIL tests physical AI models in simulation and on a real Franka arm. On the [DROID tasks](https://phail.ai/benchmark/droid), which run on the real arm, we added two models: [mimic FLUX-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). Each episode has a limit of 240 seconds.
+PhAIL tests physical AI models in simulation and on a real Franka arm. On the [DROID tasks](https://phail.ai/benchmark/droid), which run on the real arm, we added two models: [mimic FLUX-mimic-x](https://phail.ai/model/mimic%20FLUX-mimic-x?benchmark=droid) and [Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid). Each episode has a limit of 240 seconds.
 
 <figure style="margin: 2rem 0;">
   <img src="{static}/media/flux-mimic-x-card.jpg" alt="Reliability against Speed on the PhAIL DROID board. FLUX-mimic-x and Praxis-1 are near the top. FLUX-mimic-x is faster than the human operator, and Praxis-1 is a little slower than the human operator." style="width: 100%; height: auto; border-radius: 8px;">
@@ -16,7 +16,7 @@ PhAIL tests physical AI models in simulation and on a real Franka arm. On the [D
 | Model | Reliability | Speed |
 |---|---|---|
 | <img src="{static}/media/logo-teleop.svg" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[Teleop (human)](https://phail.ai/model/Robot%20teleoperated%20by%20Human?benchmark=droid) | 94.7 | 1.83 |
-| <img src="{static}/media/logo-mimic.png" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[mimic FLUX-mimic-x](https://phail.ai/model/Mimic%20flux-mimic-x?benchmark=droid) | **71.2** | **3.08** |
+| <img src="{static}/media/logo-mimic.png" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[mimic FLUX-mimic-x](https://phail.ai/model/mimic%20FLUX-mimic-x?benchmark=droid) | **71.2** | **3.08** |
 | <img src="{static}/media/logo-nvidia.svg" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[NVIDIA Cosmos3 Nano](https://phail.ai/model/NVIDIA%20Cosmos3%20Nano?benchmark=droid) | 68.7 | 1.24 |
 | <img src="{static}/media/logo-runway.svg" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[Runway Praxis-1](https://phail.ai/model/Runway%20Praxis-1?benchmark=droid) | 65.7 | 1.72 |
 | <img src="{static}/media/logo-openai.svg" alt="" style="height: 1.2em; width: 1.2em; object-fit: contain; vertical-align: middle; margin-right: 0.5em;">[OpenAI GPT-6 Astra](https://phail.ai/model/OpenAI%20GPT-6%20Astra?benchmark=droid) | 64.1 | 0.45 |
@@ -57,7 +57,7 @@ Praxis-1 also moves at the pace of our human operator: on the same tasks, its me
   <figcaption>Praxis-1: "Put the banana on the plate on the left", in real time.</figcaption>
 </figure>
 
-Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab](https://phail.ai/benchmark/robolab) and [MolmoSpaces](https://phail.ai/benchmark/molmospaces). Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0, so anyone can run it and train it further. It is a diffusion transformer that predicts video and actions together.
+Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab](https://phail.ai/benchmark/robolab) and [MolmoSpaces](https://phail.ai/benchmark/molmospaces). FLUX-mimic-x results on the two simulated Franka boards, RoboLab and MolmoSpaces, follow soon. Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0, so anyone can run it and train it further. It is a diffusion transformer that predicts video and actions together.
 
 ### The leading robot models all predict video
 
