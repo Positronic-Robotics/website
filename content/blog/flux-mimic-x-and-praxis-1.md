@@ -1,7 +1,7 @@
 Title: mimic's FLUX-mimic-x and Runway's Praxis-1 tested on real robots: top score, top speed, quick recovery
 Date: 2026-11-25
 Category: Blog
-Slug: flux-mimic-x-praxis-1-droid
+Slug: flux-mimic-x-and-praxis-1
 Author: Dmitry Matov
 Image: media/flux-mimic-x-thumb.jpg
 Header_image: no
