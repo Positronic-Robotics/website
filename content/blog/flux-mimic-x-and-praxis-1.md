@@ -57,7 +57,7 @@ Praxis-1 also moves at the pace of our human operator: on the same tasks, its me
   <figcaption>Praxis-1: "Put the banana on the plate on the left", in real time.</figcaption>
 </figure>
 
-Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab](https://phail.ai/benchmark/robolab) and [MolmoSpaces](https://phail.ai/benchmark/molmospaces). FLUX-mimic-x results on the two simulated Franka boards, RoboLab and MolmoSpaces, follow soon. Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0, so anyone can run it and train it further. It is a diffusion transformer that predicts video and actions together.
+Praxis-1 also has results on the two simulated Franka boards of PhAIL, [RoboLab](https://phail.ai/benchmark/robolab) and [MolmoSpaces](https://phail.ai/benchmark/molmospaces). FLUX-mimic-x has results there too. On [RoboLab](https://phail.ai/benchmark/robolab), its Reliability is 51.7 and its Speed 1.86, close to FLUX 3 Action and Praxis-1. On [MolmoSpaces](https://phail.ai/benchmark/molmospaces), its Reliability is 48.1 and its Speed 4.85, the highest values on that board. Runway [released Praxis-1](https://runway.com/news/company-news/praxis-1-is-now-available) on 11 November as open weights, under Apache 2.0, so anyone can run it and train it further. It is a diffusion transformer that predicts video and actions together.
 
 ### The leading robot models all predict video
 
