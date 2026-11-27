@@ -91,8 +91,8 @@
   </aside>
   <script>
     (function () {
-      // The button follows the competition.phail.ai timeline; 27 Nov and 7 Dec are still "tbc" there.
-      var stages = [['2026-11-27', 'Watch the final'], ['2026-12-08', 'See results']];
+      // The button follows the competition.phail.ai timeline: the finale runs 15-17 Dec, the results come on 18 Dec.
+      var stages = [['2026-12-15', 'Watch the final'], ['2026-12-18', 'See results']];
       var label = 'Participate';
       stages.forEach(function (s) { if (Date.now() >= Date.parse(s[0] + 'T00:00:00Z')) label = s[1]; });
       document.getElementById('announce-cta').textContent = label + '\u00a0\u2192';
@@ -100,7 +100,7 @@
       var bar = document.getElementById('announce');
       var key = 'announce-competition-closed';
       try { if (localStorage.getItem(key)) bar.hidden = true; } catch (e) {}
-      // The strip comes down by itself a month after the 7 Dec finale.
+      // The strip comes down by itself three weeks after the 18 Dec results.
       if (Date.now() >= Date.parse('2027-01-08T00:00:00Z')) bar.hidden = true;
       bar.querySelector('.announce-close').addEventListener('click', function () {
         bar.hidden = true;
