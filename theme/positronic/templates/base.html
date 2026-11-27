@@ -91,8 +91,9 @@
   </aside>
   <script>
     (function () {
-      // The button follows the competition.phail.ai timeline: the finale runs 15-17 Dec, the results come on 18 Dec.
-      var stages = [['2026-12-15', 'Watch the final'], ['2026-12-18', 'See results']];
+      // The button follows the competition.phail.ai timeline: final entries close on 13 Dec, the finale runs
+      // 15-17 Dec and the results come on 18 Dec. "Participate" ends when entries close.
+      var stages = [['2026-12-14', 'Watch the final'], ['2026-12-18', 'See results']];
       var label = 'Participate';
       stages.forEach(function (s) { if (Date.now() >= Date.parse(s[0] + 'T00:00:00Z')) label = s[1]; });
       document.getElementById('announce-cta').textContent = label + '\u00a0\u2192';
